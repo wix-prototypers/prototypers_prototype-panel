@@ -22,7 +22,7 @@ controllerStructureFile.src = 'https://wix-prototypers.github.io/prototype-panel
 document.getElementsByTagName("head")[0].appendChild(controllerStructureFile);
 
 var prototypePanelCss = document.createElement("link");
-prototypePanelCss.src = 'https://wix-prototypers.github.io/prototype-panel/prototype-panel-0.1/prototypeSettings.css';
+prototypePanelCss.href = 'https://wix-prototypers.github.io/prototype-panel/prototype-panel-0.1/prototypeSettings.css';
 prototypePanelCss.rel = 'stylesheet';
 document.getElementsByTagName("head")[0].appendChild(prototypePanelCss);
 
