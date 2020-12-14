@@ -14,14 +14,14 @@ document.getElementsByTagName("head")[0].appendChild(jqueryUI);
 // document.getElementsByTagName("head")[0].appendChild(jqueryUiCss);
 
 var scrollToView = document.createElement("script");
-scrollToView.src = './scrollToView.js';
+scrollToView.src = 'https://wix-prototypers.github.io/prototype-panel/prototype-panel-0.1/scrollToView.js';
 document.getElementsByTagName("head")[0].appendChild(scrollToView);
 
 var controllerStructureFile = document.createElement("script");
-controllerStructureFile.src = './controllerStructure.js';
+controllerStructureFile.src = 'https://wix-prototypers.github.io/prototype-panel/prototype-panel-0.1/controllerStructure.js';
 document.getElementsByTagName("head")[0].appendChild(controllerStructureFile);
 
 // --- ??? --- //
 var customFile = document.createElement("script");
-customFile.src = './customController.js';
+customFile.src = 'https://wix-prototypers.github.io/prototype-panel/prototype-panel-0.1/customController.js';
 document.getElementsByTagName("head")[0].appendChild(customFile);
