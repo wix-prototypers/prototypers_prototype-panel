@@ -22,6 +22,6 @@ controllerStructureFile.src = 'https://wix-prototypers.github.io/prototype-panel
 document.getElementsByTagName("head")[0].appendChild(controllerStructureFile);
 
 // --- ??? --- //
-var customFile = document.createElement("script");
-customFile.src = 'https://wix-prototypers.github.io/prototype-panel/prototype-panel-0.1/customController.js';
-document.getElementsByTagName("head")[0].appendChild(customFile);
+// var customFile = document.createElement("script");
+// customFile.src = 'https://wix-prototypers.github.io/prototype-panel/prototype-panel-0.1/customController.js';
+// document.getElementsByTagName("head")[0].appendChild(customFile);
