@@ -179,7 +179,7 @@ function inputFieldContent(field) {
       i == field.defaultIndex ? checked = "checked" : checked = "";
       field.labelsDisplayList[i].length > 9 ? opacity2 = 1 : opacity2 = 0;
       content += `<div class="prt-thumbnails-item">
-      <input class="prt-thumbnails-input" type="radio" value="0" name="${field.fieldName}" id="${field.fieldName}-${i}" ${checked}>
+      <input class="prt-thumbnails-input" type="radio" value="${field.optionsBackendList[i]}" name="${field.fieldName}" id="${field.fieldName}-${i}" ${checked}>
       <button class="prt-thumbnails-button ${selected}" value="${field.optionsBackendList[i]}"><img src="${field.iconsDisplayList[i]}"></button>
       <label for="${field.fieldName}-${i}">${field.labelsDisplayList[i]}</label>
       <span class="prt-thumbnails-tooltip-item" count="${i+1}" style="opacity: ${opacity2}">${field.labelsDisplayList[i]}</span>
