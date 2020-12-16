@@ -21,7 +21,7 @@ prototypePanelCss.href = 'https://wix-prototypers.github.io/prototype-panel/prot
 prototypePanelCss.rel = 'stylesheet';
 document.getElementsByTagName("head")[0].appendChild(prototypePanelCss);
 
-// --- ??? --- //
-var customFile = document.createElement("script");
-customFile.src = 'https://wix-prototypers.github.io/prototype-panel/prototype-panel-0.1/customPrototypePanel.js';
-document.getElementsByTagName("head")[0].appendChild(customFile);
+// --- CUSTOM FILE --- //
+// var customFile = document.createElement("script");
+// customFile.src = 'https://wix-prototypers.github.io/prototype-panel/prototype-panel-0.1/customPrototypePanel.js';
+// document.getElementsByTagName("head")[0].appendChild(customFile);
