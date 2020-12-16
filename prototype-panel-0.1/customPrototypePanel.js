@@ -80,7 +80,7 @@ const sections = [
   } ,
   {
     "sectionNumber": 1,
-    "sectionIsOpen": true,
+    "sectionIsOpen": false,
     "sectionTitle": "Second Section Name",
     "fields": [
       {

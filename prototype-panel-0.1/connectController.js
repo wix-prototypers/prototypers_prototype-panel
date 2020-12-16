@@ -20,7 +20,8 @@ var prototypePanelCss = document.createElement("link");
 prototypePanelCss.href = 'https://wix-prototypers.github.io/prototype-panel/prototype-panel-0.1/prototypePanel.css';
 prototypePanelCss.rel = 'stylesheet';
 document.getElementsByTagName("head")[0].appendChild(prototypePanelCss);
+
 // --- ??? --- //
-// var customFile = document.createElement("script");
-// customFile.src = 'https://wix-prototypers.github.io/prototype-panel/prototype-panel-0.1/customController.js';
-// document.getElementsByTagName("head")[0].appendChild(customFile);
+var customFile = document.createElement("script");
+customFile.src = 'https://wix-prototypers.github.io/prototype-panel/prototype-panel-0.1/customPrototypePanel.js';
+document.getElementsByTagName("head")[0].appendChild(customFile);
