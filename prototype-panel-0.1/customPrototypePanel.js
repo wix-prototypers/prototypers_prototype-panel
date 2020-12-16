@@ -16,6 +16,7 @@ let prototypeDescription = "This is where you can describe the prototype shortly
 const sections = [
   {
     "sectionNumber": 0,
+    "sectionIsOpen": true,
     "sectionTitle": "First Section Name",
     "fields": [
       {
@@ -79,6 +80,7 @@ const sections = [
   } ,
   {
     "sectionNumber": 1,
+    "sectionIsOpen": true,
     "sectionTitle": "Second Section Name",
     "fields": [
       {
@@ -109,6 +111,7 @@ const sections = [
   },
   {
     "sectionNumber": 2,
+    "sectionIsOpen": true,
     "sectionTitle": "Third Section Name",
     "fields": [
       {
@@ -144,9 +147,9 @@ const sections = [
 
 
 function exampleFunction(name, value) {
-  disableField($(`.pc-controls-field[name="example-input-radiobtn-disabled"]`), false);
+  disableField($(`.prt-panel-field[name="example-input-radiobtn-disabled"]`), false);
 }
 
 function exampleFunction2(name, value) {
-  disableField($(`.pc-controls-field[name="example-input-radiobtn-disabled"]`), true);
+  disableField($(`.prt-panel-field[name="example-input-radiobtn-disabled"]`), true);
 }
