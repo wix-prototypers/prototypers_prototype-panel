@@ -12,7 +12,7 @@ IMPORTANT! Fill this file according to your needs. ---- */
 const panelInfo = {
   prototypeTitle : "Example Controller",
   prototypeDescription : "A simple example of using the controller code for the prototypers. This example contains the use of functions after changing input and disabling or enabling fields.",
-  panelDirection : "left"
+  panelDirection : "right"
 }
 // (2) 'Sections' Array - Array for all the sections and their input fields that you want to add.
 const panelSections = [
