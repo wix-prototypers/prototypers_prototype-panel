@@ -76,7 +76,6 @@
   transform: var(--translateX);
   transition: transform 0.35s cubic-bezier(0.76, 0, 0.24, 1);
   position: fixed;
-  border-radius: 3px 0 0 3px;
   overflow: hidden;
 }
 
@@ -283,13 +282,13 @@ transform: none;
   transition: max-height 0.2s ease-out;
   letter-spacing: normal;
   line-height: 1.33;
-  padding: 0 24px 14px;
+  padding: 0 22px 14px;
   box-sizing: border-box;
   color: var(--G6);
 }
 
 .prt-panel-section-content.info-section-content {
-  padding: 18px 24px;
+  padding: 18px 22px;
   word-spacing: 0.6px;
 }
 
