@@ -306,7 +306,7 @@ transform: none;
   justify-content: space-between;
   align-items: center;
   padding: var(--footer-padding);
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 .prt-panel-footer .by-ux-prt {
@@ -318,7 +318,7 @@ transform: none;
 }
 
 .by-ux-prt svg {
-  height: 10px;
+  height: 11px;
   width: auto;
   filter: invert(66%) sepia(16%) saturate(13%) hue-rotate(341deg) brightness(120%) contrast(84%);
 }
