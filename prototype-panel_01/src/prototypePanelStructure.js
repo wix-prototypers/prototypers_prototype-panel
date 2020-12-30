@@ -17,9 +17,9 @@ $(document).ready(function () {
     setTimeout(function(){ $(".prt-panel-tab").show(); }, 300);
   })
 
-  $('.prototype-panel[panel-dir="left"]').each(function () {
-    $(".prt-footer-close").insertBefore(".by-ux-prt");
-  })
+  // $('.prototype-panel[panel-dir="left"]').each(function () {
+  //   $(".prt-footer-close").insertBefore(".by-ux-prt");
+  // })
 
   // open the panel (after click on the tab)
   $(".prt-panel-tab").click(function() {

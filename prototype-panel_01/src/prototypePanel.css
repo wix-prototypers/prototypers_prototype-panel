@@ -27,6 +27,7 @@
   --close-icon-dir: rotate(180deg);
   --dir-button: rotate(0);
   --footer-padding: 0 14px 2px 8px;
+  --footer-icons-dir: rtl;
 }
 
 .prototype-panel[panel-dir="right"] {
@@ -39,6 +40,7 @@
   --close-icon-dir: rotate(0);
   --dir-button: rotate(180deg);
   --footer-padding: 0 8px 2px 14px;
+  --footer-icons-dir: ltr;
 }
 /* ENDOF: direction changes */
 
@@ -305,6 +307,7 @@ transform: none;
   justify-content: space-between;
   align-items: center;
   padding: var(--footer-padding);
+  direction: var(--footer-icons-dir);
   /* box-sizing: border-box; */
 }
 
