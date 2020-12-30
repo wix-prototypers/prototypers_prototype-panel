@@ -149,6 +149,10 @@ let panelSections = [
   }
 ];
 
+window.onload = function() {
+  initPrototypePanel(panelInfo, panelSections);
+};
+
 function exampleFunction(name, value) {
   disablePrtPanelField($(`.prt-panel-field[name="example-input-number-disabled"]`), false);
 }
