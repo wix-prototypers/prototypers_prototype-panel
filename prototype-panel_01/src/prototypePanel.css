@@ -272,7 +272,6 @@ transform: none;
 }
 
 .prt-panel-section-header.close > span::before, .prt-panel-section-header.prt-disable-closing > span::before {
-  top: 14px;
   transform: rotate(-135deg);
 }
 
