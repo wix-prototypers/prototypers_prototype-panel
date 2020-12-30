@@ -9,14 +9,14 @@ jqueryUI.type = 'text/javascript';
 document.getElementsByTagName("head")[0].appendChild(jqueryUI);
 
 var prototypePanelCss = document.createElement("link");
-prototypePanelCss.href = 'https://wix-prototypers.github.io/prototype-panel/prototype-panel-0.1/src/prototypePanel.css';
+prototypePanelCss.href = 'https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/prototypePanel.css';
 prototypePanelCss.rel = 'stylesheet';
 document.getElementsByTagName("head")[0].appendChild(prototypePanelCss);
 
 var scrollToView = document.createElement("script");
-scrollToView.src = 'https://wix-prototypers.github.io/prototype-panel/prototype-panel-0.1/src/scrollToView.js';
+scrollToView.src = 'https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/scrollToView.js';
 document.getElementsByTagName("head")[0].appendChild(scrollToView);
 
 var prototypePanelStructureJS = document.createElement("script");
-prototypePanelStructureJS.src = 'https://wix-prototypers.github.io/prototype-panel/prototype-panel-0.1/src/prototypePanelStructure.js';
+prototypePanelStructureJS.src = 'https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/prototypePanelStructure.js';
 document.getElementsByTagName("head")[0].appendChild(prototypePanelStructureJS);
