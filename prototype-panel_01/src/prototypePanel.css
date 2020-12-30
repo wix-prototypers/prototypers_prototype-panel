@@ -311,9 +311,8 @@ transform: none;
 .prt-panel-footer .by-ux-prt {
   font-size: 10px;
   color: var(--G4);
-  display: flex;
-  align-items: center;
   text-decoration: none;
+  margin-top: 4px;
 }
 
 .by-ux-prt svg {
