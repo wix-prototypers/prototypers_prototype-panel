@@ -102,7 +102,8 @@ function initPrototypePanel(panelInfo : Object, panelSections : Object)
    </td>
   </tr>
   <tr>
-   <td>[panelInfo](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#panelinfo-properties)
+   <td>
+      <a href="https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#panelinfo-properties">panelInfo</a>
    </td>
    <td>Object
    </td>
