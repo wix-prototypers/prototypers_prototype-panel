@@ -5,7 +5,7 @@ The "Prototype Panel'' goal is to add a layer of information to our prototypes. 
 ### **Table of contents**
 [Project Structure](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#project-structure)
 
-[Prototype Panel Structure](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#project-panel-structure)
+[Prototype Panel Structure](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#prototype-panel-structure)
 
 [How To Use?](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#how-to-use)
 
