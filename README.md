@@ -329,7 +329,7 @@ Below is a list of properties for each input type. You must define all the prope
 3. Radio Button.
 4. Thumbnails.
 
-##### **1. Number 🔟 **
+##### 1. Number 🔟
 <table>
   <tr>
    <td>
@@ -496,7 +496,7 @@ Below is a list of properties for each input type. You must define all the prope
 ];
 ```
 
-##### **2. Toggle ↔️ **
+##### 2. Toggle ↔️
 <table>
   <tr>
    <td>
@@ -643,7 +643,7 @@ Below is a list of properties for each input type. You must define all the prope
 ];
 ```
 
-##### **3. Radio Button ⏺ **
+##### 3. Radio Button ⏺
 <table>
   <tr>
    <td>
@@ -776,7 +776,7 @@ Below is a list of properties for each input type. You must define all the prope
 ];
 ```
 
-##### **4. Thumbnails 🔣 **
+##### 4. Thumbnails 🔣
 <table>
   <tr>
    <td>
