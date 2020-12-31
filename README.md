@@ -9,17 +9,17 @@ The "Prototype Panel'' goal is to add a layer of information to our prototypes. 
 
 [How To Use?](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#how-to-use)
 
-1. [Connect the panel project](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1-connect-the-panel-project)
+1. [Connect the panel project](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1-connect-the-panel-project-)
 
-2. [Create the panel](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-create-the-panel)
+2. [Create the panel](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-create-the-panel-)
 
-- [Number Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1-number)
+- [Number Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1-number-)
 
-- [Toggle Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-toggle)
+- [Toggle Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-toggle-)
 
-- [Radio Buttons Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#3-radio-button)
+- [Radio Buttons Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#3-radio-button-)
 
-- [Thumbnails Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#4-thumbnails)
+- [Thumbnails Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#4-thumbnails-)
 
 [Helper Functions](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#helper-functions)
 
