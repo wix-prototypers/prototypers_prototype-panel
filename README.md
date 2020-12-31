@@ -114,8 +114,8 @@ function initPrototypePanel(panelInfo : Object, panelSections : Object)
    </td>
   </tr>
   <tr>
-   <td>panelSections[ ]
-   </td>
+     <td><a href="https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#panelsections-properties">panelSections[]</a>
+     </td>
    <td>Array
    </td>
    <td>An array with sections, in each section the relevant inputs you want to add to the panel. 
