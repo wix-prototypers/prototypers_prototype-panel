@@ -15,7 +15,7 @@ The "Prototype Panel'' goal is to add a layer of information to our prototypes. 
 
 - [Number Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1-number-)
 
-- [Toggle Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-toggle-)
+- [Toggle Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-toggle-%EF%B8%8F)
 
 - [Radio Buttons Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#3-radio-button-)
 
