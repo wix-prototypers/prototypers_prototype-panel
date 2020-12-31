@@ -67,7 +67,7 @@ The inputs are the interactive part of the panel and allow our users to play, ch
 To use the panel in your prototype you must do these 2 following actions:
 ### **1. Connect the panel project: 🔗** 
 Add a link to the _‘connectPrototypePanel.js’_ file in your prototype's index file.
-```
+```HTML
 <script src="https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/connectPrototypePanel.js"></script>
 ```
 **NOTE:** As mentioned, this file will link the libraries and other unchangeable files.
@@ -82,7 +82,7 @@ The `initPrototypePanel()` function builds the prototype panel and appends it to
 
 #### **Syntax**
 
-```
+```javascript
 function initPrototypePanel(panelInfo : Object, panelSections : Object)
 ```
 #### **initPrototypePanel Parameters**
@@ -201,7 +201,7 @@ The `initPrototypePanel()` function adds the information and following propertie
 **NOTE:** You must add the `prototypeTitle` and the `prototypeDescription`, the panel won't be created if one of them is invalid. The `panelDirection` is optional, the default value will be “right”. Then if you want to place the panel on the left you need to define it in the `panelDirection` property.
 
 #### **Code Example for Informative Panel only**
-```
+```javascript
 let panelInfo = {
   prototypeTitle : "Prototype Name",
   prototypeDescription : "This is where you can describe the  
@@ -298,7 +298,7 @@ be inside this section. See inputs details below.
 </table>
 
 #### **Code Example for Interactive Panel**
-```
+```javascript
 
 let panelInfo = {
   prototypeTitle : "Prototype Name",
@@ -480,7 +480,7 @@ Below is a list of properties for each input type. You must define all the prope
 </table>
 
 ##### **Code Example for Number Input**
-```
+```javascript
 ... fields: [
 {
   fieldName : "example-input-number",
@@ -629,7 +629,7 @@ Below is a list of properties for each input type. You must define all the prope
 - If the option text is too long a tooltip will appear on hover.
 
 ##### **Code Example for Toggle Input**
-```
+```javascript
 ... fields: [
 {
   fieldName : "example-input-toggle",
@@ -761,7 +761,7 @@ Below is a list of properties for each input type. You must define all the prope
 </table>
 
 ##### **Code Example for Radio Button Input**
-```
+```javascript
 ... fields: [
 {
   fieldName : "example-input-radiobtn",
@@ -907,7 +907,7 @@ Below is a list of properties for each input type. You must define all the prope
 - If the option text is too long a tooltip will appear on hover.
 
 ##### **Code Example for Thumbnails**
-```
+```javascript
 ... fields: [
 {
   fieldName : "example-input-thumbnails",
@@ -937,7 +937,7 @@ Below is a list of properties for each input type. You must define all the prope
 The `disablePrtPanelField()` function can help you disable or enable a specific input field. For example, use this function to enable a disabled input in a function that you create and it will be called after changing another input.
 
 ##### **Syntax**
-```
+```javascript
 function disablePrtPanelField(field : Element, flag : Boolean)
 ```
 ##### **initPrototypePanel Parameters**
@@ -979,7 +979,7 @@ function disablePrtPanelField(field : Element, flag : Boolean)
 </table>
 
 ##### **Code Example**
-```
+```javascript
 disablePrtPanelField($(`.prt-panel-field[name="your-input-name"]`) , false);
 ```
 
