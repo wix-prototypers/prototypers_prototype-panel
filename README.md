@@ -3,7 +3,13 @@
 The "Prototype Panel'' goal is to add a layer of information to our prototypes. This panel allows us to improve the experience by adding more capabilities that will allow our users to interact and play with the prototype itself.
 
 ### **Table of contents**
- / TODO
+[Project Structure](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#project-structure)
+
+[Prototype Panel Structure](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#project-panel-structure)
+
+[How To Use?](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#how-to-use)
+
+[Helper Functions](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#helper-functions)
 
 ### **Project Structure**
 ##### **External Libraries**
