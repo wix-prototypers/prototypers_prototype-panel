@@ -56,10 +56,11 @@ The general structure of the panel consists of a header, content and footer.
 
 ### **2. Inputs**
 The inputs are the interactive part of the panel and allow our users to play, change and test different options for the prototype. The panel currently includes four types of inputs: 
-   1. Number: spinner element with slider element (optional).
-   2. Toggle: segmented toggle with 2 options. 
-   3. Radio Button: list of options. Only 1 option can be selected.
-   4. Thumbnails: square buttons with icons inside and text labels. Only 1 option can be selected.
+
+   1. [Number](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1-number-): spinner element with slider element (optional).
+   2. [Toggle](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-toggle-%EF%B8%8F): segmented toggle with 2 options. 
+   3. [Radio Buttons](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#3-radio-button-): list of options. Only 1 option can be selected.
+   4. [Thumbnails](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#4-thumbnails-): square buttons with icons inside and text labels. Only 1 option can be selected.
 
 
 ## **How To Use?**
