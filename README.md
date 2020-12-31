@@ -2,7 +2,7 @@
 # **Prototype Panel**
 The "Prototype Panel'' goal is to add a layer of information to our prototypes. This panel allows us to improve the experience by adding more capabilities that will allow our users to interact and play with the prototype itself.
 
-### **Table of contents**
+## **Table of contents**
 [Project Structure](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#project-structure)
 
 [Prototype Panel Structure](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#prototype-panel-structure)
@@ -23,8 +23,8 @@ The "Prototype Panel'' goal is to add a layer of information to our prototypes. 
 
 [Helper Functions](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#helper-functions)
 
-### **Project Structure**
-##### **External Libraries**
+## **Project Structure**
+### **External Libraries**
 For the "Prototype Panel" project we use 3 external libraries:
 -  Jquery 3.4.
 -  Jquery-UI 1.12.1.
@@ -33,7 +33,7 @@ For the "Prototype Panel" project we use 3 external libraries:
 The libraries will install automatically in your project after connecting this project - you don't need to install them.
 
 
-##### **Internal Files**
+### **Internal Files**
 The "Prototype Panel" project consists of the following files:
 1. prototypePanelStructure.js:
 This file is responsible for creating the constant structure of the panel. It includes:  \
@@ -45,16 +45,16 @@ This file includes the style of the panel structure and of each element in the p
 3. connectPrototypePanel.js:
 This file is responsible for connecting the “Prototype Panel” project to your prototype project. It will append links in your project to the relevant libraries and files for the panel. In total there will be 5 links: jquery, jquery-UI, scrollIntoView.js,  prototypePanelStructure.js, prototypePanel.css.
 
-### **Prototype Panel Structure**
+## **Prototype Panel Structure**
 
 
-##### **1. General Structure**
+### **1. General Structure**
 The general structure of the panel consists of a header, content and footer.
 **Header:**  The header includes the prototype title and the general actions of the panel (_i.e close the panel_, _save changes and change the position of the panel_).
 **Contect:** The content is the main part of the panel and is divided to sections. The content will differ according to the type of panel. (1) For an informative panel the content will contain only one section with a short description about the prototype. (2) For an interactive panel, in addition to the informative section, the content will include sections according to your needs. Each section consists of the section name and its content which includes the relevant inputs according to the panel needs.               
 **Footer:** The footer includes a button to close the panel and our logo with a link to our [‘WixWhooo’ page](https://www.wixwhooo.com/results?type=all&val=prototyper) to contact us.
 
-##### **2. Inputs**
+### **2. Inputs**
 The inputs are the interactive part of the panel and allow our users to play, change and test different options for the prototype. The panel currently includes four types of inputs: 
    1. Number: spinner element with slider element (optional).
    2. Toggle: segmented toggle with 2 options. 
@@ -62,9 +62,9 @@ The inputs are the interactive part of the panel and allow our users to play, ch
    4. Thumbnails: square buttons with icons inside and text labels. Only 1 option can be selected.
 
 
-### **How To Use?**
+## **How To Use?**
 To use the panel in your prototype you must do these 2 following actions:
-##### **1. Connect the panel project:** 
+### **1. Connect the panel project:** 
 Add a link to the _‘connectPrototypePanel.js’_ file in your prototype's index file.
 ```
 <script src="https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/connectPrototypePanel.js"></script>
@@ -72,19 +72,19 @@ Add a link to the _‘connectPrototypePanel.js’_ file in your prototype's inde
 **NOTE:** As mentioned, this file will link the libraries and other unchangeable files.
 
 
-#### **2. Create the panel:**
+### **2. Create the panel:**
 
 initPrototypePanel( )
 
-##### **Description**
+#### **Description**
 The `initPrototypePanel()` function builds the prototype panel and appends it to the body element in your prototype's index file. Call this function from one of your .js files in the project. 
 
-##### **Syntax**
+#### **Syntax**
 
 ```
 function initPrototypePanel(panelInfo : Object, panelSections : Object)
 ```
-##### **initPrototypePanel Parameters**
+#### **initPrototypePanel Parameters**
 <table>
   <tr>
    <td>
@@ -126,7 +126,7 @@ The amount of sections and the distribution of inputs among them is your decisio
 
 **NOTE:** You must add the `panelInfo`. The `panelSections` is optional, so if you want to create an interactive panel you need to add it as well.
 
-##### **panelInfo Properties**
+#### **panelInfo Properties**
 The `initPrototypePanel()` function adds the information and following properties of `panelInfo` object to the panel when it is created:
 <table>
   <tr>
@@ -198,7 +198,7 @@ The `initPrototypePanel()` function adds the information and following propertie
 
 **NOTE:** You must add the `prototypeTitle` and the `prototypeDescription`, the panel won't be created if one of them is invalid. The `panelDirection` is optional, the default value will be “right”. Then if you want to place the panel on the left you need to define it in the `panelDirection` property.
 
-##### **Code Example for informative panel only**
+#### **Code Example for Informative Panel only**
 ```
 let panelInfo = {
   prototypeTitle : "Prototype Name",
@@ -209,7 +209,7 @@ let panelInfo = {
 };
 initPrototypePanel(panelInfo);
 ```
-##### **panelSections Properties**
+#### **panelSections Properties**
 <table>
   <tr>
    <td>
@@ -295,7 +295,7 @@ be inside this section. See inputs details below.
   </tr>
 </table>
 
-##### **Code Example for interactive panel**
+#### **Code Example for Interactive Panel**
 ```
 
 let panelInfo = {
@@ -322,7 +322,7 @@ let panelSections = [
 initPrototypePanel(panelInfo , panelSections);
 ```
 
-##### **Inputs Properties**
+#### **Inputs Properties**
 Below is a list of properties for each input type. You must define all the properties to ensure the creation and property of each input type. There are 4 input types:
 1. Number.
 2. Toggle.
@@ -925,8 +925,10 @@ Below is a list of properties for each input type. You must define all the prope
 ];
 ```
 
-### **Helper Functions**
-disablePrtPanelField( )
+## **Helper Functions**
+
+
+### disablePrtPanelField( )
 
 ##### **Description**
 The `disablePrtPanelField()` function can help you disable or enable a specific input field. For example, use this function to enable a disabled input in a function that you create and it will be called after changing another input.
