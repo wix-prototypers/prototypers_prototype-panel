@@ -9,7 +9,7 @@ The "Prototype Panel'' goal is to add a layer of information to our prototypes. 
 
 [How To Use?](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#how-to-use)
 
-1. [Connect the panel project](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#connect-the-panel-project)
+1. [Connect the panel project](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1.-connect-the-panel-project)
 
 2. [Create the panel](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#create-the-panel)
 
