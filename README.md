@@ -326,13 +326,14 @@ initPrototypePanel(panelInfo , panelSections);
 
 #### **Inputs Properties**
 Below is a list of properties for each input type. You must define all the properties to ensure the creation and property of each input type. There are 4 input types:
-[1. Number](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1-number-)
 
-[2. Toggle](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-toggle-%EF%B8%8F)
+1.[Number](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1-number-)
 
-[3. Radio Buttons](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#3-radio-button-)
+2.[Toggle](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-toggle-%EF%B8%8F)
 
-[4. Thumbnails](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#4-thumbnails-)
+3.[Radio Buttons](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#3-radio-button-)
+
+4.[Thumbnails](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#4-thumbnails-)
 
 ##### 1. Number 🔟
 <table>
