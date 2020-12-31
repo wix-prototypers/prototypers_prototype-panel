@@ -1,5 +1,5 @@
 
-# **Prototype Panel**
+# **Prototype Panel 🚀**
 The "Prototype Panel'' goal is to add a layer of information to our prototypes. This panel allows us to improve the experience by adding more capabilities that will allow our users to interact and play with the prototype itself.
 
 ## **Table of contents**
@@ -64,7 +64,7 @@ The inputs are the interactive part of the panel and allow our users to play, ch
 
 ## **How To Use?**
 To use the panel in your prototype you must do these 2 following actions:
-### **1. Connect the panel project:** 
+### **1. Connect the panel project: 🔗** 
 Add a link to the _‘connectPrototypePanel.js’_ file in your prototype's index file.
 ```
 <script src="https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/connectPrototypePanel.js"></script>
@@ -72,7 +72,7 @@ Add a link to the _‘connectPrototypePanel.js’_ file in your prototype's inde
 **NOTE:** As mentioned, this file will link the libraries and other unchangeable files.
 
 
-### **2. Create the panel:**
+### **2. Create the panel: 🏗**
 
 initPrototypePanel( )
 
@@ -329,7 +329,7 @@ Below is a list of properties for each input type. You must define all the prope
 3. Radio Button.
 4. Thumbnails.
 
-##### **1. Number**
+##### **1. Number 🔟 **
 <table>
   <tr>
    <td>
@@ -496,7 +496,7 @@ Below is a list of properties for each input type. You must define all the prope
 ];
 ```
 
-##### **2. Toggle**
+##### **2. Toggle ↔️ **
 <table>
   <tr>
    <td>
@@ -643,7 +643,7 @@ Below is a list of properties for each input type. You must define all the prope
 ];
 ```
 
-##### **3. Radio Button**
+##### **3. Radio Button ⏺ **
 <table>
   <tr>
    <td>
@@ -776,7 +776,7 @@ Below is a list of properties for each input type. You must define all the prope
 ];
 ```
 
-##### **4. Thumbnails**
+##### **4. Thumbnails 🔣 **
 <table>
   <tr>
    <td>
