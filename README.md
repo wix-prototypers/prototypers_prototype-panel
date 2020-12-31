@@ -25,12 +25,11 @@ The "Prototype Panel'' goal is to add a layer of information to our prototypes. 
 
 ## **Project Structure**
 ### **External Libraries**
+
 For the "Prototype Panel" project we use 3 external libraries:
 -  Jquery 3.4.
 -  Jquery-UI 1.12.1.
 -  Scroll Into View.
-
-The libraries will install automatically in your project after connecting this project - you don't need to install them.
 
 
 ### **Internal Files**
@@ -42,8 +41,6 @@ This file is responsible for creating the constant structure of the panel. It in
 2. prototypePanel.css:
 This file includes the style of the panel structure and of each element in the panel. it won't affect your prototype since each element in the panel has a unique class.
 
-3. connectPrototypePanel.js:
-This file is responsible for connecting the “Prototype Panel” project to your prototype project. It will append links in your project to the relevant libraries and files for the panel. In total there will be 5 links: jquery, jquery-UI, scrollIntoView.js,  prototypePanelStructure.js, prototypePanel.css.
 
 ## **Prototype Panel Structure**
 
@@ -66,12 +63,16 @@ The inputs are the interactive part of the panel and allow our users to play, ch
 ## **How To Use?**
 To use the panel in your prototype you must do these 2 following actions:
 ### **1. Connect the panel project: 🔗** 
-Add a link to the _‘connectPrototypePanel.js’_ file in your prototype's index file.
+Add the following links in your prototype's index file.
 ```HTML
-<script src="https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/connectPrototypePanel.js"></script>
-```
-**NOTE:** As mentioned, this file will link the libraries and other unchangeable files.
 
+    <link rel="stylesheet" href="https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/prototypePanel.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/scrollToView.js"></script>
+    <script src="https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/prototypePanelStructure.js"></script>
+
+```
 
 ### **2. Create the panel: 🏗**
 
