@@ -152,7 +152,7 @@ function initPrototypePanel(panelInfo, panelSections) {
 function createPrtPanelSection(section) {
   var newSection = "";
   var sectionNum = section.sectionNumber;
-  section.sectionIsOpen == true ? sectionIsOpen = "isOpen" : sectionIsOpen = "isClose";
+  section.sectionIsOpen != true ? sectionIsOpen = "isClose" : sectionIsOpen = "isOpen";
   newSection = `<div class="prt-panel-section ${sectionIsOpen}" section-number="${sectionNum}">
   <div class="prt-panel-section-header"><span>${section.sectionTitle}</span></div>
   <div class="prt-panel-section-content" number="${sectionNum}"></div>
