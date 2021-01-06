@@ -303,20 +303,20 @@ be inside this section. See inputs details below.
 
 let panelInfo = {
   prototypeTitle : "Prototype Name",
-  prototypeDescription : "This is where you can describe the  
-  prototype shortly, this description is where you can elaborate 
-  and describe in details what's the prototype about.",
+  prototypeDescription : "This is where you can describe the prototype shortly, this description is where you can elaborate and describe in details what's the prototype about.",
   panelDirection : "right"
 };
 
 let panelSections = [
   {
     sectionNumber : 0,
+    sectionIsOpen: true,
     sectionTitle : "First Section Name",
     fields : [ {inputField : Object} , { inputField : Object } ]
   } ,
   {
     sectionNumber : 1,
+    sectionIsOpen: true,
     sectionTitle : "Second Section Name",
     fields : [ {inputField : Object} ]
   }
