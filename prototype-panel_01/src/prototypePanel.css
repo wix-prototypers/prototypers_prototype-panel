@@ -316,6 +316,7 @@ transform: none;
   color: var(--G4);
   text-decoration: none;
   margin-top: 4px;
+  height: 14px;
 }
 
 .by-ux-prt svg {
