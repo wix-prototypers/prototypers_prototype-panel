@@ -123,8 +123,8 @@ function prtPanelInputContent(field) {
     case "number":
     field.showSlider ? displaySlider = "block" : displaySlider = "none";
     content = `<div class="prt-input-number-area" style="display:flex">
-    <div class="prt-slider" name="${field.fieldName}" data-value=${field.value} data-min=${field.min} data-max=${field.max} data-step=${field.step} style="display:${displaySlider}"></div>
-    <div class="prt-container-input-number"><input class="prt-spinner" name="${field.fieldName}" data-min="${field.min}" data-max="${field.max}" data-step="${field.step}" suffix="${field.suffix}" value="${field.value}">
+    <input type="range" class="prt-slider" name="${field.fieldName}" value=${field.value} min=${field.min} max=${field.max} step=${field.step} style="display:${displaySlider}"/>
+    <div class="prt-container-input-number"><input type="number" class="prt-spinner" name="${field.fieldName}" min="${field.min}" max="${field.max}" step="${field.step}" suffix="${field.suffix}" value="${field.value}">
     <span class="prt-sfx-label">${field.suffix}</span></div>
     </div>`;
     break;
@@ -209,7 +209,7 @@ function initPrototypePanelControls() {
   document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
     inputChanged.addEventListener("change", function(e) {
       let name = e.target.getAttribute("name");
-      e.target.classList.contains("prt-spinner") ? selectedValue = e.target.val() : selectedValue = document.querySelector(`input[name='${name}']:checked`).getAttribute("value");
+      e.target.classList.contains("prt-spinner") || e.target.classList.contains("prt-slider") ? selectedValue = e.target.value : selectedValue = document.querySelector(`input[name='${name}']:checked`).getAttribute("value");
       const theFunction = document.querySelector(`.prt-panel-field[name='${name}']`).getAttribute("call");
       // Call the relevant function
       window[theFunction](`${name}`,`${selectedValue}`);
