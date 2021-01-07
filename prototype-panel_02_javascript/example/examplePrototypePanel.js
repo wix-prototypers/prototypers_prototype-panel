@@ -51,7 +51,6 @@ const panelSections = [
   } ,
   {
     "sectionNumber": 1,
-    "sectionIsOpen": true,
     "sectionTitle": "layout elements",
     "fields": [
       {
