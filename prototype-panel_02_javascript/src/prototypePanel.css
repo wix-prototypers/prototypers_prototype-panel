@@ -81,6 +81,10 @@
   overflow: hidden;
 }
 
+.prt-panel-structure.prt-panel-open {
+  transform: var(--translateX-open);
+}
+
 .prt-panel-tab {
   background: var(--G2);
   height: 36px;

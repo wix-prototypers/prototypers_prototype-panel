@@ -1,9 +1,10 @@
 /* NOTE: This file includes the functions and the icons for creating the structure - No need to change / add. */
 
+
+
 $(document).ready(function () {
 
   // initPrototypePanel(panelInfo, panelSections);
-  initPrototypePanelControls();
 
   $('.ptr-dir-btn').click(function () {
     $(".prt-panel-tab").hide();
@@ -17,22 +18,30 @@ $(document).ready(function () {
     setTimeout(function(){ $(".prt-panel-tab").show(); }, 300);
   })
 
+//   document.querySelectorAll('.ptr-dir-btn').addEventListener("click", function() {
+// document.querySelectorAll('.prt-panel-tab').style.display = 'none';
+
+
+// });
+
   // $('.prototype-panel[panel-dir="left"]').each(function () {
   //   $(".prt-footer-close").insertBefore(".by-ux-prt");
   // })
 
   // open the panel (after click on the tab)
-  $(".prt-panel-tab").click(function() {
-    if(!$(this).hasClass("prt-panel-open")) {
-      $(this).addClass("prt-panel-open");
-      $(".prt-panel-structure").css("transform", "var(--translateX-open)");
-      $(".prt-panel-tab").addClass("prt-panel-open");
-    } else {
-      $(this).removeClass("prt-panel-open");
-      $(".prt-panel-structure").css("transform", "var(--translateX-open)");
-      $(".prt-panel-tab").removeClass("prt-panel-open");
-    }
-  })
+  // $(".prt-panel-tab").click(function() {
+  //   if(!$(this).hasClass("prt-panel-open")) {
+  //     $(this).addClass("prt-panel-open");
+  //     $(".prt-panel-structure").css("transform", "var(--translateX-open)");
+  //     $(".prt-panel-tab").addClass("prt-panel-open");
+  //   } else {
+  //     $(this).removeClass("prt-panel-open");
+  //     $(".prt-panel-structure").css("transform", "var(--translateX-open)");
+  //     $(".prt-panel-tab").removeClass("prt-panel-open");
+  //   }
+  // })
+
+
 
   // open or close section
   $(".prt-panel-section-header").not(".prt-disable-closing").click(function () {
@@ -43,12 +52,12 @@ $(document).ready(function () {
     e.stopPropagation();
   })
 
-  // close the panel (form the >> icon)
-  $(".prt-panel-close").click(function(e) {
-    $(".prt-panel-tab").removeClass("prt-panel-open");
-    $(".prt-panel-structure").css("transform", "var(--translateX)");
-    $(".prt-panel-tab").removeClass("prt-panel-open");
-  })
+  // // close the panel (form the >> icon)
+  // $(".prt-panel-close").click(function(e) {
+  //   $(".prt-panel-tab").removeClass("prt-panel-open");
+  //   $(".prt-panel-structure").css("transform", "var(--translateX)");
+  //   $(".prt-panel-tab").removeClass("prt-panel-open");
+  // })
 
   // input number - update the slider value or the field vaue after changing
   $(".prt-input-number-area [type='number']").change(function () {
@@ -103,143 +112,145 @@ $(document).ready(function () {
   });
 })
 
+
+
 /* Create the general structure - includes (1) the header and actions (2) prototype info section . */
-function initPrototypePanel(panelInfo, panelSections) {
-  if(panelInfo.prototypeTitle === "undefined" || panelInfo.prototypeTitle == null || panelInfo.prototypeTitle == "" ||
-  panelInfo.prototypeDescription === "undefined" || panelInfo.prototypeDescription == null || panelInfo.prototypeDescription == "") {
-    console.log("Invalid title or invalid description, Please fix it (:")
-  } else {
-    if(panelInfo.panelDirection != "right" && panelInfo.panelDirection != "left") {
-      panelInfo.panelDirection = "right";
-    }
-    var prototypePanel = `<div class="prototype-panel" panel-dir=${panelInfo.panelDirection}></div>`;
-    $("body").append(prototypePanel);
-    var panelStructure = `<div class="prt-panel-structure"></div>`;
-    $(".prototype-panel").append(panelStructure);
-    var header = `<header class="prt-panel-header">
-    <span class="prt-panel-title">${panelInfo.prototypeTitle} <div class="ptr-close-btn prt-panel-close"><span class="prt-panel-header-actions"> <div class="prt-panel-close">${prtCloseIcon}</div></div></span></span></header>
-    <div class="prt-panel-content"></div>`;
-    // info section
-    var info = `<div class="prt-panel-section">
-    <div class="prt-panel-section-header"><span>Prototype Info</span></div>
-    <div class="prt-panel-section-content info-section-content"><span>${panelInfo.prototypeDescription}</span></div>
-    </div>`;
-    var footer = `<div class="prt-panel-footer">
-    <a class="by-ux-prt" href='https://www.wixwhooo.com/results?type=all&val=prototyper' target="_blank">${prototypersLogo}</a>${prtArrowClose}</div>`
-    $(".prt-panel-structure").append(header);
-    $(".prt-panel-content").append(info);
-    $(".prt-panel-structure").append(footer);
-    var tab = `<div class="prt-panel-tab">${prtSettingsIcon}</div>`;
-    $(".prototype-panel").append(tab);
-    if(panelSections != null) {
-      $.each(panelSections, function (i, section) { // the sections array from "customSettings.js"
-        createPrtPanelSection(section);
-      });
-      $(".prt-panel-section.isClose .prt-panel-section-header").each(function() {
-        closePrtPanelSection($(this));
-      })
-      $(".prt-panel-field.disabled").each(function() {
-        disablePrtPanelField($(this),true);
-      })
-    } else { // section is empty
-      $(".prt-panel-content").addClass("prt-only-info-content");
-      $(".prt-panel-section-header").addClass("prt-disable-closing");
-    }
-  }
-}
+// function initPrototypePanel(panelInfo, panelSections) {
+//   if(panelInfo.prototypeTitle === "undefined" || panelInfo.prototypeTitle == null || panelInfo.prototypeTitle == "" ||
+//   panelInfo.prototypeDescription === "undefined" || panelInfo.prototypeDescription == null || panelInfo.prototypeDescription == "") {
+//     console.log("Invalid title or invalid description, Please fix it (:")
+//   } else {
+//     if(panelInfo.panelDirection != "right" && panelInfo.panelDirection != "left") {
+//       panelInfo.panelDirection = "right";
+//     }
+//     var prototypePanel = `<div class="prototype-panel" panel-dir=${panelInfo.panelDirection}></div>`;
+//     $("body").append(prototypePanel);
+//     var panelStructure = `<div class="prt-panel-structure"></div>`;
+//     $(".prototype-panel").append(panelStructure);
+//     var header = `<header class="prt-panel-header">
+//     <span class="prt-panel-title">${panelInfo.prototypeTitle} <div class="ptr-close-btn prt-panel-close"><span class="prt-panel-header-actions"> <div class="prt-panel-close">${prtCloseIcon}</div></div></span></span></header>
+//     <div class="prt-panel-content"></div>`;
+//     // info section
+//     var info = `<div class="prt-panel-section">
+//     <div class="prt-panel-section-header"><span>Prototype Info</span></div>
+//     <div class="prt-panel-section-content info-section-content"><span>${panelInfo.prototypeDescription}</span></div>
+//     </div>`;
+//     var footer = `<div class="prt-panel-footer">
+//     <a class="by-ux-prt" href='https://www.wixwhooo.com/results?type=all&val=prototyper' target="_blank">${prototypersLogo}</a>${prtArrowClose}</div>`
+//     $(".prt-panel-structure").append(header);
+//     $(".prt-panel-content").append(info);
+//     $(".prt-panel-structure").append(footer);
+//     var tab = `<div class="prt-panel-tab">${prtSettingsIcon}</div>`;
+//     $(".prototype-panel").append(tab);
+//     if(panelSections != null) {
+//       $.each(panelSections, function (i, section) { // the sections array from "customSettings.js"
+//         createPrtPanelSection(section);
+//       });
+//       $(".prt-panel-section.isClose .prt-panel-section-header").each(function() {
+//         closePrtPanelSection($(this));
+//       })
+//       $(".prt-panel-field.disabled").each(function() {
+//         disablePrtPanelField($(this),true);
+//       })
+//     } else { // section is empty
+//       $(".prt-panel-content").addClass("prt-only-info-content");
+//       $(".prt-panel-section-header").addClass("prt-disable-closing");
+//     }
+//   }
+// }
 
 /* Create each prototype settings section (after the prototype info)*/
-function createPrtPanelSection(section) {
-  var newSection = "";
-  var sectionNum = section.sectionNumber;
-  section.sectionIsOpen != true ? sectionIsOpen = "isClose" : sectionIsOpen = "isOpen";
-  newSection = `<div class="prt-panel-section ${sectionIsOpen}" section-number="${sectionNum}">
-  <div class="prt-panel-section-header"><span>${section.sectionTitle}</span></div>
-  <div class="prt-panel-section-content" number="${sectionNum}"></div>
-  </div>`;
-  $('.prt-panel-content').append(newSection);
-  $.each(section.fields, function(i, field) {
-    var inputField = "";
-    inputField = createPrtPanelInput(field);
-    $(`[number="${sectionNum}"]`).append(inputField);
-  });
-}
+// function createPrtPanelSection(section) {
+//   var newSection = "";
+//   var sectionNum = section.sectionNumber;
+//   section.sectionIsOpen != true ? sectionIsOpen = "isClose" : sectionIsOpen = "isOpen";
+//   newSection = `<div class="prt-panel-section ${sectionIsOpen}" section-number="${sectionNum}">
+//   <div class="prt-panel-section-header"><span>${section.sectionTitle}</span></div>
+//   <div class="prt-panel-section-content" number="${sectionNum}"></div>
+//   </div>`;
+//   $('.prt-panel-content').append(newSection);
+//   $.each(section.fields, function(i, field) {
+//     var inputField = "";
+//     inputField = createPrtPanelInput(field);
+//     $(`[number="${sectionNum}"]`).append(inputField);
+//   });
+// }
 
 /*  Create each setting - with call to "inputFieldContent" function in "customSettings.js" to get the relevant content. */
-function createPrtPanelInput(field) {
-  var newSetting = "";
-  field.disabled == true ? disabled = "disabled" : disabled = "";
-  var content = prtPanelInputContent(field);
-  newSetting = `<div class="prt-panel-field ${disabled}" name="${field.fieldName}" call="${field.function}"><label class="prt-panel-field-label">${field.fieldLabel}</label>${content}</div>`;
-  field.divider ? newSetting = newSetting + '<div class="prt-panel-divider"></div>' : "";
-  return newSetting;
-}
-
-/* Add the relevant html content for each input type.
-There is a call to this function from "createSettings" function in "controllerStructure.js" */
-function prtPanelInputContent(field) {
-  var content = "";
-  switch (field.fieldType) {
-    case "number":
-    field.showSlider ? displaySlider = "block" : displaySlider = "none";
-    content = `<div class="prt-input-number-area" style="display:flex">
-    <div class="prt-slider" name="${field.fieldName}" data-value=${field.value} data-min=${field.min} data-max=${field.max} data-step=${field.step} style="display:${displaySlider}"></div>
-    <div class="prt-container-input-number"><input class="prt-spinner" name="${field.fieldName}" data-min="${field.min}" data-max="${field.max}" data-step="${field.step}" suffix="${field.suffix}" value="${field.value}">
-    <span class="prt-sfx-label">${field.suffix}</span></div>
-    </div>`;
-    break;
-    case "toggle":
-    field.option1Display.length > 14 ? opacity1 = 1 : opacity1 = 0;
-    field.option2Display.length > 14 ? opacity2 = 1 : opacity2 = 0;
-    content = `<div class="prt-toggle">
-    <input class="prt-toggle-option" id="${field.fieldName}-0" value="${field.option1Value}" option="1" type="radio" name="${field.fieldName}" checked>
-    <label class="prt-toggle-labels" for="${field.fieldName}-0">${field.option1Display}</label>
-    <span class="prt-toggle-tooltip-option" style="opacity: ${opacity1}">${field.option1Display}</span>
-    <input class="prt-toggle-option" id="${field.fieldName}-1" value="${field.option2Value}" option="2" type="radio" name="${field.fieldName}">
-    <label class="prt-toggle-labels" for="${field.fieldName}-1">${field.option2Display}</label>
-    <span class="prt-toggle-tooltip-option right" style="opacity: ${opacity2}">${field.option2Display}</span>
-    <div class="prt-toggle-bckgrnd"></div>
-    </div>`;
-    break;
-    case "radio-button":
-    for(var i = 0 ; i < field.optionsBackendList.length; i++) {
-      i == field.defaultIndex ? checked = "checked" : checked = "";
-      content += `<div><input class="prt-circle-checkbox" type="radio" id="${field.fieldName}-${i}" value="${field.optionsBackendList[i]}" name="${field.fieldName}" ${checked}>
-      <label for="${field.fieldName}-${i}">${field.optionsDisplayList[i]}</label>
-      </div>`;
-    }
-    break;
-    case "thumbnails":
-    content = `<div class="prt-thumbnails">`
-    for(var i = 0 ; i < field.optionsBackendList.length; i++) {
-      i == field.defaultIndex ? selected = "selected" : selected = "";
-      i == field.defaultIndex ? checked = "checked" : checked = "";
-      field.labelsDisplayList[i].length > 9 ? opacity2 = 1 : opacity2 = 0;
-      content += `<div class="prt-thumbnails-item">
-      <input class="prt-thumbnails-input" type="radio" value="${field.optionsBackendList[i]}" name="${field.fieldName}" id="${field.fieldName}-${i}" ${checked}>
-      <button class="prt-thumbnails-button ${selected}" value="${field.optionsBackendList[i]}"><img src="${field.iconsDisplayList[i]}"></button>
-      <label for="${field.fieldName}-${i}">${field.labelsDisplayList[i]}</label>
-      <span class="prt-thumbnails-tooltip-item" count="${i+1}" style="opacity: ${opacity2}">${field.labelsDisplayList[i]}</span>
-      </div>`;
-    }
-    content += `</div>`;
-    break;
-  }
-  return content;
-};
+// function createPrtPanelInput(field) {
+//   var newSetting = "";
+//   field.disabled == true ? disabled = "disabled" : disabled = "";
+//   var content = prtPanelInputContent(field);
+//   newSetting = `<div class="prt-panel-field ${disabled}" name="${field.fieldName}" call="${field.function}"><label class="prt-panel-field-label">${field.fieldLabel}</label>${content}</div>`;
+//   field.divider ? newSetting = newSetting + '<div class="prt-panel-divider"></div>' : "";
+//   return newSetting;
+// }
+//
+// /* Add the relevant html content for each input type.
+// There is a call to this function from "createSettings" function in "controllerStructure.js" */
+// function prtPanelInputContent(field) {
+//   var content = "";
+//   switch (field.fieldType) {
+//     case "number":
+//     field.showSlider ? displaySlider = "block" : displaySlider = "none";
+//     content = `<div class="prt-input-number-area" style="display:flex">
+//     <div class="prt-slider" name="${field.fieldName}" data-value=${field.value} data-min=${field.min} data-max=${field.max} data-step=${field.step} style="display:${displaySlider}"></div>
+//     <div class="prt-container-input-number"><input class="prt-spinner" name="${field.fieldName}" data-min="${field.min}" data-max="${field.max}" data-step="${field.step}" suffix="${field.suffix}" value="${field.value}">
+//     <span class="prt-sfx-label">${field.suffix}</span></div>
+//     </div>`;
+//     break;
+//     case "toggle":
+//     field.option1Display.length > 14 ? opacity1 = 1 : opacity1 = 0;
+//     field.option2Display.length > 14 ? opacity2 = 1 : opacity2 = 0;
+//     content = `<div class="prt-toggle">
+//     <input class="prt-toggle-option" id="${field.fieldName}-0" value="${field.option1Value}" option="1" type="radio" name="${field.fieldName}" checked>
+//     <label class="prt-toggle-labels" for="${field.fieldName}-0">${field.option1Display}</label>
+//     <span class="prt-toggle-tooltip-option" style="opacity: ${opacity1}">${field.option1Display}</span>
+//     <input class="prt-toggle-option" id="${field.fieldName}-1" value="${field.option2Value}" option="2" type="radio" name="${field.fieldName}">
+//     <label class="prt-toggle-labels" for="${field.fieldName}-1">${field.option2Display}</label>
+//     <span class="prt-toggle-tooltip-option right" style="opacity: ${opacity2}">${field.option2Display}</span>
+//     <div class="prt-toggle-bckgrnd"></div>
+//     </div>`;
+//     break;
+//     case "radio-button":
+//     for(var i = 0 ; i < field.optionsBackendList.length; i++) {
+//       i == field.defaultIndex ? checked = "checked" : checked = "";
+//       content += `<div><input class="prt-circle-checkbox" type="radio" id="${field.fieldName}-${i}" value="${field.optionsBackendList[i]}" name="${field.fieldName}" ${checked}>
+//       <label for="${field.fieldName}-${i}">${field.optionsDisplayList[i]}</label>
+//       </div>`;
+//     }
+//     break;
+//     case "thumbnails":
+//     content = `<div class="prt-thumbnails">`
+//     for(var i = 0 ; i < field.optionsBackendList.length; i++) {
+//       i == field.defaultIndex ? selected = "selected" : selected = "";
+//       i == field.defaultIndex ? checked = "checked" : checked = "";
+//       field.labelsDisplayList[i].length > 9 ? opacity2 = 1 : opacity2 = 0;
+//       content += `<div class="prt-thumbnails-item">
+//       <input class="prt-thumbnails-input" type="radio" value="${field.optionsBackendList[i]}" name="${field.fieldName}" id="${field.fieldName}-${i}" ${checked}>
+//       <button class="prt-thumbnails-button ${selected}" value="${field.optionsBackendList[i]}"><img src="${field.iconsDisplayList[i]}"></button>
+//       <label for="${field.fieldName}-${i}">${field.labelsDisplayList[i]}</label>
+//       <span class="prt-thumbnails-tooltip-item" count="${i+1}" style="opacity: ${opacity2}">${field.labelsDisplayList[i]}</span>
+//       </div>`;
+//     }
+//     content += `</div>`;
+//     break;
+//   }
+//   return content;
+// };
 
 // Function "initControls()" - DON'T CHANGE! - After a specific input changes it will call
 // the function you wrote for that input with the parametes: field name, the selected value
-function initPrototypePanelControls() {
-  $(".prt-panel-field input").on("change", e => {
-    e.stopPropagation();
-    const name = $(e.target).attr("name"); // the name given to the input for identify
-    $(e.target).hasClass("prt-spinner") ? selectedValue = $(e.target).val() : selectedValue = $(`input[name='${name}']:checked`).attr("value");
-    const theFunction = $(`.prt-panel-field[name='${name}']`).attr("call");
-    // Call the relevant function
-    window[theFunction](`${name}`,`${selectedValue}`)
-  })
-}
+// function initPrototypePanelControls() {
+//   $(".prt-panel-field input").on("change", e => {
+//     e.stopPropagation();
+//     const name = $(e.target).attr("name"); // the name given to the input for identify
+//     $(e.target).hasClass("prt-spinner") ? selectedValue = $(e.target).val() : selectedValue = $(`input[name='${name}']:checked`).attr("value");
+//     const theFunction = $(`.prt-panel-field[name='${name}']`).attr("call");
+//     // Call the relevant function
+//     window[theFunction](`${name}`,`${selectedValue}`)
+//   })
+// }
 
 function scrollTopSection(section) {
   section.scrollintoview({ duration: 400, direction: 'y', padding: {T:0} });
@@ -247,37 +258,37 @@ function scrollTopSection(section) {
 
 /* Add or Rmove disabled from a field - include the label and all the inputs
 PARAMETERS: field = the relevant field | flag = can be TRUE or FALSE */
-function disablePrtPanelField(field, flag) {
-  if(flag) {
-    field.addClass("disabled");
-    field.children(".prt-panel-field-label").addClass("disabled");
-    field.find("input").prop("disabled", true);
-    field.find(".prt-slider").slider({ disabled: true });
-    field.find(".prt-spinner").spinner({ disabled: true });
-  } if(!flag) {
-    field.removeClass("disabled");
-    field.children(".prt-panel-field-label").removeClass("disabled");
-    field.find("input").prop("disabled", false);
-    field.find(".prt-slider").slider({ disabled: false });
-    field.find(".prt-spinner").spinner({ disabled: false });
-  }
-}
+// function disablePrtPanelField(field, flag) {
+//   if(flag) {
+//     field.addClass("disabled");
+//     field.children(".prt-panel-field-label").addClass("disabled");
+//     field.find("input").prop("disabled", true);
+//     field.find(".prt-slider").slider({ disabled: true });
+//     field.find(".prt-spinner").spinner({ disabled: true });
+//   } if(!flag) {
+//     field.removeClass("disabled");
+//     field.children(".prt-panel-field-label").removeClass("disabled");
+//     field.find("input").prop("disabled", false);
+//     field.find(".prt-slider").slider({ disabled: false });
+//     field.find(".prt-spinner").spinner({ disabled: false });
+//   }
+// }
 
 /* Close sections that defined as closed in the structure OR close or open section when clicked */
-function closePrtPanelSection(section) {
-  if (section.hasClass("close")) {
-    section.parent().css("max-height","2000px");
-    section.removeClass("close");
-    section.next().removeClass("close");
-    section.next().children().removeClass("close");
-    scrollTopSection(section.parent());
-  }
-  else {
-    section.addClass("close");
-    section.next().addClass("close");
-    section.parent().css("max-height","30px");
-  }
-}
+// function closePrtPanelSection(section) {
+//   if (section.hasClass("close")) {
+//     section.parent().css("max-height","2000px");
+//     section.removeClass("close");
+//     section.next().removeClass("close");
+//     section.next().children().removeClass("close");
+//     scrollTopSection(section.parent());
+//   }
+//   else {
+//     section.addClass("close");
+//     section.next().addClass("close");
+//     section.parent().css("max-height","30px");
+//   }
+// }
 
 /* ----- Icons ----- */
 const prtArrowClose = `<svg class="prt-panel-close prt-footer-close" viewBox="0 0 18 18" fill="#bebebe" width="18" height="18"><path class="st0" d="M9.1,5c-0.3-0.3-0.3-0.7,0-0.9s0.7-0.3,0.9,0L15,9l-4.9,4.9c-0.3,0.3-0.7,0.3-0.9,0c-0.3-0.3-0.3-0.7,0-0.9l4-4

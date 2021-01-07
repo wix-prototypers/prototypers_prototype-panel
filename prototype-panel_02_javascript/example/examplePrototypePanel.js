@@ -9,11 +9,11 @@
 IMPORTANT! Fill this file according to your needs. ---- */
 
 // (1) Controller Info - constant variables for the title and the description.
-const panelInfo = {
-  prototypeTitle : "Example Controller",
-  prototypeDescription : "A simple example of using the controller code for the prototypers. This example contains the use of functions after changing input and disabling or enabling fields.",
-  panelDirection : "right"
-}
+// const panelInfo = {
+//   prototypeTitle : "Example Controller",
+//   prototypeDescription : "A simple example of using the controller code for the prototypers. This example contains the use of functions after changing input and disabling or enabling fields.",
+//   panelDirection : "right"
+// }
 // (2) 'Sections' Array - Array for all the sections and their input fields that you want to add.
 const panelSections = [
   {
@@ -51,7 +51,6 @@ const panelSections = [
   } ,
   {
     "sectionNumber": 1,
-    "sectionIsOpen": false,
     "sectionTitle": "layout elements",
     "fields": [
       {
@@ -87,7 +86,8 @@ const panelSections = [
 ];
 
 window.onload = function() {
-  initPrototypePanel(panelInfo, panelSections);
+
+
 };
 
 // (3) Function "initControls()" - DON'T CHANGE! - After a specific input changes it will call
@@ -97,9 +97,9 @@ window.onload = function() {
 function changeHoverEffect(name, value) {
   $(".stage-element").attr("hover",value);
   if(value == "overlay") {
-    disablePrtPanelField($(`.prt-panel-field[name="overlay-color-toggle"]`), false);
+    disablePrtPanelField(`overlay-color-toggle`, false);
   } else {
-    disablePrtPanelField($(`.prt-panel-field[name="overlay-color-toggle"]`), true);
+    disablePrtPanelField(`overlay-color-toggle`, true);
   }
 }
 

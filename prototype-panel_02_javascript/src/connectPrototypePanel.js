@@ -17,6 +17,6 @@ var scrollToView = document.createElement("script");
 scrollToView.src = 'https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/scrollToView.js';
 document.getElementsByTagName("head")[0].appendChild(scrollToView);
 
-var prototypePanelStructureJS = document.createElement("script");
-prototypePanelStructureJS.src = 'https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/prototypePanelStructure.js';
-document.getElementsByTagName("head")[0].appendChild(prototypePanelStructureJS);
+// var prototypePanelStructureJS = document.createElement("script");
+// prototypePanelStructureJS.src = 'https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/prototypePanelStructure.js';
+// document.getElementsByTagName("head")[0].appendChild(prototypePanelStructureJS);
