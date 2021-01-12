@@ -10,8 +10,8 @@ IMPORTANT! Fill this file according to your needs. ---- */
 
 // (1) Controller Info - constant variables for the title and the description.
 const panelInfo = {
-  prototypeTitle : "Example Controller",
-  prototypeDescription : "A simple example of using the controller code for the prototypers. This example contains the use of functions after changing input and disabling or enabling fields.",
+  prototypeTitle : "Prototype Panel Example",
+  prototypeDescription : "A simple example of using the prototype panel. This example allows you to make simple changes to the main element.",
   panelDirection : "right"
 }
 // (2) 'Sections' Array - Array for all the sections and their input fields that you want to add.
@@ -86,9 +86,9 @@ const panelSections = [
   }
 ];
 
-window.onload = function() {
+$(document).ready(function () {
   initPrototypePanel(panelInfo, panelSections);
-};
+});
 
 // (3) Function "initControls()" - DON'T CHANGE! - After a specific input changes it will call
 // the function you wrote for that input with the parametes: field name, the selected value
