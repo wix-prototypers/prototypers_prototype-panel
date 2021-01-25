@@ -81,6 +81,21 @@ const panelSections = [
         "showSlider": true,
         "suffix": "px"
       },
+      {
+        "fieldName" : "example-number",
+        "fieldLabel": "Change the gap between the elements:",
+        "divider": false,
+        "toolTip": "",
+        "function": "changeGagBetweenElmentes",
+        "disabled": "",
+        "fieldType": "number",
+        "min" : "0",
+        "max" : "100",
+        "step" : "1",
+        "value" : "35",
+        "showSlider": true,
+        "suffix": "%"
+      }
     ]
   }
 ];
@@ -112,6 +127,6 @@ function changeLayout(name, value) {
 }
 
 function changeGagBetweenElmentes(name, value) {
-  var sfx = $(`input[name='${name}']`).attr("suffix");
+  var sfx = $(`input[type="number"][name='${name}']`).attr("suffix");
   $(".stage").css("grid-gap", `${value}${sfx}`)
 }

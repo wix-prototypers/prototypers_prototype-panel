@@ -29,6 +29,15 @@ window.onload = function(event) {
     });
   });
 
+  // open or close section
+  document.querySelectorAll('.prt-panel-section-header').forEach((sectionHeader) => {
+    if(!sectionHeader.classList.contains('prt-disable-closing')) {
+      sectionHeader.addEventListener("click", function() {
+      closePrtPanelSection(sectionHeader);
+    });
+    }
+  });
+
 
 
 
@@ -191,11 +200,10 @@ function disablePrtPanelField(fieldName, flag) {
 
 function closePrtPanelSection(section) {
   if (section.classList.contains("close")) {
-    console.log(section.parentNode())
     section.parentNode.style.maxHeight = "2000px";
     section.classList.remove("close");
     section.nextElementSibling.classList.remove("close");
-    section.nextElementSibling.children.classList.remove("close");
+    // section.nextElementSibling.children.classList.remove("close");
     // scrollTopSection(section.parent());
   }
   else {
@@ -213,18 +221,37 @@ function initPrototypePanelControls() {
       const theFunction = document.querySelector(`.prt-panel-field[name='${name}']`).getAttribute("call");
       // Call the relevant function
       window[theFunction](`${name}`,`${selectedValue}`);
+      changesSliderWidth(name, selectedValue)
     });
+    });
+
+    document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
+      inputChanged.addEventListener("input", function(e) {
+        let name = e.target.getAttribute("name");
+        e.target.classList.contains("prt-spinner") || e.target.classList.contains("prt-slider") ? selectedValue = e.target.value : selectedValue = document.querySelector(`input[name='${name}']:checked`).getAttribute("value");
+        changesSliderWidth(name, selectedValue)
+      });
   });
 
-  // $(".prt-panel-field input").on("change", e => {
-  //
-  //   e.stopPropagation();
-  //   const name = $(e.target).attr("name"); // the name given to the input for identify
-  //   $(e.target).hasClass("prt-spinner") ? selectedValue = $(e.target).val() : selectedValue = $(`input[name='${name}']:checked`).attr("value");
-  //   const theFunction = $(`.prt-panel-field[name='${name}']`).attr("call");
-  //   // Call the relevant function
-  //   window[theFunction](`${name}`,`${selectedValue}`)
-  // })
+
+}
+
+function changesSliderWidth(name, value) {
+  var input = document.querySelector(`input[type="range"][name=${name}]`);
+  var inputMin = input.getAttribute("min");
+  var inputMax = input.getAttribute("max");
+  var gapValues = inputMax - inputMin;
+  var inputStep = input.getAttribute("step");
+  var sumSteps = gapValues / inputStep;
+  var sliderWidth = 109;
+  var stepWidth = sliderWidth / sumSteps;
+  var currentVal = value;
+  var finalVal = currentVal - inputMin; // The current value is less than the initial value
+  var moveSteps = finalVal / inputStep;
+  var finalWidth = moveSteps * stepWidth
+  console.log(finalWidth)
+  document.head.insertAdjacentHTML("beforeend", `<style>.prt-slider[name=${name}]::after{width:${finalWidth}px}</style>`)
+
 }
 
 /* ----- Icons ----- */

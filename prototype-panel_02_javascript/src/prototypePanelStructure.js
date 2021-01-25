@@ -44,13 +44,13 @@ $(document).ready(function () {
 
 
   // open or close section
-  $(".prt-panel-section-header").not(".prt-disable-closing").click(function () {
-    closePrtPanelSection($(this))
-  });
-
-  $(".prt-panel-structure").click(function(e) {
-    e.stopPropagation();
-  })
+  // $(".prt-panel-section-header").not(".prt-disable-closing").click(function () {
+  //   closePrtPanelSection($(this))
+  // });
+  //
+  // $(".prt-panel-structure").click(function(e) {
+  //   e.stopPropagation();
+  // })
 
   // // close the panel (form the >> icon)
   // $(".prt-panel-close").click(function(e) {
