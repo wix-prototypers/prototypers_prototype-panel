@@ -87,7 +87,7 @@ const panelSections = [
         "divider": false,
         "toolTip": "",
         "function": "changeGagBetweenElmentes",
-        "disabled": "",
+        "disabled": true,
         "fieldType": "number",
         "min" : "0",
         "max" : "100",
@@ -100,13 +100,15 @@ const panelSections = [
   }
 ];
 
-window.onload = function() {
+window.onload = function(e) {
+  let panelInfo = {
+    prototypeTitle : "Prototype Name",
+    prototypeDescription : "This is where you can describe the prototype shortly, this description is where you can elaborate and describe in details what's the prototype about.",
+    panelDirection : "left"
+  };
 
-
+  initPrototypePanel(panelInfo, panelSections);
 };
-
-// (3) Function "initControls()" - DON'T CHANGE! - After a specific input changes it will call
-// the function you wrote for that input with the parametes: field name, the selected value
 
 /* ------------------ (4) Functions - write the relevant function for each input ------------------ */
 function changeHoverEffect(name, value) {
@@ -120,6 +122,7 @@ function changeHoverEffect(name, value) {
 
 function changeOverlayColor(name, value) {
   $(".stage-element").attr("color",value);
+  disablePrtPanelField(`example-number`, false);
 }
 
 function changeLayout(name, value) {

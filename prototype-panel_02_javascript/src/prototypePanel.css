@@ -586,16 +586,25 @@ filter: invert(0.85)
 
 /* ------- Disabled State ------- */
 .prt-panel-field.disabled .prt-slider {
+  background: var(--G2);
+}
+
+.prt-panel-field.disabled .prt-slider::after {
   background: var(--G3);
 }
 
-.prt-panel-field.disabled .prt-slider .ui-slider-handle {
+.prt-panel-field.disabled .prt-slider::-webkit-slider-thumb {
+  background: var(--G3);
+}
+
+
+/* .prt-panel-field.disabled .prt-slider .ui-slider-handle {
   background-color: var(--G2);
 }
 
 .prt-panel-field.disabled .prt-slider .ui-slider-range {
   background-color: var(--G2);
-}
+} */
 
 
 /* ------------------------------------- Toggle style -------------------------------------*/
@@ -682,7 +691,7 @@ input[type="radio"].prt-toggle-option:checked:disabled ~ .prt-toggle-bckgrnd {
   border-radius: 4px;
   box-shadow: -1px -1px 6px 0px rgb(34 35 35 / 70%);
   border: solid 0.5px var(--G3);
-  background-color: #02001a;
+  background-color: #0a0911;
   position: absolute;
   left: -5px;
   bottom: 30px;
@@ -861,7 +870,7 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
   border-radius: 4px;
   box-shadow: -1px -1px 6px 0px rgb(34 35 35 / 70%);
   border: solid 0.5px var(--G3);
-  background-color: #02001a;
+  background-color: #0a0911;
   position: absolute;
   bottom: 67px;
   display: none;
