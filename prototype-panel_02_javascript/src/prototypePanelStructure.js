@@ -1,61 +1,65 @@
 /* NOTE: This file includes the functions and the icons for creating the structure - No need to change / add. */
+
+/*  This function builds the prototype panel and appends it to the body element in your prototype's index file.
+Call this function from one of your .js files in the project. */
 function initPrototypePanel(panelInfo, panelSections) {
   if(panelInfo != null) {
-  setPrtPanelDirection(panelInfo);
+    setPrtPanelDirection(panelInfo);
 
-  // Prototype Panel Template
-  var prototypePanelTemplate =
-  `<div class='prototype-panel' panel-dir=${panelInfo.panelDirection}>
-  <div class='prt-panel-structure'>
-  <header class='prt-panel-header'>
-  <span class='prt-panel-title'>${panelInfo.prototypeTitle}
-  <div class='ptr-close-btn prt-panel-close'>
-  <span class='prt-panel-header-actions'>
-  <div class='prt-panel-close'>${prtCloseIcon}</div>
-  </span>
-  </div>
-  </span>
-  </header>
-  <div class='prt-panel-content'>
-  <div class='prt-panel-section'>
-  <div class='prt-panel-section-header'><span>Prototype Info</span></div>
-  <div class='prt-panel-section-content info-section-content'>
-  <span>${panelInfo.prototypeDescription}</span>
-  </div>
-  </div>
-  </div>
-  <div class='prt-panel-footer'>
-  <a class='by-ux-prt' href='https://www.wixwhooo.com/results?type=all&val=prototyper' target='_blank'>
-  ${prototypersLogo}
-  </a>${prtArrowClose}
-  </div>
-  </div>
-  <div class='prt-panel-tab'>${prtSettingsIcon}</div>
-  </div>`;
+    // Prototype Panel Template
+    var prototypePanelTemplate =
+    `<div class='prototype-panel' panel-dir=${panelInfo.panelDirection}>
+    <div class='prt-panel-structure'>
+    <header class='prt-panel-header'>
+    <span class='prt-panel-title'>${panelInfo.prototypeTitle}
+    <div class='ptr-close-btn prt-panel-close'>
+    <span class='prt-panel-header-actions'>
+    <div class='prt-panel-close'>${prtCloseIcon}</div>
+    </span>
+    </div>
+    </span>
+    </header>
+    <div class='prt-panel-content'>
+    <div class='prt-panel-section'>
+    <div class='prt-panel-section-header'><span>Prototype Info</span></div>
+    <div class='prt-panel-section-content info-section-content'>
+    <span>${panelInfo.prototypeDescription}</span>
+    </div>
+    </div>
+    </div>
+    <div class='prt-panel-footer'>
+    <a class='by-ux-prt' href='https://www.wixwhooo.com/results?type=all&val=prototyper' target='_blank'>
+    ${prototypersLogo}
+    </a>${prtArrowClose}
+    </div>
+    </div>
+    <div class='prt-panel-tab'>${prtSettingsIcon}</div>
+    </div>`;
 
-  if(validatePrtPanelInfo(panelInfo)) {
-    document.body.insertAdjacentHTML('beforeend', prototypePanelTemplate);
-    if(panelSections != null) {
-      panelSections.forEach((section) => { createPrtPanelSection(section) });
-      document.querySelectorAll('.prt-panel-section.isClose .prt-panel-section-header').forEach((closeSection) => { closePrtPanelSection(closeSection) });
-      document.querySelectorAll('.prt-panel-field.disabled').forEach((disabledField) => { disablePrtPanelField(disabledField.getAttribute('name'),true); });
-      document.querySelectorAll('.prt-slider').forEach((sliderField) => { changesSliderWidth(sliderField.getAttribute('name'), sliderField.getAttribute('value')); });
-    } else { // section is empty
-      document.querySelector('.prt-panel-content').classList.add('prt-only-info-content');
-      document.querySelector('.prt-panel-section-header').classList.add('prt-disable-closing');
+    if(validatePrtPanelInfo(panelInfo)) {
+      document.body.insertAdjacentHTML('beforeend', prototypePanelTemplate);
+      if(panelSections != null) {
+        panelSections.forEach((section) => { createPrtPanelSection(section) });
+        document.querySelectorAll('.prt-panel-section.isClose .prt-panel-section-header').forEach((closeSection) => { closePrtPanelSection(closeSection) });
+        document.querySelectorAll('.prt-panel-field.disabled').forEach((disabledField) => { disablePrtPanelField(disabledField.getAttribute('name'),true); });
+        document.querySelectorAll('.prt-slider').forEach((sliderField) => { changesSliderWidth(sliderField.getAttribute('name'), sliderField.getAttribute('value')); });
+      } else { // section is empty
+        document.querySelector('.prt-panel-content').classList.add('prt-only-info-content');
+        document.querySelector('.prt-panel-section-header').classList.add('prt-disable-closing');
+      }
+      initPrtPanelEvents(); // add all click and change events of the panel
     }
-    initPrtPanelEvents(); // add all click and change events of the panel
-
-  }
-} else console.error('PROTOTYPE PANEL: Invalid parameters for init function, Please fix it (:');
+  } else console.error('PROTOTYPE PANEL: Invalid parameters for init function, Please fix it (:');
 }
 
+/* Set the prototype panel direction - the DEFAULT is right */
 function setPrtPanelDirection(panelInfo) {
   if (panelInfo.panelDirection != 'right' && panelInfo.panelDirection != 'left') {
     panelInfo.panelDirection = 'right';
   }
 }
 
+/* Check if all the panelInfo properties are valid, if not - the panel will not be created and you get error massage */
 function validatePrtPanelInfo(panelInfo) {
   if (
     panelInfo.prototypeTitle === 'undefined' ||
@@ -70,6 +74,7 @@ function validatePrtPanelInfo(panelInfo) {
   } else return true;
 }
 
+/* Create all the panel events - for the panel actions and for the inputs*/
 function initPrtPanelEvents() {
   initPrototypePanelControls();
 
@@ -103,6 +108,7 @@ function initPrtPanelEvents() {
     }
   });
 
+  // set position for each thumbnail tooltip - left / center / right
   document.querySelectorAll('.prt-thumbnails-tooltip-item').forEach((thumbnailTooltip) => {
     var i = thumbnailTooltip.getAttribute('count');
     if((i+2) % 3 == 0) { // left items
@@ -116,7 +122,7 @@ function initPrtPanelEvents() {
     }
   });
 
-  /* old jquery - for the future */
+  /* --- old jquery - for the future --- */
   // $('.ptr-dir-btn').click(function () {
   //   $('.prt-panel-tab').hide();
   //   if($('.prototype-panel').attr('panel-dir') == 'left') {
@@ -130,7 +136,8 @@ function initPrtPanelEvents() {
   // })
 }
 
-/* Create each prototype settings section (after the prototype info)*/
+/* Create each prototype settings section (after the prototype info)
+PARAMETERS: section = the relevant section */
 function createPrtPanelSection(section) {
   var newSection = '';
   var sectionNum = section.sectionNumber;
@@ -147,7 +154,8 @@ function createPrtPanelSection(section) {
   });
 }
 
-/*  Create each setting - with call to 'inputFieldContent' function in 'customSettings.js' to get the relevant content. */
+/*  Create each input field - with call to 'prtPanelInputContent' function for get the relevant content.
+PARAMETERS: field = the relevant field */
 function createPrtPanelInput(field) {
   var newSetting = '';
   field.disabled == true ? disabled = ' disabled' : disabled = '';
@@ -157,8 +165,8 @@ function createPrtPanelInput(field) {
   return newSetting;
 }
 
-/* Add the relevant html content for each input type.
-There is a call to this function from 'createSettings' function in 'controllerStructure.js' */
+/* Add the relevant html content for each input type
+PARAMETERS: field = the relevant field  */
 function prtPanelInputContent(field) {
   var content = '';
   switch (field.fieldType) {
@@ -220,13 +228,16 @@ function disablePrtPanelField(fieldName, flag) {
     flag ? disabledInput.setAttribute('disabled', 'disabled') : disabledInput.removeAttribute('disabled') });
   }
 
+
+  /* Close or open section
+  PARAMETERS: section = the relevant section */
   function closePrtPanelSection(section) {
     if (section.classList.contains('close')) {
       section.parentNode.style.maxHeight = '2000px';
       section.classList.remove('close');
       section.nextElementSibling.classList.remove('close');
       // section.nextElementSibling.children.classList.remove('close');
-      // scrollTopSection(section.parentNode);
+      scrollTopSection(section.parentNode);
     }
     else {
       section.classList.add('close');
@@ -235,11 +246,17 @@ function disablePrtPanelField(fieldName, flag) {
     }
   }
 
-  function scrollTopSection(section) {
-    var topPos = document.querySelector('.prt-panel-content').offsetTop;
-    section.scrollTop = topPos;
-  }
+  // function scrollTopSection(section) {
+  //   var topPos = document.querySelector('.prt-panel-content').offsetTop;
+  //   document.querySelector('.prt-panel-content').scroll({
+  //     top: 142,
+  //     left: 0,
+  //     behavior: 'smooth'
+  //   });
+  // }
 
+  /* Call the relvant function after changing the input. You are responsible for the implementation of this function.
+  For numeric input - this function also update the spinner / slider with the current value and change the background width of the slider */
   function initPrototypePanelControls() {
     // What happens after each non-numeric input change
     document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
@@ -261,11 +278,11 @@ function disablePrtPanelField(fieldName, flag) {
         if (e.target.classList.contains('prt-spinner') || e.target.classList.contains('prt-slider')) {
           selectedValue = e.target.value;
           changesSliderWidth(name, selectedValue);
-          if(e.target.classList.contains('prt-spinner')) {
+          if(e.target.classList.contains('prt-spinner')) { // need to update the slider value
             let sliderField = document.querySelector(`.prt-slider[name='${name}']`);
             sliderField.value = selectedValue;
           }
-          if(e.target.classList.contains('prt-slider')) {
+          if(e.target.classList.contains('prt-slider')) { // need to update the spinner value
             let spinnerField = document.querySelector(`.prt-spinner[name='${name}']`);
             spinnerField.value = selectedValue;
           }
@@ -277,6 +294,8 @@ function disablePrtPanelField(fieldName, flag) {
     });
   }
 
+  /* Update the background width of the slider after changing the value
+  PARAMETERS: name = for get the relevant input field, value = the selected value */
   function changesSliderWidth(name, value) {
     var input = document.querySelector(`input[type='range'][name=${name}]`);
     var inputMin = input.getAttribute('min');
@@ -284,12 +303,12 @@ function disablePrtPanelField(fieldName, flag) {
     var gapValues = inputMax - inputMin;
     var inputStep = input.getAttribute('step');
     var sumSteps = gapValues / inputStep;
-    var sliderWidth = 109;
+    var sliderWidth = 109; // The width set for the slider
     var stepWidth = sliderWidth / sumSteps;
     var currentVal = value;
     var finalVal = currentVal - inputMin; // The current value is less than the initial value
     var moveSteps = finalVal / inputStep;
-    var finalWidth = moveSteps * stepWidth
+    var finalWidth = moveSteps * stepWidth;
     document.head.insertAdjacentHTML('beforeend', `<style>.prt-slider[name=${name}]::after{width:${finalWidth}px}</style>`)
 
   }
