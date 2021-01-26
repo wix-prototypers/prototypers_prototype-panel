@@ -884,7 +884,7 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
   justify-content: center;
 }
 
-.prt-thumbnails-tooltip-item.center {
+.prt-thumbnails-tooltip-item.center-prt-tooltip-item {
   left: 50%;
   transform: translateX(-50%);
 }
