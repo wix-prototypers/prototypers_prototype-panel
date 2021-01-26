@@ -109,9 +109,7 @@ function initPrtPanelEvents() {
       thumbnailTooltip.style.left = '-5px';
     }
     if((i+1) % 3 == 0) { // center items
-      var w = 160 / 2;
-      var left = w - 16.5;
-      thumbnailTooltip.style.left = -left + 'px';
+      thumbnailTooltip.classList.add('center');
     }
     if(i % 3 == 0) { // right items
       thumbnailTooltip.style.right = '-5px';

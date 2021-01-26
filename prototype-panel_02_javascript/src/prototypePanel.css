@@ -884,6 +884,11 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
   justify-content: center;
 }
 
+.prt-thumbnails-tooltip-item.center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 [type="radio"].prt-thumbnails-input:hover ~ .prt-thumbnails-tooltip-item {
-  display: block;
+  display: flex;
 }
