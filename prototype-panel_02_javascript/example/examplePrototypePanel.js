@@ -122,7 +122,11 @@ function changeHoverEffect(name, value) {
 
 function changeOverlayColor(name, value) {
   $(".stage-element").attr("color",value);
-  disablePrtPanelField(`example-number`, false);
+  if(value == "dark") {
+      disablePrtPanelField(`example-number`, false);
+  } else {
+    disablePrtPanelField(`example-number`, true);
+  }
 }
 
 function changeLayout(name, value) {
