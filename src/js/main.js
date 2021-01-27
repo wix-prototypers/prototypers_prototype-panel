@@ -4,45 +4,46 @@ import '../css/main.css';
 /*  This function builds the prototype panel and appends it to the body element in your prototype's index file.
 Call this function from one of your .js files in the project. */
 function initPrototypePanel(panelInfo, panelSections) {
-  if(panelInfo != null) {
+  if (panelInfo != null) {
     setPrtPanelDirection(panelInfo);
 
     // Prototype Panel Template
     var prototypePanelTemplate =
-    `<div class='prototype-panel' panel-dir=${panelInfo.panelDirection}>
-    <div class='prt-panel-structure'>
-    <header class='prt-panel-header'>
-    <span class='prt-panel-title'>${panelInfo.prototypeTitle}
-    <div class='ptr-close-btn prt-panel-close'>
-    <span class='prt-panel-header-actions'>
-    <div class='prt-panel-close'>${prtCloseIcon}</div>
-    </span>
-    </div>
-    </span>
-    </header>
-    <div class='prt-panel-content'>
-    <div class='prt-panel-section'>
-    <div class='prt-panel-section-header'><span>Prototype Info</span></div>
-    <div class='prt-panel-section-content info-section-content'>
-    <span>${panelInfo.prototypeDescription}</span>
-    </div>
-    </div>
-    </div>
-    <div class='prt-panel-footer'>
-    <a class='by-ux-prt' href='https://www.wixwhooo.com/results?type=all&val=prototyper' target='_blank'>
-    ${prototypersLogo}
-    </a>${prtArrowClose}
-    </div>
-    </div>
-    <div class='prt-panel-tab'>${prtSettingsIcon}</div>
-    </div>`;
+      `<div class='prototype-panel' panel-dir=${panelInfo.panelDirection}>
+        <div class='prt-panel-structure'>
+          <header class='prt-panel-header'>
+            <span class='prt-panel-title'>${panelInfo.prototypeTitle}
+            <div class='ptr-close-btn prt-panel-close'>
+            <span class='prt-panel-header-actions'>
+            <div class='prt-panel-close'>${prtCloseIcon}</div>
+            </span>
+            </div>
+            </span>
+          </header>
+          <div class='prt-panel-content'>
+            <div class='prt-panel-section'>
+              <div class='prt-panel-section-header'><span>Prototype Info</span>
+              </div>
+              <div class='prt-panel-section-content info-section-content'>
+                <span>${panelInfo.prototypeDescription}</span>
+              </div>
+            </div>
+          </div>
+          <div class='prt-panel-footer'>
+            <a class='by-ux-prt' href='https://www.wixwhooo.com/results?type=all&val=prototyper' target='_blank'>
+            ${prototypersLogo}
+            </a>${prtArrowClose}
+          </div>
+        </div>
+        <div class='prt-panel-tab'>${prtSettingsIcon}</div>
+      </div>`;
 
-    if(validatePrtPanelInfo(panelInfo)) {
+    if (validatePrtPanelInfo(panelInfo)) {
       document.body.insertAdjacentHTML('beforeend', prototypePanelTemplate);
-      if(panelSections != null) {
+      if (panelSections != null) {
         panelSections.forEach((section) => { createPrtPanelSection(section) });
         document.querySelectorAll('.prt-panel-section.isClose .prt-panel-section-header').forEach((closeSection) => { closePrtPanelSection(closeSection) });
-        document.querySelectorAll('.prt-panel-field.disabled').forEach((disabledField) => { disablePrtPanelField(disabledField.getAttribute('name'),true); });
+        document.querySelectorAll('.prt-panel-field.disabled').forEach((disabledField) => { disablePrtPanelField(disabledField.getAttribute('name'), true); });
         document.querySelectorAll('.prt-slider').forEach((sliderField) => { changesSliderWidth(sliderField.getAttribute('name'), sliderField.getAttribute('value')); });
       } else { // section is empty
         document.querySelector('.prt-panel-content').classList.add('prt-only-info-content');
@@ -80,8 +81,8 @@ function initPrtPanelEvents() {
   initPrototypePanelControls();
 
   // open the panel (after user clicks on the tab)
-  document.querySelector('.prt-panel-tab').addEventListener('click', function() {
-    if(!this.classList.contains('prt-panel-open')) {
+  document.querySelector('.prt-panel-tab').addEventListener('click', function () {
+    if (!this.classList.contains('prt-panel-open')) {
       this.classList.add('prt-panel-open');
       document.querySelector('.prt-panel-structure').classList.add('prt-panel-open');
       document.querySelector('.prt-panel-tab').classList.add('prt-panel-open');
@@ -94,7 +95,7 @@ function initPrtPanelEvents() {
 
   // close the panel
   document.querySelectorAll('.prt-panel-close').forEach((closeBtn) => {
-    closeBtn.addEventListener('click', function() {
+    closeBtn.addEventListener('click', function () {
       document.querySelector('.prt-panel-tab').classList.remove('prt-panel-open');
       document.querySelector('.prt-panel-structure').classList.remove('prt-panel-open');
     });
@@ -102,8 +103,8 @@ function initPrtPanelEvents() {
 
   // open or close section
   document.querySelectorAll('.prt-panel-section-header').forEach((sectionHeader) => {
-    if(!sectionHeader.classList.contains('prt-disable-closing')) {
-      sectionHeader.addEventListener('click', function() {
+    if (!sectionHeader.classList.contains('prt-disable-closing')) {
+      sectionHeader.addEventListener('click', function () {
         closePrtPanelSection(sectionHeader);
       });
     }
@@ -112,13 +113,13 @@ function initPrtPanelEvents() {
   // set position for each thumbnail tooltip - left / center / right
   document.querySelectorAll('.prt-thumbnails-tooltip-item').forEach((thumbnailTooltip) => {
     var i = thumbnailTooltip.getAttribute('count');
-    if((i+2) % 3 == 0) { // left items
+    if ((i + 2) % 3 == 0) { // left items
       thumbnailTooltip.style.left = '-5px';
     }
-    if((i+1) % 3 == 0) { // center items
+    if ((i + 1) % 3 == 0) { // center items
       thumbnailTooltip.classList.add('center-prt-tooltip-item');
     }
-    if(i % 3 == 0) { // right items
+    if (i % 3 == 0) { // right items
       thumbnailTooltip.style.right = '-5px';
     }
   });
@@ -141,17 +142,18 @@ function initPrtPanelEvents() {
 PARAMETERS: section = the relevant section */
 function createPrtPanelSection(section) {
   var newSection = '';
-  var sectionNum = section.sectionNumber;
-  section.sectionIsOpen != false ? sectionIsOpen = 'isOpen' : sectionIsOpen = 'isClose';
-  newSection = `<div class='prt-panel-section ${sectionIsOpen}' section-number='${sectionNum}'>
+  var { sectionNumber, sectionIsOpen } = section;
+
+  sectionIsOpen != false ? sectionIsOpen = 'isOpen' : sectionIsOpen = 'isClose';
+  newSection = `<div class='prt-panel-section ${sectionIsOpen}' section-number='${sectionNumber}'>
   <div class='prt-panel-section-header'><span>${section.sectionTitle}</span></div>
-  <div class='prt-panel-section-content' number='${sectionNum}'></div>
+  <div class='prt-panel-section-content' number='${sectionNumber}'></div>
   </div>`;
   document.querySelector('.prt-panel-content').insertAdjacentHTML('beforeend', newSection);
   section.fields.forEach((field) => {
     var inputField = '';
     inputField = createPrtPanelInput(field);
-    document.querySelector(`[number='${sectionNum}']`).insertAdjacentHTML('beforeend', inputField);
+    document.querySelector(`[number='${sectionNumber}']`).insertAdjacentHTML('beforeend', inputField);
   });
 }
 
@@ -159,10 +161,12 @@ function createPrtPanelSection(section) {
 PARAMETERS: field = the relevant field */
 function createPrtPanelInput(field) {
   var newSetting = '';
-  field.disabled == true ? disabled = ' disabled' : disabled = '';
+  var { disabled } = field;
+
+  disabled == true ? disabled = ' disabled' : disabled = '';
   var content = prtPanelInputContent(field);
   newSetting = `<div class='prt-panel-field${disabled}' name='${field.fieldName}' call='${field.function}'><label class='prt-panel-field-label'>${field.fieldLabel}</label>${content}</div>`;
-  field.divider ? ( newSetting = newSetting + `<div class='prt-panel-divider'></div>` ) : '';
+  field.divider ? (newSetting = newSetting + `<div class='prt-panel-divider'></div>`) : '';
   return newSetting;
 }
 
@@ -170,19 +174,25 @@ function createPrtPanelInput(field) {
 PARAMETERS: field = the relevant field  */
 function prtPanelInputContent(field) {
   var content = '';
+  var opacity1;
+  var opacity2;
+  var checked;
+  var selected;
+  var displaySlider;
+
   switch (field.fieldType) {
     case 'number':
-    field.showSlider ? displaySlider = 'block' : displaySlider = 'none';
-    content = `<div class='prt-input-number-area' style='display:flex'>
+      field.showSlider ? displaySlider = 'block' : displaySlider = 'none';
+      content = `<div class='prt-input-number-area' style='display:flex'>
     <input type='range' class='prt-slider' name='${field.fieldName}' value=${field.value} min=${field.min} max=${field.max} step=${field.step} style='display:${displaySlider}'/>
     <div class='prt-container-input-number'><input type='number' class='prt-spinner' name='${field.fieldName}' min='${field.min}' max='${field.max}' step='${field.step}' suffix='${field.suffix}' value='${field.value}'>
     <span class='prt-sfx-label'>${field.suffix}</span></div>
     </div>`;
-    break;
+      break;
     case 'toggle':
-    field.option1Display.length > 14 ? opacity1 = 1 : opacity1 = 0;
-    field.option2Display.length > 14 ? opacity2 = 1 : opacity2 = 0;
-    content = `<div class='prt-toggle'>
+      field.option1Display.length > 14 ? opacity1 = 1 : opacity1 = 0;
+      field.option2Display.length > 14 ? opacity2 = 1 : opacity2 = 0;
+      content = `<div class='prt-toggle'>
     <input class='prt-toggle-option' id='${field.fieldName}-0' value='${field.option1Value}' option='1' type='radio' name='${field.fieldName}' checked>
     <label class='prt-toggle-labels' for='${field.fieldName}-0'>${field.option1Display}</label>
     <span class='prt-toggle-tooltip-option' style='opacity: ${opacity1}'>${field.option1Display}</span>
@@ -191,31 +201,31 @@ function prtPanelInputContent(field) {
     <span class='prt-toggle-tooltip-option right' style='opacity: ${opacity2}'>${field.option2Display}</span>
     <div class='prt-toggle-bckgrnd'></div>
     </div>`;
-    break;
+      break;
     case 'radio-button':
-    for(var i = 0 ; i < field.optionsBackendList.length; i++) {
-      i == field.defaultIndex ? checked = 'checked' : checked = '';
-      content += `<div class='prt-checkbox-container'><input class='prt-circle-checkbox' type='radio' id='${field.fieldName}-${i}' value='${field.optionsBackendList[i]}' name='${field.fieldName}' ${checked}>
+      for (var i = 0; i < field.optionsBackendList.length; i++) {
+        i == field.defaultIndex ? checked = 'checked' : checked = '';
+        content += `<div class='prt-checkbox-container'><input class='prt-circle-checkbox' type='radio' id='${field.fieldName}-${i}' value='${field.optionsBackendList[i]}' name='${field.fieldName}' ${checked}>
       <span class='prt-checkmark'></span>
       <label for='${field.fieldName}-${i}'>${field.optionsDisplayList[i]}</label>
       </div>`;
-    }
-    break;
+      }
+      break;
     case 'thumbnails':
-    content = `<div class='prt-thumbnails'>`
-    for(var i = 0 ; i < field.optionsBackendList.length; i++) {
-      i == field.defaultIndex ? selected = 'selected' : selected = '';
-      i == field.defaultIndex ? checked = 'checked' : checked = '';
-      field.labelsDisplayList[i].length > 9 ? opacity2 = 1 : opacity2 = 0;
-      content += `<div class='prt-thumbnails-item'>
+      content = `<div class='prt-thumbnails'>`
+      for (var i = 0; i < field.optionsBackendList.length; i++) {
+        i == field.defaultIndex ? selected = 'selected' : selected = '';
+        i == field.defaultIndex ? checked = 'checked' : checked = '';
+        field.labelsDisplayList[i].length > 9 ? opacity2 = 1 : opacity2 = 0;
+        content += `<div class='prt-thumbnails-item'>
       <input class='prt-thumbnails-input' type='radio' value='${field.optionsBackendList[i]}' name='${field.fieldName}' id='${field.fieldName}-${i}' ${checked}>
       <button class='prt-thumbnails-button ${selected}' value='${field.optionsBackendList[i]}'><img src='${field.iconsDisplayList[i]}'></button>
       <label for='${field.fieldName}-${i}'>${field.labelsDisplayList[i]}</label>
-      <span class='prt-thumbnails-tooltip-item' count='${i+1}' style='opacity: ${opacity2}'>${field.labelsDisplayList[i]}</span>
+      <span class='prt-thumbnails-tooltip-item' count='${i + 1}' style='opacity: ${opacity2}'>${field.labelsDisplayList[i]}</span>
       </div>`;
-    }
-    content += `</div>`;
-    break;
+      }
+      content += `</div>`;
+      break;
   }
   return content;
 };
@@ -227,105 +237,112 @@ function disablePrtPanelField(fieldName, flag) {
   field.classList.toggle('disabled', flag);
   field.querySelector('.prt-panel-field-label').classList.toggle('disabled', flag);
   field.querySelectorAll('input').forEach((disabledInput) => {
-    flag ? disabledInput.setAttribute('disabled', 'disabled') : disabledInput.removeAttribute('disabled') });
+    flag ? disabledInput.setAttribute('disabled', 'disabled') : disabledInput.removeAttribute('disabled')
+  });
+
+  window.disablePrtPanelField = disablePrtPanelField;
+}
+
+
+/* Close or open section
+PARAMETERS: section = the relevant section */
+function closePrtPanelSection(section) {
+  if (section.classList.contains('close')) {
+    section.parentNode.style.maxHeight = '2000px';
+    section.classList.remove('close');
+    section.nextElementSibling.classList.remove('close');
+    // section.nextElementSibling.children.classList.remove('close');
   }
-
-
-  /* Close or open section
-  PARAMETERS: section = the relevant section */
-  function closePrtPanelSection(section) {
-    if (section.classList.contains('close')) {
-      section.parentNode.style.maxHeight = '2000px';
-      section.classList.remove('close');
-      section.nextElementSibling.classList.remove('close');
-      // section.nextElementSibling.children.classList.remove('close');
-    }
-    else {
-      section.classList.add('close');
-      section.nextElementSibling.classList.add('close');
-      section.parentNode.style.maxHeight = '30px';
-    }
+  else {
+    section.classList.add('close');
+    section.nextElementSibling.classList.add('close');
+    section.parentNode.style.maxHeight = '30px';
   }
+}
 
-  /* Call the relvant function after changing the input. You are responsible for the implementation of this function.
-  For numeric input - this function also update the spinner / slider with the current value and change the background width of the slider */
-  function initPrototypePanelControls() {
-    // What happens after each non-numeric input change
-    document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
-      inputChanged.addEventListener('change', function(e) {
-        let name = e.target.getAttribute('name');
-        if ((!e.target.classList.contains('prt-spinner')) && (!e.target.classList.contains('prt-slider'))) {
-          e.target.classList.contains('prt-spinner') || e.target.classList.contains('prt-slider') ? selectedValue = e.target.value : selectedValue = document.querySelector(`input[name='${name}']:checked`).getAttribute('value');
-          const theFunction = document.querySelector(`.prt-panel-field[name='${name}']`).getAttribute('call');
-          // Call the relevant function
-          window[theFunction](`${name}`,`${selectedValue}`);
-        }
-      });
+/* Call the relvant function after changing the input. You are responsible for the implementation of this function.
+For numeric input - this function also update the spinner / slider with the current value and change the background width of the slider */
+function initPrototypePanelControls() {
+  var selectedValue;
+
+  // What happens after each non-numeric input change
+  document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
+    inputChanged.addEventListener('change', function (e) {
+      let name = e.target.getAttribute('name');
+      if ((!e.target.classList.contains('prt-spinner')) && (!e.target.classList.contains('prt-slider'))) {
+        e.target.classList.contains('prt-spinner') || e.target.classList.contains('prt-slider') ? selectedValue = e.target.value : selectedValue = document.querySelector(`input[name='${name}']:checked`).getAttribute('value');
+        const theFunction = document.querySelector(`.prt-panel-field[name='${name}']`).getAttribute('call');
+        // Call the relevant function
+        window[theFunction](`${name}`, `${selectedValue}`);
+      }
     });
+  });
 
-    // What happens after each numeric input change (spinner or slider)
-    document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
-      inputChanged.addEventListener('input', function(e) {
-        let name = e.target.getAttribute('name');
-        if (e.target.classList.contains('prt-spinner') || e.target.classList.contains('prt-slider')) {
-          selectedValue = e.target.value;
-          changesSliderWidth(name, selectedValue);
-          if(e.target.classList.contains('prt-spinner')) { // need to update the slider value
-            let sliderField = document.querySelector(`.prt-slider[name='${name}']`);
-            sliderField.value = selectedValue;
-          }
-          if(e.target.classList.contains('prt-slider')) { // need to update the spinner value
-            let spinnerField = document.querySelector(`.prt-spinner[name='${name}']`);
-            spinnerField.value = selectedValue;
-          }
-          const theFunction = document.querySelector(`.prt-panel-field[name='${name}']`).getAttribute('call');
-          // Call the relevant function
-          window[theFunction](`${name}`,`${selectedValue}`);
+  // What happens after each numeric input change (spinner or slider)
+  document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
+    var selectedValue;
+
+    inputChanged.addEventListener('input', function (e) {
+      let name = e.target.getAttribute('name');
+      if (e.target.classList.contains('prt-spinner') || e.target.classList.contains('prt-slider')) {
+        selectedValue = e.target.value;
+        changesSliderWidth(name, selectedValue);
+        if (e.target.classList.contains('prt-spinner')) { // need to update the slider value
+          let sliderField = document.querySelector(`.prt-slider[name='${name}']`);
+          sliderField.value = selectedValue;
         }
-      });
+        if (e.target.classList.contains('prt-slider')) { // need to update the spinner value
+          let spinnerField = document.querySelector(`.prt-spinner[name='${name}']`);
+          spinnerField.value = selectedValue;
+        }
+        const theFunction = document.querySelector(`.prt-panel-field[name='${name}']`).getAttribute('call');
+        // Call the relevant function
+        window[theFunction](`${name}`, `${selectedValue}`);
+      }
     });
-  }
+  });
+}
 
-  /* Update the background width of the slider after changing the value
-  PARAMETERS: name = for get the relevant input field, value = the selected value */
-  function changesSliderWidth(name, value) {
-    var input = document.querySelector(`input[type='range'][name=${name}]`);
-    var inputMin = input.getAttribute('min');
-    var inputMax = input.getAttribute('max');
-    var gapValues = inputMax - inputMin;
-    var inputStep = input.getAttribute('step');
-    var sumSteps = gapValues / inputStep;
-    var sliderWidth = 109; // The width set for the slider
-    var stepWidth = sliderWidth / sumSteps;
-    var currentVal = value;
-    var finalVal = currentVal - inputMin; // The current value is less than the initial value
-    var moveSteps = finalVal / inputStep;
-    var finalWidth = moveSteps * stepWidth;
-    document.head.insertAdjacentHTML('beforeend', `<style>.prt-slider[name=${name}]::after{width:${finalWidth}px}</style>`)
+/* Update the background width of the slider after changing the value
+PARAMETERS: name = for get the relevant input field, value = the selected value */
+function changesSliderWidth(name, value) {
+  var input = document.querySelector(`input[type='range'][name=${name}]`);
+  var inputMin = input.getAttribute('min');
+  var inputMax = input.getAttribute('max');
+  var gapValues = inputMax - inputMin;
+  var inputStep = input.getAttribute('step');
+  var sumSteps = gapValues / inputStep;
+  var sliderWidth = 109; // The width set for the slider
+  var stepWidth = sliderWidth / sumSteps;
+  var currentVal = value;
+  var finalVal = currentVal - inputMin; // The current value is less than the initial value
+  var moveSteps = finalVal / inputStep;
+  var finalWidth = moveSteps * stepWidth;
+  document.head.insertAdjacentHTML('beforeend', `<style>.prt-slider[name=${name}]::after{width:${finalWidth}px}</style>`)
 
-  }
+}
 
-  window.initPrototypePanel = initPrototypePanel;
+window.initPrototypePanel = initPrototypePanel;
 
-  /* ----- Icons ----- */
-  const prtArrowClose =
+/* ----- Icons ----- */
+const prtArrowClose =
   `<svg class='prt-panel-close prt-footer-close' viewBox='0 0 18 18' fill='#bebebe' width='18' height='18'><path class='st0' d='M9.1,5c-0.3-0.3-0.3-0.7,0-0.9s0.7-0.3,0.9,0L15,9l-4.9,4.9c-0.3,0.3-0.7,0.3-0.9,0c-0.3-0.3-0.3-0.7,0-0.9l4-4
   L9.1,5z'/><path class='st0' d='M3.2,5C3,4.8,3,4.4,3.2,4.1s0.7-0.3,0.9,0L9.1,9l-4.9,4.9c-0.3,0.3-0.7,0.3-0.9,0C3,13.6,3,13.2,3.2,13l4-4
   L3.2,5z'/></svg>`;
 
-  const prtSettingsIcon =
+const prtSettingsIcon =
   `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='#e7e7e7' width='24' height='24' style='height: 22px; width: 22px;'><path d='M14.092,8 C14.036,7.843 14,7.676 14,7.5 C14,7.324 14.036,7.157 14.092,7 C14.299,6.419 14.849,6 15.5,6 C16.151,6 16.701,6.419 16.908,7 C16.964,7.157 17,7.324 17,7.5 C17,7.676 16.964,7.843 16.908,8 C16.701,8.581 16.151,9 15.5,9 C14.849,9 14.299,8.581 14.092,8 Z M17.949,7 C17.717,5.86 16.707,5 15.5,5 C14.293,5 13.283,5.86 13.051,7 L3,7 L3,8 L13.051,8 C13.283,9.14 14.293,10 15.5,10 C16.707,10 17.717,9.14 17.949,8 L21,8 L21,7 L17.949,7 Z M15.092,18.0009 C15.036,17.8439 15,17.6769 15,17.5009 C15,17.3249 15.036,17.1579 15.092,17.0009 C15.299,16.4199 15.849,16.0009 16.5,16.0009 C17.151,16.0009 17.701,16.4199 17.908,17.0009 C17.964,17.1579 18,17.3249 18,17.5009 C18,17.6769 17.964,17.8439 17.908,18.0009 C17.701,18.5819 17.151,19.0009 16.5,19.0009 C15.849,19.0009 15.299,18.5819 15.092,18.0009 Z M18.949,17.0009 C18.717,15.8609 17.707,15.0009 16.5,15.0009 C15.293,15.0009 14.283,15.8609 14.051,17.0009 L3,17.0009 L3,18.0009 L14.051,18.0009 C14.283,19.1409 15.293,20.0009 16.5,20.0009 C17.707,20.0009 18.717,19.1409 18.949,18.0009 L21,18.0009 L21,17.0009 L18.949,17.0009 Z M6.092,13 C6.036,12.843 6,12.676 6,12.5 C6,12.324 6.036,12.157 6.092,12 C6.299,11.419 6.849,11 7.5,11 C8.151,11 8.701,11.419 8.908,12 C8.964,12.157 9,12.324 9,12.5 C9,12.676 8.964,12.843 8.908,13 C8.701,13.581 8.151,14 7.5,14 C6.849,14 6.299,13.581 6.092,13 Z M9.949,12 C9.717,10.86 8.707,10 7.5,10 C6.293,10 5.283,10.86 5.051,12 L3,12 L3,13 L5.051,13 C5.283,14.14 6.293,15 7.5,15 C8.707,15 9.717,14.14 9.949,13 L21,13 L21,12 L9.949,12 Z'></path></svg>`;
 
-  const prtExportIcon =
+const prtExportIcon =
   `<svg viewBox='0 0 24 24' fill='#fff' width='24' height='24'><path d='M11,6 L11,7 L7,7 C6.44771525,7 6,7.44771525 6,8 L6,17 C6,17.5522847 6.44771525,18 7,18 L16,18 C16.5522847,18 17,17.5522847 17,17 L17,13 L18,13 L18,17 C18,18.1045695 17.1045695,19 16,19 L7,19 C5.8954305,19 5,18.1045695 5,17 L5,8 C5,6.8954305 5.8954305,6 7,6 L11,6 Z M18,6 L18,10 L17,10 L17,7.75 L11.9040467,12.8434838 C11.69694,13.0505906 11.3611535,13.0505906 11.1540467,12.8434838 C10.94694,12.636377 10.94694,12.3005906 11.1540467,12.0934838 L16.25,7 L14,7 L14,6 L18,6 Z'></path></svg>`;
 
-  const prtDirIcon = `<svg viewBox='0 0 25 25' fill='#fff' width='25' height='25'><path d='M16,5 C16.5522847,5 17,5.44771525 17,6 L17,7 L16,7 L16,6 L7,6 L7,19 L16,19 L16,18 L17,18 L17,19 C17,19.5522847 16.5522847,20 16,20 L7,20 C6.44771525,20 6,19.5522847 6,19 L6,6 C6,5.44771525 6.44771525,5 7,5 L16,5 Z M17.7843055,9.08859116 L17.8535534,9.14644661 L20.8394113,12.1323045 C21.0199203,12.3128135 21.0399768,12.5930149 20.8995809,12.7956777 L20.8394113,12.8676955 L17.8535534,15.8535534 C17.6582912,16.0488155 17.3417088,16.0488155 17.1464466,15.8535534 C16.9728803,15.679987 16.9535951,15.4105626 17.0885912,15.2156945 L17.1464466,15.1464466 L19.293,13 L11,13 L11,12 L19.293,12 L17.1464466,9.85355339 C16.9728803,9.67998704 16.9535951,9.41056264 17.0885912,9.2156945 L17.1464466,9.14644661 C17.320013,8.97288026 17.5894374,8.95359511 17.7843055,9.08859116 Z'></path></svg>`;
+const prtDirIcon = `<svg viewBox='0 0 25 25' fill='#fff' width='25' height='25'><path d='M16,5 C16.5522847,5 17,5.44771525 17,6 L17,7 L16,7 L16,6 L7,6 L7,19 L16,19 L16,18 L17,18 L17,19 C17,19.5522847 16.5522847,20 16,20 L7,20 C6.44771525,20 6,19.5522847 6,19 L6,6 C6,5.44771525 6.44771525,5 7,5 L16,5 Z M17.7843055,9.08859116 L17.8535534,9.14644661 L20.8394113,12.1323045 C21.0199203,12.3128135 21.0399768,12.5930149 20.8995809,12.7956777 L20.8394113,12.8676955 L17.8535534,15.8535534 C17.6582912,16.0488155 17.3417088,16.0488155 17.1464466,15.8535534 C16.9728803,15.679987 16.9535951,15.4105626 17.0885912,15.2156945 L17.1464466,15.1464466 L19.293,13 L11,13 L11,12 L19.293,12 L17.1464466,9.85355339 C16.9728803,9.67998704 16.9535951,9.41056264 17.0885912,9.2156945 L17.1464466,9.14644661 C17.320013,8.97288026 17.5894374,8.95359511 17.7843055,9.08859116 Z'></path></svg>`;
 
-  const prtCloseIcon =`<svg viewBox='0 0 24 24' fill='#bebebe' width='24' height='24'><path d='M10.9393398,12 L6,7.06066017 C5.70710678,6.76776695 5.70710678,6.29289322 6,6 C6.29289322,5.70710678 6.76776695,5.70710678 7.06066017,6 L12,10.9393398 L16.9393398,6 C17.232233,5.70710678 17.7071068,5.70710678 18,6 C18.2928932,6.29289322 18.2928932,6.76776695 18,7.06066017 L13.0606602,12 L18,16.9393398 C18.2928932,17.232233 18.2928932,17.7071068 18,18 C17.7071068,18.2928932 17.232233,18.2928932 16.9393398,18 L12,13.0606602 L7.06066017,18 C6.76776695,18.2928932 6.29289322,18.2928932 6,18 C5.70710678,17.7071068 5.70710678,17.232233 6,16.9393398 L10.9393398,12 Z'></path></svg>`
+const prtCloseIcon = `<svg viewBox='0 0 24 24' fill='#bebebe' width='24' height='24'><path d='M10.9393398,12 L6,7.06066017 C5.70710678,6.76776695 5.70710678,6.29289322 6,6 C6.29289322,5.70710678 6.76776695,5.70710678 7.06066017,6 L12,10.9393398 L16.9393398,6 C17.232233,5.70710678 17.7071068,5.70710678 18,6 C18.2928932,6.29289322 18.2928932,6.76776695 18,7.06066017 L13.0606602,12 L18,16.9393398 C18.2928932,17.232233 18.2928932,17.7071068 18,18 C17.7071068,18.2928932 17.232233,18.2928932 16.9393398,18 L12,13.0606602 L7.06066017,18 C6.76776695,18.2928932 6.29289322,18.2928932 6,18 C5.70710678,17.7071068 5.70710678,17.232233 6,16.9393398 L10.9393398,12 Z'></path></svg>`
 
-  const prtMoreIcon = `<svg viewBox='0 0 18 18' fill='currentColor' width='18' height='18'><path d='M4,8 L6,8 L6,10 L4,10 L4,8 Z M8,8 L10,8 L10,10 L8,10 L8,8 Z M12,8 L14,8 L14,10 L12,10 L12,8 Z'></path></svg>`
+const prtMoreIcon = `<svg viewBox='0 0 18 18' fill='currentColor' width='18' height='18'><path d='M4,8 L6,8 L6,10 L4,10 L4,8 Z M8,8 L10,8 L10,10 L8,10 L8,8 Z M12,8 L14,8 L14,10 L12,10 L12,8 Z'></path></svg>`
 
-  const prototypersLogo = `<?xml version='1.0' encoding='UTF-8'?>
+const prototypersLogo = `<?xml version='1.0' encoding='UTF-8'?>
   <svg width='235px' height='31px' viewBox='0 0 235 31' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
   <title>Combined Shape</title>
   <g id='Wix-Logos' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'>
