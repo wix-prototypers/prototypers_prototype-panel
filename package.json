@@ -1,0 +1,28 @@
+{
+  "name": "prototype-panel",
+  "version": "1.0.0",
+  "description": "The \"Prototype Panel\" goal is to add a layer of information to our prototypes. This panel allows us to improve the experience by adding more capabilities that will allow our users to interact and play with the prototype itself.",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wix-prototypers/prototypers_prototype-panel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wix-prototypers/prototypers_prototype-panel/issues"
+  },
+  "homepage": "https://github.com/wix-prototypers/prototypers_prototype-panel#readme",
+  "devDependencies": {
+    "css-loader": "^5.0.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.18.0",
+    "webpack-cli": "^4.4.0"
+  }
+}
