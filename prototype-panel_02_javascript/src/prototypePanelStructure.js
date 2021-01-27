@@ -194,7 +194,8 @@ function prtPanelInputContent(field) {
     case 'radio-button':
     for(var i = 0 ; i < field.optionsBackendList.length; i++) {
       i == field.defaultIndex ? checked = 'checked' : checked = '';
-      content += `<div><input class='prt-circle-checkbox' type='radio' id='${field.fieldName}-${i}' value='${field.optionsBackendList[i]}' name='${field.fieldName}' ${checked}>
+      content += `<div class='prt-checkbox-container'><input class='prt-circle-checkbox' type='radio' id='${field.fieldName}-${i}' value='${field.optionsBackendList[i]}' name='${field.fieldName}' ${checked}>
+      <span class='prt-checkmark'></span>
       <label for='${field.fieldName}-${i}'>${field.optionsDisplayList[i]}</label>
       </div>`;
     }
