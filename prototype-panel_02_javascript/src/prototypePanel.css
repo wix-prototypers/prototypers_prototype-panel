@@ -592,11 +592,11 @@ filter: invert(0.85)
 
 
 /* .prt-panel-field.disabled .prt-slider .ui-slider-handle {
-  background-color: var(--G2);
+background-color: var(--G2);
 }
 
 .prt-panel-field.disabled .prt-slider .ui-slider-range {
-  background-color: var(--G2);
+background-color: var(--G2);
 } */
 
 
@@ -612,6 +612,10 @@ filter: invert(0.85)
   color: var(--G5);
   height: 24px;
   box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 input[type="radio"].prt-toggle-option {
@@ -722,17 +726,16 @@ input[type="radio"].prt-circle-checkbox {
 .prt-checkbox-container {
   display: flex;
   align-items: center;
-position: relative;
-padding-left: 24px;
-margin-bottom: 6px;
-cursor: pointer;
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-/* Create a custom radio button */
 .prt-checkmark {
   position: absolute;
   top: 1px;
@@ -752,40 +755,6 @@ user-select: none;
 input[type=radio].prt-circle-checkbox:checked + .prt-checkmark {
   background-color: var(--prt-blue);
 }
-
-
-
-/* input[type="radio"].prt-circle-checkbox {
-  position: relative;
-  cursor: pointer;
-  box-shadow: inset 0px 15px var(--G1);
-  margin-right: 18px;
-  margin: 4px 8px 4px 0;
-}
-
-input[type=radio].prt-circle-checkbox:before {
-  box-shadow: inset 0px 0px 0px 2px var(--G1);
-  width: 13px;
-  height: 12px;
-  border-radius: 50%;
-  border: solid 1px var(--prt-blue);
-  content: "";
-  display: block;
-  position: absolute;
-  margin-top: 1px;
-}
-
-input[type=radio].prt-circle-checkbox:hover:before {
-  border: solid 1px #62ecf9;
-}
-
-input[type=radio].prt-circle-checkbox:checked:before {
-  background-color: var(--prt-blue);
-}
-
-input[type=radio].prt-circle-checkbox:checked:hover:before {
-  background-color: #62ecf9;
-} */
 
 input[type=radio].prt-circle-checkbox ~ label {
   font-size: 12px;
