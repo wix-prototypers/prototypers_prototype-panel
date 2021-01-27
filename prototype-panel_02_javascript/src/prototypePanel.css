@@ -469,7 +469,7 @@ filter: invert(0.85)
 
 
 .prt-container-input-number:hover::after,
-.prt-container-input-number:hover:before{
+.prt-container-input-number:hover::before{
   position: absolute;
   right: 5px;
   width: 25px;
@@ -481,7 +481,7 @@ filter: invert(0.85)
 
 }
 
-.prt-container-input-number:hover:after {
+.prt-container-input-number:hover::after {
   color: var(--G7);
   content: "\25B2";
   top: 1px;
@@ -489,7 +489,7 @@ filter: invert(0.85)
   font-size: 10px;
 }
 
-.prt-container-input-number:hover:before {
+.prt-container-input-number:hover::before {
   color: var(--G7);
   content: "\25BC";
   bottom: 2px;
@@ -854,7 +854,7 @@ input[type="radio"].prt-circle-checkbox {
   margin: 4px 8px 4px 0;
 }
 
-input[type=radio].prt-circle-checkbox:before {
+input[type=radio].prt-circle-checkbox::before {
   -webkit-box-shadow: inset 0px 0px 0px 2px var(--G1);
           box-shadow: inset 0px 0px 0px 2px var(--G1);
   width: 13px;
@@ -868,15 +868,15 @@ input[type=radio].prt-circle-checkbox:before {
   background-color: var(--G1);
 }
 
-input[type=radio].prt-circle-checkbox:hover:before {
+input[type=radio].prt-circle-checkbox:hover::before {
   border: solid 1px #62ecf9;
 }
 
-input[type=radio].prt-circle-checkbox:checked:before {
+input[type=radio].prt-circle-checkbox:checked::before {
   background-color: var(--prt-blue);
 }
 
-input[type=radio].prt-circle-checkbox:checked:hover:before {
+input[type=radio].prt-circle-checkbox:checked:hover::before {
   background-color: #62ecf9;
 }
 
@@ -886,11 +886,11 @@ input[type=radio].prt-circle-checkbox ~ label {
 }
 
 /* ------- Disabled State ------- */
-input[type=radio].prt-circle-checkbox:disabled:before {
+input[type=radio].prt-circle-checkbox:disabled::before {
   border: solid 1px var(--G2);
 }
 
-input[type=radio].prt-circle-checkbox:disabled:checked:before {
+input[type=radio].prt-circle-checkbox:disabled:checked::before {
   background-color: var(--G2);
 }
 
