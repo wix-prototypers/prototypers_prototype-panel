@@ -238,7 +238,6 @@ function disablePrtPanelField(fieldName, flag) {
       section.classList.remove('close');
       section.nextElementSibling.classList.remove('close');
       // section.nextElementSibling.children.classList.remove('close');
-      scrollTopSection(section.parentNode);
     }
     else {
       section.classList.add('close');
@@ -246,15 +245,6 @@ function disablePrtPanelField(fieldName, flag) {
       section.parentNode.style.maxHeight = '30px';
     }
   }
-
-  // function scrollTopSection(section) {
-  //   var topPos = document.querySelector('.prt-panel-content').offsetTop;
-  //   document.querySelector('.prt-panel-content').scroll({
-  //     top: 142,
-  //     left: 0,
-  //     behavior: 'smooth'
-  //   });
-  // }
 
   /* Call the relvant function after changing the input. You are responsible for the implementation of this function.
   For numeric input - this function also update the spinner / slider with the current value and change the background width of the slider */
