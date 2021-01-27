@@ -417,6 +417,7 @@ filter: invert(0.85)
   color: var(--G5);
   font-size: 12px;
   margin-right: 6px;
+  background-color: var(--G2);
 }
 
 .prt-spinner-ui {
