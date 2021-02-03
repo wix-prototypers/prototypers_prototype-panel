@@ -24,17 +24,10 @@ The "Prototype Panel'' goal is to add a layer of information to our prototypes. 
 [Helper Functions](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#helper-functions)
 
 ## **Project Structure**
-### **External Libraries**
-
-For the "Prototype Panel" project we use 3 external libraries:
--  Jquery 3.4.
--  Jquery-UI 1.12.1.
--  Scroll Into View.
-
 
 ### **Internal Files**
 The "Prototype Panel" project consists of the following files:
-1. prototypePanelStructure.js:
+1. prototypePanel.js:
 This file is responsible for creating the constant structure of the panel. It includes:  \
 (1) the functions that create all the parts of the panels. (2) the events for the general actions of the panel (_i.e. open and close the panel, change the panel position and save the changes_). (3) SVG code of the panel general icons.
 
@@ -52,26 +45,22 @@ The general structure of the panel consists of a header, content and footer.
 **Footer:** The footer includes a button to close the panel and our logo with a link to our [‘WixWhooo’ page](https://www.wixwhooo.com/results?type=all&val=prototyper) to contact us.
 
 ### **2. Inputs**
-The inputs are the interactive part of the panel and allow our users to play, change and test different options for the prototype. The panel currently includes four types of inputs: 
+The inputs are the interactive part of the panel and allow our users to play, change and test different options for the prototype. The panel currently includes four types of inputs:
 
    1. [Number](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1-number-): spinner element with slider element (optional).
-   2. [Toggle](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-toggle-%EF%B8%8F): segmented toggle with 2 options. 
+   2. [Toggle](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-toggle-%EF%B8%8F): segmented toggle with 2 options.
    3. [Radio Buttons](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#3-radio-button-): list of options. Only 1 option can be selected.
    4. [Thumbnails](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#4-thumbnails-): square buttons with icons inside and text labels. Only 1 option can be selected.
 
 
 ## **How To Use?**
 To use the panel in your prototype you must do these 2 following actions:
-### **1. Connect the panel project: 🔗** 
+### **1. Connect the panel project: 🔗**
 Add the following links in your prototype's index file.
+
 ```HTML
-
-    <link rel="stylesheet" href="https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/prototypePanel.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/scrollToView.js"></script>
-    <script src="https://wix-prototypers.github.io/prototypers_prototype-panel/prototype-panel_01/src/prototypePanelStructure.js"></script>
-
+<script src=“https://cdn.jsdelivr.net/gh/wix-prototypers/prototypers_prototype-panel@1/dist/prototypePanel.js”></script>
+<link rel=“stylesheet” href=“https://cdn.jsdelivr.net/gh/wix-prototypers/prototypers_prototype-panel@1/dist/prototypePanel.css“>
 ```
 
 ### **2. Create the panel: 🏗**
@@ -79,7 +68,7 @@ Add the following links in your prototype's index file.
 initPrototypePanel( )
 
 #### **Description**
-The `initPrototypePanel()` function builds the prototype panel and appends it to the body element in your prototype's index file. Call this function from one of your .js files in the project. 
+The `initPrototypePanel()` function builds the prototype panel and appends it to the body element in your prototype's index file. Call this function from one of your .js files in the project.
 
 #### **Syntax**
 
@@ -119,7 +108,7 @@ function initPrototypePanel(panelInfo : Object, panelSections : Object)
      </td>
    <td>Array
    </td>
-   <td>An array with sections, in each section the relevant inputs you want to add to the panel. 
+   <td>An array with sections, in each section the relevant inputs you want to add to the panel.
 The amount of sections and the distribution of inputs among them is your decision. See details below.
    </td>
    <td>
@@ -206,7 +195,7 @@ The `initPrototypePanel()` function adds the information and following propertie
 let panelInfo = {
   prototypeTitle : "Prototype Name",
   prototypeDescription : "This is where you can describe the  
-  prototype shortly, this description is where you can elaborate 
+  prototype shortly, this description is where you can elaborate
   and describe in details what's the prototype about.",
   panelDirection : "right"
 };
@@ -739,7 +728,7 @@ Below is a list of properties for each input type. You must define all the prope
   </tr>
   <tr>
    <td>
-    optionsDisplayList 
+    optionsDisplayList
    </td>
    <td>
     Array
@@ -772,9 +761,9 @@ Below is a list of properties for each input type. You must define all the prope
   disabled : false,
   fieldType : "radio-button",
   defaultIndex : 3,
-  optionsDisplayList: ["Option 1", "Option 2","Option 3", 
+  optionsDisplayList: ["Option 1", "Option 2","Option 3",
                        "Option 4"],
-  optionsBackendList: ["option1", "option2", "option3", 
+  optionsBackendList: ["option1", "option2", "option3",
                        "option4"]
 }
 ];
@@ -871,7 +860,7 @@ Below is a list of properties for each input type. You must define all the prope
   </tr>
   <tr>
    <td>
-    labelsDisplayList 
+    labelsDisplayList
    </td>
    <td>
     Array
@@ -920,10 +909,10 @@ Below is a list of properties for each input type. You must define all the prope
   defaultIndex : 1,
   optionsDisplayList: ["Option 1", "Option 2",
                       "Option 3", "Option 4", "Option 5"],
-  optionsBackendList: ["option1", "option2", 
+  optionsBackendList: ["option1", "option2",
                       "option3", "option4", "option5"],
   iconsDisplayList: ["./images/example-img1.svg",
-  "./images/example-img2.svg", "./images/example-img3.svg", 
+  "./images/example-img2.svg", "./images/example-img3.svg",
   "./images/example-img4.svg", "./images/example-img5.svg"]
 }
 ];
@@ -962,7 +951,7 @@ function disablePrtPanelField(field : Element, flag : Boolean)
     Element
    </td>
    <td>
-    The element of the input field that you want to disable or enable. 
+    The element of the input field that you want to disable or enable.
 <code>$(`.prt-panel-field[name="<em>your-input-name</em>"]`)</code>
    </td>
   </tr>
@@ -983,4 +972,3 @@ function disablePrtPanelField(field : Element, flag : Boolean)
 ```javascript
 disablePrtPanelField($(`.prt-panel-field[name="your-input-name"]`) , false);
 ```
-
