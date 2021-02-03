@@ -124,18 +124,6 @@ function initPrtPanelEvents() {
     }
   });
 
-  /* --- old jquery - for the future --- */
-  // $('.ptr-dir-btn').click(function () {
-  //   $('.prt-panel-tab').hide();
-  //   if($('.prototype-panel').attr('panel-dir') == 'left') {
-  //     $('.prototype-panel').attr('panel-dir', 'right');
-  //     $('.by-ux-prt').insertBefore('.prt-footer-close');
-  //   } else {
-  //     $('.prototype-panel').attr('panel-dir', 'left');
-  //     $('.prt-footer-close').insertBefore('.by-ux-prt');
-  //   }
-  //   setTimeout(function(){ $('.prt-panel-tab').show(); }, 300);
-  // })
 }
 
 /* Create each prototype settings section (after the prototype info)
