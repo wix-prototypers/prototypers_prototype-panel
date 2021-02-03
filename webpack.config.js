@@ -8,7 +8,9 @@ module.exports = {
         path: `${__dirname}/dist`,
         filename: 'prototypePanel.js',
     },
-    plugins: [new MiniCssExtractPlugin()],
+    plugins: [new MiniCssExtractPlugin(
+      {filename: 'prototypePanel.css'}
+    )],
     module: {
         rules: [
             {

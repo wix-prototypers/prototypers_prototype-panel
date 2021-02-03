@@ -8,7 +8,7 @@ function initPrototypePanel(panelInfo, panelSections) {
     setPrtPanelDirection(panelInfo);
 
     // Prototype Panel Template
-    var prototypePanelTemplate =
+    let prototypePanelTemplate =
       `<div class='prototype-panel' panel-dir=${panelInfo.panelDirection}>
         <div class='prt-panel-structure'>
           <header class='prt-panel-header'>
@@ -112,7 +112,7 @@ function initPrtPanelEvents() {
 
   // set position for each thumbnail tooltip - left / center / right
   document.querySelectorAll('.prt-thumbnails-tooltip-item').forEach((thumbnailTooltip) => {
-    var i = thumbnailTooltip.getAttribute('count');
+    let i = thumbnailTooltip.getAttribute('count');
     if ((i + 2) % 3 == 0) { // left items
       thumbnailTooltip.style.left = '-5px';
     }
@@ -141,8 +141,8 @@ function initPrtPanelEvents() {
 /* Create each prototype settings section (after the prototype info)
 PARAMETERS: section = the relevant section */
 function createPrtPanelSection(section) {
-  var newSection = '';
-  var { sectionNumber, sectionIsOpen } = section;
+  let newSection = '';
+  let { sectionNumber, sectionIsOpen } = section;
 
   sectionIsOpen != false ? sectionIsOpen = 'isOpen' : sectionIsOpen = 'isClose';
   newSection = `<div class='prt-panel-section ${sectionIsOpen}' section-number='${sectionNumber}'>
@@ -151,7 +151,7 @@ function createPrtPanelSection(section) {
   </div>`;
   document.querySelector('.prt-panel-content').insertAdjacentHTML('beforeend', newSection);
   section.fields.forEach((field) => {
-    var inputField = '';
+    let inputField = '';
     inputField = createPrtPanelInput(field);
     document.querySelector(`[number='${sectionNumber}']`).insertAdjacentHTML('beforeend', inputField);
   });
@@ -160,11 +160,11 @@ function createPrtPanelSection(section) {
 /*  Create each input field - with call to 'prtPanelInputContent' function for get the relevant content.
 PARAMETERS: field = the relevant field */
 function createPrtPanelInput(field) {
-  var newSetting = '';
-  var { disabled } = field;
+  let newSetting = '';
+  let { disabled } = field;
 
   disabled == true ? disabled = ' disabled' : disabled = '';
-  var content = prtPanelInputContent(field);
+  let content = prtPanelInputContent(field);
   newSetting = `<div class='prt-panel-field${disabled}' name='${field.fieldName}' call='${field.function}'><label class='prt-panel-field-label'>${field.fieldLabel}</label>${content}</div>`;
   field.divider ? (newSetting = newSetting + `<div class='prt-panel-divider'></div>`) : '';
   return newSetting;
@@ -173,12 +173,12 @@ function createPrtPanelInput(field) {
 /* Add the relevant html content for each input type
 PARAMETERS: field = the relevant field  */
 function prtPanelInputContent(field) {
-  var content = '';
-  var opacity1;
-  var opacity2;
-  var checked;
-  var selected;
-  var displaySlider;
+  let content = '';
+  let opacity1;
+  let opacity2;
+  let checked;
+  let selected;
+  let displaySlider;
 
   switch (field.fieldType) {
     case 'number':
@@ -203,7 +203,7 @@ function prtPanelInputContent(field) {
     </div>`;
       break;
     case 'radio-button':
-      for (var i = 0; i < field.optionsBackendList.length; i++) {
+      for (let i = 0; i < field.optionsBackendList.length; i++) {
         i == field.defaultIndex ? checked = 'checked' : checked = '';
         content += `<div class='prt-checkbox-container'><input class='prt-circle-checkbox' type='radio' id='${field.fieldName}-${i}' value='${field.optionsBackendList[i]}' name='${field.fieldName}' ${checked}>
       <span class='prt-checkmark'></span>
@@ -213,7 +213,7 @@ function prtPanelInputContent(field) {
       break;
     case 'thumbnails':
       content = `<div class='prt-thumbnails'>`
-      for (var i = 0; i < field.optionsBackendList.length; i++) {
+      for (let i = 0; i < field.optionsBackendList.length; i++) {
         i == field.defaultIndex ? selected = 'selected' : selected = '';
         i == field.defaultIndex ? checked = 'checked' : checked = '';
         field.labelsDisplayList[i].length > 9 ? opacity2 = 1 : opacity2 = 0;
@@ -233,7 +233,7 @@ function prtPanelInputContent(field) {
 /* Add or Rmove disabled from a field - include the label and all the inputs
 PARAMETERS: field = the relevant field | flag = can be TRUE or FALSE */
 function disablePrtPanelField(fieldName, flag) {
-  var field = document.querySelector(`.prt-panel-field[name='${fieldName}']`);
+  let field = document.querySelector(`.prt-panel-field[name='${fieldName}']`);
   field.classList.toggle('disabled', flag);
   field.querySelector('.prt-panel-field-label').classList.toggle('disabled', flag);
   field.querySelectorAll('input').forEach((disabledInput) => {
@@ -263,7 +263,7 @@ function closePrtPanelSection(section) {
 /* Call the relvant function after changing the input. You are responsible for the implementation of this function.
 For numeric input - this function also update the spinner / slider with the current value and change the background width of the slider */
 function initPrototypePanelControls() {
-  var selectedValue;
+  let selectedValue;
 
   // What happens after each non-numeric input change
   document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
@@ -273,14 +273,14 @@ function initPrototypePanelControls() {
         e.target.classList.contains('prt-spinner') || e.target.classList.contains('prt-slider') ? selectedValue = e.target.value : selectedValue = document.querySelector(`input[name='${name}']:checked`).getAttribute('value');
         const theFunction = document.querySelector(`.prt-panel-field[name='${name}']`).getAttribute('call');
         // Call the relevant function
-        window[theFunction](`${name}`, `${selectedValue}`);
+        window[theFunction] && window[theFunction](`${name}`, `${selectedValue}`);
       }
     });
   });
 
   // What happens after each numeric input change (spinner or slider)
   document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
-    var selectedValue;
+    let selectedValue;
 
     inputChanged.addEventListener('input', function (e) {
       let name = e.target.getAttribute('name');
@@ -306,18 +306,18 @@ function initPrototypePanelControls() {
 /* Update the background width of the slider after changing the value
 PARAMETERS: name = for get the relevant input field, value = the selected value */
 function changesSliderWidth(name, value) {
-  var input = document.querySelector(`input[type='range'][name=${name}]`);
-  var inputMin = input.getAttribute('min');
-  var inputMax = input.getAttribute('max');
-  var gapValues = inputMax - inputMin;
-  var inputStep = input.getAttribute('step');
-  var sumSteps = gapValues / inputStep;
-  var sliderWidth = 109; // The width set for the slider
-  var stepWidth = sliderWidth / sumSteps;
-  var currentVal = value;
-  var finalVal = currentVal - inputMin; // The current value is less than the initial value
-  var moveSteps = finalVal / inputStep;
-  var finalWidth = moveSteps * stepWidth;
+  let input = document.querySelector(`input[type='range'][name=${name}]`);
+  let inputMin = input.getAttribute('min');
+  let inputMax = input.getAttribute('max');
+  let gapValues = inputMax - inputMin;
+  let inputStep = input.getAttribute('step');
+  let sumSteps = gapValues / inputStep;
+  let sliderWidth = 109; // The width set for the slider
+  let stepWidth = sliderWidth / sumSteps;
+  let currentVal = value;
+  let finalVal = currentVal - inputMin; // The current value is less than the initial value
+  let moveSteps = finalVal / inputStep;
+  let finalWidth = moveSteps * stepWidth;
   document.head.insertAdjacentHTML('beforeend', `<style>.prt-slider[name=${name}]::after{width:${finalWidth}px}</style>`)
 
 }
