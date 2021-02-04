@@ -59,8 +59,8 @@ To use the panel in your prototype you must do these 2 following actions:
 Add the following links in your prototype's index file.
 
 ```HTML
-<script src=“https://cdn.jsdelivr.net/gh/wix-prototypers/prototypers_prototype-panel@1/dist/prototypePanel.js”></script>
-<link rel=“stylesheet” href=“https://cdn.jsdelivr.net/gh/wix-prototypers/prototypers_prototype-panel@1/dist/prototypePanel.css“>
+<script src="https://cdn.jsdelivr.net/gh/wix-prototypers/prototypers_prototype-panel@1/dist/prototypePanel.js"></script>
+<link rel="stylesheet” href=“https://cdn.jsdelivr.net/gh/wix-prototypers/prototypers_prototype-panel@1/dist/prototypePanel.css">
 ```
 
 ### **2. Create the panel: 🏗**
