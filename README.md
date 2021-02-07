@@ -948,11 +948,10 @@ function disablePrtPanelField(field : Element, flag : Boolean)
     field
    </td>
    <td>
-    Element
+    String
    </td>
    <td>
-    The element of the input field that you want to disable or enable.
-<code>$(`.prt-panel-field[name="<em>your-input-name</em>"]`)</code>
+    The name attribute of the input field that you want to disable or enable.
    </td>
   </tr>
   <tr>
@@ -970,5 +969,5 @@ function disablePrtPanelField(field : Element, flag : Boolean)
 
 ##### **Code Example**
 ```javascript
-disablePrtPanelField($(`.prt-panel-field[name="your-input-name"]`) , false);
+disablePrtPanelField("your-input-name" , false);
 ```
