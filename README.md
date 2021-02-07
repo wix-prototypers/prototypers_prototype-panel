@@ -928,7 +928,7 @@ The `disablePrtPanelField()` function can help you disable or enable a specific 
 
 ##### **Syntax**
 ```javascript
-function disablePrtPanelField(field : Element, flag : Boolean)
+function disablePrtPanelField(fieldName : String, flag : Boolean)
 ```
 ##### **initPrototypePanel Parameters**
 <table>
@@ -945,7 +945,7 @@ function disablePrtPanelField(field : Element, flag : Boolean)
   </tr>
   <tr>
    <td>
-    field
+    fieldName
    </td>
    <td>
     String
