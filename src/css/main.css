@@ -196,6 +196,8 @@
   display: grid;
   justify-content: space-between;
   align-items: center;
+  outline: none;
+  border:none;
 }
 
 .prt-panel-field > label {
@@ -204,7 +206,7 @@
   color: var(--G7);
 }
 
-.prt-panel-field > label.disabled {
+.prt-panel-field:disabled > label {
   color: var(--G4);
 }
 
@@ -332,6 +334,11 @@
 
 .prt-panel-close:hover {
   filter: brightness(2);
+}
+
+/* ------- Disabled State ------- */
+.prt-panel-field:disabled {
+  pointer-events: none;
 }
 
 /* --- ENDOF: Structure style ---*/
@@ -512,7 +519,7 @@ filter: invert(0.85)
   color: var(--G4);
 }
 
-.prt-panel-field.disabled .prt-sfx-label {
+.prt-panel-field:disabled .prt-sfx-label {
   color: var(--G4);
 }
 
@@ -579,27 +586,17 @@ filter: invert(0.85)
 }
 
 /* ------- Disabled State ------- */
-.prt-panel-field.disabled .prt-slider {
+.prt-panel-field:disabled .prt-slider {
   background: var(--G2);
 }
 
-.prt-panel-field.disabled .prt-slider::after {
+.prt-panel-field:disabled .prt-slider::after {
   background: var(--G3);
 }
 
-.prt-panel-field.disabled .prt-slider::-webkit-slider-thumb {
+.prt-panel-field:disabled .prt-slider::-webkit-slider-thumb {
   background: var(--G3);
 }
-
-
-/* .prt-panel-field.disabled .prt-slider .ui-slider-handle {
-background-color: var(--G2);
-}
-
-.prt-panel-field.disabled .prt-slider .ui-slider-range {
-background-color: var(--G2);
-} */
-
 
 /* ------------------------------------- Toggle style -------------------------------------*/
 .prt-toggle {
@@ -671,7 +668,7 @@ input[type="radio"].prt-toggle-option[option="2"]:checked ~ .prt-toggle-bckgrnd 
 }
 
 /* ------- Disabled State ------- */
-.prt-panel-field.disabled .prt-toggle {
+.prt-panel-field:disabled .prt-toggle {
   box-shadow: inset 0 0 0 1px var(--G1);
 }
 

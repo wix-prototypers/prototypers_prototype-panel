@@ -21,14 +21,7 @@ Call this function from one of your .js files in the project. */
   function renderPrototypePanel() {
     const prototypePanelTemplate = createPrototypePanelTemplate();
     document.body.insertAdjacentHTML('beforeend', prototypePanelTemplate);
-    document
-      .querySelectorAll('.prt-panel-section.isClose .prt-panel-section-header')
-      .forEach(closeSection => {
-        closePrtPanelSection(closeSection);
-      });
-    document.querySelectorAll('.prt-panel-field.disabled').forEach(disabledField => {
-      disablePrtPanelField(disabledField.getAttribute('name'), true);
-    });
+
     document.querySelectorAll('.prt-slider').forEach(sliderField => {
       changesSliderWidth(sliderField.getAttribute('name'), sliderField.getAttribute('value'));
     });
@@ -163,20 +156,22 @@ Call this function from one of your .js files in the project. */
   /* Create each prototype settings section (after the prototype info)
 PARAMETERS: section = the relevant section */
   function createPrtPanelSection(section) {
-    let { sectionNumber, sectionIsOpen } = section;
+    const { sectionNumber, sectionIsOpen } = section;
     let inputsTemplate = '';
 
     section.fields.forEach(field => {
       inputsTemplate += createPrtPanelInput(field);
     });
 
-    sectionIsOpen != false ? (sectionIsOpen = 'isOpen') : (sectionIsOpen = 'isClose');
     return `
-      <div class='prt-panel-section ${sectionIsOpen}' section-number='${sectionNumber}'>
-        <div class='prt-panel-section-header'>
+      <div class='prt-panel-section ${!!sectionIsOpen ? 'isOpen' : 'isClose'}'
+           style='${!sectionIsOpen ? 'maxHeight:30px' : ''}' 
+           section-number='${sectionNumber}'>
+        <div class='prt-panel-section-header ${!sectionIsOpen ? 'close' : ''}'>
           <span>${section.sectionTitle}</span>
         </div>
-        <div class='prt-panel-section-content' number='${sectionNumber}'>
+        <div class='prt-panel-section-content ${!sectionIsOpen ? 'close' : ''}' 
+             number='${sectionNumber}'>
           ${inputsTemplate}
         </div>
       </div>`;
@@ -185,17 +180,18 @@ PARAMETERS: section = the relevant section */
   /*  Create each input field - with call to 'prtPanelInputContent' function for get the relevant content.
 PARAMETERS: field = the relevant field */
   function createPrtPanelInput(fieldData) {
-    let { disabled, fieldName, fieldLabel, divider } = fieldData;
+    const { disabled, fieldName, fieldLabel, divider } = fieldData;
 
-    disabled == true ? (disabled = ' disabled') : (disabled = '');
     let content = prtPanelInputContent(fieldData);
     let field = `
-        <div class='prt-panel-field ${disabled}' name='${fieldName}' call='${fieldData.function}'>
+        <fieldset class='prt-panel-field' ${
+          !!disabled ? 'disabled' : ''
+        } name='${fieldName}' call='${fieldData.function}'>
           <label class='prt-panel-field-label'>
             ${fieldLabel}
           </label>
           ${content}
-        </div>
+        </fieldset>
         ${divider ? `<div class='prt-panel-divider'></div>` : ''}
         `;
 
@@ -341,15 +337,7 @@ PARAMETERS: field = the relevant field  */
 PARAMETERS: field = the relevant field | flag = can be TRUE or FALSE */
   function disablePrtPanelField(fieldName, flag) {
     let field = document.querySelector(`.prt-panel-field[name='${fieldName}']`);
-    field.classList.toggle('disabled', flag);
-    field.querySelector('.prt-panel-field-label').classList.toggle('disabled', flag);
-    field.querySelectorAll('input').forEach(disabledInput => {
-      flag
-        ? disabledInput.setAttribute('disabled', 'disabled')
-        : disabledInput.removeAttribute('disabled');
-    });
-
-    window.disablePrtPanelField = disablePrtPanelField;
+    flag ? field.setAttribute('disabled', 'disabled') : field.removeAttribute('disabled');
   }
 
   /* Close or open section
@@ -457,7 +445,8 @@ PARAMETERS: name = for get the relevant input field, value = the selected value 
 
   return {
     initPrototypePanel,
+    disablePrtPanelField
   };
 })();
 
-window.initPrototypePanel = PrototypePanel.initPrototypePanel;
+Object.assign(window, PrototypePanel)
