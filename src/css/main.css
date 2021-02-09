@@ -158,7 +158,6 @@
   color: var(--G7);
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .prt-panel-pin, .prt-panel-dir {
