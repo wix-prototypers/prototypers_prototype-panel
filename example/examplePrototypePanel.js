@@ -111,7 +111,7 @@ window.onload = function(e) {
 };
 
 /* ------------------ (4) Functions - write the relevant function for each input ------------------ */
-function changeHoverEffect(name, value) {
+function changeHoverEffect(e, value) {
   $(".stage-element").attr("hover",value);
   if(value == "overlay") {
     disablePrtPanelField(`overlay-color-toggle`, false);
@@ -120,7 +120,7 @@ function changeHoverEffect(name, value) {
   }
 }
 
-function changeOverlayColor(name, value) {
+function changeOverlayColor(e, value) {
   $(".stage-element").attr("color",value);
   if(value == "dark") {
       disablePrtPanelField(`example-number`, false);
@@ -129,11 +129,12 @@ function changeOverlayColor(name, value) {
   }
 }
 
-function changeLayout(name, value) {
+function changeLayout(e, value) {
   $(".stage").attr("layout",value);
 }
 
-function changeGagBetweenElmentes(name, value) {
+function changeGagBetweenElmentes(e, value) {
+  var name = e.target.getAttribute('name');
   var sfx = $(`input[type="number"][name='${name}']`).attr("suffix");
   $(".stage").css("grid-gap", `${value}${sfx}`)
 }

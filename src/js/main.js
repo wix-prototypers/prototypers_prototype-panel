@@ -13,24 +13,19 @@ Call this function from one of your .js files in the project. */
     _panelSections = panelSections;
 
     checkPanelInfoIsValid();
+    createPrototypePanel();
+  }
+
+  function createPrototypePanel() {
     setPrtPanelDirection();
     renderPrototypePanel();
+    initPrtPanelEvents();
   }
 
   // Prototype Panel Template
   function renderPrototypePanel() {
-    const prototypePanelTemplate = createPrototypePanelTemplate();
-    document.body.insertAdjacentHTML('beforeend', prototypePanelTemplate);
-
-    document.querySelectorAll('.prt-slider').forEach(sliderField => {
-      changesSliderWidth(sliderField.getAttribute('name'), sliderField.getAttribute('value'));
-    });
-    initPrtPanelEvents();
-  }
-
-  function createPrototypePanelTemplate() {
     const hasSections = _panelSections && _panelSections.length;
-    return `
+    const prototypePanelTemplate = `
     <div class='prototype-panel' panel-dir=${_panelInfo.panelDirection}>
       <div class='prt-panel-structure'>
         <header class='prt-panel-header'>
@@ -63,6 +58,12 @@ Call this function from one of your .js files in the project. */
       </div>
       <div class='prt-panel-tab'>${PrtSettingsIcon}</div>
     </div>`;
+
+    document.body.insertAdjacentHTML('beforeend', prototypePanelTemplate);
+
+    document.querySelectorAll('.prt-slider').forEach(sliderField => {
+      changesSliderWidth(sliderField, sliderField.getAttribute('value'));
+    });
   }
 
   function createPanelSections() {
@@ -107,49 +108,23 @@ Call this function from one of your .js files in the project. */
 
     // open the panel (after user clicks on the tab)
     document.querySelector('.prt-panel-tab').addEventListener('click', function () {
-      if (!this.classList.contains('prt-panel-open')) {
-        this.classList.add('prt-panel-open');
-        document.querySelector('.prt-panel-structure').classList.add('prt-panel-open');
-        document.querySelector('.prt-panel-tab').classList.add('prt-panel-open');
-      } else {
-        this.classList.remove('prt-panel-open');
-        document.querySelector('.prt-panel-structure').classList.remove('prt-panel-open');
-        document.querySelector('.prt-panel-tab').classList.remove('prt-panel-open');
-      }
-    });
+      // caching the structure node
+      const $prtPanelStructure = document.querySelector('.prt-panel-structure');
 
-    // close the panel
-    document.querySelectorAll('.prt-panel-close').forEach(closeBtn => {
-      closeBtn.addEventListener('click', function () {
-        document.querySelector('.prt-panel-tab').classList.remove('prt-panel-open');
-        document.querySelector('.prt-panel-structure').classList.remove('prt-panel-open');
-      });
+      if (!this.classList.contains('prt-panel-open')) {
+        $prtPanelStructure.classList.add('prt-panel-open');
+      } else {
+        $prtPanelStructure.classList.remove('prt-panel-open');
+      }
     });
 
     // open or close section
     document.querySelectorAll('.prt-panel-section-header').forEach(sectionHeader => {
-      if (!sectionHeader.classList.contains('prt-disable-closing')) {
-        sectionHeader.addEventListener('click', function () {
+      sectionHeader.addEventListener('click', function () {
+        if (!sectionHeader.classList.contains('prt-disable-closing')) {
           closePrtPanelSection(sectionHeader);
-        });
-      }
-    });
-
-    // set position for each thumbnail tooltip - left / center / right
-    document.querySelectorAll('.prt-thumbnails-tooltip-item').forEach(thumbnailTooltip => {
-      let i = thumbnailTooltip.getAttribute('count');
-      if ((i + 2) % 3 == 0) {
-        // left items
-        thumbnailTooltip.style.left = '-5px';
-      }
-      if ((i + 1) % 3 == 0) {
-        // center items
-        thumbnailTooltip.classList.add('center-prt-tooltip-item');
-      }
-      if (i % 3 == 0) {
-        // right items
-        thumbnailTooltip.style.right = '-5px';
-      }
+        }
+      });
     });
   }
 
@@ -182,8 +157,8 @@ PARAMETERS: field = the relevant field */
   function createPrtPanelInput(fieldData) {
     const { disabled, fieldName, fieldLabel, divider } = fieldData;
 
-    let content = prtPanelInputContent(fieldData);
-    let field = `
+    const content = prtPanelInputContent(fieldData);
+    const field = `
         <fieldset class='prt-panel-field' ${
           !!disabled ? 'disabled' : ''
         } name='${fieldName}' call='${fieldData.function}'>
@@ -319,8 +294,15 @@ PARAMETERS: field = the relevant field  */
                 <img src='${iconsDisplayList[i]}'>
               </button>
               <label for='${fieldName}-${i}'>${labelsDisplayList[i]}</label>
-              <span class='prt-thumbnails-tooltip-item' 
-                    count='${i + 1}' 
+              <span class='prt-thumbnails-tooltip-item ${
+                (i + 3) % 3 == 0
+                  ? 'left-prt-tooltip-item'
+                  : (i + 1) % 3 == 0
+                  ? 'right-prt-tooltip-item'
+                  : (i + 2) % 3 == 0
+                  ? 'center-prt-tooltip-item'
+                  : ''
+              }' 
                     style='opacity: ${labelsDisplayList[i].length > tooltipLimit ? 1 : 0}'>
                 ${labelsDisplayList[i]}
               </span>
@@ -336,7 +318,7 @@ PARAMETERS: field = the relevant field  */
   /* Add or Rmove disabled from a field - include the label and all the inputs
 PARAMETERS: field = the relevant field | flag = can be TRUE or FALSE */
   function disablePrtPanelField(fieldName, flag) {
-    let field = document.querySelector(`.prt-panel-field[name='${fieldName}']`);
+    const field = document.querySelector(`.prt-panel-field[name='${fieldName}']`);
     flag ? field.setAttribute('disabled', 'disabled') : field.removeAttribute('disabled');
   }
 
@@ -358,57 +340,45 @@ PARAMETERS: section = the relevant section */
   /* Call the relvant function after changing the input. You are responsible for the implementation of this function.
 For numeric input - this function also update the spinner / slider with the current value and change the background width of the slider */
   function initPrototypePanelControls() {
-    let selectedValue;
-
     // What happens after each non-numeric input change
     document.querySelectorAll('.prt-panel-field input').forEach(inputChanged => {
       inputChanged.addEventListener('change', function (e) {
-        let name = e.target.getAttribute('name');
+        const inputEl = e.target;
+        const selectedValue = inputEl.value;
+
         if (
-          !e.target.classList.contains('prt-spinner') &&
-          !e.target.classList.contains('prt-slider')
+          !inputEl.classList.contains('prt-spinner') &&
+          !inputEl.classList.contains('prt-slider')
         ) {
-          e.target.classList.contains('prt-spinner') || e.target.classList.contains('prt-slider')
-            ? (selectedValue = e.target.value)
-            : (selectedValue = document
-                .querySelector(`input[name='${name}']:checked`)
-                .getAttribute('value'));
-          const theFunction = document
-            .querySelector(`.prt-panel-field[name='${name}']`)
-            .getAttribute('call');
+          const theFunction = inputEl.closest(`.prt-panel-field`).getAttribute('call');
           // Call the relevant function
-          window[theFunction] && window[theFunction](`${name}`, `${selectedValue}`);
+          window[theFunction] && window[theFunction](e, `${selectedValue}`);
         }
       });
     });
 
     // What happens after each numeric input change (spinner or slider)
     document.querySelectorAll('.prt-panel-field input').forEach(inputChanged => {
-      let selectedValue;
-
       inputChanged.addEventListener('input', function (e) {
-        let name = e.target.getAttribute('name');
-        if (
-          e.target.classList.contains('prt-spinner') ||
-          e.target.classList.contains('prt-slider')
-        ) {
-          selectedValue = e.target.value;
-          changesSliderWidth(name, selectedValue);
-          if (e.target.classList.contains('prt-spinner')) {
+        const inputEl = e.target;
+        const inputFieldParent = inputEl.closest(`.prt-panel-field`);
+        const selectedValue = inputEl.value;
+
+        if (inputEl.classList.contains('prt-spinner') || inputEl.classList.contains('prt-slider')) {
+          changesSliderWidth(inputEl, selectedValue);
+          if (inputEl.classList.contains('prt-spinner')) {
             // need to update the slider value
-            let sliderField = document.querySelector(`.prt-slider[name='${name}']`);
+            const sliderField = inputFieldParent.querySelector(`.prt-slider`);
             sliderField.value = selectedValue;
           }
-          if (e.target.classList.contains('prt-slider')) {
+          if (inputEl.classList.contains('prt-slider')) {
             // need to update the spinner value
-            let spinnerField = document.querySelector(`.prt-spinner[name='${name}']`);
+            const spinnerField = inputFieldParent.querySelector(`.prt-spinner`);
             spinnerField.value = selectedValue;
           }
-          const theFunction = document
-            .querySelector(`.prt-panel-field[name='${name}']`)
-            .getAttribute('call');
+          const theFunction = inputFieldParent.getAttribute('call');
           // Call the relevant function
-          window[theFunction](`${name}`, `${selectedValue}`);
+          window[theFunction](e, `${selectedValue}`);
         }
       });
     });
@@ -416,12 +386,14 @@ For numeric input - this function also update the spinner / slider with the curr
 
   /* Update the background width of the slider after changing the value
 PARAMETERS: name = for get the relevant input field, value = the selected value */
-  function changesSliderWidth(name, currentVal) {
-    const input = document.querySelector(`input[type='range'][name=${name}]`);
-    const inputMin = input.getAttribute('min');
-    const inputMax = input.getAttribute('max');
+  function changesSliderWidth(sliderEl, currentVal) {
+    const { name, min, max, step } = sliderEl.attributes;
+
+    const inputName = name.value;
+    const inputMin = min.value;
+    const inputMax = max.value;
     const gapValues = inputMax - inputMin;
-    const inputStep = input.getAttribute('step');
+    const inputStep = step.value;
     const sumSteps = gapValues / inputStep;
     const sliderWidth = 109; // The width set for the slider
     const stepWidth = sliderWidth / sumSteps;
@@ -429,8 +401,8 @@ PARAMETERS: name = for get the relevant input field, value = the selected value 
     const moveSteps = finalVal / inputStep;
     const finalWidth = Math.round(moveSteps * stepWidth);
 
-    const styleTagID = `prt-panel--${name}-styling`;
-    const styling = `.prt-slider[name=${name}]::after{width:${finalWidth}px}`;
+    const styleTagID = `prt-panel--${inputName}-styling`;
+    const styling = `.prt-slider[name=${inputName}]::after{width:${finalWidth}px}`;
     const styleTag = document.getElementById(styleTagID);
 
     if (styleTag) {
@@ -445,8 +417,8 @@ PARAMETERS: name = for get the relevant input field, value = the selected value 
 
   return {
     initPrototypePanel,
-    disablePrtPanelField
+    disablePrtPanelField,
   };
 })();
 
-Object.assign(window, PrototypePanel)
+Object.assign(window, PrototypePanel);

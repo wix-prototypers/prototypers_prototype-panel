@@ -108,7 +108,7 @@
   fill: #fff;
 }
 
-.prt-panel-tab.prt-panel-open {
+.prt-panel-open ~ .prt-panel-tab {
   transform: var(--translateX);
 }
 
@@ -872,6 +872,8 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
 
 /* ------- Long Text Tooltip ------- */
 .prt-thumbnails-tooltip-item {
+  --tooltip-side-offset: -5px;
+
   border-radius: 4px;
   box-shadow: -1px -1px 6px 0px rgb(34 35 35 / 70%);
   border: solid 0.5px var(--G3);
@@ -889,10 +891,19 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
   justify-content: center;
 }
 
+.prt-thumbnails-tooltip-item.left-prt-tooltip-item {
+  left: var(--tooltip-side-offset);
+}
+
+.prt-thumbnails-tooltip-item.right-prt-tooltip-item {
+  right: var(--tooltip-side-offset);
+}
+
 .prt-thumbnails-tooltip-item.center-prt-tooltip-item {
   left: 50%;
   transform: translateX(-50%);
 }
+
 
 [type="radio"].prt-thumbnails-input:hover ~ .prt-thumbnails-tooltip-item {
   display: flex;
