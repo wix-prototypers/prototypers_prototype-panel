@@ -576,7 +576,7 @@ Below is a list of properties for each input type. You must define all the prope
     String
    </td>
    <td>
-    The text displayed on the left option. This option will be selected by default.
+    The text displayed on the left option. 
    </td>
   </tr>
   <tr>
@@ -598,10 +598,10 @@ Below is a list of properties for each input type. You must define all the prope
     String
    </td>
    <td>
-    The text displayed on the right option.
+    The text displayed on the right option. 
    </td>
   </tr>
-  <tr>
+   <tr>
    <td>
     option2Value
    </td>
@@ -610,6 +610,17 @@ Below is a list of properties for each input type. You must define all the prope
    </td>
    <td>
     The value of the right option. Will be used by you in the code to identify the selected option.
+   </td>
+  </tr>
+    <tr>
+   <td>
+    defaultOption
+   </td>
+   <td>
+    oneOf[1,2]
+   </td>
+   <td>
+    The option (1 - the left option or 2 - the right option) that will be selected by default.
    </td>
   </tr>
 </table>
