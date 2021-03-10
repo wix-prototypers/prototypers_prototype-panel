@@ -1,5 +1,5 @@
 /* NOTE: This file includes the functions and the icons for creating the structure - No need to change / add. */
-// import '../css/main.css';
+import '../css/main.css';
 
 /*  This function builds the prototype panel and appends it to the body element in your prototype's index file.
 Call this function from one of your .js files in the project. */
