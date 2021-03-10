@@ -642,7 +642,8 @@ Below is a list of properties for each input type. You must define all the prope
   option1Display : "Option 1",
   option1Value : "option1",
   option2Display : "Option 2",
-  option2Value : "option2"
+  option2Value : "option2",
+  defaultOption: 1
 }
 ];
 ```
