@@ -1,5 +1,5 @@
 /* NOTE: This file includes the functions and the icons for creating the structure - No need to change / add. */
-import '../css/main.css';
+// import '../css/main.css';
 
 /*  This function builds the prototype panel and appends it to the body element in your prototype's index file.
 Call this function from one of your .js files in the project. */
@@ -176,6 +176,8 @@ function prtPanelInputContent(field) {
   let content = '';
   let opacity1;
   let opacity2;
+  let option1Checked;
+  let option2Checked;
   let checked;
   let selected;
   let displaySlider;
@@ -192,11 +194,18 @@ function prtPanelInputContent(field) {
     case 'toggle':
       field.option1Display.length > 14 ? opacity1 = 1 : opacity1 = 0;
       field.option2Display.length > 14 ? opacity2 = 1 : opacity2 = 0;
+      if(field.defaultOption == 2) {
+        option1Checked = "";
+        option2Checked = "checked";
+      } else {
+        option1Checked = "checked";
+        option2Checked = "";
+      }
       content = `<div class='prt-toggle'>
-    <input class='prt-toggle-option' id='${field.fieldName}-0' value='${field.option1Value}' option='1' type='radio' name='${field.fieldName}' checked>
+    <input class='prt-toggle-option' id='${field.fieldName}-0' value='${field.option1Value}' option='1' type='radio' name='${field.fieldName}' ${option1Checked}>
     <label class='prt-toggle-labels' for='${field.fieldName}-0'>${field.option1Display}</label>
     <span class='prt-toggle-tooltip-option' style='opacity: ${opacity1}'>${field.option1Display}</span>
-    <input class='prt-toggle-option' id='${field.fieldName}-1' value='${field.option2Value}' option='2' type='radio' name='${field.fieldName}'>
+    <input class='prt-toggle-option' id='${field.fieldName}-1' value='${field.option2Value}' option='2' type='radio' name='${field.fieldName}' ${option2Checked}>
     <label class='prt-toggle-labels' for='${field.fieldName}-1'>${field.option2Display}</label>
     <span class='prt-toggle-tooltip-option right' style='opacity: ${opacity2}'>${field.option2Display}</span>
     <div class='prt-toggle-bckgrnd'></div>
