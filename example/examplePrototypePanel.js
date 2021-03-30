@@ -110,14 +110,17 @@ window.onload = function(e) {
   initPrototypePanel(panelInfo, panelSections);
 
 
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+document.querySelectorAll('.prt-panel-field input').forEach((input) => {
+  if(input.checked && queryString) {
+    let name = input.name;
+    let savedValue = urlParams.get(`${name}`);
+    document.querySelector(`[value=${savedValue}]`).checked = true;
+    document.querySelector(`[value=${savedValue}]`).dispatchEvent(new Event('change'));
+  }
 
-  document.querySelectorAll('.prt-panel-field input').forEach((input) => {
-    // if(!input.disabled && input.checked) {
-    //   input.checked = false;
-    // }
-  })
-  document.querySelector('[value="dark"]').checked = true;
-  document.querySelector('[value="dark"]').dispatchEvent(new Event('change')); // change input
+});
 
 };
 
