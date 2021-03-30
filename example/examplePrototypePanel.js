@@ -93,26 +93,6 @@ window.onload = function(e) {
   };
 
   initPrototypePanel(panelInfo, panelSections);
-
-  // update the panel with the URL parameters
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-
-  document.querySelectorAll('.prt-panel-field input').forEach((input) => {
-    if((input.checked || (input.classList.contains('prt-spinner') || input.classList.contains('prt-slider'))) && queryString) {
-      let name = input.name;
-      let savedValue = urlParams.get(`${name}`); // get the relevant value from the URL
-      if(input.getAttribute('type') != "number" && input.getAttribute('type') != "range") {
-        document.querySelector(`[value=${savedValue}]`).checked = true;
-        document.querySelector(`[value=${savedValue}]`).dispatchEvent(new Event('change'));
-      } else { // numeric input
-        input.value = savedValue;
-        input.dispatchEvent(new Event('input'));
-      }
-
-
-    }
-  });
 };
 
 /* ------------------ (4) Functions - write the relevant function for each input ------------------ */

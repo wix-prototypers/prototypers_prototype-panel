@@ -52,6 +52,7 @@ function initPrototypePanel(panelInfo, panelSections) {
         document.querySelector('.prt-panel-section-header').classList.add('prt-disable-closing');
       }
       initPrtPanelEvents(); // add all click and change events of the panel
+      updateInputsFromURL(); // update the panel with the URL parameters
     }
   } else console.error('PROTOTYPE PANEL: Invalid parameters for init function, Please fix it (:');
 }
@@ -111,7 +112,6 @@ function initPrtPanelEvents() {
       // get the all values
       document.querySelectorAll('.prt-panel-field input').forEach((input) => {
         if(input.checked || (input.classList.contains('prt-spinner') || input.classList.contains('prt-slider'))) {
-
           values = values + '&' + input.name + '=' + input.value;
         }
       });
@@ -347,7 +347,27 @@ function changesSliderWidth(name, value) {
   let moveSteps = finalVal / inputStep;
   let finalWidth = moveSteps * stepWidth;
   document.head.insertAdjacentHTML('beforeend', `<style>.prt-slider[name=${name}]::after{width:${finalWidth}px}</style>`)
+}
 
+function updateInputsFromURL() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  if(queryString.includes('?newVersion')) {
+    document.title = '[New] ' + document.title;
+    document.querySelectorAll('.prt-panel-field input').forEach((input) => {
+      if((input.checked || (input.classList.contains('prt-spinner') || input.classList.contains('prt-slider')))) {
+        let name = input.name;
+        let savedValue = urlParams.get(`${name}`); // get the relevant value from the URL
+        if(input.getAttribute('type') != "number" && input.getAttribute('type') != "range") {
+          document.querySelector(`[value=${savedValue}]`).checked = true;
+          document.querySelector(`[value=${savedValue}]`).dispatchEvent(new Event('change'));
+        } else { // numeric input
+          input.value = savedValue;
+          input.dispatchEvent(new Event('input'));
+        }
+      }
+    });
+  }
 }
 
 window.initPrototypePanel = initPrototypePanel;
