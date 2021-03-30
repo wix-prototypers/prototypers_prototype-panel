@@ -1,5 +1,5 @@
 /* NOTE: This file includes the functions and the icons for creating the structure - No need to change / add. */
-import '../css/main.css';
+// import '../css/main.css';
 
 /*  This function builds the prototype panel and appends it to the body element in your prototype's index file.
 Call this function from one of your .js files in the project. */
@@ -13,9 +13,11 @@ function initPrototypePanel(panelInfo, panelSections) {
         <div class='prt-panel-structure'>
           <header class='prt-panel-header'>
             <span class='prt-panel-title'>${panelInfo.prototypeTitle}
-            <div class='ptr-close-btn prt-panel-close'>
+            <div>
             <span class='prt-panel-header-actions'>
+            <label class='prt-panel-save'>save</label>
             <div class='prt-panel-close'>${prtCloseIcon}</div>
+
             </span>
             </div>
             </span>
@@ -98,6 +100,21 @@ function initPrtPanelEvents() {
     closeBtn.addEventListener('click', function () {
       document.querySelector('.prt-panel-tab').classList.remove('prt-panel-open');
       document.querySelector('.prt-panel-structure').classList.remove('prt-panel-open');
+    });
+  });
+
+  document.querySelectorAll('.prt-panel-save').forEach((saveBtn) => {
+    saveBtn.addEventListener('click', function () {
+      let values = '';
+      let url = window.location.href; // print the url
+      // get the all values
+      document.querySelectorAll('.prt-panel-field input').forEach((input) => {
+        if(input.checked) {
+          values = values + '#' + input.value;
+        }
+      });
+      window.open(url + '?newVersion' + values, '_blank');
+      console.log(values)
     });
   });
 
@@ -285,6 +302,7 @@ function initPrototypePanelControls() {
         window[theFunction] && window[theFunction](`${name}`, `${selectedValue}`);
       }
     });
+
   });
 
   // What happens after each numeric input change (spinner or slider)

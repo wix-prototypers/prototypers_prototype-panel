@@ -108,6 +108,17 @@ window.onload = function(e) {
   };
 
   initPrototypePanel(panelInfo, panelSections);
+
+
+
+  document.querySelectorAll('.prt-panel-field input').forEach((input) => {
+    // if(!input.disabled && input.checked) {
+    //   input.checked = false;
+    // }
+  })
+  document.querySelector('[value="dark"]').checked = true;
+  document.querySelector('[value="dark"]').dispatchEvent(new Event('change')); // change input
+
 };
 
 /* ------------------ (4) Functions - write the relevant function for each input ------------------ */
@@ -118,6 +129,8 @@ function changeHoverEffect(name, value) {
   } else {
     disablePrtPanelField(`overlay-color-toggle`, true);
   }
+
+
 }
 
 function changeOverlayColor(name, value) {

@@ -10,6 +10,7 @@
   --G7:#f2f2f2;
 
   --prt-blue: #41c9d6;
+  --prt-light-blue: #62ecf9;
 
   --madefor:"Madefor";
   --weight-400: var(--wix-font-weight-regular, 400);
@@ -135,7 +136,7 @@
 }
 
 .prt-panel-header-actions div {
-  height: 20px;
+  /* height: 20px; */
   width: 20px;
   margin-left: 4px;
   display: flex;
@@ -175,6 +176,16 @@
 
 .prt-panel-pin.selected, .prt-panel-dir.selected {
   background: #727272;
+}
+
+.prt-panel-save {
+  color: var(--prt-blue);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.prt-panel-save:hover {
+  color: var(--prt-light-blue)
 }
 
 .prt-panel-content {
@@ -749,7 +760,7 @@ input[type="radio"].prt-circle-checkbox {
 }
 
 .prt-checkbox-container:hover > .prt-checkmark {
-  border: solid 1px #62ecf9;
+  border: solid 1px var(--prt-light-blue);
 }
 
 input[type=radio].prt-circle-checkbox:checked + .prt-checkmark {
