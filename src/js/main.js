@@ -106,18 +106,16 @@ function initPrtPanelEvents() {
   document.querySelectorAll('.prt-panel-save').forEach((saveBtn) => {
     saveBtn.addEventListener('click', function () {
 
-
-
       let values = '';
       let url = window.location.href; // print the url
       // get the all values
       document.querySelectorAll('.prt-panel-field input').forEach((input) => {
-        if(input.checked) {
+        if(input.checked || (input.classList.contains('prt-spinner') || input.classList.contains('prt-slider'))) {
+
           values = values + '&' + input.name + '=' + input.value;
         }
       });
       window.open(url.split('?newVersion')[0] + '?newVersion' + values, '_blank');
-      console.log(values)
     });
   });
 

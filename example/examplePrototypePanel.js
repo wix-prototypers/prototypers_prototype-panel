@@ -1,11 +1,11 @@
 /* ---- NOTE: customController. js - This file includes:
 (1) Controller Info - prototypeTitle = prototype name.
-                      prototypeDescription = prototype description in prototype info section.
+prototypeDescription = prototype description in prototype info section.
 (2) 'Sections' Array - the array contains all the sections (except the info section) and
-                       all the fields (inputs) belonging to each section.
+all the fields (inputs) belonging to each section.
 (3) Function "initControls()" - DON'T CHANGE! - This function calls the relevant function (depending on the input) after each change of input in the controller.
 (4) Functions - write the relevant function for each input.
-                Each input should have a function that will call after the input changes.
+Each input should have a function that will call after the input changes.
 IMPORTANT! Fill this file according to your needs. ---- */
 
 // (1) Controller Info - constant variables for the title and the description.
@@ -80,21 +80,6 @@ const panelSections = [
         "value" : "35",
         "showSlider": true,
         "suffix": "px"
-      },
-      {
-        "fieldName" : "example-number",
-        "fieldLabel": "Change the gap between the elements:",
-        "divider": false,
-        "toolTip": "",
-        "function": "changeGagBetweenElmentes",
-        "disabled": true,
-        "fieldType": "number",
-        "min" : "0",
-        "max" : "100",
-        "step" : "1",
-        "value" : "35",
-        "showSlider": true,
-        "suffix": "%"
       }
     ]
   }
@@ -109,19 +94,25 @@ window.onload = function(e) {
 
   initPrototypePanel(panelInfo, panelSections);
 
-
+  // update the panel with the URL parameters
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-document.querySelectorAll('.prt-panel-field input').forEach((input) => {
-  if(input.checked && queryString) {
-    let name = input.name;
-    let savedValue = urlParams.get(`${name}`);
-    document.querySelector(`[value=${savedValue}]`).checked = true;
-    document.querySelector(`[value=${savedValue}]`).dispatchEvent(new Event('change'));
-  }
 
-});
+  document.querySelectorAll('.prt-panel-field input').forEach((input) => {
+    if((input.checked || (input.classList.contains('prt-spinner') || input.classList.contains('prt-slider'))) && queryString) {
+      let name = input.name;
+      let savedValue = urlParams.get(`${name}`); // get the relevant value from the URL
+      if(input.getAttribute('type') != "number" && input.getAttribute('type') != "range") {
+        document.querySelector(`[value=${savedValue}]`).checked = true;
+        document.querySelector(`[value=${savedValue}]`).dispatchEvent(new Event('change'));
+      } else { // numeric input
+        input.value = savedValue;
+        input.dispatchEvent(new Event('input'));
+      }
 
+
+    }
+  });
 };
 
 /* ------------------ (4) Functions - write the relevant function for each input ------------------ */
@@ -138,11 +129,6 @@ function changeHoverEffect(name, value) {
 
 function changeOverlayColor(name, value) {
   $(".stage-element").attr("color",value);
-  if(value == "dark") {
-      disablePrtPanelField(`example-number`, false);
-  } else {
-    disablePrtPanelField(`example-number`, true);
-  }
 }
 
 function changeLayout(name, value) {
