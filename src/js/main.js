@@ -12,14 +12,17 @@ function initPrototypePanel(panelInfo, panelSections) {
       `<div class='prototype-panel' panel-dir=${panelInfo.panelDirection}>
         <div class='prt-panel-structure'>
           <header class='prt-panel-header'>
+          <div>
+          <span class='prt-panel-header-actions'>
+          <label class='prt-panel-save'>Save</label>
+          <div class='prt-panel-header-icons'>
+          <div class='prt-panel-close'>${prtMoreIcon}</div>
+          <div class='prt-panel-close'>${prtCloseIcon}</div>
+          </div>
+          </span>
+          </div>
             <span class='prt-panel-title'>${panelInfo.prototypeTitle}
-            <div>
-            <span class='prt-panel-header-actions'>
-            <label class='prt-panel-save'>save</label>
-            <div class='prt-panel-close'>${prtCloseIcon}</div>
 
-            </span>
-            </div>
             </span>
           </header>
           <div class='prt-panel-content'>
@@ -106,7 +109,6 @@ function initPrtPanelEvents() {
 
   document.querySelectorAll('.prt-panel-save').forEach((saveBtn) => {
     saveBtn.addEventListener('click', function () {
-
       let values = '';
       let url = window.location.href; // print the url
       // get the all values
@@ -115,7 +117,12 @@ function initPrtPanelEvents() {
           values = values + '&' + input.name + '=' + input.value;
         }
       });
-      window.open(url.split('?newVersion')[0] + '?newVersion' + values, '_blank');
+      document.querySelector('.prt-panel-save').classList.add('prt-saved');
+      setTimeout(function () {
+         window.open(url.split('?newVersion')[0] + '?newVersion' + values, '_blank');
+         window.focus();
+        document.querySelector('.prt-panel-save').classList.remove('prt-saved');
+      }, 1000);
     });
   });
 
@@ -140,6 +147,18 @@ function initPrtPanelEvents() {
     if (i % 3 == 0) { // right items
       thumbnailTooltip.style.right = '-5px';
     }
+  });
+
+  document.addEventListener('keyup', (e) => {
+  if (e.shiftKey && e.which == 72) {
+    let panel = document.querySelector('.prototype-panel');
+    if(panel.classList.contains('prototype-panel-hidden')) {
+      panel.classList.remove('prototype-panel-hidden');
+
+    } else {
+      panel.classList.add('prototype-panel-hidden');
+    }
+  }
   });
 
   /* --- old jquery - for the future --- */
@@ -353,6 +372,7 @@ function updateInputsFromURL() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   if(queryString.includes('?newVersion')) {
+    window.opener.focus();
     document.title = '[New] ' + document.title;
     document.querySelectorAll('.prt-panel-field input').forEach((input) => {
       if((input.checked || (input.classList.contains('prt-spinner') || input.classList.contains('prt-slider')))) {
@@ -367,6 +387,7 @@ function updateInputsFromURL() {
         }
       }
     });
+    document.querySelector('.prototype-panel').classList.add('prototype-panel-hidden');
   }
 }
 
@@ -388,7 +409,7 @@ const prtDirIcon = `<svg viewBox='0 0 25 25' fill='#fff' width='25' height='25'>
 
 const prtCloseIcon = `<svg viewBox='0 0 24 24' fill='#bebebe' width='24' height='24'><path d='M10.9393398,12 L6,7.06066017 C5.70710678,6.76776695 5.70710678,6.29289322 6,6 C6.29289322,5.70710678 6.76776695,5.70710678 7.06066017,6 L12,10.9393398 L16.9393398,6 C17.232233,5.70710678 17.7071068,5.70710678 18,6 C18.2928932,6.29289322 18.2928932,6.76776695 18,7.06066017 L13.0606602,12 L18,16.9393398 C18.2928932,17.232233 18.2928932,17.7071068 18,18 C17.7071068,18.2928932 17.232233,18.2928932 16.9393398,18 L12,13.0606602 L7.06066017,18 C6.76776695,18.2928932 6.29289322,18.2928932 6,18 C5.70710678,17.7071068 5.70710678,17.232233 6,16.9393398 L10.9393398,12 Z'></path></svg>`
 
-const prtMoreIcon = `<svg viewBox='0 0 18 18' fill='currentColor' width='18' height='18'><path d='M4,8 L6,8 L6,10 L4,10 L4,8 Z M8,8 L10,8 L10,10 L8,10 L8,8 Z M12,8 L14,8 L14,10 L12,10 L12,8 Z'></path></svg>`
+const prtMoreIcon = `<svg viewBox='0 0 18 18' fill='#bebebe' width='18' height='18'><path d='M4,8 L6,8 L6,10 L4,10 L4,8 Z M8,8 L10,8 L10,10 L8,10 L8,8 Z M12,8 L14,8 L14,10 L12,10 L12,8 Z'></path></svg>`
 
 const prototypersLogo = `<?xml version='1.0' encoding='UTF-8'?>
   <svg width='235px' height='31px' viewBox='0 0 235 31' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>

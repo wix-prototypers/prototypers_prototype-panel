@@ -70,6 +70,10 @@
   font-family: "HelveticaNeueW01-45Ligh";
 }
 
+.prototype-panel.prototype-panel-hidden {
+  display: none;
+}
+
 .prt-panel-structure {
   background: var(--G1);
   width: 230px;
@@ -118,7 +122,7 @@
 }
 
 .prt-panel-header {
-  padding: 14px 8px 14px 18px;
+  padding: 12px 8px 14px 18px;
   justify-content: space-between;
   align-items: center;
   background: var(--G2);
@@ -132,7 +136,12 @@
 .prt-panel-header-actions {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.prt-panel-header-icons {
+  width: unset !important;
 }
 
 .prt-panel-header-actions div {
@@ -182,10 +191,27 @@
   color: var(--prt-blue);
   font-weight: 400;
   cursor: pointer;
+  font-size: 14px;
+  position: relative;
 }
 
 .prt-panel-save:hover {
   color: var(--prt-light-blue)
+}
+
+.prt-panel-save.prt-saved:after {
+  content: "Saved";
+  left: 0;
+  color: var(--G4);
+  background: var(--G2);
+  position: absolute;
+  visibility: hidden;
+  animation: 0.8s fadeIn;
+}
+
+@keyframes fadeIn {
+  0% { visibility: visible; }
+  100% { visibility: hidden; }
 }
 
 .prt-panel-content {
