@@ -24,7 +24,7 @@ const panelSections = [
       {
         "fieldName" : "change-main-title",
         "fieldLabel": "Change the title:",
-        "divider": true,
+        "divider": false,
         "toolTip": "",
         "function": "changeTheMainTitle",
         "disabled": false,
@@ -33,11 +33,11 @@ const panelSections = [
       },
       {
         "fieldName" : "do-something-button",
-        "fieldLabel": "Start something:",
+        "fieldLabel": "Test title animation:",
         "divider": true,
         "toolTip": "",
         "function": "clickStartButton",
-        "disabled": true,
+        "disabled": false,
         "fieldType": "button",
         "currentValue": "Start"
       },
@@ -120,10 +120,8 @@ function changeHoverEffect(name, value) {
   $(".stage-element").attr("hover",value);
   if(value == "overlay") {
     disablePrtPanelField(`overlay-color-toggle`, false);
-    disablePrtPanelField(`do-something-button`, false);
   } else {
     disablePrtPanelField(`overlay-color-toggle`, true);
-    disablePrtPanelField(`do-something-button`, true);
   }
 }
 
@@ -142,4 +140,11 @@ function changeGagBetweenElmentes(name, value) {
 
 function changeTheMainTitle(name, value) {
   $(".stage-title").text(value);
+}
+
+function clickStartButton() {
+  $(".stage-title").addClass("animation");
+  setTimeout(function () {
+    $(".stage-title").removeClass("animation");
+  }, 2000);
 }

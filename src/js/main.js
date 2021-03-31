@@ -332,10 +332,13 @@ For numeric input - this function also update the spinner / slider with the curr
 function initPrototypePanelControls() {
   let selectedValue;
 
-  // What happens after each non-numeric input change
+
   document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
+    let name = inputChanged.getAttribute('name');
+    const theFunction = document.querySelector(`.prt-panel-field[name='${name}']`).getAttribute('call');
     inputChanged.addEventListener('change', function(e) {
-      let name = e.target.getAttribute('name');
+      // let name = e.target.getAttribute('name');
+      // What happens after each non-numeric input change
       if ((!e.target.classList.contains('prt-spinner')) && (!e.target.classList.contains('prt-slider'))) {
         if (e.target.classList.contains('prt-text-input')) { // the input is a text field
           if(!e.target.value) { // invalid text value - set the default value
@@ -346,19 +349,20 @@ function initPrototypePanelControls() {
           selectedValue = document.querySelector(`input[name='${name}']:checked`).getAttribute('value');
         }
         // Call the relevant function
-        const theFunction = document.querySelector(`.prt-panel-field[name='${name}']`).getAttribute('call');
+        // const theFunction = document.querySelector(`.prt-panel-field[name='${name}']`).getAttribute('call');
         window[theFunction] && window[theFunction](`${name}`, `${selectedValue}`);
       }
     });
-  });
 
-  // What happens after each numeric input change (spinner or slider)
-  document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
-    let selectedValue;
+    if (inputChanged.classList.contains('prt-button-input')) {
+      inputChanged.addEventListener('click', function(e) {
+        window[theFunction] && window[theFunction](`${name}`);
+      });
+    }
 
-    inputChanged.addEventListener('input', function(e) {
-      let name = e.target.getAttribute('name');
-      if (e.target.classList.contains('prt-spinner') || e.target.classList.contains('prt-slider')) {
+    // What happens after each numeric input change (spinner or slider)
+    if (inputChanged.classList.contains('prt-spinner') || inputChanged.classList.contains('prt-slider')) {
+      inputChanged.addEventListener('input', function(e) {
         selectedValue = e.target.value;
         changesSliderWidth(name, selectedValue);
         if (e.target.classList.contains('prt-spinner')) { // need to update the slider value
@@ -369,12 +373,32 @@ function initPrototypePanelControls() {
           let spinnerField = document.querySelector(`.prt-spinner[name='${name}']`);
           spinnerField.value = selectedValue;
         }
-        const theFunction = document.querySelector(`.prt-panel-field[name='${name}']`).getAttribute('call');
         // Call the relevant function
         window[theFunction](`${name}`, `${selectedValue}`);
-      }
-    });
+      });
+    }
   });
+
+  // What happens after each numeric input change (spinner or slider)
+  // document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
+  //   let selectedValue;
+  //   inputChanged.addEventListener('input', function(e) {
+  //     if (e.target.classList.contains('prt-spinner') || e.target.classList.contains('prt-slider')) {
+  //       selectedValue = e.target.value;
+  //       changesSliderWidth(name, selectedValue);
+  //       if (e.target.classList.contains('prt-spinner')) { // need to update the slider value
+  //         let sliderField = document.querySelector(`.prt-slider[name='${name}']`);
+  //         sliderField.value = selectedValue;
+  //       }
+  //       if (e.target.classList.contains('prt-slider')) { // need to update the spinner value
+  //         let spinnerField = document.querySelector(`.prt-spinner[name='${name}']`);
+  //         spinnerField.value = selectedValue;
+  //       }
+  //       // Call the relevant function
+  //       window[theFunction](`${name}`, `${selectedValue}`);
+  //     }
+  //   });
+  // });
 }
 
 /* Update the background width of the slider after changing the value

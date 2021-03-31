@@ -23,7 +23,7 @@
     grid-column-gap: 35px;
   }
 
-  .stage>span {
+  .stage > .stage-title {
     position: absolute;
     top: 40px;
     left: 50%;
@@ -32,6 +32,17 @@
     font-family: var(--madefor);
     color: #48515a;
     letter-spacing: 1px;
+  }
+
+  .stage-title.animation {
+    animation: title-animation 0.6s cubic-bezier(0.65, 0, 0.35, 1) 3;
+    animation-direction: reverse;
+  }
+
+  @keyframes title-animation {
+    0% { font-size: 20px; }
+    50% { font-size: 23px; }
+    100% { font-size: 20px; }
   }
 
   .stage[layout="list"] {
