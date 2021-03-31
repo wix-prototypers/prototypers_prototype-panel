@@ -42,14 +42,15 @@ const panelSections = [
         "currentValue": "Start"
       },
       {
-        "fieldName" : "do-something-button",
+        "fieldName" : "select-bg-color",
         "fieldLabel": "Test title animation:",
         "divider": true,
         "toolTip": "",
-        "function": "clickStartButton",
+        "function": "changeItemBackground",
         "disabled": false,
         "fieldType": "color",
-        "currentValue": "#DDDDDD"
+        "defaultIndex": 0,
+        "colorOptions": ["#B6C1CD","#5e89b7","#90729c","#90729c","#90729c"]
       },
       {
         "fieldName" : "select-hover-radiobtn",
@@ -157,4 +158,8 @@ function clickStartButton() {
   setTimeout(function () {
     $(".stage-title").removeClass("animation");
   }, 2000);
+}
+
+function changeItemBackground(name, value) {
+  $(".stage-element").css('background', value)
 }

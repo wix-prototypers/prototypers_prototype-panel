@@ -1026,7 +1026,7 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
 }
 
 .prt-color .prt-color-picker {
-  width: 48px;
+  width: 44px;
   background: var(--G2);
   border: 1px solid var(--G3);
   color: var(--G5);
@@ -1039,24 +1039,78 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
 }
 
 .prt-color .prt-color-picker .prt-color-chevron {
-  height: 24px;
+  height: 23px;
   width: 17px;
   background: var(--G2);
   right: 0;
   top: 0;
   position: absolute;
   cursor: pointer;
-  border-left: 1px solid var(--G4);
+  border-left: 1px solid var(--G3);
+  border-radius: 0 3px 3px 0;
 }
 
 .prt-color-chevron:after {
-color: var(--G7);
-content: "\25BC";
-    font-size: 12px;
-    margin: 3px 4px;
-    display: inline-block;
+  color: var(--G7);
+  content: "\25BC";
+  font-size: 12px;
+  margin: 3px 4px;
+  display: inline-block;
 }
 
+.prt-color-chevron.prt-selected:after {
+  color: var(--prt-light-blue);
+}
+
+.prt-color-picker-content {
+  /* height: 110px; */
+  width: 99px;
+  position: absolute;
+  background: var(--G2);
+  border: 1px solid var(--G3);
+  z-index: 1;
+  left: -1px;
+  top: 26px;
+  border-radius: 4px;
+  padding: 10px;
+  box-sizing: border-box;
+  display: inline-grid;
+  grid-template-columns: repeat(auto-fit, 16px);
+  grid-gap: 10px 12px;
+  visibility: hidden;
+}
+
+.prt-color-picker-content.prt-visible {
+  visibility: visible;
+}
+
+.prt-color-picker-content .prt-color-item {
+  position: relative;
+  height: 22px;
+  cursor: pointer;
+}
+
+.prt-color-input {
+  position: absolute;
+z-index: 1;
+opacity: 0;
+cursor: pointer;
+}
+
+.prt-color-item .prt-color-circle {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: aquamarine;
+  cursor: pointer;
+  box-shadow: inset 0px 0px 0 2px var(--G2);
+  box-sizing: border-box;
+  position: absolute;
+}
+
+.prt-color-input:checked + .prt-color-circle {
+  border: 1px solid var(--prt-light-blue);
+}
 
 .prt-color input[type="text"].prt-color-code {
   width: 70px;

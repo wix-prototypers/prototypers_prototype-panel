@@ -133,6 +133,15 @@ function initPrtPanelEvents() {
     });
   });
 
+  document.querySelectorAll('.prt-color-chevron').forEach((colorDropdown) => {
+    colorDropdown.addEventListener('click', function() {
+      colorDropdown.classList.toggle('prt-selected');
+      colorDropdown.nextElementSibling.classList.toggle('prt-visible');
+    });
+  });
+
+
+
   // open or close section
   document.querySelectorAll('.prt-panel-section-header').forEach((sectionHeader) => {
     if (!sectionHeader.classList.contains('prt-disable-closing')) {
@@ -296,9 +305,16 @@ function prtPanelInputContent(field) {
     break;
     case 'color':
     content = `<div class='prt-color'>
-    <div class='prt-text-input prt-color-picker' name='${field.fieldName}' style='background:${field.currentValue}'>
-    <div class='prt-color-chevron'></div></div>
-    <input class='prt-text-input prt-color-code' value='${field.currentValue}' type='text' name='${field.fieldName}'>
+    <div class='prt-text-input prt-color-picker' name='${field.fieldName}' style='background:${field.colorOptions[field.defaultIndex]}'>
+    <div class='prt-color-chevron'></div>
+    <div class='prt-color-picker-content'>`;
+    for (let i = 0; i < field.colorOptions.length; i++) {
+      i == field.defaultIndex ? checked = 'checked' : checked = '';
+      content += `<div class='prt-color-item'><input class='prt-color-input' type='radio' value='${field.colorOptions[i]}' name='${field.fieldName}' id='${field.fieldName}-${i}' ${checked}>
+      <span class='prt-color-circle ${selected}' style='background:${field.colorOptions[i]}'></span></div>`;
+    }
+    content += `</div></div>
+    <input class='prt-text-input prt-color-code' value='${field.colorOptions[field.defaultIndex]}' type='text' name='${field.fieldName}'>
     <div class='prt-container-input-number'><input type='number' class='prt-spinner prt-unchecked-input' name='${field.fieldName}' min='0' max='100' step='1' suffix='%' value='100'>
     <span class='prt-sfx-label'>%</span></div>    </div>`;
     break;
@@ -355,6 +371,13 @@ function initPrototypePanelControls() {
           selectedValue = document.querySelector(`input[name='${name}']`).value;
         } else {
           selectedValue = document.querySelector(`input[name='${name}']:checked`).getAttribute('value');
+        }
+
+        if (e.target.classList.contains('prt-color-input')) {
+          document.querySelector(`.prt-color-picker[name='${name}']`).style.background = selectedValue;
+          document.querySelectorAll('.prt-color-chevron').forEach((chevron) => { chevron.classList.remove('prt-selected') });
+          document.querySelectorAll('.prt-color-picker-content').forEach((content) => { content.classList.remove('prt-visible') });
+          document.querySelector(`.prt-color-code[name='${name}']`).value = selectedValue;
         }
         // Call the relevant function
         // const theFunction = document.querySelector(`.prt-panel-field[name='${name}']`).getAttribute('call');
