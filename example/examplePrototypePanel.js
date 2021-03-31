@@ -42,6 +42,16 @@ const panelSections = [
         "currentValue": "Start"
       },
       {
+        "fieldName" : "do-something-button",
+        "fieldLabel": "Test title animation:",
+        "divider": true,
+        "toolTip": "",
+        "function": "clickStartButton",
+        "disabled": false,
+        "fieldType": "color",
+        "currentValue": "#DDDDDD"
+      },
+      {
         "fieldName" : "select-hover-radiobtn",
         "fieldLabel": "Select hover effect:",
         "divider": false,

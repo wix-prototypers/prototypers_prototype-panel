@@ -941,14 +941,14 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
 
 [type="text"].prt-text-input {
   background: var(--G2);
-      border: 1px solid var(--G3);
-      color: var(--G5);
-      height: 25px;
-      width: 180px;
-      padding: 5px 7px;
-      box-sizing: border-box;
-      border-radius: 4px;
-      font-size: 12px;
+  border: 1px solid var(--G3);
+  color: var(--G5);
+  height: 25px;
+  width: 180px;
+  padding: 5px 7px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 12px;
 }
 
 [type="text"].prt-text-input:hover:not(:disabled) {
@@ -974,16 +974,16 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
 
 [type="button"].prt-button-input {
   background: var(--G2);
-      border: 1px solid var(--G3);
-      color: var(--G5);
-      height: 24px;
-      width: 90px;
-      box-sizing: border-box;
-      border-radius: 4px;
-      font-size: 12px;
-      text-align: center;
-      cursor: pointer;
-      outline: none;
+  border: 1px solid var(--G3);
+  color: var(--G5);
+  height: 24px;
+  width: 90px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
 }
 
 [type="button"].prt-button-input:hover:not(:disabled):not(:active) {
@@ -1001,4 +1001,63 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
   border: 1px solid var(--G1);
   background-color: var(--G2);
   color: var(--G4);
+}
+
+
+/* ------------------------------------- Color Input style -------------------------------------*/
+.prt-color {
+  width: 180px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.prt-color .prt-container-input-number input[type="number"] {
+  width: 48px;
+  height: 25px;
+}
+
+.prt-color .prt-container-input-number:hover:after,
+.prt-color .prt-container-input-number:hover:before {
+  content: unset;
+}
+
+.prt-color .prt-container-input-number:hover > .prt-sfx-label {
+  display: block;
+}
+
+.prt-color .prt-color-picker {
+  width: 48px;
+  background: var(--G2);
+  border: 1px solid var(--G3);
+  color: var(--G5);
+  height: 25px;
+  padding: 5px 7px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 12px;
+  position: relative;
+}
+
+.prt-color .prt-color-picker .prt-color-chevron {
+  height: 24px;
+  width: 17px;
+  background: var(--G2);
+  right: 0;
+  top: 0;
+  position: absolute;
+  cursor: pointer;
+  border-left: 1px solid var(--G4);
+}
+
+.prt-color-chevron:after {
+color: var(--G7);
+content: "\25BC";
+    font-size: 12px;
+    margin: 3px 4px;
+    display: inline-block;
+}
+
+
+.prt-color input[type="text"].prt-color-code {
+  width: 70px;
 }

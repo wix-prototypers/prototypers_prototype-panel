@@ -294,6 +294,14 @@ function prtPanelInputContent(field) {
     <input class='prt-button-input' value='${field.currentValue}' type='button' name='${field.fieldName}'>
     </div>`;
     break;
+    case 'color':
+    content = `<div class='prt-color'>
+    <div class='prt-text-input prt-color-picker' name='${field.fieldName}' style='background:${field.currentValue}'>
+    <div class='prt-color-chevron'></div></div>
+    <input class='prt-text-input prt-color-code' value='${field.currentValue}' type='text' name='${field.fieldName}'>
+    <div class='prt-container-input-number'><input type='number' class='prt-spinner prt-unchecked-input' name='${field.fieldName}' min='0' max='100' step='1' suffix='%' value='100'>
+    <span class='prt-sfx-label'>%</span></div>    </div>`;
+    break;
   }
   return content;
 };
@@ -434,11 +442,11 @@ function updateInputsFromURL() {
           document.querySelector(`[value=${savedValue}]`).dispatchEvent(new Event('change'));
         } else { // numeric input
           input.value = savedValue;
-          input.getAttribute('type') != "text" ? input.dispatchEvent(new Event('input')) : input.dispatchEvent(new Event('change')); 
+          input.getAttribute('type') != "text" ? input.dispatchEvent(new Event('input')) : input.dispatchEvent(new Event('change'));
         }
       }
     });
-    document.querySelector('.prototype-panel').classList.add('prototype-panel-hidden');
+    // document.querySelector('.prototype-panel').classList.add('prototype-panel-hidden');
   }
 }
 
