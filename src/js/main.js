@@ -120,7 +120,7 @@ function initPrtPanelEvents() {
       let url = window.location.href; // print the url
       // get the all values
       document.querySelectorAll('.prt-panel-field input').forEach((input) => {
-        if (input.checked || (input.classList.contains('prt-spinner') || input.classList.contains('prt-slider'))) {
+        if (input.checked || input.classList.contains('prt-unchecked-input')) {
           values = values + '&' + input.name + '=' + input.value;
         }
       });
@@ -235,8 +235,8 @@ function prtPanelInputContent(field) {
     case 'number':
     field.showSlider ? displaySlider = 'block' : displaySlider = 'none';
     content = `<div class='prt-input-number-area' style='display:flex'>
-    <input type='range' class='prt-slider' name='${field.fieldName}' value=${field.value} min=${field.min} max=${field.max} step=${field.step} style='display:${displaySlider}'/>
-    <div class='prt-container-input-number'><input type='number' class='prt-spinner' name='${field.fieldName}' min='${field.min}' max='${field.max}' step='${field.step}' suffix='${field.suffix}' value='${field.value}'>
+    <input type='range' class='prt-slider prt-unchecked-input' name='${field.fieldName}' value=${field.value} min=${field.min} max=${field.max} step=${field.step} style='display:${displaySlider}'/>
+    <div class='prt-container-input-number'><input type='number' class='prt-spinner prt-unchecked-input' name='${field.fieldName}' min='${field.min}' max='${field.max}' step='${field.step}' suffix='${field.suffix}' value='${field.value}'>
     <span class='prt-sfx-label'>${field.suffix}</span></div>
     </div>`;
     break;
@@ -286,7 +286,7 @@ function prtPanelInputContent(field) {
     break;
     case 'text':
     content = `<div class='prt-text'>
-    <input class='prt-text-input' value='${field.currentValue}' type='text' name='${field.fieldName}'>
+    <input class='prt-text-input prt-unchecked-input' value='${field.currentValue}' type='text' name='${field.fieldName}'>
     </div>`;
     break;
     case 'button':
@@ -426,15 +426,15 @@ function updateInputsFromURL() {
     window.opener.focus();
     document.title = '[New] ' + document.title;
     document.querySelectorAll('.prt-panel-field input').forEach((input) => {
-      if ((input.checked || (input.classList.contains('prt-spinner') || input.classList.contains('prt-slider')))) {
+      if (input.checked || input.classList.contains('prt-unchecked-input')) {
         let name = input.name;
         let savedValue = urlParams.get(`${name}`); // get the relevant value from the URL
-        if (input.getAttribute('type') != "number" && input.getAttribute('type') != "range") {
+        if (input.getAttribute('type') != "number" && input.getAttribute('type') != "range" && input.getAttribute('type') != "text") {
           document.querySelector(`[value=${savedValue}]`).checked = true;
           document.querySelector(`[value=${savedValue}]`).dispatchEvent(new Event('change'));
         } else { // numeric input
           input.value = savedValue;
-          input.dispatchEvent(new Event('input'));
+          input.getAttribute('type') != "text" ? input.dispatchEvent(new Event('input')) : input.dispatchEvent(new Event('change')); 
         }
       }
     });

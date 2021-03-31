@@ -943,7 +943,7 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
   background: var(--G2);
       border: 1px solid var(--G3);
       color: var(--G5);
-      height: 24px;
+      height: 25px;
       width: 180px;
       padding: 5px 7px;
       box-sizing: border-box;
