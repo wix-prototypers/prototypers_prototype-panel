@@ -951,7 +951,7 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
       font-size: 12px;
 }
 
-[type="text"].prt-text-input:hover {
+[type="text"].prt-text-input:hover:not(:disabled) {
   color: var(--G6);
 }
 
@@ -959,4 +959,11 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
   color: var(--G6);
   border: 1px solid var(--prt-blue);
   outline: none;
+}
+
+/* ------- Disabled State ------- */
+[type="text"].prt-text-input:disabled {
+  border: 1px solid var(--G1);
+  background-color: var(--G2);
+  color: var(--G4);
 }

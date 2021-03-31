@@ -27,7 +27,7 @@ const panelSections = [
         "divider": true,
         "toolTip": "",
         "function": "changeTheMainTitle",
-        "disabled": false,
+        "disabled": true,
         "fieldType": "text",
         "currentValue": "Let`s Play!"
       },
@@ -110,8 +110,10 @@ function changeHoverEffect(name, value) {
   $(".stage-element").attr("hover",value);
   if(value == "overlay") {
     disablePrtPanelField(`overlay-color-toggle`, false);
+    disablePrtPanelField(`change-main-title`, false);
   } else {
     disablePrtPanelField(`overlay-color-toggle`, true);
+    disablePrtPanelField(`change-main-title`, true);
   }
 
 
