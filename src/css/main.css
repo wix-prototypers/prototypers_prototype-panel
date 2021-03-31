@@ -967,3 +967,38 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
   background-color: var(--G2);
   color: var(--G4);
 }
+
+
+
+/* ------------------------------------- Button style -------------------------------------*/
+
+[type="button"].prt-button-input {
+  background: var(--G2);
+      border: 1px solid var(--G3);
+      color: var(--G5);
+      height: 24px;
+      width: 90px;
+      box-sizing: border-box;
+      border-radius: 4px;
+      font-size: 12px;
+      text-align: center;
+      cursor: pointer;
+      outline: none;
+}
+
+[type="button"].prt-button-input:hover:not(:disabled):not(:active) {
+  color: var(--prt-blue);
+  border: 1px solid var(--prt-blue);
+}
+
+[type="button"].prt-button-input:active {
+  color: var(--prt-light-blue);
+  border: 1px solid var(--prt-light-blue);
+}
+
+/* ------- Disabled State ------- */
+[type="button"].prt-button-input:disabled {
+  border: 1px solid var(--G1);
+  background-color: var(--G2);
+  color: var(--G4);
+}

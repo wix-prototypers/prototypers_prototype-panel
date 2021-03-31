@@ -27,9 +27,19 @@ const panelSections = [
         "divider": true,
         "toolTip": "",
         "function": "changeTheMainTitle",
-        "disabled": true,
+        "disabled": false,
         "fieldType": "text",
         "currentValue": "Let`s Play!"
+      },
+      {
+        "fieldName" : "do-something-button",
+        "fieldLabel": "Start something:",
+        "divider": true,
+        "toolTip": "",
+        "function": "clickStartButton",
+        "disabled": true,
+        "fieldType": "button",
+        "currentValue": "Start"
       },
       {
         "fieldName" : "select-hover-radiobtn",
@@ -110,13 +120,11 @@ function changeHoverEffect(name, value) {
   $(".stage-element").attr("hover",value);
   if(value == "overlay") {
     disablePrtPanelField(`overlay-color-toggle`, false);
-    disablePrtPanelField(`change-main-title`, false);
+    disablePrtPanelField(`do-something-button`, false);
   } else {
     disablePrtPanelField(`overlay-color-toggle`, true);
-    disablePrtPanelField(`change-main-title`, true);
+    disablePrtPanelField(`do-something-button`, true);
   }
-
-
 }
 
 function changeOverlayColor(name, value) {

@@ -289,6 +289,11 @@ function prtPanelInputContent(field) {
     <input class='prt-text-input' value='${field.currentValue}' type='text' name='${field.fieldName}'>
     </div>`;
     break;
+    case 'button':
+    content = `<div class='prt-button'>
+    <input class='prt-button-input' value='${field.currentValue}' type='button' name='${field.fieldName}'>
+    </div>`;
+    break;
   }
   return content;
 };
