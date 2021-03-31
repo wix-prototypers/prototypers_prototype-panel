@@ -22,7 +22,6 @@ function initPrototypePanel(panelInfo, panelSections) {
           </span>
           </div>
             <span class='prt-panel-title'>${panelInfo.prototypeTitle}
-
             </span>
           </header>
           <div class='prt-panel-content'>
@@ -46,10 +45,18 @@ function initPrototypePanel(panelInfo, panelSections) {
     if (validatePrtPanelInfo(panelInfo)) {
       document.body.insertAdjacentHTML('beforeend', prototypePanelTemplate);
       if (panelSections != null) {
-        panelSections.forEach((section) => { createPrtPanelSection(section) });
-        document.querySelectorAll('.prt-panel-section.isClose .prt-panel-section-header').forEach((closeSection) => { closePrtPanelSection(closeSection) });
-        document.querySelectorAll('.prt-panel-field.disabled').forEach((disabledField) => { disablePrtPanelField(disabledField.getAttribute('name'), true); });
-        document.querySelectorAll('.prt-slider').forEach((sliderField) => { changesSliderWidth(sliderField.getAttribute('name'), sliderField.getAttribute('value')); });
+        panelSections.forEach((section) => {
+          createPrtPanelSection(section)
+        });
+        document.querySelectorAll('.prt-panel-section.isClose .prt-panel-section-header').forEach((closeSection) => {
+          closePrtPanelSection(closeSection)
+        });
+        document.querySelectorAll('.prt-panel-field.disabled').forEach((disabledField) => {
+          disablePrtPanelField(disabledField.getAttribute('name'), true);
+        });
+        document.querySelectorAll('.prt-slider').forEach((sliderField) => {
+          changesSliderWidth(sliderField.getAttribute('name'), sliderField.getAttribute('value'));
+        });
       } else { // section is empty
         document.querySelector('.prt-panel-content').classList.add('prt-only-info-content');
         document.querySelector('.prt-panel-section-header').classList.add('prt-disable-closing');
@@ -87,7 +94,7 @@ function initPrtPanelEvents() {
   initPrototypePanelControls();
 
   // open the panel (after user clicks on the tab)
-  document.querySelector('.prt-panel-tab').addEventListener('click', function () {
+  document.querySelector('.prt-panel-tab').addEventListener('click', function() {
     if (!this.classList.contains('prt-panel-open')) {
       this.classList.add('prt-panel-open');
       document.querySelector('.prt-panel-structure').classList.add('prt-panel-open');
@@ -101,26 +108,26 @@ function initPrtPanelEvents() {
 
   // close the panel
   document.querySelectorAll('.prt-panel-close').forEach((closeBtn) => {
-    closeBtn.addEventListener('click', function () {
+    closeBtn.addEventListener('click', function() {
       document.querySelector('.prt-panel-tab').classList.remove('prt-panel-open');
       document.querySelector('.prt-panel-structure').classList.remove('prt-panel-open');
     });
   });
 
   document.querySelectorAll('.prt-panel-save').forEach((saveBtn) => {
-    saveBtn.addEventListener('click', function () {
+    saveBtn.addEventListener('click', function() {
       let values = '';
       let url = window.location.href; // print the url
       // get the all values
       document.querySelectorAll('.prt-panel-field input').forEach((input) => {
-        if(input.checked || (input.classList.contains('prt-spinner') || input.classList.contains('prt-slider'))) {
+        if (input.checked || (input.classList.contains('prt-spinner') || input.classList.contains('prt-slider'))) {
           values = values + '&' + input.name + '=' + input.value;
         }
       });
       document.querySelector('.prt-panel-save').classList.add('prt-saved');
-      setTimeout(function () {
-         window.open(url.split('?newVersion')[0] + '?newVersion' + values, '_blank');
-         window.focus();
+      setTimeout(function() {
+        window.open(url.split('?newVersion')[0] + '?newVersion' + values, '_blank');
+        window.focus();
         document.querySelector('.prt-panel-save').classList.remove('prt-saved');
       }, 1000);
     });
@@ -129,7 +136,7 @@ function initPrtPanelEvents() {
   // open or close section
   document.querySelectorAll('.prt-panel-section-header').forEach((sectionHeader) => {
     if (!sectionHeader.classList.contains('prt-disable-closing')) {
-      sectionHeader.addEventListener('click', function () {
+      sectionHeader.addEventListener('click', function() {
         closePrtPanelSection(sectionHeader);
       });
     }
@@ -150,15 +157,15 @@ function initPrtPanelEvents() {
   });
 
   document.addEventListener('keyup', (e) => {
-  if (e.shiftKey && e.which == 72) {
-    let panel = document.querySelector('.prototype-panel');
-    if(panel.classList.contains('prototype-panel-hidden')) {
-      panel.classList.remove('prototype-panel-hidden');
+    if (e.shiftKey && e.which == 72) {
+      let panel = document.querySelector('.prototype-panel');
+      if (panel.classList.contains('prototype-panel-hidden')) {
+        panel.classList.remove('prototype-panel-hidden');
 
-    } else {
-      panel.classList.add('prototype-panel-hidden');
+      } else {
+        panel.classList.add('prototype-panel-hidden');
+      }
     }
-  }
   });
 
   /* --- old jquery - for the future --- */
@@ -179,7 +186,10 @@ function initPrtPanelEvents() {
 PARAMETERS: section = the relevant section */
 function createPrtPanelSection(section) {
   let newSection = '';
-  let { sectionNumber, sectionIsOpen } = section;
+  let {
+    sectionNumber,
+    sectionIsOpen
+  } = section;
 
   sectionIsOpen != false ? sectionIsOpen = 'isOpen' : sectionIsOpen = 'isClose';
   newSection = `<div class='prt-panel-section ${sectionIsOpen}' section-number='${sectionNumber}'>
@@ -198,7 +208,9 @@ function createPrtPanelSection(section) {
 PARAMETERS: field = the relevant field */
 function createPrtPanelInput(field) {
   let newSetting = '';
-  let { disabled } = field;
+  let {
+    disabled
+  } = field;
 
   disabled == true ? disabled = ' disabled' : disabled = '';
   let content = prtPanelInputContent(field);
@@ -231,7 +243,7 @@ function prtPanelInputContent(field) {
     case 'toggle':
       field.option1Display.length > 14 ? opacity1 = 1 : opacity1 = 0;
       field.option2Display.length > 14 ? opacity2 = 1 : opacity2 = 0;
-      if(field.defaultOption == 2) {
+      if (field.defaultOption == 2) {
         option1Checked = "";
         option2Checked = "checked";
       } else {
@@ -272,6 +284,11 @@ function prtPanelInputContent(field) {
       }
       content += `</div>`;
       break;
+    case 'text':
+      content = `<div class='prt-text'>
+      <input class='prt-text-input' value='${field.currentValue}' type='text' name='${field.fieldName}'>
+      </div>`;
+      break;
   }
   return content;
 };
@@ -298,8 +315,7 @@ function closePrtPanelSection(section) {
     section.classList.remove('close');
     section.nextElementSibling.classList.remove('close');
     // section.nextElementSibling.children.classList.remove('close');
-  }
-  else {
+  } else {
     section.classList.add('close');
     section.nextElementSibling.classList.add('close');
     section.parentNode.style.maxHeight = '30px';
@@ -313,10 +329,14 @@ function initPrototypePanelControls() {
 
   // What happens after each non-numeric input change
   document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
-    inputChanged.addEventListener('change', function (e) {
+    inputChanged.addEventListener('change', function(e) {
       let name = e.target.getAttribute('name');
       if ((!e.target.classList.contains('prt-spinner')) && (!e.target.classList.contains('prt-slider'))) {
-        e.target.classList.contains('prt-spinner') || e.target.classList.contains('prt-slider') ? selectedValue = e.target.value : selectedValue = document.querySelector(`input[name='${name}']:checked`).getAttribute('value');
+        if (e.target.classList.contains('prt-text-input')) { // the input is a text field
+          selectedValue = document.querySelector(`input[name='${name}']`).value;
+        } else {
+          selectedValue = document.querySelector(`input[name='${name}']:checked`).getAttribute('value');
+        }
         const theFunction = document.querySelector(`.prt-panel-field[name='${name}']`).getAttribute('call');
         // Call the relevant function
         window[theFunction] && window[theFunction](`${name}`, `${selectedValue}`);
@@ -329,7 +349,7 @@ function initPrototypePanelControls() {
   document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
     let selectedValue;
 
-    inputChanged.addEventListener('input', function (e) {
+    inputChanged.addEventListener('input', function(e) {
       let name = e.target.getAttribute('name');
       if (e.target.classList.contains('prt-spinner') || e.target.classList.contains('prt-slider')) {
         selectedValue = e.target.value;
@@ -371,14 +391,14 @@ function changesSliderWidth(name, value) {
 function updateInputsFromURL() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  if(queryString.includes('?newVersion')) {
+  if (queryString.includes('?newVersion')) {
     window.opener.focus();
     document.title = '[New] ' + document.title;
     document.querySelectorAll('.prt-panel-field input').forEach((input) => {
-      if((input.checked || (input.classList.contains('prt-spinner') || input.classList.contains('prt-slider')))) {
+      if ((input.checked || (input.classList.contains('prt-spinner') || input.classList.contains('prt-slider')))) {
         let name = input.name;
         let savedValue = urlParams.get(`${name}`); // get the relevant value from the URL
-        if(input.getAttribute('type') != "number" && input.getAttribute('type') != "range") {
+        if (input.getAttribute('type') != "number" && input.getAttribute('type') != "range") {
           document.querySelector(`[value=${savedValue}]`).checked = true;
           document.querySelector(`[value=${savedValue}]`).dispatchEvent(new Event('change'));
         } else { // numeric input

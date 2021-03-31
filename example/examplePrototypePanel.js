@@ -22,8 +22,18 @@ const panelSections = [
     "sectionTitle": "hover effect",
     "fields": [
       {
+        "fieldName" : "change-main-title",
+        "fieldLabel": "Change the title:",
+        "divider": true,
+        "toolTip": "",
+        "function": "changeTheMainTitle",
+        "disabled": false,
+        "fieldType": "text",
+        "currentValue": "Let`s Play!"
+      },
+      {
         "fieldName" : "select-hover-radiobtn",
-        "fieldLabel": "Select Hover Effect:",
+        "fieldLabel": "Select hover effect:",
         "divider": false,
         "toolTip": "",
         "function": "changeHoverEffect",
@@ -35,7 +45,7 @@ const panelSections = [
       },
       {
         "fieldName" : "overlay-color-toggle",
-        "fieldLabel": "Overlay Color:",
+        "fieldLabel": "Overlay color:",
         "divider": false,
         "toolTip": "",
         "function": "changeOverlayColor",
@@ -55,7 +65,7 @@ const panelSections = [
     "fields": [
       {
         "fieldName" : "layout-thumbnails",
-        "fieldLabel": "Select Layout Elements:",
+        "fieldLabel": "Select layout elements:",
         "divider": "",
         "toolTip": "",
         "function": "changeLayout",
@@ -118,4 +128,8 @@ function changeLayout(name, value) {
 function changeGagBetweenElmentes(name, value) {
   var sfx = $(`input[type="number"][name='${name}']`).attr("suffix");
   $(".stage").css("grid-gap", `${value}${sfx}`)
+}
+
+function changeTheMainTitle(name, value) {
+  $(".stage-title").text(value);
 }

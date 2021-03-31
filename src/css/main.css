@@ -935,3 +935,28 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
 [type="radio"].prt-thumbnails-input:hover ~ .prt-thumbnails-tooltip-item {
   display: flex;
 }
+
+
+/* ------------------------------------- Text Field style -------------------------------------*/
+
+[type="text"].prt-text-input {
+  background: var(--G2);
+      border: 1px solid var(--G3);
+      color: var(--G5);
+      height: 24px;
+      width: 180px;
+      padding: 5px 7px;
+      box-sizing: border-box;
+      border-radius: 4px;
+      font-size: 12px;
+}
+
+[type="text"].prt-text-input:hover {
+  color: var(--G6);
+}
+
+[type="text"].prt-text-input:focus {
+  color: var(--G6);
+  border: 1px solid var(--prt-blue);
+  outline: none;
+}
