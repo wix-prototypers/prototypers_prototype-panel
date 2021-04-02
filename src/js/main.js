@@ -120,8 +120,8 @@ function initPrtPanelEvents() {
       let url = window.location.href; // print the url
       // get the all values
       document.querySelectorAll('.prt-panel-field input').forEach((input) => {
-        if (input.checked || input.classList.contains('prt-unchecked-input')) {
-          values = values + '&' + input.name + '=' + input.value;
+        if (input.checked || input.classList.contains('prt-unchecked-input') || input.classList.contains('prt-opacity-input')) {
+          values = values + '&' + input.name + '=' + input.value.replace('#','!');
         }
       });
       document.querySelector('.prt-panel-save').classList.add('prt-saved');
@@ -139,8 +139,6 @@ function initPrtPanelEvents() {
       colorDropdown.nextElementSibling.classList.toggle('prt-visible');
     });
   });
-
-
 
   // open or close section
   document.querySelectorAll('.prt-panel-section-header').forEach((sectionHeader) => {
@@ -239,6 +237,7 @@ function prtPanelInputContent(field) {
   let checked;
   let selected;
   let displaySlider;
+  let opacityInput = '100';
 
   switch (field.fieldType) {
     case 'number':
@@ -305,18 +304,19 @@ function prtPanelInputContent(field) {
     break;
     case 'color':
     content = `<div class='prt-color'>
-    <div class='prt-text-input prt-color-picker' name='${field.fieldName}' style='background:${field.colorOptions[field.defaultIndex]}'>
+    <div class='prt-text-input prt-color-picker' name='${field.fieldName}' style='background:${field.colorOptions[field.defaultIndex].color}'>
     <div class='prt-color-chevron'></div>
     <div class='prt-color-picker-content'>`;
     for (let i = 0; i < field.colorOptions.length; i++) {
       i == field.defaultIndex ? checked = 'checked' : checked = '';
-      content += `<div class='prt-color-item'><input class='prt-color-input' type='radio' value='${field.colorOptions[i]}' name='${field.fieldName}' id='${field.fieldName}-${i}' ${checked}>
-      <span class='prt-color-circle ${selected}' style='background:${field.colorOptions[i]}'></span></div>`;
+      field.colorOptions[i].opacity ? opacityInput = field.colorOptions[i].opacity : opacityInput = '100';
+      content += `<div class='prt-color-item'><input class='prt-color-input' type='radio' value='${field.colorOptions[i].color}' opacityValue='${opacityInput}' name='${field.fieldName}' id='${field.fieldName}-${i}' ${checked}>
+      <span class='prt-color-circle ${selected}' style='background:${field.colorOptions[i].color}'></span></div>`;
     }
     content += `</div></div>
-    <input class='prt-text-input prt-color-code' value='${field.colorOptions[field.defaultIndex]}' type='text' name='${field.fieldName}'>
-    <div class='prt-container-input-number'><input type='number' class='prt-spinner prt-unchecked-input' name='${field.fieldName}' min='0' max='100' step='1' suffix='%' value='100'>
-    <span class='prt-sfx-label'>%</span></div>    </div>`;
+    <input class='prt-text-input prt-color-code' value='${field.colorOptions[field.defaultIndex].color}' type='text' name='${field.fieldName}' readonly>
+    <div class='prt-container-input-number'><input type='number' class='prt-spinner prt-opacity-input prt-unchecked-input' name='${field.fieldName}' min='0' max='100' step='1' suffix='%' value='${field.colorOptions[field.defaultIndex].opacity ? field.colorOptions[field.defaultIndex].opacity : '100'}'>
+    <span class='prt-sfx-label'>%</span></div></div>`;
     break;
   }
   return content;
@@ -331,7 +331,6 @@ function disablePrtPanelField(fieldName, flag) {
   field.querySelectorAll('input').forEach((disabledInput) => {
     flag ? disabledInput.setAttribute('disabled', 'disabled') : disabledInput.removeAttribute('disabled')
   });
-
   window.disablePrtPanelField = disablePrtPanelField;
 }
 
@@ -356,7 +355,6 @@ For numeric input - this function also update the spinner / slider with the curr
 function initPrototypePanelControls() {
   let selectedValue;
 
-
   document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
     let name = inputChanged.getAttribute('name');
     const theFunction = document.querySelector(`.prt-panel-field[name='${name}']`).getAttribute('call');
@@ -373,18 +371,18 @@ function initPrototypePanelControls() {
           selectedValue = document.querySelector(`input[name='${name}']:checked`).getAttribute('value');
         }
 
-        if (e.target.classList.contains('prt-color-input')) {
-          document.querySelector(`.prt-color-picker[name='${name}']`).style.background = selectedValue;
-          document.querySelectorAll('.prt-color-chevron').forEach((chevron) => { chevron.classList.remove('prt-selected') });
-          document.querySelectorAll('.prt-color-picker-content').forEach((content) => { content.classList.remove('prt-visible') });
-          document.querySelector(`.prt-color-code[name='${name}']`).value = selectedValue;
-        }
         // Call the relevant function
         // const theFunction = document.querySelector(`.prt-panel-field[name='${name}']`).getAttribute('call');
         window[theFunction] && window[theFunction](`${name}`, `${selectedValue}`);
+
+        // color input - update the relevant fields (color code and opacity)
+        if (e.target.classList.contains('prt-color-input')) {
+          changeColorPicker(name, selectedValue, inputChanged)
+        }
       }
     });
 
+    // Click event for the button "input"
     if (inputChanged.classList.contains('prt-button-input')) {
       inputChanged.addEventListener('click', function(e) {
         window[theFunction] && window[theFunction](`${name}`);
@@ -395,8 +393,8 @@ function initPrototypePanelControls() {
     if (inputChanged.classList.contains('prt-spinner') || inputChanged.classList.contains('prt-slider')) {
       inputChanged.addEventListener('input', function(e) {
         selectedValue = e.target.value;
-        changesSliderWidth(name, selectedValue);
-        if (e.target.classList.contains('prt-spinner')) { // need to update the slider value
+        (!inputChanged.classList.contains('prt-opacity-input')) ? changesSliderWidth(name, selectedValue) : '';
+        if (e.target.classList.contains('prt-spinner') && !inputChanged.classList.contains('prt-opacity-input')) { // need to update the slider value
           let sliderField = document.querySelector(`.prt-slider[name='${name}']`);
           sliderField.value = selectedValue;
         }
@@ -459,18 +457,30 @@ function updateInputsFromURL() {
     document.querySelectorAll('.prt-panel-field input').forEach((input) => {
       if (input.checked || input.classList.contains('prt-unchecked-input')) {
         let name = input.name;
-        let savedValue = urlParams.get(`${name}`); // get the relevant value from the URL
-        if (input.getAttribute('type') != "number" && input.getAttribute('type') != "range" && input.getAttribute('type') != "text") {
-          document.querySelector(`[value=${savedValue}]`).checked = true;
-          document.querySelector(`[value=${savedValue}]`).dispatchEvent(new Event('change'));
+        let savedValue = urlParams.get(`${name}`).replace('!','#'); // get the relevant value from the URL
+        if (!input.classList.contains('prt-unchecked-input')) {
+          document.querySelector(`[value='${savedValue}']`).checked = true;
+          document.querySelector(`[value='${savedValue}']`).dispatchEvent(new Event('change'));
         } else { // numeric input
           input.value = savedValue;
+          console.log(savedValue)
           input.getAttribute('type') != "text" ? input.dispatchEvent(new Event('input')) : input.dispatchEvent(new Event('change'));
         }
       }
     });
     // document.querySelector('.prototype-panel').classList.add('prototype-panel-hidden');
   }
+}
+
+function changeColorPicker(name, selectedValue, inputChanged) {
+  document.querySelector(`.prt-color-picker[name='${name}']`).style.background = selectedValue; // change the color input
+  document.querySelectorAll('.prt-color-chevron').forEach((chevron) => { chevron.classList.remove('prt-selected') }); // close the dropdwon
+  document.querySelectorAll('.prt-color-picker-content').forEach((content) => { content.classList.remove('prt-visible') });
+  document.querySelector(`.prt-color-code[name='${name}']`).value = selectedValue;
+  document.querySelector(`.prt-opacity-input[name='${name}']`).value = inputChanged.getAttribute('opacityValue'); // update the opacity field
+  document.querySelector(`.prt-opacity-input[name='${name}']`).dispatchEvent(new Event('input'));
+
+  // document.querySelector(`.prt-color-code[name='${name}']`).dispatchEvent(new Event('change'));
 }
 
 window.initPrototypePanel = initPrototypePanel;

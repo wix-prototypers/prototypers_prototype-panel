@@ -50,7 +50,10 @@ const panelSections = [
         "disabled": false,
         "fieldType": "color",
         "defaultIndex": 0,
-        "colorOptions": ["#B6C1CD","#5e89b7","#90729c","#90729c","#90729c"]
+        "colorOptions": [{"color":"#B6C1CD"},
+                         {"color":"#5e89b7", "opacity":"70"},
+                         {"color":"#90729c"},
+                         {"color":"#B6C1CD", "opacity":"40"}]
       },
       {
         "fieldName" : "select-hover-radiobtn",
@@ -161,5 +164,10 @@ function clickStartButton() {
 }
 
 function changeItemBackground(name, value) {
-  $(".stage-element").css('background', value)
+  if(value.includes("#")) {
+    $(".stage-element").css('background', value)
+  } else {
+    $(".stage-element").css('opacity', value + '%')
+
+  }
 }

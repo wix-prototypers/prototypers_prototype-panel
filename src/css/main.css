@@ -403,12 +403,13 @@ filter: invert(0.85)
   position: absolute;
   right: 5px;
   width: 25px;
-  height: 12px;
+  height: 10px;
   pointer-events: none;
   background: var(--G2);
-  text-align: center;
   border-radius: 0 4px 0 0;
-
+  display: flex;
+align-items: center;
+justify-content: center;
 }
 
 .prt-container-input-number:hover:after {
@@ -416,21 +417,20 @@ filter: invert(0.85)
   content: "\25B2";
   top: 1px;
   right: 1px;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .prt-container-input-number:hover:before {
   color: var(--G7);
   content: "\25BC";
-  bottom: 2px;
+  bottom: 3px;
   right: 1px;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .prt-spinner::-webkit-inner-spin-button {
   opacity: 0;
 }
-
 
 .prt-container-input-number:hover > .prt-sfx-label {
   display: none;
@@ -1018,12 +1018,12 @@ input[type=radio].prt-circle-checkbox:disabled ~ label {
 
 .prt-color .prt-container-input-number:hover:after,
 .prt-color .prt-container-input-number:hover:before {
-  content: unset;
+  width: 20px;
 }
 
-.prt-color .prt-container-input-number:hover > .prt-sfx-label {
+/* .prt-color .prt-container-input-number:hover > .prt-sfx-label {
   display: block;
-}
+} */
 
 .prt-color .prt-color-picker {
   width: 44px;
