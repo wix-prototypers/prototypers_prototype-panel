@@ -120,9 +120,10 @@ function initPrtPanelEvents() {
       let url = window.location.href; // print the url
       // get the all values
       document.querySelectorAll('.prt-panel-field input').forEach((input) => {
-        if (input.checked || input.classList.contains('prt-unchecked-input') || input.classList.contains('prt-opacity-input')) {
-          values = values + '&' + input.name + '=' + input.value.replace('#','!');
+        if (input.checked || input.classList.contains('prt-unchecked-input')) {
+          values = values + '&' + input.name + `${input.classList.contains('prt-opacity-input') ? '[opacity]' : ''}` + '=' + input.value.replace('#','@_>');
         }
+
       });
       document.querySelector('.prt-panel-save').classList.add('prt-saved');
       setTimeout(function() {
@@ -457,13 +458,12 @@ function updateInputsFromURL() {
     document.querySelectorAll('.prt-panel-field input').forEach((input) => {
       if (input.checked || input.classList.contains('prt-unchecked-input')) {
         let name = input.name;
-        let savedValue = urlParams.get(`${name}`).replace('!','#'); // get the relevant value from the URL
+        let savedValue = urlParams.get(`${name +  `${input.classList.contains('prt-opacity-input') ? '[opacity]' : ''}`}`).replace('@_>','#'); // get the relevant value from the URL
         if (!input.classList.contains('prt-unchecked-input')) {
           document.querySelector(`[value='${savedValue}']`).checked = true;
           document.querySelector(`[value='${savedValue}']`).dispatchEvent(new Event('change'));
         } else { // numeric input
           input.value = savedValue;
-          console.log(savedValue)
           input.getAttribute('type') != "text" ? input.dispatchEvent(new Event('input')) : input.dispatchEvent(new Event('change'));
         }
       }
