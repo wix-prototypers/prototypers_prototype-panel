@@ -2,10 +2,7 @@
   "name": "prototype-panel",
   "version": "1.0.0",
   "description": "The \"Prototype Panel\" goal is to add a layer of information to our prototypes. This panel allows us to improve the experience by adding more capabilities that will allow our users to interact and play with the prototype itself.",
-  "main": "index.js",
-  "directories": {
-    "example": "example"
-  },
+  "main": "main.js",
   "scripts": {
     "build": "webpack"
   },
@@ -13,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/wix-prototypers/prototypers_prototype-panel.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Maayan Polak",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/wix-prototypers/prototypers_prototype-panel/issues"
   },
