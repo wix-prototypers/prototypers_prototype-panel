@@ -41,11 +41,11 @@ const panelSections = [
         "function": "changeOverlayColor",
         "disabled": true,
         "fieldType": "toggle",
-        "isChecked": "",
         "option1Display": "Light",
         "option1Value" : "light",
         "option2Display": "Dark",
         "option2Value" : "dark",
+        "defaultOption": 1
       }
     ]
   } ,

@@ -158,7 +158,6 @@
   color: var(--G7);
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .prt-panel-pin, .prt-panel-dir {
@@ -760,12 +759,11 @@ input[type=radio].prt-circle-checkbox ~ label {
 }
 
 /* ------- Disabled State ------- */
-input[type=radio].prt-circle-checkbox:disabled:before {
-  border: solid 1px var(--G2);
+input[type=radio].prt-circle-checkbox:checked:disabled + .prt-checkmark {
+  background-color: var(--G3);
 }
-
-input[type=radio].prt-circle-checkbox:disabled:checked:before {
-  background-color: var(--G2);
+input[type=radio].prt-circle-checkbox:disabled + .prt-checkmark {
+  border: solid 1px var(--G3);
 }
 
 input[type=radio].prt-circle-checkbox:disabled ~ label {
