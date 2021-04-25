@@ -26,7 +26,7 @@ const panelSections = [
         "fieldLabel": "Change the title:",
         "divider": false,
         "toolTip": "",
-        "function": "changeTheMainTitle",
+        "callback": "changeTheMainTitle",
         "disabled": false,
         "fieldType": "text",
         "currentValue": "Let`s Play!"
@@ -36,7 +36,7 @@ const panelSections = [
         "fieldLabel": "Test title animation:",
         "divider": true,
         "toolTip": "",
-        "function": "clickStartButton",
+        "callback": "clickStartButton",
         "disabled": false,
         "fieldType": "button",
         "currentValue": "Start"
@@ -46,7 +46,7 @@ const panelSections = [
         "fieldLabel": "Test title animation:",
         "divider": true,
         "toolTip": "",
-        "function": "changeItemBackground",
+        "callback": "changeItemBackground",
         "disabled": false,
         "fieldType": "color",
         "defaultIndex": 0,
@@ -60,7 +60,7 @@ const panelSections = [
         "fieldLabel": "Select hover effect:",
         "divider": false,
         "toolTip": "",
-        "function": "changeHoverEffect",
+        "callback": "changeHoverEffect",
         "disabled": false,
         "fieldType": "radio-button",
         "defaultIndex": 0,
@@ -72,7 +72,7 @@ const panelSections = [
         "fieldLabel": "Overlay color:",
         "divider": false,
         "toolTip": "",
-        "function": "changeOverlayColor",
+        "callback": "changeOverlayColor",
         "disabled": true,
         "fieldType": "toggle",
         "option1Display": "Light",
@@ -92,7 +92,7 @@ const panelSections = [
         "fieldLabel": "Select layout elements:",
         "divider": "",
         "toolTip": "",
-        "function": "changeLayout",
+        "callback": "changeLayout",
         "disabled": false,
         "fieldType": "thumbnails",
         "defaultIndex": 1,
@@ -105,7 +105,7 @@ const panelSections = [
         "fieldLabel": "Change the gap between the elements:",
         "divider": false,
         "toolTip": "",
-        "function": "changeGagBetweenElmentes",
+        "callback": "changeGagBetweenElmentes",
         "disabled": "",
         "fieldType": "number",
         "min" : "10",
@@ -130,7 +130,7 @@ window.onload = function(e) {
 };
 
 /* ------------------ (4) Functions - write the relevant function for each input ------------------ */
-function changeHoverEffect(name, value) {
+function changeHoverEffect(name, value, e) {
   $(".stage-element").attr("hover",value);
   if(value == "overlay") {
     disablePrtPanelField(`overlay-color-toggle`, false);
@@ -139,20 +139,20 @@ function changeHoverEffect(name, value) {
   }
 }
 
-function changeOverlayColor(name, value) {
+function changeOverlayColor(name, value, e) {
   $(".stage-element").attr("color",value);
 }
 
-function changeLayout(name, value) {
+function changeLayout(name, value, e) {
   $(".stage").attr("layout",value);
 }
 
-function changeGagBetweenElmentes(name, value) {
+function changeGagBetweenElmentes(name, value, e) {
   var sfx = $(`input[type="number"][name='${name}']`).attr("suffix");
   $(".stage").css("grid-gap", `${value}${sfx}`)
 }
 
-function changeTheMainTitle(name, value) {
+function changeTheMainTitle(name, value, e) {
   $(".stage-title").text(value);
 }
 
@@ -163,7 +163,7 @@ function clickStartButton() {
   }, 2000);
 }
 
-function changeItemBackground(name, value) {
+function changeItemBackground(name, value, e) {
   if(value.includes("#")) {
     $(".stage-element").css('background', value)
   } else {
