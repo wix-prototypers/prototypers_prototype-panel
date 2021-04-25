@@ -151,96 +151,112 @@ function createPrtPanelInput(fieldData) {
 
 /* Add the relevant html content for each input type
 PARAMETERS: field = the relevant field  */
-function prtPanelInputContent(field) {
+function prtPanelInputContent(fieldData) {
   let content = '';
   let opacity1;
   let opacity2;
-  let option1Checked;
-  let option2Checked;
+  // let option1Checked;
+  // let option2Checked;
   let checked;
   let selected;
-  let displaySlider;
+
   let opacityInput = '100';
 
-  switch (field.fieldType) {
-    case 'number':
-    field.showSlider ? displaySlider = 'block' : displaySlider = 'none';
-    content = `<div class='prt-input-number-area' style='display:flex'>
-    <input type='range' class='prt-slider prt-unchecked-input' name='${field.fieldName}' value=${field.value} min=${field.min} max=${field.max} step=${field.step} style='display:${displaySlider}'/>
-    <div class='prt-container-input-number'><input type='number' class='prt-spinner prt-unchecked-input' name='${field.fieldName}' min='${field.min}' max='${field.max}' step='${field.step}' suffix='${field.suffix}' value='${field.value}'>
-    <span class='prt-sfx-label'>${field.suffix}</span></div>
-    </div>`;
-    break;
-    case 'toggle':
-    field.option1Display.length > 14 ? opacity1 = 1 : opacity1 = 0;
-    field.option2Display.length > 14 ? opacity2 = 1 : opacity2 = 0;
-    if (field.defaultOption == 2) {
-      option1Checked = "";
-      option2Checked = "checked";
-    } else {
-      option1Checked = "checked";
-      option2Checked = "";
-    }
-    content = `<div class='prt-toggle'>
-    <input class='prt-toggle-option' id='${field.fieldName}-0' value='${field.option1Value}' option='1' type='radio' name='${field.fieldName}' ${option1Checked}>
-    <label class='prt-toggle-labels' for='${field.fieldName}-0'>${field.option1Display}</label>
-    <span class='prt-toggle-tooltip-option' style='opacity: ${opacity1}'>${field.option1Display}</span>
-    <input class='prt-toggle-option' id='${field.fieldName}-1' value='${field.option2Value}' option='2' type='radio' name='${field.fieldName}' ${option2Checked}>
-    <label class='prt-toggle-labels' for='${field.fieldName}-1'>${field.option2Display}</label>
-    <span class='prt-toggle-tooltip-option right' style='opacity: ${opacity2}'>${field.option2Display}</span>
-    <div class='prt-toggle-bckgrnd'></div>
-    </div>`;
-    break;
-    case 'radio-button':
-    for (let i = 0; i < field.optionsBackendList.length; i++) {
-      i == field.defaultIndex ? checked = 'checked' : checked = '';
-      content += `<div class='prt-checkbox-container'><input class='prt-circle-checkbox' type='radio' id='${field.fieldName}-${i}' value='${field.optionsBackendList[i]}' name='${field.fieldName}' ${checked}>
-      <span class='prt-checkmark'></span>
-      <label for='${field.fieldName}-${i}'>${field.optionsDisplayList[i]}</label>
+  switch (fieldData.fieldType) {
+    case 'number': {
+      const { fieldName, min, max, step, value, suffix, showSlider } = fieldData;
+
+      content = `<div class='prt-input-number-area' style='display:flex'>
+      <input type='range' class='prt-slider prt-unchecked-input' name='${fieldName}' value=${value} min=${min} max=${max} step=${step} style='display:${showSlider ? 'block' : 'none'}'/>
+      <div class='prt-container-input-number'><input type='number' class='prt-spinner prt-unchecked-input' name='${fieldName}' min='${min}' max='${max}' step='${step}' suffix='${suffix}' value='${value}'>
+      <span class='prt-sfx-label'>${suffix}</span></div>
       </div>`;
+      break;
     }
-    break;
-    case 'thumbnails':
-    content = `<div class='prt-thumbnails'>`
-    for (let i = 0; i < field.optionsBackendList.length; i++) {
-      i == field.defaultIndex ? selected = 'selected' : selected = '';
-      i == field.defaultIndex ? checked = 'checked' : checked = '';
-      field.labelsDisplayList[i].length > 9 ? opacity2 = 1 : opacity2 = 0;
-      content += `<div class='prt-thumbnails-item'>
-      <input class='prt-thumbnails-input' type='radio' value='${field.optionsBackendList[i]}' name='${field.fieldName}' id='${field.fieldName}-${i}' ${checked}>
-      <button class='prt-thumbnails-button ${selected}' value='${field.optionsBackendList[i]}'><img src='${field.iconsDisplayList[i]}'></button>
-      <label for='${field.fieldName}-${i}'>${field.labelsDisplayList[i]}</label>
-      <span class='prt-thumbnails-tooltip-item' count='${i + 1}' style='opacity: ${opacity2}'>${field.labelsDisplayList[i]}</span>
+    case 'toggle': {
+      const { fieldName, option1Value, option1Display, option2Value, option2Display, defaultOption } = fieldData;
+      const tooltipWordsLimit = 13;
+
+      content = `<div class='prt-toggle'>
+      <input class='prt-toggle-option' id='${fieldName}-0' value='${option1Value}' option='1' type='radio' name='${fieldName}' ${defaultOption == 2 ? '': 'checked'}>
+      <label class='prt-toggle-labels' for='${fieldName}-0'>${option1Display}</label>
+      <span class='prt-toggle-tooltip-option' style='opacity: ${option1Display.length > tooltipWordsLimit ? 1 : 0}'>${option1Display}</span>
+      <input class='prt-toggle-option' id='${fieldName}-1' value='${option2Value}' option='2' type='radio' name='${fieldName}' ${defaultOption == 2 ? 'checked': ''}>
+      <label class='prt-toggle-labels' for='${fieldName}-1'>${option2Display}</label>
+      <span class='prt-toggle-tooltip-option right' style='opacity: ${option2Display.length > tooltipWordsLimit ? 1 : 0}'>${option2Display}</span>
+      <div class='prt-toggle-bckgrnd'></div>
       </div>`;
+      break;
     }
-    content += `</div>`;
-    break;
-    case 'text':
-    content = `<div class='prt-text'>
-    <input class='prt-text-input prt-unchecked-input' value='${field.currentValue}' type='text' name='${field.fieldName}'>
-    </div>`;
-    break;
-    case 'button':
-    content = `<div class='prt-button'>
-    <input class='prt-button-input' value='${field.currentValue}' type='button' name='${field.fieldName}'>
-    </div>`;
-    break;
-    case 'color':
-    content = `<div class='prt-color'>
-    <div class='prt-text-input prt-color-picker' name='${field.fieldName}' style='background:${field.colorOptions[field.defaultIndex].color}'>
-    <div class='prt-color-chevron'></div>
-    <div class='prt-color-picker-content'>`;
-    for (let i = 0; i < field.colorOptions.length; i++) {
-      i == field.defaultIndex ? checked = 'checked' : checked = '';
-      field.colorOptions[i].opacity ? opacityInput = field.colorOptions[i].opacity : opacityInput = '100';
-      content += `<div class='prt-color-item'><input class='prt-color-input' type='radio' value='${field.colorOptions[i].color}' opacityValue='${opacityInput}' name='${field.fieldName}' id='${field.fieldName}-${i}' ${checked}>
-      <span class='prt-color-circle ${selected}' style='background:${field.colorOptions[i].color}'></span></div>`;
+    case 'radio-button': {
+      const { fieldName, optionsBackendList, optionsDisplayList, defaultIndex } = fieldData;
+
+      for (let i = 0; i < optionsBackendList.length; i++) {
+        i == defaultIndex ? checked = 'checked' : checked = '';
+        content += `<div class='prt-checkbox-container'><input class='prt-circle-checkbox' type='radio' id='${fieldName}-${i}' value='${optionsBackendList[i]}' name='${fieldName}' ${checked}>
+        <span class='prt-checkmark'></span>
+        <label for='${fieldName}-${i}'>${optionsDisplayList[i]}</label>
+        </div>`;
+      }
+      break;
     }
-    content += `</div></div>
-    <input class='prt-text-input prt-color-code' value='${field.colorOptions[field.defaultIndex].color}' type='text' name='${field.fieldName}' readonly>
-    <div class='prt-container-input-number'><input type='number' class='prt-spinner prt-opacity-input prt-unchecked-input' name='${field.fieldName}' min='0' max='100' step='1' suffix='%' value='${field.colorOptions[field.defaultIndex].opacity ? field.colorOptions[field.defaultIndex].opacity : '100'}'>
-    <span class='prt-sfx-label'>%</span></div></div>`;
-    break;
+    case 'thumbnails': {
+      const { fieldName, optionsBackendList, iconsDisplayList, defaultIndex, labelsDisplayList } = fieldData;
+      const tooltipWordsLimit = 8;
+
+      content = `<div class='prt-thumbnails'>`
+      for (let i = 0; i < optionsBackendList.length; i++) {
+        i == defaultIndex ? selected = 'selected' : selected = '';
+        i == defaultIndex ? checked = 'checked' : checked = '';
+        // set position for each thumbnail tooltip - left / center / right
+        let classItemPosition = `${(i + 3) % 3 == 0 ? 'left-prt-tooltip-item' :
+                                  (i + 2) % 3 == 0 ? 'center-prt-tooltip-item' :
+                                  (i + 1) % 3 == 0 ? 'right-prt-tooltip-item' : ''}`;
+        content += `<div class='prt-thumbnails-item'>
+        <input class='prt-thumbnails-input' type='radio' value='${optionsBackendList[i]}' name='${fieldName}' id='${fieldName}-${i}' ${checked}>
+        <button class='prt-thumbnails-button ${selected}' value='${optionsBackendList[i]}'><img src='${iconsDisplayList[i]}'></button>
+        <label for='${fieldName}-${i}'>${labelsDisplayList[i]}</label>
+        <span class='prt-thumbnails-tooltip-item ${classItemPosition}' style='opacity: ${labelsDisplayList[i].length > tooltipWordsLimit ? 1 : 0}'>${labelsDisplayList[i]}</span>
+        </div>`;
+      }
+      content += `</div>`;
+      break;
+    }
+    case 'text': {
+      const { fieldName, currentValue } = fieldData;
+
+      content = `<div class='prt-text'>
+      <input class='prt-text-input prt-unchecked-input' value='${currentValue}' type='text' name='${fieldName}'>
+      </div>`;
+      break;
+    }
+    case 'button': {
+      const { fieldName, currentValue } = fieldData;
+
+      content = `<div class='prt-button'>
+      <input class='prt-button-input' value='${currentValue}' type='button' name='${fieldName}'>
+      </div>`;
+      break;
+    }
+    case 'color': {
+      const { fieldName, colorOptions, defaultIndex } = fieldData;
+
+      content = `<div class='prt-color'>
+      <div class='prt-text-input prt-color-picker' name='${fieldName}' style='background:${colorOptions[defaultIndex].color}'>
+      <div class='prt-color-chevron'></div>
+      <div class='prt-color-picker-content'>`;
+      for (let i = 0; i < colorOptions.length; i++) {
+        i == defaultIndex ? selected = 'selected' : selected = '';
+        i == defaultIndex ? checked = 'checked' : checked = '';
+        content += `<div class='prt-color-item'><input class='prt-color-input' type='radio' value='${colorOptions[i].color}' opacityValue='${colorOptions[i].opacity ? colorOptions[i].opacity : '100'}' name='${fieldName}' id='${fieldName}-${i}' ${checked}>
+        <span class='prt-color-circle ${selected}' style='background:${colorOptions[i].color}'></span></div>`;
+      }
+      content += `</div></div>
+      <input class='prt-text-input prt-color-code' value='${colorOptions[defaultIndex].color}' type='text' name='${fieldName}' readonly>
+      <div class='prt-container-input-number'><input type='number' class='prt-spinner prt-opacity-input prt-unchecked-input' name='${fieldName}' min='0' max='100' step='1' suffix='%' value='${colorOptions[defaultIndex].opacity ? colorOptions[defaultIndex].opacity : '100'}'>
+      <span class='prt-sfx-label'>%</span></div></div>`;
+      break;
+    }
   }
   return content;
 };
@@ -282,18 +298,18 @@ function initPrtPanelEvents() {
   });
 
   // set position for each thumbnail tooltip - left / center / right
-  document.querySelectorAll('.prt-thumbnails-tooltip-item').forEach((thumbnailTooltip) => {
-    let i = thumbnailTooltip.getAttribute('count');
-    if ((i + 2) % 3 == 0) { // left items
-      thumbnailTooltip.classList.add('left-prt-tooltip-item');
-    }
-    if ((i + 1) % 3 == 0) { // center items
-      thumbnailTooltip.classList.add('center-prt-tooltip-item');
-    }
-    if (i % 3 == 0) { // right items
-      thumbnailTooltip.classList.add('right-prt-tooltip-item');
-    }
-  });
+  // document.querySelectorAll('.prt-thumbnails-tooltip-item').forEach((thumbnailTooltip) => {
+  //   let i = thumbnailTooltip.getAttribute('count');
+  //   if ((i + 2) % 3 == 0) { // left items
+  //     thumbnailTooltip.classList.add('left-prt-tooltip-item');
+  //   }
+  //   if ((i + 1) % 3 == 0) { // center items
+  //     thumbnailTooltip.classList.add('center-prt-tooltip-item');
+  //   }
+  //   if (i % 3 == 0) { // right items
+  //     thumbnailTooltip.classList.add('right-prt-tooltip-item');
+  //   }
+  // });
 
   // ---- WIP ---- //
   document.querySelectorAll('.prt-panel-save').forEach((saveBtn) => {
@@ -349,11 +365,6 @@ function initPrtPanelEvents() {
   //   setTimeout(function(){ $('.prt-panel-tab').show(); }, 300);
   // })
 }
-
-
-
-
-
 
 
 /* Add or Rmove disabled from a field - include the label and all the inputs
@@ -469,20 +480,28 @@ function initPrototypePanelControls() {
 
 /* Update the background width of the slider after changing the value
 PARAMETERS: name = for get the relevant input field, value = the selected value */
-function changesSliderWidth(slider, value) {
-  const sliderInput = slider;
-  let inputMin = sliderInput.getAttribute('min');
-  let inputMax = sliderInput.getAttribute('max');
-  let gapValues = inputMax - inputMin;
-  let inputStep = sliderInput.getAttribute('step');
-  let sumSteps = gapValues / inputStep;
-  let sliderWidth = 109; // The width set for the slider
-  let stepWidth = sliderWidth / sumSteps;
-  let currentVal = value;
-  let finalVal = currentVal - inputMin; // The current value is less than the initial value
-  let moveSteps = finalVal / inputStep;
-  let finalWidth = moveSteps * stepWidth;
-  document.head.insertAdjacentHTML('beforeend', `<style>.prt-slider[name=${sliderInput.name}]::after{width:${finalWidth}px}</style>`)
+function changesSliderWidth(sliderInput, value) {
+  const inputMin = sliderInput.getAttribute('min');
+  const inputMax = sliderInput.getAttribute('max');
+  const gapValues = inputMax - inputMin;
+  const inputStep = sliderInput.getAttribute('step');
+  const sumSteps = gapValues / inputStep;
+  const sliderWidth = 109; // The width set for the slider
+  const stepWidth = sliderWidth / sumSteps;
+  const currentVal = value;
+  const finalVal = currentVal - inputMin; // The current value is less than the initial value
+  const moveSteps = finalVal / inputStep;
+  const finalWidth = Math.round(moveSteps * stepWidth);
+  // append the new slider style
+  const styleTagID = `prt-panel-${sliderInput.name}-styling`;
+  const newStyling = `.prt-slider[name=${sliderInput.name}]::after{width:${finalWidth}px}`;
+  const sliderStyleTag = document.getElementById(styleTagID);
+  // if there is an exsit style for this slider - update the style tag conent, if not - create a new style tag
+  if(sliderStyleTag) {
+    sliderStyleTag.innerHTML = newStyling;
+  } else {
+    document.head.insertAdjacentHTML('beforeend', `<style id='${styleTagID}'>${newStyling}</style>`)
+  }
 }
 
 function updateInputsFromURL() {
