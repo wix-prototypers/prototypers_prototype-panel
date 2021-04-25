@@ -61,7 +61,7 @@ function initPrototypePanel(panelInfo, panelSections) {
         // DELETE:  disablePrtPanelField(disabledField.getAttribute('name'), true);
         // DELETE: });
         document.querySelectorAll('.prt-slider').forEach((sliderField) => {
-          changesSliderWidth(sliderField.getAttribute('name'), sliderField.getAttribute('value'));
+          changesSliderWidth(sliderField, sliderField.getAttribute('value'));
         });
         //  DELETE:} else { // section is empty
         //  DELETE: document.querySelector('.prt-panel-content').classList.add('prt-only-info-content');
@@ -389,7 +389,7 @@ For numeric input - this function also update the spinner / slider with the curr
 function initPrototypePanelControls() {
 
   document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
-    const name = inputChanged.getAttribute('name');
+    // DELETE: const name = inputChanged.getAttribute('name');
     const inputChangedParent = inputChanged.closest('.prt-panel-field');
     const theFunction = inputChangedParent.getAttribute('call');
 
@@ -408,10 +408,10 @@ function initPrototypePanelControls() {
         }
         // color input - update the relevant fields (color code and opacity)
         if (inputElm.classList.contains('prt-color-input')) {
-          changeColorPicker(name, selectedValue, inputChanged)
+          changeColorPicker(inputElm.name, selectedValue, inputChanged)
         }
         // Call the relevant function
-        window[theFunction] && window[theFunction](`${name}`, `${selectedValue}`, e);
+        window[theFunction] && window[theFunction](`${inputElm.name}`, `${selectedValue}`, e);
       });
       break;
 
@@ -420,25 +420,26 @@ function initPrototypePanelControls() {
       inputChanged.addEventListener('input', function(e) {
         const inputElm = e.target;
         let selectedValue = inputElm.value;
-        if(!inputChanged.classList.contains('prt-opacity-input')) { // opacity input doesn't require a slider change
-          changesSliderWidth(name, selectedValue);
+        if(!inputElm.classList.contains('prt-opacity-input')) { // opacity input doesn't require a slider change
+          changesSliderWidth(inputElm, selectedValue);
           if (inputElm.classList.contains('prt-spinner')) { // need to update the slider value
-            let sliderField = document.querySelector(`.prt-slider[name='${name}']`);
+            let sliderField = inputChangedParent.querySelector('.prt-slider');
             sliderField.value = selectedValue;
           }
           if (e.target.classList.contains('prt-slider')) { // need to update the spinner value
-            let spinnerField = document.querySelector(`.prt-spinner[name='${name}']`);
+            let spinnerField = inputChangedParent.querySelector('.prt-spinner');
             spinnerField.value = selectedValue;
           }
         }
         // Call the relevant function
-        window[theFunction](`${name}`, `${selectedValue}`, e);
+        window[theFunction](`${inputElm.name}`, `${selectedValue}`, e);
       });
       break;
 
       case "button":
       inputChanged.addEventListener('click', function(e) {
-        window[theFunction] && window[theFunction](`${name}`);
+        const inputElm = e.target;
+        window[theFunction] && window[theFunction](`${inputElm.name}`);
       });
       break;
     }
@@ -468,12 +469,12 @@ function initPrototypePanelControls() {
 
 /* Update the background width of the slider after changing the value
 PARAMETERS: name = for get the relevant input field, value = the selected value */
-function changesSliderWidth(name, value) {
-  let input = document.querySelector(`input[type='range'][name=${name}]`);
-  let inputMin = input.getAttribute('min');
-  let inputMax = input.getAttribute('max');
+function changesSliderWidth(slider, value) {
+  const sliderInput = slider;
+  let inputMin = sliderInput.getAttribute('min');
+  let inputMax = sliderInput.getAttribute('max');
   let gapValues = inputMax - inputMin;
-  let inputStep = input.getAttribute('step');
+  let inputStep = sliderInput.getAttribute('step');
   let sumSteps = gapValues / inputStep;
   let sliderWidth = 109; // The width set for the slider
   let stepWidth = sliderWidth / sumSteps;
@@ -481,7 +482,7 @@ function changesSliderWidth(name, value) {
   let finalVal = currentVal - inputMin; // The current value is less than the initial value
   let moveSteps = finalVal / inputStep;
   let finalWidth = moveSteps * stepWidth;
-  document.head.insertAdjacentHTML('beforeend', `<style>.prt-slider[name=${name}]::after{width:${finalWidth}px}</style>`)
+  document.head.insertAdjacentHTML('beforeend', `<style>.prt-slider[name=${sliderInput.name}]::after{width:${finalWidth}px}</style>`)
 }
 
 function updateInputsFromURL() {
