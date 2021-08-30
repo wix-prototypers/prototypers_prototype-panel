@@ -3,7 +3,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
     entry: './src/js/main.js',
-    mode: 'development',
+    mode: 'production',
     output: {
         path: `${__dirname}/dist`,
         filename: 'prototypePanel.js',
