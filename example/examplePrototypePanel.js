@@ -80,21 +80,6 @@ const panelSections = [
         "value" : "35",
         "showSlider": true,
         "suffix": "px"
-      },
-      {
-        "fieldName" : "example-number",
-        "fieldLabel": "Change the gap between the elements:",
-        "divider": false,
-        "toolTip": "",
-        "function": "changeGagBetweenElmentes",
-        "disabled": true,
-        "fieldType": "number",
-        "min" : "0",
-        "max" : "100",
-        "step" : "1",
-        "value" : "35",
-        "showSlider": true,
-        "suffix": "%"
       }
     ]
   }
