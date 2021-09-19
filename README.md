@@ -13,7 +13,7 @@ The "Prototype Panel" goal is to add a layer of information to our prototypes. T
 
 2. [Create the panel](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-create-the-panel-)
 
-- [Number & Slider Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1-number-)
+- [Number Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1-number-)
 
 - [Toggle Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-toggle-%EF%B8%8F)
 
@@ -40,10 +40,8 @@ This file includes the style of the panel structure and of each element in the p
 
 ### **1. General Structure**
 The general structure of the panel consists of a header, content and footer.<br />
-**Header:**  The header includes the prototype title and the general actions of the panel (_i.e close the panel_, _save changes and change the position of the panel_).
-<br />
-**Contect:** The content is the main part of the panel and is divided to sections. The content will differ according to the type of panel. (1) For an informative panel the content will contain only one section with a short description about the prototype. (2) For an interactive panel, in addition to the informative section, the content will include sections according to your needs. Each section consists of the section name and its content which includes the relevant inputs according to the panel needs.    
-<br />           
+**Header:**  The header includes the prototype title and the general actions of the panel (_i.e close the panel_, _save changes and change the position of the panel_).<br />
+**Contect:** The content is the main part of the panel and is divided to sections. The content will differ according to the type of panel. (1) For an informative panel the content will contain only one section with a short description about the prototype. (2) For an interactive panel, in addition to the informative section, the content will include sections according to your needs. Each section consists of the section name and its content which includes the relevant inputs according to the panel needs.    <br />           
 **Footer:** The footer includes a button to close the panel and our logo with a link to our [‘WixWhooo’ page](https://www.wixwhooo.com/results?type=all&val=prototyper) to contact us.
 
 ### **2. Inputs**
@@ -196,7 +194,9 @@ The `initPrototypePanel()` function adds the information and following propertie
 ```javascript
 let panelInfo = {
   prototypeTitle : "Prototype Name",
-  prototypeDescription : "This is where you can describe the prototype shortly, this description is where you can elaborate and describe in details what's the prototype about.",
+  prototypeDescription : "This is where you can describe the  
+  prototype shortly, this description is where you can elaborate
+  and describe in details what's the prototype about.",
   panelDirection : "right"
 };
 initPrototypePanel(panelInfo);
@@ -377,8 +377,6 @@ Below is a list of properties for each input type. You must define all the prope
    </td>
    <td>
     The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
-      <b>NOTE: </b> This function receives 2 parameters (in the following order): the name ('name' attribute) of the changed input and the selected value.
-      Example: <i>function changeBackgroundStyle(inputName, selectedValue) { }</i>
    </td>
   </tr>
   <tr>
@@ -545,9 +543,7 @@ Below is a list of properties for each input type. You must define all the prope
     String
    </td>
    <td>
-       The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
-      <b>NOTE: </b> This function receives 2 parameters (in the following order): the name ('name' attribute) of the changed input and the selected value.
-      Example: <i>function changeBackgroundStyle(inputName, selectedValue) { }</i>
+    The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
    </td>
   </tr>
   <tr>
@@ -706,9 +702,7 @@ Below is a list of properties for each input type. You must define all the prope
     String
    </td>
    <td>
-        The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
-      <b>NOTE: </b> This function receives 2 parameters (in the following order): the name ('name' attribute) of the changed input and the selected value.
-      Example: <i>function changeBackgroundStyle(inputName, selectedValue) { }</i>
+    The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
    </td>
   </tr>
   <tr>
@@ -841,9 +835,7 @@ Below is a list of properties for each input type. You must define all the prope
     String
    </td>
    <td>
-        The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
-      <b>NOTE: </b> This function receives 2 parameters (in the following order): the name ('name' attribute) of the changed input and the selected value.
-      Example: <i>function changeBackgroundStyle(inputName, selectedValue) { }</i>
+    The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
    </td>
   </tr>
   <tr>
