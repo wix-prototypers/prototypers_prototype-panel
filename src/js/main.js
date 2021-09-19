@@ -103,7 +103,7 @@ PARAMETERS: section = the relevant section */
 function createPrtPanelSection(section) {
   let { sectionNumber, sectionIsOpen, sectionTitle } = section;
   let inputsTemplate = '';
-
+  let newSection = '';
   section.fields.forEach(field => {
     inputsTemplate += createPrtPanelInput(field);
   });
