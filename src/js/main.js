@@ -107,7 +107,6 @@ function createPrtPanelSection(section) {
   section.fields.forEach(field => {
     inputsTemplate += createPrtPanelInput(field);
   });
-
   newSection = `<div class='prt-panel-section ${sectionIsOpen != false ? 'isOpen' : 'isClose'}' section-number='${sectionNumber}'>
   <div class='prt-panel-section-header'><span>${sectionTitle}</span></div>
   <div class='prt-panel-section-content' number='${sectionNumber}'>
@@ -122,9 +121,7 @@ PARAMETERS: field = the relevant field */
 function createPrtPanelInput(fieldData) {
   let { disabled, fieldName, fieldLabel, divider, callback } = fieldData;
   disabled == true ? (disabled = ' disabled') : (disabled = ''); // disabled field ?
-
   let fieldContent = prtPanelInputContent(fieldData);
-
   let newField = `<fieldset class='prt-panel-field' ${disabled} name='${fieldName}' call='${callback}'>
   <label class='prt-panel-field-label'>${fieldLabel}</label>
   ${fieldContent}
@@ -149,7 +146,6 @@ function prtPanelInputContent(fieldData) {
   switch (fieldData.fieldType) {
     case 'number': {
       const { fieldName, min, max, step, value, suffix, showSlider } = fieldData;
-
       content = `<div class='prt-input-number-area' style='display:flex'>
       <input type='range' class='prt-slider prt-unchecked-input' name='${fieldName}' value=${value} min=${min} max=${max} step=${step} style='display:${showSlider ? 'block' : 'none'}'/>
       <div class='prt-container-input-number'><input type='number' class='prt-spinner prt-unchecked-input' name='${fieldName}' min='${min}' max='${max}' step='${step}' suffix='${suffix}' value='${value}'>
@@ -160,7 +156,6 @@ function prtPanelInputContent(fieldData) {
     case 'toggle': {
       const { fieldName, option1Value, option1Display, option2Value, option2Display, defaultOption } = fieldData;
       const tooltipWordsLimit = 13;
-
       content = `<div class='prt-toggle'>
       <input class='prt-toggle-option' id='${fieldName}-0' value='${option1Value}' option='1' type='radio' name='${fieldName}' ${defaultOption == 2 ? '': 'checked'}>
       <label class='prt-toggle-labels' for='${fieldName}-0'>${option1Display}</label>
@@ -187,7 +182,6 @@ function prtPanelInputContent(fieldData) {
     case 'thumbnails': {
       const { fieldName, optionsBackendList, iconsDisplayList, defaultIndex, labelsDisplayList } = fieldData;
       const tooltipWordsLimit = 8;
-
       content = `<div class='prt-thumbnails'>`
       for (let i = 0; i < optionsBackendList.length; i++) {
         i == defaultIndex ? selected = 'selected' : selected = '';
@@ -208,7 +202,6 @@ function prtPanelInputContent(fieldData) {
     }
     case 'text': {
       const { fieldName, currentValue } = fieldData;
-
       content = `<div class='prt-text'>
       <input class='prt-text-input prt-unchecked-input' value='${currentValue}' type='text' name='${fieldName}'>
       </div>`;
@@ -216,7 +209,6 @@ function prtPanelInputContent(fieldData) {
     }
     case 'button': {
       const { fieldName, currentValue } = fieldData;
-
       content = `<div class='prt-button'>
       <input class='prt-button-input' value='${currentValue}' type='button' name='${fieldName}'>
       </div>`;
@@ -224,7 +216,6 @@ function prtPanelInputContent(fieldData) {
     }
     case 'color': {
       const { fieldName, colorOptions, defaultIndex } = fieldData;
-
       content = `<div class='prt-color'>
       <div class='prt-text-input prt-color-picker' name='${fieldName}' style='background:${colorOptions[defaultIndex].color}'>
       <div class='prt-color-chevron'></div>
