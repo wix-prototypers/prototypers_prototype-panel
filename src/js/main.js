@@ -4,12 +4,15 @@
 /*  This function builds the prototype panel and appends it to the body element in your prototype's index file.
 Call this function from one of your .js files in the project. */
 function initPrototypePanel(panelInfo, panelSections) {
+  if(document.querySelector('.prototype-panel')) { // single panel
+    return false;
+  }
+
   const _panelInfo = panelInfo;
   const _panelSections = panelSections;
 
-  if (_panelInfo) {
+  if(validatePrtPanelInfo(_panelInfo)) {
     setPrtPanelDirection(_panelInfo);
-
     let hasSections = _panelSections && _panelSections.length; // there are interactive sections
 
     // Prototype Panel Template
@@ -48,32 +51,19 @@ function initPrototypePanel(panelInfo, panelSections) {
     <div class='prt-panel-tab'>${prtSettingsIcon}</div>
     </div>`;
 
-    if (validatePrtPanelInfo(panelInfo)) {
-      document.body.insertAdjacentHTML('beforeend', prototypePanelTemplate);
-      if (_panelSections != null) {
-        // DELETE:  panelSections.forEach((section) => {
-        // DELETE:    createPrtPanelSection(section)
-        // DELETE:  });
-        document.querySelectorAll('.prt-panel-section.isClose .prt-panel-section-header').forEach((closeSection) => {
-          closePrtPanelSection(closeSection)
-        });
-        // DELETE: document.querySelectorAll('.prt-panel-field.disabled').forEach((disabledField) => {
-        // DELETE:  disablePrtPanelField(disabledField.getAttribute('name'), true);
-        // DELETE: });
-        document.querySelectorAll('.prt-slider').forEach((sliderField) => {
-          changesSliderWidth(sliderField, sliderField.getAttribute('value'));
-        });
-        //  DELETE:} else { // section is empty
-        //  DELETE: document.querySelector('.prt-panel-content').classList.add('prt-only-info-content');
-        //  DELETE: document.querySelector('.prt-panel-section-header').classList.add('prt-disable-closing');
-        //  DELETE: }
-        initPrtPanelEvents(); // add all click and change events of the panel
-        updateInputsFromURL(); // update the panel with the URL parameters
-      }
-    } else console.error('PROTOTYPE PANEL: Invalid parameters for init function, Please fix it (:');
+    document.body.insertAdjacentHTML('beforeend', prototypePanelTemplate);
+    if (hasSections) {
+      document.querySelectorAll('.prt-panel-section.isClose .prt-panel-section-header').forEach((closeSection) => {
+        closePrtPanelSection(closeSection)
+      });
+      document.querySelectorAll('.prt-slider').forEach((sliderField) => {
+        changesSliderWidth(sliderField, sliderField.getAttribute('value'));
+      });
+    }
+    initPrtPanelEvents(); // add all click and change events of the panel
+    updateInputsFromURL(); // update the panel with the URL parameters
   }
 }
-
 
 /* Set the prototype panel direction - the DEFAULT is right */
 function setPrtPanelDirection(panelInfo) {
@@ -84,6 +74,10 @@ function setPrtPanelDirection(panelInfo) {
 
 /* Check if all the panelInfo properties are valid, if not - the panel will not be created and you get error massage */
 function validatePrtPanelInfo(panelInfo) {
+  if (!panelInfo) {
+    console.error('[PROTOTYPE PANEL] Invalid parameters for init function, Please fix it (:');
+    return false;
+  }
   if (
     panelInfo.prototypeTitle === 'undefined' ||
     panelInfo.prototypeTitle == null ||
@@ -92,9 +86,10 @@ function validatePrtPanelInfo(panelInfo) {
     panelInfo.prototypeDescription == null ||
     panelInfo.prototypeDescription == ''
   ) {
-    console.error('PROTOTYPE PANEL: Invalid title or invalid description, Please fix it (:');
+    console.error('[PROTOTYPE PANEL] Invalid title or invalid description, Please fix it (:');
     return false;
-  } else return true;
+  }
+  return true;
 }
 
 /* Create the interactive content (all the sections)
@@ -110,26 +105,19 @@ function createPrtPanelSections(panelSections) {
 /* Create each interactive section (after the prototype info)
 PARAMETERS: section = the relevant section */
 function createPrtPanelSection(section) {
-  let { sectionNumber, sectionIsOpen } = section;
+  let { sectionNumber, sectionIsOpen, sectionTitle } = section;
   let inputsTemplate = '';
 
   section.fields.forEach(field => {
     inputsTemplate += createPrtPanelInput(field);
   });
 
-  sectionIsOpen != false ? sectionIsOpen = 'isOpen' : sectionIsOpen = 'isClose';
-  newSection = `<div class='prt-panel-section ${sectionIsOpen}' section-number='${sectionNumber}'>
-  <div class='prt-panel-section-header'><span>${section.sectionTitle}</span></div>
+  newSection = `<div class='prt-panel-section ${sectionIsOpen != false ? 'isOpen' : 'isClose'}' section-number='${sectionNumber}'>
+  <div class='prt-panel-section-header'><span>${sectionTitle}</span></div>
   <div class='prt-panel-section-content' number='${sectionNumber}'>
   ${inputsTemplate}
   </div>
   </div>`;
-  // DELETE: document.querySelector('.prt-panel-content').insertAdjacentHTML('beforeend', newSection);
-  // DELETE: section.fields.forEach((field) => {
-  // DELETE: let inputField = '';
-  // DELETE: inputField = createPrtPanelInput(field);
-  // DELETE: document.querySelector(`[number='${sectionNumber}']`).insertAdjacentHTML('beforeend', inputField);
-  // DELETE: });
   return newSection;
 }
 
@@ -210,8 +198,8 @@ function prtPanelInputContent(fieldData) {
         i == defaultIndex ? checked = 'checked' : checked = '';
         // set position for each thumbnail tooltip - left / center / right
         let classItemPosition = `${(i + 3) % 3 == 0 ? 'left-prt-tooltip-item' :
-                                  (i + 2) % 3 == 0 ? 'center-prt-tooltip-item' :
-                                  (i + 1) % 3 == 0 ? 'right-prt-tooltip-item' : ''}`;
+        (i + 2) % 3 == 0 ? 'center-prt-tooltip-item' :
+        (i + 1) % 3 == 0 ? 'right-prt-tooltip-item' : ''}`;
         content += `<div class='prt-thumbnails-item'>
         <input class='prt-thumbnails-input' type='radio' value='${optionsBackendList[i]}' name='${fieldName}' id='${fieldName}-${i}' ${checked}>
         <button class='prt-thumbnails-button ${selected}' value='${optionsBackendList[i]}'><img src='${iconsDisplayList[i]}'></button>
@@ -271,13 +259,9 @@ function initPrtPanelEvents() {
   document.querySelector('.prt-panel-tab').addEventListener('click', function() {
     const prtPanelStructure = document.querySelector('.prt-panel-structure');
     if (!this.classList.contains('prt-panel-open')) {
-      // DELETE: this.classList.add('prt-panel-open');
       prtPanelStructure.classList.add('prt-panel-open');
-      // DELETE: document.querySelector('.prt-panel-tab').classList.add('prt-panel-open');
     } else {
-      // DELETE: this.classList.remove('prt-panel-open');
       prtPanelStructure.classList.remove('prt-panel-open');
-      // DELETE: document.querySelector('.prt-panel-tab').classList.remove('prt-panel-open');
     }
   });
 
@@ -398,9 +382,7 @@ function closePrtPanelSection(section) {
 /* Call the relvant function after changing the input. You are responsible for the implementation of this function.
 For numeric input - this function also update the spinner / slider with the current value and change the background width of the slider */
 function initPrototypePanelControls() {
-
   document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
-    // DELETE: const name = inputChanged.getAttribute('name');
     const inputChangedParent = inputChanged.closest('.prt-panel-field');
     const theFunction = inputChangedParent.getAttribute('call');
 
@@ -455,27 +437,6 @@ function initPrototypePanelControls() {
       break;
     }
   });
-
-  // What happens after each numeric input change (spinner or slider)
-  // document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
-  //   let selectedValue;
-  //   inputChanged.addEventListener('input', function(e) {
-  //     if (e.target.classList.contains('prt-spinner') || e.target.classList.contains('prt-slider')) {
-  //       selectedValue = e.target.value;
-  //       changesSliderWidth(name, selectedValue);
-  //       if (e.target.classList.contains('prt-spinner')) { // need to update the slider value
-  //         let sliderField = document.querySelector(`.prt-slider[name='${name}']`);
-  //         sliderField.value = selectedValue;
-  //       }
-  //       if (e.target.classList.contains('prt-slider')) { // need to update the spinner value
-  //         let spinnerField = document.querySelector(`.prt-spinner[name='${name}']`);
-  //         spinnerField.value = selectedValue;
-  //       }
-  //       // Call the relevant function
-  //       window[theFunction](`${name}`, `${selectedValue}`);
-  //     }
-  //   });
-  // });
 }
 
 /* Update the background width of the slider after changing the value
