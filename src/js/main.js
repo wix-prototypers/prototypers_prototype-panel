@@ -19,15 +19,19 @@ function initPrototypePanel(panelInfo, panelSections) {
     const prototypePanelTemplate =
     `<div class='prototype-panel' panel-dir=${_panelInfo.panelDirection}>
     <div class='prt-panel-structure'>
-    <header class="prt-panel-header">
-            <span class="prt-panel-title">${_panelInfo.prototypeTitle}
-            <div class="ptr-close-btn prt-panel-close">
-            <span class="prt-panel-header-actions">
-            <div class='prt-panel-close'>${prtCloseIcon}</div>
-            </span>
-            </div>
-            </span>
-          </header>
+    <header class='prt-panel-header'>
+    <div>
+    <span class='prt-panel-header-actions'>
+    <label class='prt-panel-save'>Save</label>
+    <div class='prt-panel-header-icons'>
+    <div class='prt-panel-more'>${prtMoreIcon}</div>
+    <div class='prt-panel-close'>${prtCloseIcon}</div>
+    </div>
+    </span>
+    </div>
+    <span class='prt-panel-title'>${_panelInfo.prototypeTitle}
+    </span>
+    </header>
     <div class='prt-panel-content ${!hasSections ? 'prt-only-info-content' : ''}'>
     <div class='prt-panel-section'>
     <div class='prt-panel-section-header ${!hasSections ? 'prt-disable-closing' : ''}'><span>Prototype Info</span>
