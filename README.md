@@ -19,7 +19,9 @@ The "Prototype Panel" goal is to add a layer of information to our prototypes. T
 
 - [Radio Buttons Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#3-radio-button-)
 
-- [Thumbnails Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#4-thumbnails-)
+- [Text Field Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#4-text-field-)
+
+- [Thumbnails Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#5-thumbnails-)
 
 [Helper Functions](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#helper-functions)
 
@@ -61,8 +63,8 @@ To use the panel in your prototype you must do these 2 following actions:
 Add the following links in your prototype's index file.
 
 ```HTML
-<script src="https://cdn.jsdelivr.net/gh/wix-prototypers/prototypers_prototype-panel@1/dist/prototypePanel.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wix-prototypers/prototypers_prototype-panel@1/dist/prototypePanel.css">
+<script src="https://cdn.jsdelivr.net/gh/wix-prototypers/prototypers_prototype-panel@2/dist/prototypePanel.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wix-prototypers/prototypers_prototype-panel@2/dist/prototypePanel.css">
 ```
 
 ### **2. Create the panel: 🏗**
@@ -370,15 +372,14 @@ Below is a list of properties for each input type. You must define all the prope
   </tr>
   <tr>
    <td>
-    function
+    callback
    </td>
    <td>
     String
    </td>
    <td>
     The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
-      <b>NOTE: </b> This function receives 2 parameters (in the following order): the name ('name' attribute) of the changed input and the selected value.
-      Example: <i>function changeBackgroundStyle(inputName, selectedValue) { }</i>
+      <b>NOTE: </b> This function receives 3 parameters (in the following order): the name ('name' attribute) of the changed input, the selected value and the event object. Example: <i>function changeBackgroundStyle(inputName, selectedValue, e) { }</i>
    </td>
   </tr>
   <tr>
@@ -478,7 +479,7 @@ Below is a list of properties for each input type. You must define all the prope
   fieldName : "example-input-number",
   fieldLabel : "Input Number Label",
   divider : false,
-  function : "exampleFunction",
+  callback : "exampleFunction",
   disabled : false,
   fieldType : "number",
   min : 0.05,
@@ -539,15 +540,14 @@ Below is a list of properties for each input type. You must define all the prope
   </tr>
   <tr>
    <td>
-    function
+    callback
    </td>
    <td>
     String
    </td>
    <td>
-       The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
-      <b>NOTE: </b> This function receives 2 parameters (in the following order): the name ('name' attribute) of the changed input and the selected value.
-      Example: <i>function changeBackgroundStyle(inputName, selectedValue) { }</i>
+      The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
+      <b>NOTE: </b> This function receives 3 parameters (in the following order): the name ('name' attribute) of the changed input, the selected value and the event object. Example: <i>function changeBackgroundStyle(inputName, selectedValue, e) { }</i>
    </td>
   </tr>
   <tr>
@@ -640,7 +640,7 @@ Below is a list of properties for each input type. You must define all the prope
   fieldName : "example-input-toggle",
   fieldLabel : "Input Toggle Label",
   divider : false,
-  function : "exampleFunction",
+  callback : "exampleFunction",
   disabled : false,
   fieldType : "toggle",
   option1Display : "Option 1",
@@ -700,15 +700,14 @@ Below is a list of properties for each input type. You must define all the prope
   </tr>
   <tr>
    <td>
-    function
+    callback
    </td>
    <td>
     String
    </td>
    <td>
-        The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
-      <b>NOTE: </b> This function receives 2 parameters (in the following order): the name ('name' attribute) of the changed input and the selected value.
-      Example: <i>function changeBackgroundStyle(inputName, selectedValue) { }</i>
+    The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
+      <b>NOTE: </b> This function receives 3 parameters (in the following order): the name ('name' attribute) of the changed input, the selected value and the event object. Example: <i>function changeBackgroundStyle(inputName, selectedValue, e) { }</i>
    </td>
   </tr>
   <tr>
@@ -775,7 +774,7 @@ Below is a list of properties for each input type. You must define all the prope
   fieldName : "example-input-radiobtn",
   fieldLabel : "Radio Button Label",
   divider : false,
-  function : "exampleFunction",
+  callback : "exampleFunction",
   disabled : false,
   fieldType : "radio-button",
   defaultIndex : 3,
@@ -787,7 +786,7 @@ Below is a list of properties for each input type. You must define all the prope
 ];
 ```
 
-##### 4. Thumbnails 🔣
+##### 4. Text Field 🔤
 <table>
   <tr>
    <td>
@@ -835,15 +834,122 @@ Below is a list of properties for each input type. You must define all the prope
   </tr>
   <tr>
    <td>
-    function
+    callback
    </td>
    <td>
     String
    </td>
    <td>
-        The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
-      <b>NOTE: </b> This function receives 2 parameters (in the following order): the name ('name' attribute) of the changed input and the selected value.
-      Example: <i>function changeBackgroundStyle(inputName, selectedValue) { }</i>
+    The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
+      <b>NOTE: </b> This function receives 3 parameters (in the following order): the name ('name' attribute) of the changed input, the selected value and the event object. Example: <i>function changeBackgroundStyle(inputName, selectedValue, e) { }</i>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    disabled
+   </td>
+   <td>
+    Boolean
+   </td>
+   <td>
+    Disable or enable this input field by default.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    fieldType
+   </td>
+   <td>
+    oneOf[“text”]
+   </td>
+   <td>
+    The input type. For this input it must be “text”.
+   </td>
+  </tr>
+     <tr>
+   <td>
+    currentValue
+   </td>
+   <td>
+    String
+   </td>
+   <td>
+    The current text of the relevant element.
+   </td>
+  </tr>
+</table>
+
+##### **Code Example for Text Field Input**
+```javascript
+... fields: [
+{
+  fieldName : "example-input-text-field",
+  fieldLabel : "Text Field Label",
+  divider : false,
+  callback : "changeTheMainTitle",
+  disabled : false,
+  fieldType : "text",
+  currentValue : "Let`s Play!"
+}
+];
+```
+
+##### 5. Thumbnails 🔣
+<table>
+  <tr>
+   <td>
+    NAME
+   </td>
+   <td>
+    TYPE
+   </td>
+   <td>
+    DESCRIPTION
+   </td>
+  </tr>
+  <tr>
+   <td>
+    fieldName
+   </td>
+   <td>
+     String
+   </td>
+   <td>
+    The unique name of the input, will be used by us to access the input in the code.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    fieldLabel
+   </td>
+   <td>
+    String
+   </td>
+   <td>
+    The label that will appear in the panel above the input.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    divider
+   </td>
+   <td>
+    Boolean
+   </td>
+   <td>
+    Show a divider if you want to separate input fields. For your decision, depending on the relationship between the inputs in the same section.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    callback
+   </td>
+   <td>
+    String
+   </td>
+   <td>
+    The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
+      <b>NOTE: </b> This function receives 3 parameters (in the following order): the name ('name' attribute) of the changed input, the selected value and the event object. Example: <i>function changeBackgroundStyle(inputName, selectedValue, e) { }</i>
    </td>
   </tr>
   <tr>
@@ -923,7 +1029,7 @@ Below is a list of properties for each input type. You must define all the prope
   fieldName : "example-input-thumbnails",
   fieldLabel : "Thumbnails Label",
   divider : false,
-  function : "exampleFunction",
+  callback : "exampleFunction",
   disabled : false,
   fieldType : "thumbnails",
   defaultIndex : 1,
