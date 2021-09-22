@@ -169,7 +169,6 @@ function prtPanelInputContent(fieldData) {
     }
     case 'radio-button': {
       const { fieldName, optionsBackendList, optionsDisplayList, defaultIndex } = fieldData;
-
       for (let i = 0; i < optionsBackendList.length; i++) {
         i == defaultIndex ? checked = 'checked' : checked = '';
         content += `<div class='prt-checkbox-container'><input class='prt-circle-checkbox' type='radio' id='${fieldName}-${i}' value='${optionsBackendList[i]}' name='${fieldName}' ${checked}>
@@ -268,20 +267,6 @@ function initPrtPanelEvents() {
     }
   });
 
-  // set position for each thumbnail tooltip - left / center / right
-  // document.querySelectorAll('.prt-thumbnails-tooltip-item').forEach((thumbnailTooltip) => {
-  //   let i = thumbnailTooltip.getAttribute('count');
-  //   if ((i + 2) % 3 == 0) { // left items
-  //     thumbnailTooltip.classList.add('left-prt-tooltip-item');
-  //   }
-  //   if ((i + 1) % 3 == 0) { // center items
-  //     thumbnailTooltip.classList.add('center-prt-tooltip-item');
-  //   }
-  //   if (i % 3 == 0) { // right items
-  //     thumbnailTooltip.classList.add('right-prt-tooltip-item');
-  //   }
-  // });
-
   // ---- WIP ---- //
   document.querySelectorAll('.prt-panel-save').forEach((saveBtn) => {
     saveBtn.addEventListener('click', function() {
@@ -322,7 +307,6 @@ function initPrtPanelEvents() {
   // ---- WIP ---- //
 
 
-
   /* --- old jquery - for the future --- */
   // $('.ptr-dir-btn').click(function () {
   //   $('.prt-panel-tab').hide();
@@ -347,7 +331,6 @@ function disablePrtPanelField(fieldName, flag) {
   // DELETE field.querySelectorAll('input').forEach((disabledInput) => {
   flag ? field.setAttribute('disabled', 'disabled') : field.removeAttribute('disabled');
   // DELETE });
-  window.disablePrtPanelField = disablePrtPanelField;
 }
 
 
@@ -487,6 +470,7 @@ function changeColorPicker(name, selectedValue, inputChanged) {
 }
 
 window.initPrototypePanel = initPrototypePanel;
+window.disablePrtPanelField = disablePrtPanelField;
 
 /* ----- Icons ----- */
 const prtArrowClose =
