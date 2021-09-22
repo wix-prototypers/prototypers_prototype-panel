@@ -21,7 +21,9 @@ The "Prototype Panel" goal is to add a layer of information to our prototypes. T
 
 - [Text Field Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#4-text-field-)
 
-- [Thumbnails Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#5-thumbnails-)
+- [Button](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#5-button-)
+
+- [Thumbnails Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#6-thumbnails-)
 
 [Helper Functions](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#helper-functions)
 
@@ -43,9 +45,9 @@ This file includes the style of the panel structure and of each element in the p
 ### **1. General Structure**
 The general structure of the panel consists of a header, content and footer.<br />
 **Header:**  The header includes the prototype title and the general actions of the panel (_i.e close the panel_, _save changes and change the position of the panel_).
-<br />
+
 **Contect:** The content is the main part of the panel and is divided to sections. The content will differ according to the type of panel. (1) For an informative panel the content will contain only one section with a short description about the prototype. (2) For an interactive panel, in addition to the informative section, the content will include sections according to your needs. Each section consists of the section name and its content which includes the relevant inputs according to the panel needs.    
-<br />           
+        
 **Footer:** The footer includes a button to close the panel and our logo with a link to our [‘WixWhooo’ page](https://www.wixwhooo.com/results?type=all&val=prototyper) to contact us.
 
 ### **2. Inputs**
@@ -54,7 +56,9 @@ The inputs are the interactive part of the panel and allow our users to play, ch
    1. [Number](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1-number-): spinner element with slider element (optional).
    2. [Toggle](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-toggle-%EF%B8%8F): segmented toggle with 2 options.
    3. [Radio Buttons](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#3-radio-button-): list of options. Only 1 option can be selected.
-   4. [Thumbnails](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#4-thumbnails-): square buttons with icons inside and text labels. Only 1 option can be selected.
+   4. [Text Field](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#4-text-field-): text field that allows to change the text of an element.
+   5. [Button](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#5-button-): button that allows to do someting (e.g. refresh, start animation and more).
+   6. [Thumbnails](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#5-thumbnails-): square buttons with icons inside and text labels. Only 1 option can be selected.
 
 
 ## **How To Use?**
@@ -636,19 +640,19 @@ Below is a list of properties for each input type. You must define all the prope
 ##### **Code Example for Toggle Input**
 ```javascript
 ... fields: [
-{
-  fieldName : "example-input-toggle",
-  fieldLabel : "Input Toggle Label",
-  divider : false,
-  callback : "exampleFunction",
-  disabled : false,
-  fieldType : "toggle",
-  option1Display : "Option 1",
-  option1Value : "option1",
-  option2Display : "Option 2",
-  option2Value : "option2",
-  defaultOption: 1
-}
+   {
+     fieldName : "example-input-toggle",
+     fieldLabel : "Input Toggle Label",
+     divider : false,
+     callback : "exampleFunction",
+     disabled : false,
+     fieldType : "toggle",
+     option1Display : "Option 1",
+     option1Value : "option1",
+     option2Display : "Option 2",
+     option2Value : "option2",
+     defaultOption: 1
+   }
 ];
 ```
 
@@ -770,19 +774,19 @@ Below is a list of properties for each input type. You must define all the prope
 ##### **Code Example for Radio Button Input**
 ```javascript
 ... fields: [
-{
-  fieldName : "example-input-radiobtn",
-  fieldLabel : "Radio Button Label",
-  divider : false,
-  callback : "exampleFunction",
-  disabled : false,
-  fieldType : "radio-button",
-  defaultIndex : 3,
-  optionsDisplayList: ["Option 1", "Option 2","Option 3",
-                       "Option 4"],
-  optionsBackendList: ["option1", "option2", "option3",
-                       "option4"]
-}
+   {
+     fieldName : "example-input-radiobtn",
+     fieldLabel : "Radio Button Label",
+     divider : false,
+     callback : "exampleFunction",
+     disabled : false,
+     fieldType : "radio-button",
+     defaultIndex : 3,
+     optionsDisplayList: ["Option 1", "Option 2","Option 3",
+                          "Option 4"],
+     optionsBackendList: ["option1", "option2", "option3",
+                          "option4"]
+   }
 ];
 ```
 
@@ -882,19 +886,127 @@ Below is a list of properties for each input type. You must define all the prope
 ##### **Code Example for Text Field Input**
 ```javascript
 ... fields: [
-{
-  fieldName : "example-input-text-field",
-  fieldLabel : "Text Field Label",
-  divider : false,
-  callback : "changeTheMainTitle",
-  disabled : false,
-  fieldType : "text",
-  currentValue : "Let`s Play!"
-}
+   {
+     fieldName : "example-input-text-field",
+     fieldLabel : "Text Field Label",
+     divider : false,
+     callback : "exampleFunction",
+     disabled : false,
+     fieldType : "text",
+     currentValue : "Let`s Play!"
+   }
 ];
 ```
 
-##### 5. Thumbnails 🔣
+##### 5. Button ⏹
+<table>
+  <tr>
+   <td>
+    NAME
+   </td>
+   <td>
+    TYPE
+   </td>
+   <td>
+    DESCRIPTION
+   </td>
+  </tr>
+  <tr>
+   <td>
+    fieldName
+   </td>
+   <td>
+     String
+   </td>
+   <td>
+    The unique name of the input, will be used by us to access the input in the code.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    fieldLabel
+   </td>
+   <td>
+    String
+   </td>
+   <td>
+    The label that will appear in the panel above the input.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    divider
+   </td>
+   <td>
+    Boolean
+   </td>
+   <td>
+    Show a divider if you want to separate input fields. For your decision, depending on the relationship between the inputs in the same section.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    callback
+   </td>
+   <td>
+    String
+   </td>
+   <td>
+    The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
+      <b>NOTE: </b> This function doesn't receive any parameters, because this input has no selected value. Example: <i>function clickStartButton() { }</i>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    disabled
+   </td>
+   <td>
+    Boolean
+   </td>
+   <td>
+    Disable or enable this input field by default.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    fieldType
+   </td>
+   <td>
+    oneOf[“button”]
+   </td>
+   <td>
+    The input type. For this input it must be “button”.
+   </td>
+  </tr>
+     <tr>
+   <td>
+    currentValue
+   </td>
+   <td>
+    String
+   </td>
+   <td>
+    The button text.
+   </td>
+  </tr>
+</table>
+
+##### **Code Example for Text Field Input**
+```javascript
+... fields: [
+   {
+     fieldName : "example-input-text-field",
+     fieldLabel : "Text Field Label",
+     divider : false,
+     callback : "exampleFunction",
+     disabled : false,
+     fieldType : "button",
+     currentValue : "Click me!"
+   }
+];
+```
+
+##### 6. Thumbnails 🔣
 <table>
   <tr>
    <td>
@@ -1025,22 +1137,22 @@ Below is a list of properties for each input type. You must define all the prope
 ##### **Code Example for Thumbnails**
 ```javascript
 ... fields: [
-{
-  fieldName : "example-input-thumbnails",
-  fieldLabel : "Thumbnails Label",
-  divider : false,
-  callback : "exampleFunction",
-  disabled : false,
-  fieldType : "thumbnails",
-  defaultIndex : 1,
-  optionsDisplayList: ["Option 1", "Option 2",
-                      "Option 3", "Option 4", "Option 5"],
-  optionsBackendList: ["option1", "option2",
-                      "option3", "option4", "option5"],
-  iconsDisplayList: ["./images/example-img1.svg",
-  "./images/example-img2.svg", "./images/example-img3.svg",
-  "./images/example-img4.svg", "./images/example-img5.svg"]
-}
+   {
+     fieldName : "example-input-thumbnails",
+     fieldLabel : "Thumbnails Label",
+     divider : false,
+     callback : "exampleFunction",
+     disabled : false,
+     fieldType : "thumbnails",
+     defaultIndex : 1,
+     optionsDisplayList: ["Option 1", "Option 2",
+                         "Option 3", "Option 4", "Option 5"],
+     optionsBackendList: ["option1", "option2",
+                         "option3", "option4", "option5"],
+     iconsDisplayList: ["./images/example-img1.svg",
+     "./images/example-img2.svg", "./images/example-img3.svg",
+     "./images/example-img4.svg", "./images/example-img5.svg"]
+   }
 ];
 ```
 
