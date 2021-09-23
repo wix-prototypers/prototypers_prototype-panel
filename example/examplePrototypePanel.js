@@ -168,6 +168,5 @@ function changeItemBackground(name, value, e) {
     $(".stage-element").css('background', value)
   } else {
     $(".stage-element").css('opacity', value + '%')
-
   }
 }
