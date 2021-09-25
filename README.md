@@ -8,29 +8,29 @@ The "Prototype Panel" goal is to add a layer of information to our prototypes. T
 [Correct Git Workflow - How to modify and manage panel code](https://docs.google.com/document/d/1hK_F3GwTPpVcZN0sJRZSY-C1Zhdnxj0Tr-7MperWoxc/edit?usp=sharing)
 
 ## **Table of contents**
-[Project Structure](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#project-structure)
+[Project Structure](https://wix-prototypers.github.io/prototypers_prototype-panel/#project-structure)
 
-[Prototype Panel Structure](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#prototype-panel-structure)
+[Prototype Panel Structure](https://wix-prototypers.github.io/prototypers_prototype-panel/#project-structure)
 
-[How To Use?](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#how-to-use)
+[How To Use?](https://wix-prototypers.github.io/prototypers_prototype-panel/#how-to-use)
 
-1. [Connect the panel project](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1-connect-the-panel-project-)
+1. [Connect the panel project](https://wix-prototypers.github.io/prototypers_prototype-panel/#1-connect-the-panel-project-)
 
-2. [Create the panel](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-create-the-panel-)
+2. [Create the panel](https://wix-prototypers.github.io/prototypers_prototype-panel/#2-create-the-panel-)
 
-- [Number & Slider Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1-number-)
+- [Number & Slider Input](https://wix-prototypers.github.io/prototypers_prototype-panel/#1-number-)
 
-- [Toggle Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-toggle-%EF%B8%8F)
+- [Toggle Input](https://wix-prototypers.github.io/prototypers_prototype-panel/#2-toggle-%EF%B8%8F)
 
-- [Radio Buttons Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#3-radio-button-)
+- [Radio Buttons Input](https://wix-prototypers.github.io/prototypers_prototype-panel/#3-radio-button-)
 
-- [Text Field Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#4-text-field-)
+- [Text Field Input](https://wix-prototypers.github.io/prototypers_prototype-panel/#4-text-field-)
 
-- [Button](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#5-button-)
+- [Button](https://wix-prototypers.github.io/prototypers_prototype-panel/#5-button-)
 
-- [Thumbnails Input](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#6-thumbnails-)
+- [Thumbnails Input](https://wix-prototypers.github.io/prototypers_prototype-panel/#6-thumbnails-)
 
-[Helper Functions](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#helper-functions)
+[Helper Functions](https://wix-prototypers.github.io/prototypers_prototype-panel/#helper-functions)
 
 ## **Project Structure**
 
@@ -58,12 +58,12 @@ The general structure of the panel consists of a header, content and footer.<br 
 ### **2. Inputs**
 The inputs are the interactive part of the panel and allow our users to play, change and test different options for the prototype. The panel currently includes four types of inputs:
 
-   1. [Number](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#1-number-): spinner element with slider element (optional).
-   2. [Toggle](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#2-toggle-%EF%B8%8F): segmented toggle with 2 options.
-   3. [Radio Buttons](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#3-radio-button-): list of options. Only 1 option can be selected.
-   4. [Text Field](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#4-text-field-): text field that allows to change the text of an element.
-   5. [Button](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#5-button-): button that allows to do someting (e.g. refresh, start animation and more).
-   6. [Thumbnails](https://github.com/wix-prototypers/prototypers_prototype-panel/tree/master#5-thumbnails-): square buttons with icons inside and text labels. Only 1 option can be selected.
+   1. [Number](https://wix-prototypers.github.io/prototypers_prototype-panel/#1-number-): spinner element with slider element (optional).
+   2. [Toggle](https://wix-prototypers.github.io/prototypers_prototype-panel/#2-toggle-%EF%B8%8F): segmented toggle with 2 options.
+   3. [Radio Buttons](https://wix-prototypers.github.io/prototypers_prototype-panel/#3-radio-button-): list of options. Only 1 option can be selected.
+   4. [Text Field](https://wix-prototypers.github.io/prototypers_prototype-panel/#4-text-field-): text field that allows to change the text of an element.
+   5. [Button](https://wix-prototypers.github.io/prototypers_prototype-panel/#5-button-): button that allows to do someting (e.g. refresh, start animation and more).
+   6. [Thumbnails](https://wix-prototypers.github.io/prototypers_prototype-panel/#6-thumbnails-): square buttons with icons inside and text labels. Only 1 option can be selected.
 
 
 ## **How To Use?**
