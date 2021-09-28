@@ -1,6 +1,6 @@
 
 # **Prototype Panel 🚀**
-The "Prototype Panel" goal is to add a layer of information to our prototypes. This panel allows us to improve the experience by adding more capabilities that will allow our users to interact and play with the prototype itself.
+![info](https://wix-prototypers.github.io/prototypers_prototype-panel/screenshot.png)
 
 ## **External links**
 [Demo Link](https://wix-prototypers.github.io/prototypers_prototype-panel/example/index.html)
