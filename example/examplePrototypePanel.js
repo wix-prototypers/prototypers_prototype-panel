@@ -30,54 +30,54 @@ const panelSections = [
         "fieldType": "text",
         "currentValue": "Let`s Play!"
       },
-      // {
-      //   "fieldName" : "do-something-button",
-      //   "fieldLabel": "Test title animation:",
-      //   "toolTip": "",
-      //   "callback": "clickStartButton",
-      //   "disabled": false,
-      //   "fieldType": "button",
-      //   "currentValue": "Start"
-      // },
-      // {
-      //   "fieldName" : "select-bg-color",
-      //   "fieldLabel": "Test title animation:",
-      //   "toolTip": "",
-      //   "callback": "changeItemBackground",
-      //   "disabled": false,
-      //   "fieldType": "color",
-      //   "defaultIndex": 0,
-      //   "colorOptions": [{"color":"#B6C1CD"},
-      //                    {"color":"#5e89b7", "opacity":"70"},
-      //                    {"color":"#90729c"},
-      //                    {"color":"#B6C1CD", "opacity":"40"}]
-      // },
-      // {
-      //   "fieldName" : "select-hover-radiobtn",
-      //   "fieldLabel": "Select hover effect:",
-      //   "divider": false,
-      //   "toolTip": "",
-      //   "callback": "changeHoverEffect",
-      //   "disabled": false,
-      //   "fieldType": "radio-button",
-      //   "defaultIndex": 0,
-      //   "optionsBackendList": ["border", "overlay", "move-up", "expand"],
-      //   "optionsDisplayList": ["Border", "Overlay", "Move Up", "Expand"]
-      // },
-      // {
-      //   "fieldName" : "overlay-color-toggle",
-      //   "fieldLabel": "Overlay color:",
-      //   "divider": false,
-      //   "toolTip": "",
-      //   "callback": "changeOverlayColor",
-      //   "disabled": true,
-      //   "fieldType": "toggle",
-      //   "option1Display": "Light",
-      //   "option1Value" : "light",
-      //   "option2Display": "Dark",
-      //   "option2Value" : "dark",
-      //   "defaultOption": 1
-      // },
+      {
+        "fieldName" : "do-something-button",
+        "fieldLabel": "Test title animation:",
+        "toolTip": "",
+        "callback": "clickStartButton",
+        "disabled": false,
+        "fieldType": "button",
+        "currentValue": "Start"
+      },
+      {
+        "fieldName" : "select-bg-color",
+        "fieldLabel": "Test title animation:",
+        "toolTip": "",
+        "callback": "changeItemBackground",
+        "disabled": false,
+        "fieldType": "color",
+        "defaultIndex": 0,
+        "colorOptions": [{"color":"#B6C1CD"},
+                         {"color":"#5e89b7", "opacity":"70"},
+                         {"color":"#90729c"},
+                         {"color":"#B6C1CD", "opacity":"40"}]
+      },
+      {
+        "fieldName" : "select-hover-radiobtn",
+        "fieldLabel": "Select hover effect:",
+        "divider": false,
+        "toolTip": "",
+        "callback": "changeHoverEffect",
+        "disabled": false,
+        "fieldType": "radio-button",
+        "defaultIndex": 0,
+        "optionsBackendList": ["border", "overlay", "move-up", "expand"],
+        "optionsDisplayList": ["Border", "Overlay", "Move Up", "Expand"]
+      },
+      {
+        "fieldName" : "overlay-color-toggle",
+        "fieldLabel": "Overlay color:",
+        "divider": false,
+        "toolTip": "",
+        "callback": "changeOverlayColor",
+        "disabled": true,
+        "fieldType": "toggle",
+        "option1Display": "Light",
+        "option1Value" : "light",
+        "option2Display": "Dark",
+        "option2Value" : "dark",
+        "defaultOption": 1
+      },
     ]
   } ,
   {
@@ -120,6 +120,7 @@ window.onload = function(e) {
   let panelInfo = {
     prototypeTitle : "Prototype Name",
     prototypeDescription : "This is where you can describe the prototype shortly, this description is where you can elaborate and describe in details what's the prototype about.",
+    prototypeHowToUse: "Click `Create Discount`, select the first discount type, and start selecting the relevant inputs.",
     panelDirection : "left"
   };
 

@@ -53,7 +53,7 @@ function initPrototypePanel(panelInfo, panelSections) {
           <div class="prt-overview-paragraph">${_panelInfo.prototypeDescription}</div>
           <div class="prt-panel-divider"></div>
           <div class="prt-overview-title">how to use</div>
-          <div class="prt-overview-paragraph">${_panelInfo.prototypeDescription}</div>
+          <div class="prt-overview-paragraph">${_panelInfo.prototypeHowToUse}</div>
           <div class="prt-panel-divider"></div>
           <div class="prt-overview-paragraph prt-signature">Made with ${prtHeart} by&nbsp <a class="by-ux-prt" target="_blank" href="https://www.wixwhooo.com/results?type=all&val=prototyper">UX Prototypers</a></div>
         </div>
@@ -94,39 +94,7 @@ function initPrototypePanel(panelInfo, panelSections) {
       </div>
       </div>
       <div class="prt-show-panel-note">If you need me, press ⇧+H</div>
-    </div>`
-
-
-
-    // `<div class='prototype-panel' panel-dir=${_panelInfo.panelDirection}>
-    // <div class='prt-panel-structure'>
-    // <header class="prt-panel-header">
-    //         <span class="prt-panel-title">${_panelInfo.prototypeTitle}
-    //         <div class="ptr-close-btn prt-panel-close">
-    //         <span class="prt-panel-header-actions">
-    //         <div class='prt-panel-close'>${prtCloseIcon}</div>
-    //         </span>
-    //         </div>
-    //         </span>
-    //       </header>
-    // <div class='prt-panel-content ${!hasSections ? 'prt-only-info-content' : ''}'>
-    // <div class='prt-panel-section'>
-    // <div class='prt-panel-section-header ${!hasSections ? 'prt-disable-closing' : ''}'><span>Prototype Info</span>
-    // </div>
-    // <div class='prt-panel-section-content info-section-content'>
-    // <span>${_panelInfo.prototypeDescription}</span>
-    // </div>
-    // </div>
-    // ${hasSections ? createPrtPanelSections(_panelSections) : ''}
-    // </div>
-    // <div class='prt-panel-footer'>
-    // <a class='by-ux-prt' href='https://www.wixwhooo.com/results?type=all&val=prototyper' target='_blank'>
-    // ${prototypersLogo}
-    // </a>${prtArrowClose}
-    // </div>
-    // </div>
-    // <div class='prt-panel-tab'>${prtSettingsIcon}</div>
-    // </div>`;
+    </div>`;
 
     document.body.insertAdjacentHTML('beforeend', prototypePanelTemplate);
     if (hasSections) {
