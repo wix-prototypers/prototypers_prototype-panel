@@ -525,7 +525,7 @@
   margin: 18px 24px;
 }
 
-.prt-panel-section.prt-customization .prt-panel-section-content:last-child .prt-panel-field:last-child {
+.prt-panel-section.prt-customization .prt-panel-field.prt-last-field {
   margin-bottom: 30px !important;
 }
 
@@ -921,6 +921,10 @@ input[type="checkbox"].prt-circle-checkbox {
   justify-content: space-between;
   outline: none;
   padding: 0;
+}
+
+.prt-panel-field.prt-last-field + .prt-panel-divider {
+  display: none;
 }
 
 .prt-panel-field>label {

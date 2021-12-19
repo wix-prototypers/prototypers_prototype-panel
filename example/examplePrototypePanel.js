@@ -24,7 +24,6 @@ const panelSections = [
       {
         "fieldName" : "change-main-title",
         "fieldLabel": "Change the title:",
-        "divider": false,
         "toolTip": "",
         "callback": "changeTheMainTitle",
         "disabled": false,
@@ -34,7 +33,6 @@ const panelSections = [
       {
         "fieldName" : "do-something-button",
         "fieldLabel": "Test title animation:",
-        "divider": true,
         "toolTip": "",
         "callback": "clickStartButton",
         "disabled": false,
@@ -44,7 +42,6 @@ const panelSections = [
       {
         "fieldName" : "select-bg-color",
         "fieldLabel": "Test title animation:",
-        "divider": true,
         "toolTip": "",
         "callback": "changeItemBackground",
         "disabled": false,
@@ -55,46 +52,46 @@ const panelSections = [
                          {"color":"#90729c"},
                          {"color":"#B6C1CD", "opacity":"40"}]
       },
-      {
-        "fieldName" : "select-hover-radiobtn",
-        "fieldLabel": "Select hover effect:",
-        "divider": false,
-        "toolTip": "",
-        "callback": "changeHoverEffect",
-        "disabled": false,
-        "fieldType": "radio-button",
-        "defaultIndex": 0,
-        "optionsBackendList": ["border", "overlay", "move-up", "expand"],
-        "optionsDisplayList": ["Border", "Overlay", "Move Up", "Expand"]
-      },
-      {
-        "fieldName" : "overlay-color-toggle",
-        "fieldLabel": "Overlay color:",
-        "divider": false,
-        "toolTip": "",
-        "callback": "changeOverlayColor",
-        "disabled": true,
-        "fieldType": "toggle",
-        "option1Display": "Light",
-        "option1Value" : "light",
-        "option2Display": "Dark",
-        "option2Value" : "dark",
-        "defaultOption": 1
-      },
-      {
-        "fieldName" : "overlay-color-toggle",
-        "fieldLabel": "Overlay color:",
-        "divider": false,
-        "toolTip": "",
-        "callback": "changeOverlayColor",
-        "disabled": true,
-        "fieldType": "toggle",
-        "option1Display": "Light",
-        "option1Value" : "light",
-        "option2Display": "Dark",
-        "option2Value" : "dark",
-        "defaultOption": 1
-      }
+      // {
+      //   "fieldName" : "select-hover-radiobtn",
+      //   "fieldLabel": "Select hover effect:",
+      //   "divider": false,
+      //   "toolTip": "",
+      //   "callback": "changeHoverEffect",
+      //   "disabled": false,
+      //   "fieldType": "radio-button",
+      //   "defaultIndex": 0,
+      //   "optionsBackendList": ["border", "overlay", "move-up", "expand"],
+      //   "optionsDisplayList": ["Border", "Overlay", "Move Up", "Expand"]
+      // },
+      // {
+      //   "fieldName" : "overlay-color-toggle",
+      //   "fieldLabel": "Overlay color:",
+      //   "divider": false,
+      //   "toolTip": "",
+      //   "callback": "changeOverlayColor",
+      //   "disabled": true,
+      //   "fieldType": "toggle",
+      //   "option1Display": "Light",
+      //   "option1Value" : "light",
+      //   "option2Display": "Dark",
+      //   "option2Value" : "dark",
+      //   "defaultOption": 1
+      // },
+      // {
+      //   "fieldName" : "overlay-color-toggle",
+      //   "fieldLabel": "Overlay color:",
+      //   "divider": false,
+      //   "toolTip": "",
+      //   "callback": "changeOverlayColor",
+      //   "disabled": true,
+      //   "fieldType": "toggle",
+      //   "option1Display": "Light",
+      //   "option1Value" : "light",
+      //   "option2Display": "Dark",
+      //   "option2Value" : "dark",
+      //   "defaultOption": 1
+      // }
     ]
   } ,
   {

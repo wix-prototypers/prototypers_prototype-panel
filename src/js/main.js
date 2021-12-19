@@ -182,8 +182,9 @@ function createPrtPanelSection(section) {
   let { sectionNumber, sectionIsOpen, sectionTitle } = section;
   let inputsTemplate = '';
   let newSection = '';
-  section.fields.forEach(field => {
-    inputsTemplate += createPrtPanelInput(field);
+  section.fields.forEach(function(field, index){
+    index == section.fields.length - 1 ? index = 'prt-last-field' : index = '';
+    inputsTemplate += createPrtPanelInput(field, index);
   });
   newSection = `<div class="prt-panel-section-header ${sectionIsOpen != false ? '' : 'close'}"><span>${sectionTitle}</span>${prtHeaderChev}</div>
   <div class="prt-panel-section-content ${sectionIsOpen != false ? '' : 'close'}" section-number='${sectionNumber}'>
@@ -194,15 +195,16 @@ function createPrtPanelSection(section) {
 
 /*  Create each input field - with call to 'prtPanelInputContent' function for get the relevant content.
 PARAMETERS: field = the relevant field */
-function createPrtPanelInput(fieldData) {
-  let { disabled, fieldName, fieldLabel, divider, callback } = fieldData;
+function createPrtPanelInput(fieldData, index) {
+  console.log(index)
+  let { disabled, fieldName, fieldLabel, callback } = fieldData;
   disabled == true ? (disabled = ' disabled') : (disabled = ''); // disabled field ?
   let fieldContent = prtPanelInputContent(fieldData);
-  let newField = `<fieldset class='prt-panel-field' ${disabled} name='${fieldName}' call='${callback}'>
+  let newField = `<fieldset class='prt-panel-field ${index}' ${disabled} name='${fieldName}' call='${callback}'>
   <label class='prt-panel-field-label'>${fieldLabel}</label>
   ${fieldContent}
   </fieldset>
-  ${divider ? `<div class='prt-panel-divider'></div>` : ''}`;
+  <div class='prt-panel-divider'></div>`;
   return newField;
 }
 
