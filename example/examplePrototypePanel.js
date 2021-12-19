@@ -18,7 +18,7 @@ IMPORTANT! Fill this file according to your needs. ---- */
 const panelSections = [
   {
     "sectionNumber": 0,
-    "sectionIsOpen": true,
+    "sectionIsOpen": false,
     "sectionTitle": "hover effect",
     "fields": [
       {
@@ -66,6 +66,20 @@ const panelSections = [
         "defaultIndex": 0,
         "optionsBackendList": ["border", "overlay", "move-up", "expand"],
         "optionsDisplayList": ["Border", "Overlay", "Move Up", "Expand"]
+      },
+      {
+        "fieldName" : "overlay-color-toggle",
+        "fieldLabel": "Overlay color:",
+        "divider": false,
+        "toolTip": "",
+        "callback": "changeOverlayColor",
+        "disabled": true,
+        "fieldType": "toggle",
+        "option1Display": "Light",
+        "option1Value" : "light",
+        "option2Display": "Dark",
+        "option2Value" : "dark",
+        "defaultOption": 1
       },
       {
         "fieldName" : "overlay-color-toggle",

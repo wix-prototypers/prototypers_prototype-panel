@@ -130,9 +130,6 @@ function initPrototypePanel(panelInfo, panelSections) {
 
     document.body.insertAdjacentHTML('beforeend', prototypePanelTemplate);
     if (hasSections) {
-      document.querySelectorAll('.prt-panel-section.isClose .prt-panel-section-header').forEach((closeSection) => {
-        closePrtPanelSection(closeSection)
-      });
       document.querySelectorAll('.prt-slider').forEach((sliderField) => {
         changesSliderWidth(sliderField, sliderField.getAttribute('value'));
       });
@@ -188,8 +185,8 @@ function createPrtPanelSection(section) {
   section.fields.forEach(field => {
     inputsTemplate += createPrtPanelInput(field);
   });
-  newSection = `<div class="prt-panel-section-header"><span>${sectionTitle}</span>${prtHeaderChev}</div>
-  <div class="prt-panel-section-content" section-number='${sectionNumber}'>
+  newSection = `<div class="prt-panel-section-header ${sectionIsOpen != false ? '' : 'close'}"><span>${sectionTitle}</span>${prtHeaderChev}</div>
+  <div class="prt-panel-section-content ${sectionIsOpen != false ? '' : 'close'}" section-number='${sectionNumber}'>
     ${inputsTemplate}
   </div>`;
   return newSection;
@@ -526,10 +523,6 @@ document.addEventListener('keyup', (e) => {
     }
   });
 
-  document.querySelectorAll('.prt-panel-section.isClose .prt-panel-section-header').forEach((closeSection) => {
-   closePrtPanelSection(closeSection)
-  });
-
   // Open or close section
   document.querySelectorAll('.prt-panel-section-header').forEach((sectionHeader) => {
     if (!sectionHeader.classList.contains('prt-disable-closing')) {
@@ -570,7 +563,6 @@ function equalHeight(className) {
   var max = 0;
   document.querySelectorAll(className).forEach(
     function(el) {
-      console.info(Math.max(el.scrollHeight, max));
       if (el.scrollHeight > max) {
         max = el.scrollHeight;
       }
@@ -583,14 +575,11 @@ function equalHeight(className) {
 PARAMETERS: section = the relevant section */
 function closePrtPanelSection(section) {
   if (section.classList.contains('close')) {
-    // section.parentNode.style.maxHeight = '2000px';
     section.classList.remove('close');
     section.nextElementSibling.classList.remove('close');
-    // section.nextElementSibling.children.classList.remove('close');
   } else {
     section.classList.add('close');
     section.nextElementSibling.classList.add('close');
-    // section.parentNode.style.maxHeight = '30px';
   }
 }
 
