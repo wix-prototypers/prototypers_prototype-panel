@@ -1,5 +1,5 @@
 /* NOTE: This file includes the functions and the icons for creating the structure - No need to change / add. */
-// import '../css/main.css';
+import '../css/main.css';
 
 let hasSections = false;
 let sectionsAmount = 0;
@@ -21,79 +21,79 @@ function initPrototypePanel(panelInfo, panelSections) {
     // Prototype Panel Template
     const prototypePanelTemplate =
     `<div class='prototype-panel' panel-dir='${_panelInfo.panelDirection}' interactive-panel=true>
-      <span class="prt-panel-tooltip prt-header-tooltip" for="dir">Dock to Left</span>
-      <span class="prt-panel-tooltip prt-header-tooltip" for="hide">Toggle Panel (⇧+H)</span>
-      <span class="prt-panel-tooltip prt-header-tooltip" for="minimize">Minimize</span>
-      <div class="prt-panel-bar">
-        <div class="prt-panel-bar-actions">
-          <div class="prt-panel-bar-icon" data-title="Share Prototype">
-            <span>Share</span>
-          </div>
-          <div class="prt-panel-bar-icon" data-title="Prototype Settings">
-            <span>Settings</span>
-          </div>
-          <div class="prt-panel-bar-icon" data-title="Prototype Info">
-            <span>Info</span>
-          </div>
-        </div>
-        <div class="prt-panel-bar-main-logo">${prtMainLogo}</div>
-      </div>
-      <div class="prt-panel-content">
-        <div class="prt-panel-header">
-          <span class="prt-panel-title">Prototype Info</span>
-          <div class="prt-panel-header-actions">
-            <span class="prt-header-icon prt-panel-dir-btn" tooltip="dir">${prtDirIcon}</span>
-            <span class="prt-header-icon prt-panel-hide-btn" tooltip="hide">${prtHideIcon}</span>
-            <span class="prt-header-icon prt-panel-minimize-btn" tooltip="minimize">${prtMinimizeIcon}</span>
-          </div>
-        </div>
-      <div class="prt-panel-section prt-overview prt-show-section" data-section="Prototype Info">
-        <div>
-          <div class="prt-overview-title">description</div>
-          <div class="prt-overview-paragraph">${_panelInfo.prototypeDescription}</div>
-          <div class="prt-panel-divider"></div>
-          <div class="prt-overview-title">how to use</div>
-          <div class="prt-overview-paragraph">${_panelInfo.prototypeHowToUse}</div>
-          <div class="prt-panel-divider"></div>
-          <div class="prt-overview-paragraph prt-signature">Made with ${prtHeart} by&nbsp <a class="by-ux-prt" target="_blank" href="https://www.wixwhooo.com/results?type=all&val=prototyper">UX Prototypers</a></div>
-        </div>
-      </div>
-      <div class="prt-panel-section prt-share-prototype prt-hide prt-show-section" data-section="Share Prototype">
-        <div>
-          <div class="prt-overview-title">Get shareable Link</div>
-          <div class="prt-overview-paragraph prt-share-paragraph">Use the following link to share the prototype with its current settings.</div>
-          <div class="prt-panel-divider"></div>
-          <div class="prt-show-hide-container" style="margin-bottom: 22px;">
-            <div class="prt-section-label">Show this panel when the prototype is loaded.</div>
-            <label class="prt-small-toggle">
-              <input type="checkbox" checked name="select-share-without-panel" id="share-with-panel">
-              <span class="prt-small-toggle-round"><span class="prt-small-toggle-circle"></span></span>
-            </label>
-          </div>
-          <label class="prt-recommend-label">Turn it off for usability testing or presentation.</label>
-          <div class="prt-new-link-container">
-            <input type="text" autofocus readonly class="prt-text-input prt-share-link-input prt-unchecked-input" style="width: 186px; margin-right: 9px;" value="https://wix-prototypers.github.io/prototypers_prototype-panel/example/index.html" style="padding-right: 0;">
-            <div class="prt-copy-btn">
-              ${prtCopyIcon}
-              ${prtCopiedIcon}
-              <span class="prt-copy-loader" icon="refresh">
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
-              </span>
-              <span class="prt-panel-tooltip">Copy</span>
-            </div>
-          </div>
-          <div class="prt-share-actions" style="display: unset;">
-            <button class="prt-panel-button prt-open-tab-btn" skin="text">Open in New Tab</button>
-          </div>
-        </div>
-      </div>
-      <div class="prt-panel-section prt-customization prt-show-section" data-section="Prototype Settings">
-      ${hasSections ? createPrtPanelSections(_panelSections) : ''}
-      </div>
-      </div>
-      <div class="prt-show-panel-note">If you need me, press ⇧+H</div>
+    <span class="prt-panel-tooltip prt-header-tooltip" for="dir">Dock to Left</span>
+    <span class="prt-panel-tooltip prt-header-tooltip" for="hide">Toggle Panel (⇧+H)</span>
+    <span class="prt-panel-tooltip prt-header-tooltip" for="minimize">Minimize</span>
+    <div class="prt-panel-bar">
+    <div class="prt-panel-bar-actions">
+    <div class="prt-panel-bar-icon" data-title="Share Prototype">
+    <span>Share</span>
+    </div>
+    <div class="prt-panel-bar-icon" data-title="Prototype Settings">
+    <span>Settings</span>
+    </div>
+    <div class="prt-panel-bar-icon" data-title="Prototype Info">
+    <span>Info</span>
+    </div>
+    </div>
+    <div class="prt-panel-bar-main-logo">${prtMainLogo}</div>
+    </div>
+    <div class="prt-panel-content">
+    <div class="prt-panel-header">
+    <span class="prt-panel-title">Prototype Info</span>
+    <div class="prt-panel-header-actions">
+    <span class="prt-header-icon prt-panel-dir-btn" tooltip="dir">${prtDirIcon}</span>
+    <span class="prt-header-icon prt-panel-hide-btn" tooltip="hide">${prtHideIcon}</span>
+    <span class="prt-header-icon prt-panel-minimize-btn" tooltip="minimize">${prtMinimizeIcon}</span>
+    </div>
+    </div>
+    <div class="prt-panel-section prt-overview prt-show-section" data-section="Prototype Info">
+    <div>
+    <div class="prt-overview-title">description</div>
+    <div class="prt-overview-paragraph">${_panelInfo.prototypeDescription}</div>
+    <div class="prt-panel-divider"></div>
+    <div class="prt-overview-title">how to use</div>
+    <div class="prt-overview-paragraph">${_panelInfo.prototypeHowToUse}</div>
+    <div class="prt-panel-divider"></div>
+    <div class="prt-overview-paragraph prt-signature">Made with ${prtHeart} by&nbsp <a class="by-ux-prt" target="_blank" href="https://www.wixwhooo.com/results?type=all&val=prototyper">UX Prototypers</a></div>
+    </div>
+    </div>
+    <div class="prt-panel-section prt-share-prototype prt-hide prt-show-section" data-section="Share Prototype">
+    <div>
+    <div class="prt-overview-title">Get shareable Link</div>
+    <div class="prt-overview-paragraph prt-share-paragraph">Use the following link to share the prototype with its current settings.</div>
+    <div class="prt-panel-divider"></div>
+    <div class="prt-show-hide-container" style="margin-bottom: 22px;">
+    <div class="prt-section-label">Show this panel when the prototype is loaded.</div>
+    <label class="prt-small-toggle">
+    <input type="checkbox" checked name="select-share-without-panel" id="share-with-panel">
+    <span class="prt-small-toggle-round"><span class="prt-small-toggle-circle"></span></span>
+    </label>
+    </div>
+    <label class="prt-recommend-label">Turn it off for usability testing or presentation.</label>
+    <div class="prt-new-link-container">
+    <input type="text" autofocus readonly class="prt-text-input prt-share-link-input prt-unchecked-input" style="width: 186px; margin-right: 9px;" value="https://wix-prototypers.github.io/prototypers_prototype-panel/example/index.html" style="padding-right: 0;">
+    <div class="prt-copy-btn">
+    ${prtCopyIcon}
+    ${prtCopiedIcon}
+    <span class="prt-copy-loader" icon="refresh">
+    <span>.</span>
+    <span>.</span>
+    <span>.</span>
+    </span>
+    <span class="prt-panel-tooltip">Copy</span>
+    </div>
+    </div>
+    <div class="prt-share-actions" style="display: unset;">
+    <button class="prt-panel-button prt-open-tab-btn" skin="text">Open in New Tab</button>
+    </div>
+    </div>
+    </div>
+    <div class="prt-panel-section prt-customization prt-show-section" data-section="Prototype Settings">
+    ${hasSections ? createPrtPanelSections(_panelSections) : ''}
+    </div>
+    </div>
+    <div class="prt-show-panel-note">If you need me, press ⇧+H</div>
     </div>`;
 
     document.body.insertAdjacentHTML('beforeend', prototypePanelTemplate);
@@ -156,7 +156,7 @@ function createPrtPanelSection(section) {
   });
   newSection = `<div class="prt-panel-section-header ${sectionIsOpen != false ? '' : 'close'}"><span>${sectionTitle}</span>${prtHeaderChev}</div>
   <div class="prt-panel-section-content ${sectionIsOpen != false ? '' : 'close'}" section-number='${sectionNumber}'>
-    ${inputsTemplate}
+  ${inputsTemplate}
   </div>`;
   return newSection;
 }
@@ -288,179 +288,180 @@ function initPrtPanelEvents() {
 
   // Navigation between the tabs - each tab will open the relevant section
   document.querySelectorAll(".prt-panel-bar-icon").forEach((icon) => {
-  icon.addEventListener("click", function() {
-    document.querySelector(`.prt-panel-content`).classList.remove('prt-content-min-height');
-    let theRelevantSection = icon.getAttribute('data-title');
-    if (this.classList.contains("prt-panel-icon-selected")) {
-      this.classList.remove("prt-panel-icon-selected");
-    } else {
-      document.querySelectorAll(".prt-panel-bar-icon").forEach((icon) => {
-        icon.classList.remove("prt-panel-icon-selected");
-      });
-      this.classList.add("prt-panel-icon-selected");
-    }
+    icon.addEventListener("click", function() {
+      document.querySelector(`.prt-panel-content`).classList.remove('prt-content-min-height');
+      let theRelevantSection = icon.getAttribute('data-title');
+      if (this.classList.contains("prt-panel-icon-selected")) {
+        this.classList.remove("prt-panel-icon-selected");
+      } else {
+        document.querySelectorAll(".prt-panel-bar-icon").forEach((icon) => {
+          icon.classList.remove("prt-panel-icon-selected");
+        });
+        this.classList.add("prt-panel-icon-selected");
+      }
 
-    document.querySelector('.prototype-panel').classList.add('prt-panel-open');
-    document.querySelectorAll(".prt-panel-section").forEach((section) => {
-      section.classList.add("prt-hide-section");
-    });
-    document.querySelector(`.prt-panel-title`).classList.add('prt-hide-section');
-    setTimeout(function() {
+      document.querySelector('.prototype-panel').classList.add('prt-panel-open');
       document.querySelectorAll(".prt-panel-section").forEach((section) => {
-        section.classList.add("prt-hide");
-        document.querySelector(`[data-section="${theRelevantSection}"]`).classList.remove('prt-hide');
+        section.classList.add("prt-hide-section");
       });
-    }, 80);
-    setTimeout(function() {
-      document.querySelector(`[data-section="${theRelevantSection}"]`).classList.remove('prt-hide-section');
-      document.querySelector(`[data-section="${theRelevantSection}"]`).classList.add('prt-show-section');
-      document.querySelector('.prt-panel-title').innerHTML = theRelevantSection;
-      document.querySelector(`.prt-panel-title`).classList.remove('prt-hide-section');
-      document.querySelector(`.prt-panel-title`).classList.add('prt-show-section');
-      document.querySelector('.prt-panel-content').setAttribute('contet', theRelevantSection)
-    }, 100);
-    if (theRelevantSection == "Share Prototype") {
+      document.querySelector(`.prt-panel-title`).classList.add('prt-hide-section');
+      setTimeout(function() {
+        document.querySelectorAll(".prt-panel-section").forEach((section) => {
+          section.classList.add("prt-hide");
+          document.querySelector(`[data-section="${theRelevantSection}"]`).classList.remove('prt-hide');
+        });
+      }, 80);
+      setTimeout(function() {
+        document.querySelector(`[data-section="${theRelevantSection}"]`).classList.remove('prt-hide-section');
+        document.querySelector(`[data-section="${theRelevantSection}"]`).classList.add('prt-show-section');
+        document.querySelector('.prt-panel-title').innerHTML = theRelevantSection;
+        document.querySelector(`.prt-panel-title`).classList.remove('prt-hide-section');
+        document.querySelector(`.prt-panel-title`).classList.add('prt-show-section');
+        document.querySelector('.prt-panel-content').setAttribute('contet', theRelevantSection)
+      }, 100);
+      if (theRelevantSection == "Share Prototype") {
+        let input = document.querySelector('.prt-share-link-input');
+        setTimeout(function() {
+          input.focus();
+          input.select();
+        }, 200);
+      }
+      setTimeout(function() {
+        if (theRelevantSection == "Prototype Settings") {
+          var sectionHeight = equalHeight(".prt-customization");
+          if(sectionHeight > 500) {
+            document.querySelector(`.prt-panel-content`).classList.add('prt-content-min-height');
+          }
+        }
+      }, 200);
+    });
+  });
+
+  // Gnerate a new link after changes and set it into the input field
+  document.querySelectorAll('.prt-panel-bar-icon[data-title="Share Prototype"]').forEach((saveBtn) => {
+    saveBtn.addEventListener('click', function() {
+      let values = '';
+      let url = window.location.href; // print the url
+      // get the all values
+      if(!hasSections) {
+        document.querySelector('.prt-share-link-input').value = url;
+        document.querySelector('.prt-circle-checkbox[name="select-share-without-panel"]').checked = false;
+        document.querySelector('.prt-circle-checkbox[name="select-share-without-panel"]').dispatchEvent(new Event('change'));
+      } else {
+        document.querySelectorAll('.prt-panel-field input').forEach((input) => {
+          if (input.checked || input.classList.contains('prt-unchecked-input')) {
+            values = values + '&' + input.name + `${input.classList.contains('prt-opacity-input') ? '[opacity]' : ''}` + '=' + input.value.replace('#', '@_>');
+          }
+        });
+        document.querySelector('.prt-share-link-input').value = url.split('?newVersion')[0] + '?newVersion' + values;
+      }
+    });
+  });
+
+  // Hide or show the panel in the new link (new prototype version) - after change the input there is a animation on the copy button
+  // and the link changes
+  document.querySelectorAll('[type="checkbox"][name="select-share-without-panel"]').forEach((shareCheckbox) => {
+    shareCheckbox.addEventListener('change', function() {
+      // loader animation in the button
+      document.querySelector('.prt-copy-btn').classList.add('prt-refresh');
+      setTimeout(function() {
+        document.querySelector('.prt-copy-btn').classList.remove('prt-refresh');
+      }, 500);
+      let newLink = document.querySelector('.prt-share-link-input').value;
+      if (!shareCheckbox.checked) {
+        newLink = newLink + '?prt-hide';
+      } else {
+        newLink = newLink.replace('?prt-hide', '');
+      }
+      document.querySelector('.prt-share-link-input').value = newLink;
       let input = document.querySelector('.prt-share-link-input');
       setTimeout(function() {
         input.focus();
         input.select();
-      }, 200);
-    }
-    setTimeout(function() {
-      if (theRelevantSection == "Prototype Settings") {
-        var sectionHeight = equalHeight(".prt-customization");
-        if(sectionHeight > 500) {
-          document.querySelector(`.prt-panel-content`).classList.add('prt-content-min-height');
-        }
-      }
-    }, 200);
+      }, 500);
+    });
   });
-});
 
-// Gnerate a new link after changes and set it into the input field
-document.querySelectorAll('.prt-panel-bar-icon[data-title="Share Prototype"]').forEach((saveBtn) => {
-  saveBtn.addEventListener('click', function() {
-    let values = '';
-    let url = window.location.href; // print the url
-    // get the all values
-    if(!hasSections) {
-      document.querySelector('.prt-share-link-input').value = url;
-      document.querySelector('.prt-circle-checkbox[name="select-share-without-panel"]').checked = false;
-      document.querySelector('.prt-circle-checkbox[name="select-share-without-panel"]').dispatchEvent(new Event('change'));
-    } else {
-      document.querySelectorAll('.prt-panel-field input').forEach((input) => {
-        if (input.checked || input.classList.contains('prt-unchecked-input')) {
-          values = values + '&' + input.name + `${input.classList.contains('prt-opacity-input') ? '[opacity]' : ''}` + '=' + input.value.replace('#', '@_>');
-        }
-      });
-      document.querySelector('.prt-share-link-input').value = url.split('?newVersion')[0] + '?newVersion' + values;
-    }
+  // When clicking the new link input - the text will be selected and focused
+  document.querySelector('.prt-share-link-input').addEventListener("click", function() {
+    this.focus();
+    this.select();
   });
-});
 
-// Hide or show the panel in the new link (new prototype version) - after change the input there is a animation on the copy button
-// and the link changes
-document.querySelectorAll('[type="checkbox"][name="select-share-without-panel"]').forEach((shareCheckbox) => {
-  shareCheckbox.addEventListener('change', function() {
-    // loader animation in the button
-    document.querySelector('.prt-copy-btn').classList.add('prt-refresh');
-    setTimeout(function() {
-      document.querySelector('.prt-copy-btn').classList.remove('prt-refresh');
-    }, 500);
-    let newLink = document.querySelector('.prt-share-link-input').value;
-    if (!shareCheckbox.checked) {
-      newLink = newLink + '?prt-hide';
-    } else {
-      newLink = newLink.replace('?prt-hide', '');
-    }
-    document.querySelector('.prt-share-link-input').value = newLink;
-    let input = document.querySelector('.prt-share-link-input');
-    setTimeout(function() {
-      input.focus();
-      input.select();
-    }, 500);
+  // Copy the new link to clipboard
+  document.querySelectorAll('.prt-copy-btn').forEach((copyBtn) => {
+    copyBtn.addEventListener('click', function() {
+      copyBtn.classList.add('prt-copied');
+      setTimeout(function() {
+        copyBtn.classList.remove('prt-copied');
+        let input = document.querySelector('.prt-share-link-input');
+        input.focus();
+        input.select();
+      }, 1000);
+      copyShareableLink();
+    });
   });
-});
 
-// When clicking the new link input - the text will be selected and focused
-document.querySelector('.prt-share-link-input').addEventListener("click", function() {
-  this.focus();
-  this.select();
-});
-
-// Copy the new link to clipboard
-document.querySelectorAll('.prt-copy-btn').forEach((copyBtn) => {
-  copyBtn.addEventListener('click', function() {
-    copyBtn.classList.add('prt-copied');
-    setTimeout(function() {
-      copyBtn.classList.remove('prt-copied');
-      let input = document.querySelector('.prt-share-link-input');
-      input.focus();
-      input.select();
-    }, 1000);
-    copyShareableLink();
+  // Open the new link in new tab - take the value from the link input field
+  document.querySelectorAll('.prt-open-tab-btn').forEach((newTabBtn) => {
+    newTabBtn.addEventListener('click', function() {
+      let url = window.location.href;
+      setTimeout(function() {
+        window.open(document.querySelector('.prt-share-link-input').value, '_blank');
+        window.focus();
+      }, 500);
+    });
   });
-});
 
-// Open the new link in new tab - take the value from the link input field
-document.querySelectorAll('.prt-open-tab-btn').forEach((newTabBtn) => {
-  newTabBtn.addEventListener('click', function() {
-    let url = window.location.href;
-    setTimeout(function() {
-      window.open(document.querySelector('.prt-share-link-input').value, '_blank');
-      window.focus();
-    }, 500);
+  document.querySelectorAll('.prt-header-icon').forEach((headerBtn) => {
+    headerBtn.addEventListener('click', function() {
+      document.querySelector(`.prt-panel-content`).classList.remove('prt-content-min-height');
+    });
   });
-});
 
-document.querySelectorAll('.prt-header-icon').forEach((headerBtn) => {
-  headerBtn.addEventListener('click', function() {
-   document.querySelector(`.prt-panel-content`).classList.remove('prt-content-min-height');
+  // Show the header tooltip on hover
+  document.querySelectorAll('.prt-header-icon').forEach((headerBtn) => {
+    headerBtn.addEventListener('mouseenter', function() {
+      let tooltip = headerBtn.getAttribute('tooltip');
+      document.querySelector(`.prt-header-tooltip[for="${tooltip}"]`).classList.add('prt-show-tooltip');
+    });
   });
-});
+  document.querySelectorAll('.prt-header-icon').forEach((headerBtn) => {
+    headerBtn.addEventListener('mouseleave', function() {
+      document.querySelectorAll(`.prt-header-tooltip`).forEach((tooltip) => { tooltip.classList.remove('prt-show-tooltip'); });
+    });
+  });
 
-// Show the header tooltip on hover
-document.querySelectorAll('.prt-header-icon').forEach((headerBtn) => {
-  headerBtn.addEventListener('mouseenter', function() {
-    let tooltip = headerBtn.getAttribute('tooltip');
-    document.querySelector(`.prt-header-tooltip[for="${tooltip}"]`).classList.add('prt-show-tooltip');
+  // Minimize the panel
+  document.querySelector('.prt-panel-minimize-btn').addEventListener("click", function() {
+    document.querySelectorAll(".prt-panel-bar-icon").forEach((icon) => {
+      icon.classList.remove("prt-panel-icon-selected");
+    });
+    document.querySelector('.prototype-panel').classList.remove('prt-panel-open');
+    document.querySelector('.prt-panel-content').setAttribute('contet', '')
   });
-});
-document.querySelectorAll('.prt-header-icon').forEach((headerBtn) => {
-  headerBtn.addEventListener('mouseout', function() {
-    document.querySelectorAll(`.prt-header-tooltip`).forEach((tooltip) => { tooltip.classList.remove('prt-show-tooltip'); });
-  });
-});
 
-// Minimize the panel
-document.querySelector('.prt-panel-minimize-btn').addEventListener("click", function() {
-  document.querySelectorAll(".prt-panel-bar-icon").forEach((icon) => {
-    icon.classList.remove("prt-panel-icon-selected");
+  // Hide the panel from the header icon
+  document.querySelector('.prt-panel-hide-btn').addEventListener("click", function() {
+    document.querySelectorAll(".prt-panel-bar-icon").forEach((icon) => {
+      icon.classList.remove("prt-panel-icon-selected");
+    });
+    document.querySelector('.prototype-panel').classList.remove('prt-panel-open');
+    document.querySelector('.prototype-panel').classList.add('prototype-panel-hidden');
   });
-  document.querySelector('.prototype-panel').classList.remove('prt-panel-open');
-});
 
-// Hide the panel from the header icon
-document.querySelector('.prt-panel-hide-btn').addEventListener("click", function() {
-  document.querySelectorAll(".prt-panel-bar-icon").forEach((icon) => {
-    icon.classList.remove("prt-panel-icon-selected");
-  });
-  document.querySelector('.prototype-panel').classList.remove('prt-panel-open');
-  document.querySelector('.prototype-panel').classList.add('prototype-panel-hidden');
-});
-
-// Hide the panel with shortcut Keys (shift + h)
-document.addEventListener('keyup', (e) => {
+  // Hide the panel with shortcut Keys (shift + h)
+  document.addEventListener('keyup', (e) => {
     if ((e.shiftKey && e.which == 72)) {
       let panel = document.querySelector('.prototype-panel');
       document.querySelector('.prt-panel-minimize-btn').dispatchEvent(new MouseEvent('click'));
       setTimeout(function() {
-      if (panel.classList.contains('prototype-panel-hidden')) {
-        panel.classList.remove('prototype-panel-hidden');
-      } else {
-        panel.classList.add('prototype-panel-hidden');
-      }
-    }, 100);
+        if (panel.classList.contains('prototype-panel-hidden')) {
+          panel.classList.remove('prototype-panel-hidden');
+        } else {
+          panel.classList.add('prototype-panel-hidden');
+        }
+      }, 100);
     }
   });
 
@@ -694,12 +695,12 @@ function updateInputsFromURL() {
     // document.querySelector('.prototype-panel').classList.add('prototype-panel-hidden');
   }
   if (queryString.includes('?prt-hide')) {
-  document.querySelector('.prototype-panel').classList.add('prototype-panel-hidden');
-  document.querySelector('.prt-show-panel-note').innerHTML = 'If you need the prototype panel, press ⇧+H';
-  setTimeout(function() { // return to the first content
-    document.querySelector('.prt-show-panel-note').innerHTML = 'If you need me, press ⇧+H';
-  }, 6000);
- }
+    document.querySelector('.prototype-panel').classList.add('prototype-panel-hidden');
+    document.querySelector('.prt-show-panel-note').innerHTML = 'If you need the prototype panel, press ⇧+H';
+    setTimeout(function() { // return to the first content
+      document.querySelector('.prt-show-panel-note').innerHTML = 'If you need me, press ⇧+H';
+    }, 6000);
+  }
 }
 
 function changeColorPicker(name, selectedValue, inputChanged) {
@@ -769,4 +770,4 @@ const prtCopiedIcon = `<svg icon="copied" width="24" height="24" viewBox="0 0 24
 
 const prtHeaderChev = `<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M1 1.50562L6 6.50562L11 1.50562" stroke="#BABCC9" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>`
+</svg>`;
