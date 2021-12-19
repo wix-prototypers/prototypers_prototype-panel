@@ -67,7 +67,6 @@
   align-items: flex-end;
   transform: var(--translateX);
   transition: transform 0.35s cubic-bezier(0.76, 0, 0.24, 1);
-  font-family: "HelveticaNeueW01-45Ligh";
 }
 
 .prototype-panel.prototype-panel-hidden {
