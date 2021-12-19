@@ -18,7 +18,7 @@ IMPORTANT! Fill this file according to your needs. ---- */
 const panelSections = [
   {
     "sectionNumber": 0,
-    "sectionIsOpen": false,
+    "sectionIsOpen": true,
     "sectionTitle": "hover effect",
     "fields": [
       {
@@ -30,28 +30,28 @@ const panelSections = [
         "fieldType": "text",
         "currentValue": "Let`s Play!"
       },
-      {
-        "fieldName" : "do-something-button",
-        "fieldLabel": "Test title animation:",
-        "toolTip": "",
-        "callback": "clickStartButton",
-        "disabled": false,
-        "fieldType": "button",
-        "currentValue": "Start"
-      },
-      {
-        "fieldName" : "select-bg-color",
-        "fieldLabel": "Test title animation:",
-        "toolTip": "",
-        "callback": "changeItemBackground",
-        "disabled": false,
-        "fieldType": "color",
-        "defaultIndex": 0,
-        "colorOptions": [{"color":"#B6C1CD"},
-                         {"color":"#5e89b7", "opacity":"70"},
-                         {"color":"#90729c"},
-                         {"color":"#B6C1CD", "opacity":"40"}]
-      },
+      // {
+      //   "fieldName" : "do-something-button",
+      //   "fieldLabel": "Test title animation:",
+      //   "toolTip": "",
+      //   "callback": "clickStartButton",
+      //   "disabled": false,
+      //   "fieldType": "button",
+      //   "currentValue": "Start"
+      // },
+      // {
+      //   "fieldName" : "select-bg-color",
+      //   "fieldLabel": "Test title animation:",
+      //   "toolTip": "",
+      //   "callback": "changeItemBackground",
+      //   "disabled": false,
+      //   "fieldType": "color",
+      //   "defaultIndex": 0,
+      //   "colorOptions": [{"color":"#B6C1CD"},
+      //                    {"color":"#5e89b7", "opacity":"70"},
+      //                    {"color":"#90729c"},
+      //                    {"color":"#B6C1CD", "opacity":"40"}]
+      // },
       // {
       //   "fieldName" : "select-hover-radiobtn",
       //   "fieldLabel": "Select hover effect:",
@@ -78,20 +78,6 @@ const panelSections = [
       //   "option2Value" : "dark",
       //   "defaultOption": 1
       // },
-      // {
-      //   "fieldName" : "overlay-color-toggle",
-      //   "fieldLabel": "Overlay color:",
-      //   "divider": false,
-      //   "toolTip": "",
-      //   "callback": "changeOverlayColor",
-      //   "disabled": true,
-      //   "fieldType": "toggle",
-      //   "option1Display": "Light",
-      //   "option1Value" : "light",
-      //   "option2Display": "Dark",
-      //   "option2Value" : "dark",
-      //   "defaultOption": 1
-      // }
     ]
   } ,
   {
@@ -111,21 +97,21 @@ const panelSections = [
         "iconsDisplayList": ["./images/list.svg", "./images/columns.svg", "./images/gallery.svg"],
         "labelsDisplayList": ["List", "Columns", "Gallery"]
       },
-      {
-        "fieldName" : "example-input-number",
-        "fieldLabel": "Change the gap between the elements:",
-        "divider": false,
-        "toolTip": "",
-        "callback": "changeGagBetweenElmentes",
-        "disabled": "",
-        "fieldType": "number",
-        "min" : "10",
-        "max" : "50",
-        "step" : "5",
-        "value" : "35",
-        "showSlider": true,
-        "suffix": "px"
-      }
+      // {
+      //   "fieldName" : "example-input-number",
+      //   "fieldLabel": "Change the gap between the elements:",
+      //   "divider": false,
+      //   "toolTip": "",
+      //   "callback": "changeGagBetweenElmentes",
+      //   "disabled": "",
+      //   "fieldType": "number",
+      //   "min" : "10",
+      //   "max" : "50",
+      //   "step" : "5",
+      //   "value" : "35",
+      //   "showSlider": true,
+      //   "suffix": "px"
+      // }
     ]
   }
 ];

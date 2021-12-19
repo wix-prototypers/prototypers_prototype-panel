@@ -9,7 +9,7 @@
   --G6: #e7e7e7;
   --G7: #f2f2f2;
   --G8: #444444;
-  --prt-blue: #08BDBA;
+  --prt-blue: #41c9d6;
   --prt-light-blue: #76e8f2;
   --prt-btn-hover: #61dde8;
   --input-hover: #777777;
@@ -365,8 +365,8 @@
   border-radius: 10px 10px 0 0;
 }
 
-.prt-panel-content.prt-content-min-height {
-  min-height: 556px;
+.prt-panel-content[contet="Prototype Settings"] {
+  min-height: 556px !important;
 }
 
 .prt-panel-open .prt-panel-content {

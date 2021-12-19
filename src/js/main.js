@@ -2,6 +2,7 @@
 // import '../css/main.css';
 
 let hasSections = false;
+let sectionsAmount = 0;
 /*  This function builds the prototype panel and appends it to the body element in your prototype's index file.
 Call this function from one of your .js files in the project. */
 function initPrototypePanel(panelInfo, panelSections) {
@@ -15,6 +16,7 @@ function initPrototypePanel(panelInfo, panelSections) {
   if(validatePrtPanelInfo(_panelInfo)) {
     setPrtPanelDirection(_panelInfo);
     hasSections = _panelSections && _panelSections.length; // there are interactive sections
+    _panelSections ? sectionsAmount = _panelSections.length : '';
 
     // Prototype Panel Template
     const prototypePanelTemplate =
@@ -90,8 +92,6 @@ function initPrototypePanel(panelInfo, panelSections) {
       <div class="prt-panel-section prt-customization prt-show-section" data-section="Prototype Settings">
       ${hasSections ? createPrtPanelSections(_panelSections) : ''}
       </div>
-
-
       </div>
       <div class="prt-show-panel-note">If you need me, press ⇧+H</div>
     </div>`
@@ -196,7 +196,6 @@ function createPrtPanelSection(section) {
 /*  Create each input field - with call to 'prtPanelInputContent' function for get the relevant content.
 PARAMETERS: field = the relevant field */
 function createPrtPanelInput(fieldData, index) {
-  console.log(index)
   let { disabled, fieldName, fieldLabel, callback } = fieldData;
   disabled == true ? (disabled = ' disabled') : (disabled = ''); // disabled field ?
   let fieldContent = prtPanelInputContent(fieldData);
@@ -332,6 +331,7 @@ function initPrtPanelEvents() {
       });
       this.classList.add("prt-panel-icon-selected");
     }
+
     document.querySelector('.prototype-panel').classList.add('prt-panel-open');
     document.querySelectorAll(".prt-panel-section").forEach((section) => {
       section.classList.add("prt-hide-section");
@@ -349,6 +349,7 @@ function initPrtPanelEvents() {
       document.querySelector('.prt-panel-title').innerHTML = theRelevantSection;
       document.querySelector(`.prt-panel-title`).classList.remove('prt-hide-section');
       document.querySelector(`.prt-panel-title`).classList.add('prt-show-section');
+      document.querySelector('.prt-panel-content').setAttribute('contet', theRelevantSection)
     }, 100);
     if (theRelevantSection == "Share Prototype") {
       let input = document.querySelector('.prt-share-link-input');
@@ -580,8 +581,17 @@ function closePrtPanelSection(section) {
     section.classList.remove('close');
     section.nextElementSibling.classList.remove('close');
   } else {
-    section.classList.add('close');
-    section.nextElementSibling.classList.add('close');
+    if(sectionsAmount > 1) {
+      section.classList.add('close');
+      section.nextElementSibling.classList.add('close');
+      // var sectionHeight = equalHeight(".prt-customization");
+      // if(sectionHeight > 500) {
+      //   document.querySelector(`.prt-panel-content`).classList.add('prt-content-min-height');
+      // } else {
+      //   console.log(sectionHeight)
+      //   document.querySelector(`.prt-panel-content`).style.minHeight = sectionHeight + 56 + "px";
+      // }
+    }
   }
 }
 
@@ -764,7 +774,7 @@ const prtExportIcon =
 `<svg viewBox='0 0 24 24' fill='#fff' width='24' height='24'><path d='M11,6 L11,7 L7,7 C6.44771525,7 6,7.44771525 6,8 L6,17 C6,17.5522847 6.44771525,18 7,18 L16,18 C16.5522847,18 17,17.5522847 17,17 L17,13 L18,13 L18,17 C18,18.1045695 17.1045695,19 16,19 L7,19 C5.8954305,19 5,18.1045695 5,17 L5,8 C5,6.8954305 5.8954305,6 7,6 L11,6 Z M18,6 L18,10 L17,10 L17,7.75 L11.9040467,12.8434838 C11.69694,13.0505906 11.3611535,13.0505906 11.1540467,12.8434838 C10.94694,12.636377 10.94694,12.3005906 11.1540467,12.0934838 L16.25,7 L14,7 L14,6 L18,6 Z'></path></svg>`;
 
 const prtHeart = `<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M7 13L5.985 12.0649C2.38 8.7564 0 6.57439 0 3.89646C0 1.71444 1.694 0 3.85 0C5.068 0 6.237 0.573842 7 1.48065C7.763 0.573842 8.932 0 10.15 0C12.306 0 14 1.71444 14 3.89646C14 6.57439 11.62 8.7564 8.015 12.0719L7 13Z" fill="#08BDBA"/>
+<path d="M7 13L5.985 12.0649C2.38 8.7564 0 6.57439 0 3.89646C0 1.71444 1.694 0 3.85 0C5.068 0 6.237 0.573842 7 1.48065C7.763 0.573842 8.932 0 10.15 0C12.306 0 14 1.71444 14 3.89646C14 6.57439 11.62 8.7564 8.015 12.0719L7 13Z" fill="#41c9d6"/>
 </svg>`;
 
 const prtDirIcon = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
