@@ -122,9 +122,9 @@ function validatePrtPanelInfo(panelInfo) {
     return false;
   }
   if (
-    panelInfo.prototypeTitle === 'undefined' ||
-    panelInfo.prototypeTitle == null ||
-    panelInfo.prototypeTitle == '' ||
+    panelInfo.prototypeHowToUse === 'undefined' ||
+    panelInfo.prototypeHowToUse == null ||
+    panelInfo.prototypeHowToUse == '' ||
     panelInfo.prototypeDescription === 'undefined' ||
     panelInfo.prototypeDescription == null ||
     panelInfo.prototypeDescription == ''

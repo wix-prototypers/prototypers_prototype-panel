@@ -118,13 +118,12 @@ const panelSections = [
 
 window.onload = function(e) {
   let panelInfo = {
-    prototypeTitle : "Prototype Name",
     prototypeDescription : "This is where you can describe the prototype shortly, this description is where you can elaborate and describe in details what's the prototype about.",
     prototypeHowToUse: "Click `Create Discount`, select the first discount type, and start selecting the relevant inputs.",
     panelDirection : "left"
   };
 
-  initPrototypePanel(panelInfo, panelSections);
+  initPrototypePanel(panelInfo);
 };
 
 /* ------------------ (4) Functions - write the relevant function for each input ------------------ */
