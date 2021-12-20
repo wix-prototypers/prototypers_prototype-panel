@@ -595,6 +595,24 @@ function initPrototypePanelControls() {
     const theFunction = inputChangedParent.getAttribute('call');
     switch (inputChanged.type) {
       case "radio":
+      inputChanged.addEventListener('change', function(e) {
+        const inputElm = e.target;
+        let selectedValue = inputElm.value;
+        // text input - verify the new value
+        if (inputElm.classList.contains('prt-text-input')) {
+          if(!selectedValue) { // invalid text value - set the default value
+            inputElm.value = inputElm.getAttribute('value');
+            selectedValue = inputElm.value; // set the new value
+          }
+        }
+        // color input - update the relevant fields (color code and opacity)
+        if (inputElm.classList.contains('prt-color-input')) {
+          changeColorPicker(inputElm.name, selectedValue, inputChanged)
+        }
+        // Call the relevant function
+        window[theFunction] && window[theFunction](`${inputElm.name}`, `${selectedValue}`, e);
+        thereChanges = true;
+      });
       case "text":
       inputChanged.addEventListener('input', function(e) {
         const inputElm = e.target;
@@ -683,8 +701,8 @@ function updateInputsFromURL() {
         let name = input.name;
         let savedValue = urlParams.get(`${name +  `${input.classList.contains('prt-opacity-input') ? '[opacity]' : ''}`}`).replace('@_>','#'); // get the relevant value from the URL
         if (!input.classList.contains('prt-unchecked-input')) {
-          document.querySelector(`[value='${savedValue}']`).checked = true;
-          document.querySelector(`[value='${savedValue}']`).dispatchEvent(new Event('change'));
+          document.querySelector(`[name='${name}'][value='${savedValue}']`).checked = true;
+          document.querySelector(`[name='${name}'][value='${savedValue}']`).dispatchEvent(new Event('change'));
         } else { // numeric input
           input.value = savedValue;
           input.getAttribute('type') != "text" ? input.dispatchEvent(new Event('input')) : input.dispatchEvent(new Event('change'));
