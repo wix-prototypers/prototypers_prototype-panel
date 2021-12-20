@@ -68,7 +68,7 @@
   right: var(--right-px);
   left: var(--left-px);
   transform: var(--panel-transform);
-  z-index: 100000000000000000000000;
+  z-index: 9999999999;
   /* transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1); */
 }
 
@@ -438,7 +438,7 @@
 /* Show tooltip animation */
 .prt-header-tooltip {
   box-shadow: unset !important;
-  z-index: 100000000000000000000000;
+  z-index: 99999999999;
   top: -71px;
   display: flex !important;
   transform: scale(0.7);

@@ -3,6 +3,7 @@ import '../css/main.css';
 
 let hasSections = false;
 let sectionsAmount = 0;
+let thereChanges = false;
 /*  This function builds the prototype panel and appends it to the body element in your prototype's index file.
 Call this function from one of your .js files in the project. */
 function initPrototypePanel(panelInfo, panelSections) {
@@ -20,7 +21,7 @@ function initPrototypePanel(panelInfo, panelSections) {
 
     // Prototype Panel Template
     const prototypePanelTemplate =
-    `<div class='prototype-panel' panel-dir='${_panelInfo.panelDirection}' interactive-panel=true>
+    `<div class='prototype-panel' panel-dir='${_panelInfo.panelDirection}' interactive-panel=${hasSections ? hasSections : 'false'}>
     <span class="prt-panel-tooltip prt-header-tooltip" for="dir">Dock to Left</span>
     <span class="prt-panel-tooltip prt-header-tooltip" for="hide">Toggle Panel (⇧+H)</span>
     <span class="prt-panel-tooltip prt-header-tooltip" for="minimize">Minimize</span>
@@ -343,10 +344,8 @@ function initPrtPanelEvents() {
       let values = '';
       let url = window.location.href; // print the url
       // get the all values
-      if(!hasSections) {
+      if(!hasSections || !thereChanges) {
         document.querySelector('.prt-share-link-input').value = url;
-        document.querySelector('.prt-circle-checkbox[name="select-share-without-panel"]').checked = false;
-        document.querySelector('.prt-circle-checkbox[name="select-share-without-panel"]').dispatchEvent(new Event('change'));
       } else {
         document.querySelectorAll('.prt-panel-field input').forEach((input) => {
           if (input.checked || input.classList.contains('prt-unchecked-input')) {
@@ -594,11 +593,10 @@ function initPrototypePanelControls() {
   document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
     const inputChangedParent = inputChanged.closest('.prt-panel-field');
     const theFunction = inputChangedParent.getAttribute('call');
-
     switch (inputChanged.type) {
       case "radio":
       case "text":
-      inputChanged.addEventListener('change', function(e) {
+      inputChanged.addEventListener('input', function(e) {
         const inputElm = e.target;
         let selectedValue = inputElm.value;
         // text input - verify the new value
@@ -614,9 +612,9 @@ function initPrototypePanelControls() {
         }
         // Call the relevant function
         window[theFunction] && window[theFunction](`${inputElm.name}`, `${selectedValue}`, e);
+        thereChanges = true;
       });
       break;
-
       case "range":
       case "number":
       inputChanged.addEventListener('input', function(e) {
@@ -635,13 +633,14 @@ function initPrototypePanelControls() {
         }
         // Call the relevant function
         window[theFunction](`${inputElm.name}`, `${selectedValue}`, e);
+        thereChanges = true;
       });
       break;
-
       case "button":
       inputChanged.addEventListener('click', function(e) {
         const inputElm = e.target;
         window[theFunction] && window[theFunction](`${inputElm.name}`);
+        thereChanges = true;
       });
       break;
     }
@@ -689,6 +688,7 @@ function updateInputsFromURL() {
         } else { // numeric input
           input.value = savedValue;
           input.getAttribute('type') != "text" ? input.dispatchEvent(new Event('input')) : input.dispatchEvent(new Event('change'));
+          input.dispatchEvent(new Event('input'));
         }
       }
     });
