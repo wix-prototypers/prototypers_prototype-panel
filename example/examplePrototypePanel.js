@@ -123,7 +123,7 @@ window.onload = function(e) {
     panelDirection : "left"
   };
 
-  initPrototypePanel(panelInfo);
+  initPrototypePanel(panelInfo, panelSections);
 };
 
 /* ------------------ (4) Functions - write the relevant function for each input ------------------ */
