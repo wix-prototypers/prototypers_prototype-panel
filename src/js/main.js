@@ -21,7 +21,7 @@ function initPrototypePanel(panelInfo, panelSections) {
 
     // Prototype Panel Template
     const prototypePanelTemplate =
-    `<div class='prototype-panel' panel-dir='${_panelInfo.panelDirection}' interactive-panel=${hasSections ? hasSections : 'false'}>
+    `<div class='prototype-panel' panel-dir='${_panelInfo.panelDirection}' interactive-panel=${hasSections ? 'true' : 'false'}>
     <span class="prt-panel-tooltip prt-header-tooltip" for="dir">Dock to Left</span>
     <span class="prt-panel-tooltip prt-header-tooltip" for="hide">Toggle Panel (⇧+H)</span>
     <span class="prt-panel-tooltip prt-header-tooltip" for="minimize">Minimize</span>
