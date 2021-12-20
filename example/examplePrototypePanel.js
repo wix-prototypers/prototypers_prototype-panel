@@ -24,7 +24,6 @@ const panelSections = [
       {
         "fieldName" : "change-main-title",
         "fieldLabel": "Change the title:",
-        "divider": false,
         "toolTip": "",
         "callback": "changeTheMainTitle",
         "disabled": false,
@@ -34,7 +33,6 @@ const panelSections = [
       {
         "fieldName" : "do-something-button",
         "fieldLabel": "Test title animation:",
-        "divider": true,
         "toolTip": "",
         "callback": "clickStartButton",
         "disabled": false,
@@ -44,7 +42,6 @@ const panelSections = [
       {
         "fieldName" : "select-bg-color",
         "fieldLabel": "Test title animation:",
-        "divider": true,
         "toolTip": "",
         "callback": "changeItemBackground",
         "disabled": false,
@@ -80,7 +77,7 @@ const panelSections = [
         "option2Display": "Dark",
         "option2Value" : "dark",
         "defaultOption": 1
-      }
+      },
     ]
   } ,
   {
@@ -100,29 +97,29 @@ const panelSections = [
         "iconsDisplayList": ["./images/list.svg", "./images/columns.svg", "./images/gallery.svg"],
         "labelsDisplayList": ["List", "Columns", "Gallery"]
       },
-      {
-        "fieldName" : "example-input-number",
-        "fieldLabel": "Change the gap between the elements:",
-        "divider": false,
-        "toolTip": "",
-        "callback": "changeGagBetweenElmentes",
-        "disabled": "",
-        "fieldType": "number",
-        "min" : "10",
-        "max" : "50",
-        "step" : "5",
-        "value" : "35",
-        "showSlider": true,
-        "suffix": "px"
-      }
+      // {
+      //   "fieldName" : "example-input-number",
+      //   "fieldLabel": "Change the gap between the elements:",
+      //   "divider": false,
+      //   "toolTip": "",
+      //   "callback": "changeGagBetweenElmentes",
+      //   "disabled": "",
+      //   "fieldType": "number",
+      //   "min" : "10",
+      //   "max" : "50",
+      //   "step" : "5",
+      //   "value" : "35",
+      //   "showSlider": true,
+      //   "suffix": "px"
+      // }
     ]
   }
 ];
 
 window.onload = function(e) {
   let panelInfo = {
-    prototypeTitle : "Prototype Name",
     prototypeDescription : "This is where you can describe the prototype shortly, this description is where you can elaborate and describe in details what's the prototype about.",
+    prototypeHowToUse: "Click `Create Discount`, select the first discount type, and start selecting the relevant inputs.",
     panelDirection : "left"
   };
 
