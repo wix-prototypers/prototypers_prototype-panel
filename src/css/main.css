@@ -1464,6 +1464,11 @@ input[type=radio].prt-circle-checkbox:disabled~label {
   color: var(--G3);
 }
 
+.prt-panel-field:disabled input[type=radio].prt-circle-checkbox:checked+.prt-checkmark {
+  background-color: var(--G1);
+  box-shadow: inset 0px 0px 0px 3px #1d1d1d, inset 0px 0px 0px 6px #434343;
+}
+
 /* ------------------------------------- Thumbnails style -------------------------------------*/
 .prt-thumbnails {
   display: inline-grid;
