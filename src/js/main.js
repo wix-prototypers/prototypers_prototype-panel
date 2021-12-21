@@ -368,9 +368,9 @@ function initPrtPanelEvents() {
       }, 500);
       let newLink = document.querySelector('.prt-share-link-input').value;
       if (!shareCheckbox.checked) {
-        newLink = newLink + '?prt-hide';
+        newLink = newLink + `${hasSections ? '&prt-hide' : '?prt-hide'}`;
       } else {
-        newLink = newLink.replace('?prt-hide', '');
+        newLink = newLink.replace(`${hasSections ? '&prt-hide' : '?prt-hide'}`, '');
       }
       document.querySelector('.prt-share-link-input').value = newLink;
       let input = document.querySelector('.prt-share-link-input');
@@ -700,6 +700,7 @@ function updateInputsFromURL() {
       if (input.checked || input.classList.contains('prt-unchecked-input')) {
         let name = input.name;
         let savedValue = urlParams.get(`${name +  `${input.classList.contains('prt-opacity-input') ? '[opacity]' : ''}`}`).replace('@_>','#'); // get the relevant value from the URL
+        console.log(savedValue)
         if (!input.classList.contains('prt-unchecked-input')) {
           document.querySelector(`[name='${name}'][value='${savedValue}']`).checked = true;
           document.querySelector(`[name='${name}'][value='${savedValue}']`).dispatchEvent(new Event('change'));
@@ -712,7 +713,7 @@ function updateInputsFromURL() {
     });
     // document.querySelector('.prototype-panel').classList.add('prototype-panel-hidden');
   }
-  if (queryString.includes('?prt-hide')) {
+  if (queryString.includes('&prt-hide') || queryString.includes('?prt-hide')) {
     document.querySelector('.prototype-panel').classList.add('prototype-panel-hidden');
     document.querySelector('.prt-show-panel-note').innerHTML = 'If you need the prototype panel, press ⇧+H';
     setTimeout(function() { // return to the first content
