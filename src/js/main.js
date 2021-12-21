@@ -343,6 +343,8 @@ function initPrtPanelEvents() {
     saveBtn.addEventListener('click', function() {
       let values = '';
       let url = window.location.href; // print the url
+      document.querySelector('[type="checkbox"][name="select-share-without-panel"]').checked = true;
+      document.querySelector('[type="checkbox"][name="select-share-without-panel"]').dispatchEvent(new Event('change'));
       // get the all values
       if(!hasSections || !thereChanges) {
         document.querySelector('.prt-share-link-input').value = url;
