@@ -1,5 +1,5 @@
 /* NOTE: This file includes the functions and the icons for creating the structure - No need to change / add. */
-import '../css/main.css';
+// import '../css/main.css';
 
 let hasSections = false;
 let sectionsAmount = 0;
