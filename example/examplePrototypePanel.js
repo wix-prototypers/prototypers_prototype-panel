@@ -97,21 +97,21 @@ const panelSections = [
         "iconsDisplayList": ["./images/list.svg", "./images/columns.svg", "./images/gallery.svg"],
         "labelsDisplayList": ["List", "Columns", "Gallery"]
       },
-      // {
-      //   "fieldName" : "example-input-number",
-      //   "fieldLabel": "Change the gap between the elements:",
-      //   "divider": false,
-      //   "toolTip": "",
-      //   "callback": "changeGagBetweenElmentes",
-      //   "disabled": "",
-      //   "fieldType": "number",
-      //   "min" : "10",
-      //   "max" : "50",
-      //   "step" : "5",
-      //   "value" : "35",
-      //   "showSlider": true,
-      //   "suffix": "px"
-      // }
+      {
+        "fieldName" : "example-input-number",
+        "fieldLabel": "Change the gap between the elements:",
+        "divider": false,
+        "toolTip": "",
+        "callback": "changeGagBetweenElmentes",
+        "disabled": "",
+        "fieldType": "number",
+        "min" : "10",
+        "max" : "50",
+        "step" : "5",
+        "value" : "35",
+        "showSlider": true,
+        "suffix": "px"
+      }
     ]
   }
 ];
