@@ -1,14 +1,14 @@
 @import url('https://static.parastorage.com/unpkg/@wix/wix-fonts@1.9.3/madefor.css');
 
 :root {
-  --G1: #1d1d1d;
-  --G2: #323232;
-  --G3: #434343;
-  --G4: #5d5d5d;
-  --G5: #bfbfbf;
-  --G6: #e7e7e7;
-  --G7: #f2f2f2;
-  --G8: #444444;
+  --Gry1: #1d1d1d;
+  --Gry2: #323232;
+  --Gry3: #434343;
+  --Gry4: #5d5d5d;
+  --Gry5: #bfbfbf;
+  --Gry6: #e7e7e7;
+  --Gry7: #f2f2f2;
+  --Gry8: #444444;
   --prt-blue: #41c9d6;
   --prt-light-blue: #76e8f2;
   --prt-btn-hover: #61dde8;
@@ -142,7 +142,7 @@
 }
 
 .prt-show-panel-note {
-  background-color: var(--G2);
+  background-color: var(--Gry2);
   color: #fff;
   font-size: 14px;
   font-weight: 500;
@@ -201,7 +201,7 @@
   height: 48px;
   width: 46px;
   /* overflow: hidden; */
-  background: var(--G2);
+  background: var(--Gry2);
   position: absolute;
   bottom: 12px;
   right: var(--right-px);
@@ -264,7 +264,7 @@
 .prt-panel-bar-actions .prt-panel-bar-icon {
   height: 47px;
   width: 40px;
-  background: var(--G2);
+  background: var(--Gry2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -289,17 +289,17 @@
 }
 
 .prt-panel-bar-actions .prt-panel-bar-icon span {
-  color: var(--G5);
+  color: var(--Gry5);
   font-weight: 500;
   font-size: 14px;
 }
 
 .prt-panel-bar-icon:hover span {
-  color: var(--G6);
+  color: var(--Gry6);
 }
 
 .prt-panel-bar-icon.prt-panel-icon-selected span {
-  color: var(--G7);
+  color: var(--Gry7);
 }
 
 .prt-panel-bar-icon:hover img, .prt-panel-bar-icon.prt-panel-icon-selected img {
@@ -307,7 +307,7 @@
 }
 
 .prt-panel-bar-icon:hover img {
-  background: var(--G1);
+  background: var(--Gry1);
   padding: 6px;
   border-radius: 8px;
 }
@@ -333,7 +333,7 @@
   width: 45px;
   padding: 12px;
   margin-left: -1px;
-  background: var(--G2);
+  background: var(--Gry2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -353,7 +353,7 @@
 }
 
 .prt-panel-content {
-  background: var(--G1);
+  background: var(--Gry1);
   bottom: 53px;
   right: var(--right-px);
   left: var(--left-px);
@@ -379,7 +379,7 @@
 .prt-panel-content .prt-panel-header {
   height: 48px;
   width: 260px;
-  background: var(--G2);
+  background: var(--Gry2);
   padding: 24px 14px 24px 20px;
   display: flex;
   align-items: center;
@@ -548,7 +548,7 @@
 .prt-panel-section .prt-overview-title {
   text-transform: uppercase;
   font-size: 12px;
-  color: var(--G5);
+  color: var(--Gry5);
   letter-spacing: 1px;
   margin-bottom: 12px;
   display: block;
@@ -577,18 +577,18 @@
 .prt-panel-divider {
   height: 1px;
   width: 100%;
-  background: var(--G8);
+  background: var(--Gry8);
   margin: 24px 0;
 }
 
 .prt-panel-section .prt-signature {
   font-size: 12px;
   text-align: center;
-  color: var(--G5);
+  color: var(--Gry5);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--G1);
+  background: var(--Gry1);
   border-radius: 6px;
 }
 
@@ -627,8 +627,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--G1);
-  box-shadow: 0px 0px 0px 1px var(--G4);
+  background-color: var(--Gry1);
+  box-shadow: 0px 0px 0px 1px var(--Gry4);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -646,7 +646,7 @@
 
 .prt-small-toggle-circle {
   border-radius: 50%;
-  background: var(--G5);
+  background: var(--Gry5);
 }
 
 .prt-small-toggle>input:checked+.prt-small-toggle-round {
@@ -682,7 +682,7 @@
 .prt-small-toggle-circle:after {
   content: "";
   position: absolute;
-  background: var(--G1);
+  background: var(--Gry1);
   height: 2px;
   width: 6px;
   top: 50%;
@@ -702,8 +702,8 @@
 .ptr-share-input {
   width: 100%;
   height: 34px;
-  background-color: var(--G2);
-  color: var(--G7);
+  background-color: var(--Gry2);
+  color: var(--Gry7);
   border: 1px solid var(--prt-blue);
   border-radius: 8px;
   padding: 8px 1px 8px 8px;
@@ -764,7 +764,7 @@ input.ptr-share-input:focus {
 
 .prt-checkbox-container .prt-checkbox {
   border-radius: 4px !important;
-  background: var(--G2);
+  background: var(--Gry2);
   border: 1px solid var(--input-hover);
   height: 15px;
   width: 15px;
@@ -775,7 +775,7 @@ input[type="checkbox"].prt-circle-checkbox {
   position: absolute;
   cursor: pointer;
   opacity: 0;
-  box-shadow: inset 0px 15px var(--G1);
+  box-shadow: inset 0px 15px var(--Gry1);
   left: -1px;
   z-index: 1;
 }
@@ -812,12 +812,12 @@ input[type="checkbox"].prt-circle-checkbox {
 
 .prt-new-link-container .prt-text-input {
   padding-right: 0;
-  border: 1px solid var(--G4);
+  border: 1px solid var(--Gry4);
 }
 
 .prt-new-link-container .prt-text-input::selection {
   background: #575757;
-  color: var(--G6);
+  color: var(--Gry6);
 }
 
 .prt-new-link-container .prt-copy-btn {
@@ -881,7 +881,7 @@ input[type="checkbox"].prt-circle-checkbox {
 }
 
 .prt-new-link-container .prt-copy-btn.prt-refresh .prt-copy-loader[icon="refresh"] span {
-  color: var(--G1);
+  color: var(--Gry1);
   animation-name: refresh-link;
   animation-duration: .7s;
   animation-fill-mode: both;
@@ -904,7 +904,7 @@ input[type="checkbox"].prt-circle-checkbox {
 
   50% {
     /* opacity: 1; */
-    color: var(--G1);
+    color: var(--Gry1);
   }
 
   100% {
@@ -916,7 +916,7 @@ input[type="checkbox"].prt-circle-checkbox {
 .prt-panel-field {
   align-items: center;
   border: none;
-  color: var(--G7);
+  color: var(--Gry7);
   display: grid;
   font-size: 15px;
   justify-content: space-between;
@@ -931,12 +931,12 @@ input[type="checkbox"].prt-circle-checkbox {
 .prt-panel-field>label {
   margin-bottom: 10px;
   font-size: 14px;
-  color: var(--G7);
+  color: var(--Gry7);
   font-weight: 600;
 }
 
 .prt-panel-field:disabled>label {
-  color: var(--G4);
+  color: var(--Gry4);
 }
 
 .prt-panel-section {
@@ -955,14 +955,14 @@ input[type="checkbox"].prt-circle-checkbox {
 }
 
 .prt-panel-section-header {
-  background-color: var(--G2);
+  background-color: var(--Gry2);
   height: 36px;
   align-items: center;
   display: flex;
   position: relative;
   cursor: pointer;
   padding: 9px 18px 9px 20px;
-  border-top: 1px solid var(--G3);
+  border-top: 1px solid var(--Gry3);
   justify-content: space-between;
 }
 
@@ -980,7 +980,7 @@ input[type="checkbox"].prt-circle-checkbox {
   font-style: normal;
   line-height: 1.29;
   letter-spacing: 1.3px;
-  color: var(--G5);
+  color: var(--Gry5);
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -994,7 +994,7 @@ input[type="checkbox"].prt-circle-checkbox {
 }
 
 .prt-panel-section-header:hover>span {
-  color: var(--G6);
+  color: var(--Gry6);
 }
 
 .prt-panel-section-header.close {
@@ -1016,7 +1016,7 @@ input[type="checkbox"].prt-circle-checkbox {
   line-height: 1.33;
   padding: 0 22px 14px;
   box-sizing: border-box;
-  color: var(--G6);
+  color: var(--Gry6);
 }
 
 .prt-panel-section-content.info-section-content {
@@ -1032,7 +1032,7 @@ input[type="checkbox"].prt-circle-checkbox {
 
 .prt-panel-tooltip {
   background-color: #02020b;
-  border: .5px solid var(--G4);
+  border: .5px solid var(--Gry4);
   border-radius: 6px;
   bottom: calc(100% + 8px);
   box-shadow: -1px -1px 6px 0 rgb(34 35 35/70%);
@@ -1073,9 +1073,9 @@ input[type="checkbox"].prt-circle-checkbox {
   width: 66px;
   height: 28px;
   border-radius: 4px;
-  border: solid 1px var(--G4);
-  background-color: var(--G2);
-  color: var(--G7);
+  border: solid 1px var(--Gry4);
+  background-color: var(--Gry2);
+  color: var(--Gry7);
   font-size: 14px;
   padding: 5px 10px;
   box-sizing: border-box;
@@ -1089,7 +1089,7 @@ input[type="checkbox"].prt-circle-checkbox {
   width: 25px;
   height: 10px;
   pointer-events: none;
-  background: var(--G2);
+  background: var(--Gry2);
   border-radius: 0 4px 0 0;
   display: flex;
   align-items: center;
@@ -1098,7 +1098,7 @@ input[type="checkbox"].prt-circle-checkbox {
 }
 
 .prt-container-input-number:hover:after {
-  color: var(--G7);
+  color: var(--Gry7);
   content: "\25B2";
   top: 1px;
   right: 1px;
@@ -1106,7 +1106,7 @@ input[type="checkbox"].prt-circle-checkbox {
 }
 
 .prt-container-input-number:hover:before {
-  color: var(--G7);
+  color: var(--Gry7);
   content: "\25BC";
   bottom: 3px;
   right: 1px;
@@ -1140,10 +1140,10 @@ input[type="checkbox"].prt-circle-checkbox {
   position: absolute;
   right: 0;
   top: 5px;
-  color: var(--G5);
+  color: var(--Gry5);
   font-size: 14px;
   margin-right: 8px;
-  background-color: var(--G2);
+  background-color: var(--Gry2);
 }
 
 .prt-spinner-ui {
@@ -1159,9 +1159,9 @@ input[type="checkbox"].prt-circle-checkbox {
   width: 60px;
   height: 24px;
   border-radius: 4px;
-  border: solid 1px var(--G4);
-  background-color: var(--G2);
-  color: var(--G7);
+  border: solid 1px var(--Gry4);
+  background-color: var(--Gry2);
+  color: var(--Gry7);
   font-size: 12px;
   padding: 5px;
   box-sizing: border-box;
@@ -1170,13 +1170,13 @@ input[type="checkbox"].prt-circle-checkbox {
 
 /* ------- Disabled State ------- */
 .prt-container-input-number .prt-spinner:disabled {
-  border: 1px solid var(--G1);
-  background-color: var(--G2);
-  color: var(--G4);
+  border: 1px solid var(--Gry1);
+  background-color: var(--Gry2);
+  color: var(--Gry4);
 }
 
 .prt-panel-field:disabled .prt-sfx-label {
-  color: var(--G4);
+  color: var(--Gry4);
 }
 
 /* ------------------------------------- Slider Style ------------------------------------- */
@@ -1185,7 +1185,7 @@ input[type="checkbox"].prt-circle-checkbox {
   width: 200px;
   position: absolute;
   height: 2px;
-  background: var(--G4);
+  background: var(--Gry4);
   width: 124px;
   height: 2px;
   position: relative;
@@ -1225,15 +1225,15 @@ input[type="checkbox"].prt-circle-checkbox {
 
 /* ------- Disabled State ------- */
 .prt-panel-field:disabled .prt-slider {
-  background: var(--G2);
+  background: var(--Gry2);
 }
 
 .prt-panel-field:disabled .prt-slider::after {
-  background: var(--G3);
+  background: var(--Gry3);
 }
 
 .prt-panel-field:disabled .prt-slider::-webkit-slider-thumb {
-  background: var(--G3);
+  background: var(--Gry3);
 }
 
 /* ------------------------------------- Toggle style -------------------------------------*/
@@ -1243,9 +1243,9 @@ input[type="checkbox"].prt-circle-checkbox {
   z-index: 5;
   width: 210px;
   border-radius: 4px;
-  box-shadow: inset 0 0 0 1px var(--G3);
-  background-color: var(--G2);
-  color: var(--G5);
+  box-shadow: inset 0 0 0 1px var(--Gry3);
+  background-color: var(--Gry2);
+  color: var(--Gry5);
   height: 28px;
   box-sizing: border-box;
   -webkit-user-select: none;
@@ -1277,7 +1277,7 @@ input[type="radio"].prt-toggle-option {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  color: var(--G6);
+  color: var(--Gry6);
   position: relative;
   transition: 0.17s cubic-bezier(0.37, 0, 0.63, 1);
 }
@@ -1290,13 +1290,13 @@ input[type="radio"].prt-toggle-option {
   top: 0;
   border-radius: 4px;
   left: 0;
-  border: 0px solid var(--G4);
+  border: 0px solid var(--Gry4);
   opacity: 0;
 }
 
 .prt-toggle-option:not(:checked)+.prt-toggle-labels:hover:after {
   opacity: 1;
-  border: 1px solid var(--G4);
+  border: 1px solid var(--Gry4);
   transition: 0.17s cubic-bezier(0.37, 0, 0.63, 1);
 }
 
@@ -1318,7 +1318,7 @@ input[type="radio"].prt-toggle-option {
   z-index: -1;
   border-radius: 4px;
   border: 1px solid var(--prt-blue);
-  /* background-color: var(--G3); */
+  /* background-color: var(--Gry3); */
 }
 
 .prt-toggle-option:checked+.prt-toggle-labels {
@@ -1341,30 +1341,30 @@ input[type="radio"].prt-toggle-option[option="2"]:checked~.prt-toggle-bckgrnd {
 
 /* ------- Disabled State ------- */
 .prt-panel-field:disabled .prt-toggle {
-  box-shadow: inset 0 0 0 1px var(--G1);
+  box-shadow: inset 0 0 0 1px var(--Gry1);
 }
 
 .prt-toggle-option:disabled+.prt-toggle-labels {
-  color: var(--G4);
+  color: var(--Gry4);
 }
 
 input[type="radio"].prt-toggle-option:checked:disabled~.prt-toggle-bckgrnd {
-  border: 1px solid var(--G1);
-  background-color: var(--G2);
+  border: 1px solid var(--Gry1);
+  background-color: var(--Gry2);
 }
 
 /* ------- Long Text Tooltip ------- */
 .prt-toggle-tooltip-option {
   border-radius: 4px;
   box-shadow: -1px -1px 6px 0px rgb(34 35 35 / 70%);
-  border: solid 0.5px var(--G3);
+  border: solid 0.5px var(--Gry3);
   background-color: #0a0911;
   position: absolute;
   left: -5px;
   bottom: 30px;
   display: none;
   padding: 8px;
-  color: var(--G6);
+  color: var(--Gry6);
   font-size: 12px;
   box-sizing: border-box;
   max-width: 160px;
@@ -1388,7 +1388,7 @@ input[type="radio"].prt-circle-checkbox {
   position: absolute;
   cursor: pointer;
   opacity: 0;
-  box-shadow: inset 0px 15px var(--G1);
+  box-shadow: inset 0px 15px var(--Gry1);
   left: -1px;
   z-index: 1;
 }
@@ -1417,13 +1417,13 @@ input[type="radio"].prt-circle-checkbox {
   left: 0;
   height: 17px;
   width: 17px;
-  background-color: var(--G1);
+  background-color: var(--Gry1);
   border-radius: 50%;
-  box-shadow: inset 0px 0px 0px 3px var(--G1);
+  box-shadow: inset 0px 0px 0px 3px var(--Gry1);
   border: solid 1px var(--prt-blue);
-  background-color: var(--G1);
+  background-color: var(--Gry1);
   border-radius: 50%;
-  box-shadow: inset 0px 0px 0px 3px var(--G1);
+  box-shadow: inset 0px 0px 0px 3px var(--Gry1);
   border: solid 1px var(--prt-blue);
 }
 
@@ -1433,14 +1433,14 @@ input[type="radio"].prt-circle-checkbox {
 }
 
 input[type=radio].prt-circle-checkbox:checked+.prt-checkmark {
-  background-color: var(--G1);
+  background-color: var(--Gry1);
   box-shadow: inset 0px 0px 0px 3px #1d1d1d, inset 0px 0px 0px 6px #34b5b5;
 }
 
 input[type=radio].prt-circle-checkbox~label {
   font-size: 14px;
   cursor: pointer;
-  color: var(--G7);
+  color: var(--Gry7);
 }
 
 input[type=radio].prt-circle-checkbox:checked~label {
@@ -1453,19 +1453,19 @@ input[type=radio].prt-circle-checkbox:checked~label {
 
 /* ------- Disabled State ------- */
 input[type=radio].prt-circle-checkbox:checked:disabled+.prt-checkmark {
-  background-color: var(--G3);
+  background-color: var(--Gry3);
 }
 
 input[type=radio].prt-circle-checkbox:disabled+.prt-checkmark {
-  border: solid 1px var(--G3);
+  border: solid 1px var(--Gry3);
 }
 
 input[type=radio].prt-circle-checkbox:disabled~label {
-  color: var(--G3);
+  color: var(--Gry3);
 }
 
 .prt-panel-field:disabled input[type=radio].prt-circle-checkbox:checked+.prt-checkmark {
-  background-color: var(--G1);
+  background-color: var(--Gry1);
   box-shadow: inset 0px 0px 0px 3px #1d1d1d, inset 0px 0px 0px 6px #434343;
 }
 
@@ -1488,8 +1488,8 @@ input[type=radio].prt-circle-checkbox:disabled~label {
   width: 57px;
   height: 57px;
   border-radius: 4px;
-  border: solid 1px var(--G3);
-  background-color: var(--G2);
+  border: solid 1px var(--Gry3);
+  background-color: var(--Gry2);
   outline: none;
   cursor: pointer;
   transition: 0.17s cubic-bezier(0.37, 0, 0.63, 1);
@@ -1516,12 +1516,12 @@ input[type=radio].prt-circle-checkbox:disabled~label {
   white-space: nowrap;
   max-width: 55px;
   display: inline-block;
-  color: var(--G7);
+  color: var(--Gry7);
   margin-top: 4px;
 }
 
 .prt-thumbnails-item:hover>label {
-  color: var(--G6);
+  color: var(--Gry6);
 }
 
 [type="radio"].prt-thumbnails-input {
@@ -1538,7 +1538,7 @@ input[type=radio].prt-circle-checkbox:disabled~label {
 
 [type="radio"].prt-thumbnails-input:checked~.prt-thumbnails-button {
   border: solid 1px var(--prt-blue);
-  /* background-color: var(--G3); */
+  /* background-color: var(--Gry3); */
 }
 
 [type="radio"].prt-thumbnails-input:checked~.prt-thumbnails-button img {
@@ -1551,12 +1551,12 @@ input[type=radio].prt-circle-checkbox:disabled~label {
 
 /* ------- Disabled State ------- */
 [type="radio"].prt-thumbnails-input:disabled~.prt-thumbnails-button {
-  border: solid 1px var(--G2);
-  background-color: var(--G2);
+  border: solid 1px var(--Gry2);
+  background-color: var(--Gry2);
 }
 
 [type="radio"].prt-thumbnails-input:checked:disabled~.prt-thumbnails-button {
-  border: solid 1px var(--G2);
+  border: solid 1px var(--Gry2);
 }
 
 [type="radio"].prt-thumbnails-input:disabled~.prt-thumbnails-button img {
@@ -1570,7 +1570,7 @@ input[type=radio].prt-circle-checkbox:disabled~label {
 }
 
 [type="radio"].prt-thumbnails-input:disabled~.prt-thumbnails-button+label {
-  color: var(--G3);
+  color: var(--Gry3);
 }
 
 /* ------- Long Text Tooltip ------- */
@@ -1578,13 +1578,13 @@ input[type=radio].prt-circle-checkbox:disabled~label {
   --tooltip-side-offset: -5px;
   border-radius: 4px;
   box-shadow: -1px -1px 6px 0px rgb(34 35 35 / 70%);
-  border: solid 0.5px var(--G3);
+  border: solid 0.5px var(--Gry3);
   background-color: #0a0911;
   position: absolute;
   bottom: 67px;
   display: none;
   padding: 8px;
-  color: var(--G6);
+  color: var(--Gry6);
   font-size: 12px;
   box-sizing: border-box;
   max-width: 160px;
@@ -1612,9 +1612,9 @@ input[type=radio].prt-circle-checkbox:disabled~label {
 
 /* ------------------------------------- Text Field style -------------------------------------*/
 [type="text"].prt-text-input {
-  background: var(--G2);
-  border: 1px solid var(--G4);
-  color: var(--G7);
+  background: var(--Gry2);
+  border: 1px solid var(--Gry4);
+  color: var(--Gry7);
   height: 28px;
   width: 210px;
   padding: 5px 10px;
@@ -1626,27 +1626,27 @@ input[type=radio].prt-circle-checkbox:disabled~label {
 }
 
 [type="text"].prt-text-input:hover:not(:disabled):not(:focus) {
-  color: var(--G6);
+  color: var(--Gry6);
   border: 1px solid var(--input-hover);
 }
 
 [type="text"].prt-text-input:focus {
-  color: var(--G6);
+  color: var(--Gry6);
   border: 1px solid var(--prt-blue);
   outline: none;
 }
 
 /* ------- Disabled State ------- */
 [type="text"].prt-text-input:disabled {
-  border: 1px solid var(--G1);
-  background-color: var(--G2);
-  color: var(--G4);
+  border: 1px solid var(--Gry1);
+  background-color: var(--Gry2);
+  color: var(--Gry4);
 }
 
 /* ------------------------------------- Button style -------------------------------------*/
 [type="button"].prt-button-input {
-  background: var(--G2);
-  border: 1px solid var(--G3);
+  background: var(--Gry2);
+  border: 1px solid var(--Gry3);
   color: var(--prt-blue);
   height: 28px;
   width: 105px;
@@ -1671,9 +1671,9 @@ input[type=radio].prt-circle-checkbox:disabled~label {
 
 /* ------- Disabled State ------- */
 [type="button"].prt-button-input:disabled {
-  border: 1px solid var(--G1);
-  background-color: var(--G2);
-  color: var(--G4);
+  border: 1px solid var(--Gry1);
+  background-color: var(--Gry2);
+  color: var(--Gry4);
 }
 
 /* ------------------------------------- Color Input style -------------------------------------*/
@@ -1696,9 +1696,9 @@ input[type=radio].prt-circle-checkbox:disabled~label {
 .prt-color .prt-color-picker {
   /* width: 44px; */
   width: 28px;
-  background: var(--G2);
-  border: 1px solid var(--G3);
-  color: var(--G5);
+  background: var(--Gry2);
+  border: 1px solid var(--Gry3);
+  color: var(--Gry5);
   height: 28px;
   padding: 5px 7px;
   box-sizing: border-box;
@@ -1710,18 +1710,18 @@ input[type=radio].prt-circle-checkbox:disabled~label {
 .prt-color .prt-color-picker .prt-color-chevron {
   height: 26px;
   width: 17px;
-  background: var(--G2);
+  background: var(--Gry2);
   right: 0;
   top: 0;
   position: absolute;
   cursor: pointer;
-  border-left: 1px solid var(--G3);
+  border-left: 1px solid var(--Gry3);
   border-radius: 0 3px 3px 0;
   display: none;
 }
 
 .prt-color-chevron:after {
-  color: var(--G7);
+  color: var(--Gry7);
   content: "\25BC";
   font-size: 12px;
   margin: 4px;
@@ -1736,8 +1736,8 @@ input[type=radio].prt-circle-checkbox:disabled~label {
   /* height: 110px; */
   width: 99px;
   position: absolute;
-  background: var(--G2);
-  border: 1px solid var(--G3);
+  background: var(--Gry2);
+  border: 1px solid var(--Gry3);
   z-index: 1;
   left: -1px;
   top: 26px;
@@ -1773,7 +1773,7 @@ input[type=radio].prt-circle-checkbox:disabled~label {
   border-radius: 50%;
   background: aquamarine;
   cursor: pointer;
-  box-shadow: inset 0px 0px 0 2px var(--G2);
+  box-shadow: inset 0px 0px 0 2px var(--Gry2);
   box-sizing: border-box;
   position: absolute;
 }

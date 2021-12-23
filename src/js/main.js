@@ -290,17 +290,13 @@ function initPrtPanelEvents() {
   // Navigation between the tabs - each tab will open the relevant section
   document.querySelectorAll(".prt-panel-bar-icon").forEach((icon) => {
     icon.addEventListener("click", function() {
+      if (!this.classList.contains("prt-panel-icon-selected")) {
       document.querySelector(`.prt-panel-content`).classList.remove('prt-content-min-height');
       let theRelevantSection = icon.getAttribute('data-title');
-      if (this.classList.contains("prt-panel-icon-selected")) {
-        this.classList.remove("prt-panel-icon-selected");
-      } else {
         document.querySelectorAll(".prt-panel-bar-icon").forEach((icon) => {
           icon.classList.remove("prt-panel-icon-selected");
         });
         this.classList.add("prt-panel-icon-selected");
-      }
-
       document.querySelector('.prototype-panel').classList.add('prt-panel-open');
       document.querySelectorAll(".prt-panel-section").forEach((section) => {
         section.classList.add("prt-hide-section");
@@ -335,7 +331,9 @@ function initPrtPanelEvents() {
           }
         }
       }, 200);
+        }
     });
+
   });
 
   // Gnerate a new link after changes and set it into the input field
@@ -370,9 +368,9 @@ function initPrtPanelEvents() {
       }, 500);
       let newLink = document.querySelector('.prt-share-link-input').value;
       if (!shareCheckbox.checked) {
-        newLink = newLink + `${hasSections ? '&prt-hide' : '?prt-hide'}`;
+        newLink = newLink + `${hasSections && thereChanges ? '&prt-hide' : '?prt-hide'}`;
       } else {
-        newLink = newLink.replace(`${hasSections ? '&prt-hide' : '?prt-hide'}`, '');
+        newLink = newLink.replace(`${hasSections && thereChanges ? '&prt-hide' : '?prt-hide'}`, '');
       }
       document.querySelector('.prt-share-link-input').value = newLink;
       let input = document.querySelector('.prt-share-link-input');
