@@ -552,13 +552,6 @@ function closePrtPanelSection(section) {
     if(sectionsAmount > 1) {
       section.classList.add('close');
       section.nextElementSibling.classList.add('close');
-      // var sectionHeight = equalHeight(".prt-customization");
-      // if(sectionHeight > 500) {
-      //   document.querySelector(`.prt-panel-content`).classList.add('prt-content-min-height');
-      // } else {
-      //   console.log(sectionHeight)
-      //   document.querySelector(`.prt-panel-content`).style.minHeight = sectionHeight + 56 + "px";
-      // }
     }
   }
 }
@@ -700,7 +693,6 @@ function updateInputsFromURL() {
       if (input.checked || input.classList.contains('prt-unchecked-input')) {
         let name = input.name;
         let savedValue = urlParams.get(`${name +  `${input.classList.contains('prt-opacity-input') ? '[opacity]' : ''}`}`).replace('@_>','#'); // get the relevant value from the URL
-        console.log(savedValue)
         if (!input.classList.contains('prt-unchecked-input')) {
           document.querySelector(`[name='${name}'][value='${savedValue}']`).checked = true;
           document.querySelector(`[name='${name}'][value='${savedValue}']`).dispatchEvent(new Event('change'));
