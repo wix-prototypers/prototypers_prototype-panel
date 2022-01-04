@@ -72,7 +72,7 @@ const panelSections = [
         "callback": "changeOverlayColor",
         "disabled": true,
         "fieldType": "toggle",
-        "option1Display": "Light",
+        "option1Display": "Light - Long Text",
         "option1Value" : "light",
         "option2Display": "Dark",
         "option2Value" : "dark",
@@ -95,7 +95,7 @@ const panelSections = [
         "defaultIndex": 1,
         "optionsBackendList": ["list", "columns", "gallery"],
         "iconsDisplayList": ["./images/list.svg", "./images/columns.svg", "./images/gallery.svg"],
-        "labelsDisplayList": ["List", "Columns", "Gallery"]
+        "labelsDisplayList": ["List", "Columns - Long Text", "Gallery"]
       },
       // {
       //   "fieldName" : "example-input-number",
@@ -120,7 +120,7 @@ window.onload = function(e) {
   let panelInfo = {
     prototypeDescription : "This is where you can describe the prototype shortly, this description is where you can elaborate and describe in details what's the prototype about.",
     prototypeHowToUse: "Click `Create Discount`, select the first discount type, and start selecting the relevant inputs.",
-    panelDirection : "left"
+    panelDirection : "right"
   };
 
   initPrototypePanel(panelInfo, panelSections);
