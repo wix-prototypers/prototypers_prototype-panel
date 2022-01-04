@@ -22,7 +22,7 @@ function initPrototypePanel(panelInfo, panelSections) {
     // Prototype Panel Template
     const prototypePanelTemplate =
     `<div class='prototype-panel' panel-dir='${_panelInfo.panelDirection}' interactive-panel=${hasSections ? 'true' : 'false'}>
-    <span class="prt-panel-tooltip prt-header-tooltip" for="dir">Dock to Left</span>
+    <span class="prt-panel-tooltip prt-header-tooltip" for="dir">Dock to ${_panelInfo.panelDirection == 'left' ? 'Right' : 'Left'}</span>
     <span class="prt-panel-tooltip prt-header-tooltip" for="hide">Toggle Panel (⇧+H)</span>
     <span class="prt-panel-tooltip prt-header-tooltip" for="minimize">Minimize</span>
     <div class="prt-panel-bar">
@@ -155,7 +155,7 @@ function createPrtPanelSection(section) {
     index == section.fields.length - 1 ? index = 'prt-last-field' : index = '';
     inputsTemplate += createPrtPanelInput(field, index);
   });
-  newSection = `<div class="prt-panel-section-header ${sectionIsOpen != false ? '' : 'close'}"><span>${sectionTitle}</span>${prtHeaderChev}</div>
+  newSection = `<div class="prt-panel-section-header ${sectionIsOpen != false ? '' : 'close'}"><span>${sectionTitle}</span>${sectionsAmount > 1 ? prtHeaderChev : ''}</div>
   <div class="prt-panel-section-content ${sectionIsOpen != false ? '' : 'close'}" section-number='${sectionNumber}'>
   ${inputsTemplate}
   </div>`;
@@ -205,10 +205,10 @@ function prtPanelInputContent(fieldData) {
       content = `<div class='prt-toggle'>
       <input class='prt-toggle-option' id='${fieldName}-0' value='${option1Value}' option='1' type='radio' name='${fieldName}' ${defaultOption == 2 ? '': 'checked'}>
       <label class='prt-toggle-labels' for='${fieldName}-0'>${option1Display}</label>
-      <span class='prt-toggle-tooltip-option' style='opacity: ${option1Display.length > tooltipWordsLimit ? 1 : 0}'>${option1Display}</span>
+      <span class='prt-panel-tooltip prt-toggle-tooltip-option' style='visibility: ${option1Display.length > tooltipWordsLimit ? 'visible' : 'hidden'}'>${option1Display}</span>
       <input class='prt-toggle-option' id='${fieldName}-1' value='${option2Value}' option='2' type='radio' name='${fieldName}' ${defaultOption == 2 ? 'checked': ''}>
       <label class='prt-toggle-labels' for='${fieldName}-1'>${option2Display}</label>
-      <span class='prt-toggle-tooltip-option right' style='opacity: ${option2Display.length > tooltipWordsLimit ? 1 : 0}'>${option2Display}</span>
+      <span class='prt-panel-tooltip prt-toggle-tooltip-option prt-right' style='visibility: ${option2Display.length > tooltipWordsLimit ? 'visible' : 'hidden'}'>${option2Display}</span>
       <div class='prt-toggle-bckgrnd'></div>
       </div>`;
       break;
@@ -239,7 +239,7 @@ function prtPanelInputContent(fieldData) {
         <input class='prt-thumbnails-input' type='radio' value='${optionsBackendList[i]}' name='${fieldName}' id='${fieldName}-${i}' ${checked}>
         <button class='prt-thumbnails-button ${selected}' value='${optionsBackendList[i]}'><img src='${iconsDisplayList[i]}'></button>
         <label for='${fieldName}-${i}'>${labelsDisplayList[i]}</label>
-        <span class='prt-thumbnails-tooltip-item ${classItemPosition}' style='opacity: ${labelsDisplayList[i].length > tooltipWordsLimit ? 1 : 0}'>${labelsDisplayList[i]}</span>
+        <span class='prt-panel-tooltip prt-thumbnails-tooltip-item ${classItemPosition}' style='visibility: ${labelsDisplayList[i].length > tooltipWordsLimit ? 'visible' : 'hidden'}'>${labelsDisplayList[i]}</span>
         </div>`;
       }
       content += `</div>`;
