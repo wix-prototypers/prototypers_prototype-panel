@@ -59,7 +59,10 @@ This file includes the style of the panel structure and of each element in the p
 
 **Main Header:**  The header in each tab includes the general actions of the panel (_i.e minimize the panel, dock the panel on the other side and hide the panel_).
 
-### **2. Inputs**
+### **2. The 'Share' Tab - Get Shareable Link**
+The 'Share' tab allows to generate a shareable link to the prototype, the URL of this link contains the name of each input and the value selected for it in the settings. When the new link is loaded the code changes to each input the relevant value saved in the url and then we get a new version of the prototype according to the saved settings.
+
+### **3. Inputs**
 The inputs are the interactive part of the panel and allow our users to play, change and test different options for the prototype. The panel currently includes four types of inputs:
 
    1. [Number](https://wix-prototypers.github.io/prototypers_prototype-panel/#1-number-): spinner element with slider element (optional).
