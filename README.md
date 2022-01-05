@@ -117,7 +117,7 @@ function initPrototypePanel(panelInfo : Object, panelSections : Object)
    </td>
    <td>Object
    </td>
-   <td>An object with 3 properties: prototypeTitle, prototypeHowToUse and panelDirection. See details below.
+   <td>An object with 3 properties: prototypeDescription, prototypeHowToUse and panelDirection. See details below.
    </td>
    <td>
     Yes
@@ -208,7 +208,7 @@ The `initPrototypePanel()` function adds the information and following propertie
   </tr>
 </table>
 
-**NOTE:** You must add the `prototypeTitle` and the `prototypeHowToUse`, the panel won't be created if one of them is invalid. The `panelDirection` is optional, the default value will be “right”. Then if you want to place the panel on the left you need to define it in the `panelDirection` property.
+**NOTE:** You must add the `prototypeDescription` and the `prototypeHowToUse`, the panel won't be created if one of them is invalid. The `panelDirection` is optional, the default value will be “right”. Then if you want to place the panel on the left you need to define it in the `panelDirection` property.
 
 #### **Code Example for Informative Panel only**
 ```javascript
