@@ -57,7 +57,7 @@ This file includes the style of the panel structure and of each element in the p
 
 **Share:** The 'Share' tab allows to generate a shareable link to the prototype, that contains the settings that selected in the interactive part. This allows for easy sharing of various versions of the prototype. In this part the current user also can control the display of the panel in the new link, copy the new link or open it in a new tab.
 
-**Main Header:**  The header in each tab includes the general actions of the panel (_i.e minimize the panel_, _dock the panel on the other side _, _hide the panel_).
+**Main Header:**  The header in each tab includes the general actions of the panel (_i.e minimize the panel, dock the panel on the other side and hide the panel_).
 
 ### **2. Inputs**
 The inputs are the interactive part of the panel and allow our users to play, change and test different options for the prototype. The panel currently includes four types of inputs:
