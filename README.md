@@ -48,12 +48,16 @@ This file includes the style of the panel structure and of each element in the p
 
 
 ### **1. General Structure**
-The general structure of the panel consists of a header, content and footer.<br />
-**Header:**  The header includes the prototype title and the general actions of the panel (_i.e close the panel_, _save changes and change the position of the panel_).
 
-**Contect:** The content is the main part of the panel and is divided to sections. The content will differ according to the type of panel. (1) For an informative panel the content will contain only one section with a short description about the prototype. (2) For an interactive panel, in addition to the informative section, the content will include sections according to your needs. Each section consists of the section name and its content which includes the relevant inputs according to the panel needs.    
-        
-**Footer:** The footer includes a button to close the panel and our logo with a link to our [‘WixWhooo’ page](https://www.wixwhooo.com/results?type=all&val=prototyper) to contact us.
+The general structure of the panel consists a floating bar with 3 tabs - info, settings and share.<br />
+**Info:**  The 'Info' tab includes information about the prototype - prototype description, a brief explanation of how to use the prototype and a link to our [‘WixWhooo’ page](https://www.wixwhooo.com/results?type=all&val=prototyper) to contact us.
+
+
+**Settings:** The 'Settings' tab is the interactive part of the panel and is divided to sections according to your needs. Each section consists of the section name and its content which includes the relevant inputs according to the panel needs.    
+
+**Share:** The 'Share' tab allows to generate a shareable link to the prototype, that contains the settings that selected in the interactive part. This allows for easy sharing of various versions of the prototype. In this part the current user also can control the display of the panel in the new link, copy the new link or open it in a new tab.
+
+**Main Header:**  The header in each tab includes the general actions of the panel (_i.e minimize the panel_, _dock the panel on the other side _, _hide the panel_).
 
 ### **2. Inputs**
 The inputs are the interactive part of the panel and allow our users to play, change and test different options for the prototype. The panel currently includes four types of inputs:
@@ -72,8 +76,8 @@ To use the panel in your prototype you must do these 2 following actions:
 Add the following links in your prototype's index file.
 
 ```HTML
-<script src="https://cdn.jsdelivr.net/gh/wix-prototypers/prototypers_prototype-panel@2/dist/prototypePanel.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wix-prototypers/prototypers_prototype-panel@2/dist/prototypePanel.css">
+<script src="https://cdn.jsdelivr.net/gh/wix-prototypers/prototypers_prototype-panel@3.1/dist/prototypePanel.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wix-prototypers/prototypers_prototype-panel@3.1/dist/prototypePanel.css">
 ```
 
 ### **2. Create the panel: 🏗**
@@ -153,7 +157,7 @@ The `initPrototypePanel()` function adds the information and following propertie
   </tr>
   <tr>
    <td>
-    prototypeTitle
+    prototypeHowToUse
    </td>
    <td>
      String
@@ -161,7 +165,7 @@ The `initPrototypePanel()` function adds the information and following propertie
    <td>
    </td>
    <td>
-    The prototype name (in short).
+    A brief explanation of how to use the prototype or where to start.
    </td>
    <td>
     Yes
@@ -302,7 +306,7 @@ be inside this section. See inputs details below.
 ```javascript
 
 let panelInfo = {
-  prototypeTitle : "Prototype Name",
+prototypeHowToUse: "Explain how to start using the prototype (1-2 statements).",
   prototypeDescription : "This is where you can describe the prototype shortly, this description is where you can elaborate and describe in details what's the prototype about.",
   panelDirection : "right"
 };
@@ -368,17 +372,6 @@ Below is a list of properties for each input type. You must define all the prope
    </td>
    <td>
     The label that will appear in the panel above the input.
-   </td>
-  </tr>
-  <tr>
-   <td>
-    divider
-   </td>
-   <td>
-    Boolean
-   </td>
-   <td>
-    Show a divider if you want to separate input fields. For your decision, depending on the relationship between the inputs in the same section.
    </td>
   </tr>
   <tr>
@@ -489,7 +482,6 @@ Below is a list of properties for each input type. You must define all the prope
 {
   fieldName : "example-input-number",
   fieldLabel : "Input Number Label",
-  divider : false,
   callback : "exampleFunction",
   disabled : false,
   fieldType : "number",
@@ -536,17 +528,6 @@ Below is a list of properties for each input type. You must define all the prope
    </td>
    <td>
     The label that will appear in the panel above the input.
-   </td>
-  </tr>
-  <tr>
-   <td>
-    divider
-   </td>
-   <td>
-    Boolean
-   </td>
-   <td>
-    Show a divider if you want to separate input fields. For your decision, depending on the relationship between the inputs in the same section.
    </td>
   </tr>
   <tr>
@@ -650,7 +631,6 @@ Below is a list of properties for each input type. You must define all the prope
    {
      fieldName : "example-input-toggle",
      fieldLabel : "Input Toggle Label",
-     divider : false,
      callback : "exampleFunction",
      disabled : false,
      fieldType : "toggle",
@@ -696,17 +676,6 @@ Below is a list of properties for each input type. You must define all the prope
    </td>
    <td>
     The label that will appear in the panel above the input.
-   </td>
-  </tr>
-  <tr>
-   <td>
-    divider
-   </td>
-   <td>
-    Boolean
-   </td>
-   <td>
-    Show a divider if you want to separate input fields. For your decision, depending on the relationship between the inputs in the same section.
    </td>
   </tr>
   <tr>
@@ -784,7 +753,6 @@ Below is a list of properties for each input type. You must define all the prope
    {
      fieldName : "example-input-radiobtn",
      fieldLabel : "Radio Button Label",
-     divider : false,
      callback : "exampleFunction",
      disabled : false,
      fieldType : "radio-button",
@@ -830,17 +798,6 @@ Below is a list of properties for each input type. You must define all the prope
    </td>
    <td>
     The label that will appear in the panel above the input.
-   </td>
-  </tr>
-  <tr>
-   <td>
-    divider
-   </td>
-   <td>
-    Boolean
-   </td>
-   <td>
-    Show a divider if you want to separate input fields. For your decision, depending on the relationship between the inputs in the same section.
    </td>
   </tr>
   <tr>
@@ -896,7 +853,6 @@ Below is a list of properties for each input type. You must define all the prope
    {
      fieldName : "example-input-text-field",
      fieldLabel : "Text Field Label",
-     divider : false,
      callback : "exampleFunction",
      disabled : false,
      fieldType : "text",
@@ -938,17 +894,6 @@ Below is a list of properties for each input type. You must define all the prope
    </td>
    <td>
     The label that will appear in the panel above the input.
-   </td>
-  </tr>
-  <tr>
-   <td>
-    divider
-   </td>
-   <td>
-    Boolean
-   </td>
-   <td>
-    Show a divider if you want to separate input fields. For your decision, depending on the relationship between the inputs in the same section.
    </td>
   </tr>
   <tr>
@@ -1004,7 +949,6 @@ Below is a list of properties for each input type. You must define all the prope
    {
      fieldName : "example-input-text-field",
      fieldLabel : "Text Field Label",
-     divider : false,
      callback : "exampleFunction",
      disabled : false,
      fieldType : "button",
@@ -1046,17 +990,6 @@ Below is a list of properties for each input type. You must define all the prope
    </td>
    <td>
     The label that will appear in the panel above the input.
-   </td>
-  </tr>
-  <tr>
-   <td>
-    divider
-   </td>
-   <td>
-    Boolean
-   </td>
-   <td>
-    Show a divider if you want to separate input fields. For your decision, depending on the relationship between the inputs in the same section.
    </td>
   </tr>
   <tr>
@@ -1147,7 +1080,6 @@ Below is a list of properties for each input type. You must define all the prope
    {
      fieldName : "example-input-thumbnails",
      fieldLabel : "Thumbnails Label",
-     divider : false,
      callback : "exampleFunction",
      disabled : false,
      fieldType : "thumbnails",
