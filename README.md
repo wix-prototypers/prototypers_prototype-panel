@@ -49,9 +49,9 @@ This file includes the style of the panel structure and of each element in the p
 
 ### **1. General Structure**
 
-The general structure of the panel consists a floating bar with 3 tabs - info, settings and share.<br />
-**Info:**  The 'Info' tab includes information about the prototype - prototype description, a brief explanation of how to use the prototype and a link to our [‘WixWhooo’ page](https://www.wixwhooo.com/results?type=all&val=prototyper) to contact us.
+**Bar / Main Footer:** The initial part of the panel includes a floating bar with our logo and 3 tabs - info, settings and share.<br />
 
+**Info:**  The 'Info' tab includes information about the prototype - prototype description, a brief explanation of how to use the prototype and a link to our [‘WixWhooo’ page](https://www.wixwhooo.com/results?type=all&val=prototyper) to contact us.
 
 **Settings:** The 'Settings' tab is the interactive part of the panel and is divided to sections according to your needs. Each section consists of the section name and its content which includes the relevant inputs according to the panel needs.    
 
