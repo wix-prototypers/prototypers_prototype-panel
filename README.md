@@ -309,7 +309,7 @@ be inside this section. See inputs details below.
 ```javascript
 
 let panelInfo = {
-prototypeHowToUse: "Explain how to start using the prototype (1-2 statements).",
+  prototypeHowToUse: "Explain how to start using the prototype (1-2 statements).",
   prototypeDescription : "This is where you can describe the prototype shortly, this description is where you can elaborate and describe in details what's the prototype about.",
   panelDirection : "right"
 };
