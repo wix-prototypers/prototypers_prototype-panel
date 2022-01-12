@@ -52,7 +52,7 @@ function initPrototypePanel(panelInfo, panelSections) {
     <div>
     <div class="prt-overview-title">description</div>
     <div class="prt-overview-paragraph prt-description-paragraph">${_panelInfo.prototypeDescription}</div>
-    <span class="prt-panel-button prt-read-more-description prt-hide" action="more" skin="text">Read More</span>
+    <span class="prt-panel-button prt-read-more-description prt-hide" show="more" skin="text">Read More</span>
     <div class="prt-panel-divider"></div>
     <div class="prt-overview-title">how to use</div>
     <div class="prt-overview-paragraph">${_panelInfo.prototypeHowToUse}</div>
@@ -488,14 +488,14 @@ function initPrtPanelEvents() {
 
   // Show more or less of the prototype description in the info tab
   document.querySelector('.prt-read-more-description').addEventListener("click", function() {
-    let currentaction = this.getAttribute('action');
+    let currentaction = this.getAttribute('show');
     if(currentaction == "more") {
       document.querySelector('.prt-description-paragraph').classList.remove('prt-ellipsis-text');
-      this.setAttribute('action', 'less');
+      this.setAttribute('show', 'less');
       this.innerHTML = 'Read Less';
     } else { // currentaction == "less"
       document.querySelector('.prt-description-paragraph').classList.add('prt-ellipsis-text');
-      this.setAttribute('action', 'more');
+      this.setAttribute('show', 'more');
       this.innerHTML = 'Read More';
     }
   });
