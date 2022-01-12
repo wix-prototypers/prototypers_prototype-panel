@@ -118,7 +118,7 @@ const panelSections = [
 
 window.onload = function(e) {
   let panelInfo = {
-    prototypeDescription : "This is where you can describe the prototype shortly, this description is where you can elaborate and describe in details what's the prototype about.",
+    prototypeDescription : "This is where you can describe the prototype shortly, this description is where you can elaborate and describe in details what's the prototype about. this description is where you can elaborate and describe in details what's the prototype about.",
     prototypeHowToUse: "Click `Create Discount`, select the first discount type, and start selecting the relevant inputs.",
     panelDirection : "right"
   };
