@@ -51,7 +51,8 @@ function initPrototypePanel(panelInfo, panelSections) {
     <div class="prt-panel-section prt-overview prt-show-section" data-section="Prototype Info">
     <div>
     <div class="prt-overview-title">description</div>
-    <div class="prt-overview-paragraph">${_panelInfo.prototypeDescription}</div>
+    <div class="prt-overview-paragraph prt-description-paragraph">${_panelInfo.prototypeDescription}</div>
+    <span class="prt-panel-button prt-read-more-description prt-hide" action="more" skin="text">Read More</span>
     <div class="prt-panel-divider"></div>
     <div class="prt-overview-title">how to use</div>
     <div class="prt-overview-paragraph">${_panelInfo.prototypeHowToUse}</div>
@@ -98,11 +99,14 @@ function initPrototypePanel(panelInfo, panelSections) {
     </div>`;
 
     document.body.insertAdjacentHTML('beforeend', prototypePanelTemplate);
+
     if (hasSections) {
       document.querySelectorAll('.prt-slider').forEach((sliderField) => {
         changesSliderWidth(sliderField, sliderField.getAttribute('value'));
       });
+      setSettingsPanelHeight();
     }
+    readMoreDescription();
     initPrtPanelEvents(); // add all click and change events of the panel
     updateInputsFromURL(); // update the panel with the URL parameters
   }
@@ -152,7 +156,7 @@ function createPrtPanelSection(section) {
   let inputsTemplate = '';
   let newSection = '';
   section.fields.forEach(function(field, index){
-    index == section.fields.length - 1 ? index = 'prt-last-field' : index = '';
+    index == section.fields.length - 1 && sectionsAmount > 1 ? index = 'prt-last-field' : index = '';
     inputsTemplate += createPrtPanelInput(field, index);
   });
   newSection = `<div class="prt-panel-section-header ${sectionIsOpen != false ? '' : 'close'}"><span>${sectionTitle}</span>${sectionsAmount > 1 ? prtHeaderChev : ''}</div>
@@ -314,7 +318,7 @@ function initPrtPanelEvents() {
         document.querySelector('.prt-panel-title').innerHTML = theRelevantSection;
         document.querySelector(`.prt-panel-title`).classList.remove('prt-hide-section');
         document.querySelector(`.prt-panel-title`).classList.add('prt-show-section');
-        document.querySelector('.prt-panel-content').setAttribute('contet', theRelevantSection)
+        document.querySelector('.prt-panel-content').setAttribute('contet', theRelevantSection);
       }, 100);
       if (theRelevantSection == "Share Prototype") {
         let input = document.querySelector('.prt-share-link-input');
@@ -329,6 +333,7 @@ function initPrtPanelEvents() {
           if(sectionHeight > 500) {
             document.querySelector(`.prt-panel-content`).classList.add('prt-content-min-height');
           }
+
         }
       }, 200);
         }
@@ -481,6 +486,20 @@ function initPrtPanelEvents() {
     }, 1000);
   });
 
+  // Show more or less of the prototype description in the info tab
+  document.querySelector('.prt-read-more-description').addEventListener("click", function() {
+    let currentaction = this.getAttribute('action');
+    if(currentaction == "more") {
+      document.querySelector('.prt-description-paragraph').classList.remove('prt-ellipsis-text');
+      this.setAttribute('action', 'less');
+      this.innerHTML = 'Read Less';
+    } else { // currentaction == "less"
+      document.querySelector('.prt-description-paragraph').classList.add('prt-ellipsis-text');
+      this.setAttribute('action', 'more');
+      this.innerHTML = 'Read More';
+    }
+  });
+
   // Clicking on the main logo - close the panel if it is open OR open the info tab by default
   document.querySelector('.prt-panel-bar-main-logo').addEventListener("click", function() {
     document.querySelector(`.prt-panel-content`).classList.remove('prt-content-min-height');
@@ -528,6 +547,34 @@ function initPrtPanelEvents() {
       colorDropdown.nextElementSibling.classList.toggle('prt-visible');
     });
   });
+}
+
+// Set min-height of the settings panel according to the sections and their inputs
+// This function add this style to the head element in your index.html file.
+function setSettingsPanelHeight() {
+  let panelHeaderHeight = 48;
+  let sectionsHeadersHeight = 36 * sectionsAmount;
+  let sectionsContentHeight = 0;
+  document.querySelectorAll(".prt-panel-section-content").forEach((sectionContent) => {
+    sectionsContentHeight += sectionContent.offsetHeight + 58;
+  });
+  let settingsPanelHeight = panelHeaderHeight + sectionsHeadersHeight + sectionsContentHeight;
+  settingsPanelHeight < 300 ? settingsPanelHeight = settingsPanelHeight + 100 :
+  settingsPanelHeight > 556 ? settingsPanelHeight = 556 : '';
+  let settingsPanelStyle = `.prt-panel-content[contet="Prototype Settings"] { min-height: ${settingsPanelHeight}px !important; }`
+  document.head.insertAdjacentHTML('beforeend', `<style>${settingsPanelStyle}</style>`)
+  // document.querySelector('').style.minHeight = settingsPanelHeight + 'px';
+}
+
+// Add read more button if the height of the prototype description is greater than 109
+function readMoreDescription() {
+  let descriptionParagraph = document.querySelector('.prt-description-paragraph');
+  let showReadMore = false;
+  descriptionParagraph.offsetHeight >= 109 ? showReadMore = true : showReadMore = false;
+  if(showReadMore) {
+    descriptionParagraph.classList.add('prt-ellipsis-text');
+    document.querySelector('.prt-read-more-description').classList.remove('prt-hide');
+  }
 }
 
 function equalHeight(className) {

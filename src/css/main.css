@@ -535,7 +535,7 @@
 
 .prototype-panel.prt-panel-open .prt-panel-content[contet="Prototype Settings"],
 .prototype-panel.prt-panel-open .prt-panel-content[contet="Prototype Settings"].prt-content-min-height {
-  min-height: 556px !important;
+  min-height: 556px;
 }
 
 .prt-panel-open .prt-panel-content {
@@ -647,7 +647,6 @@
     transform: scale(0.7);
     opacity: 0;
   }
-
   100% {
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -661,7 +660,6 @@
     transform: scale(0.7);
     opacity: 0;
   }
-
   100% {
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -816,7 +814,32 @@
   font-size: 14px;
   color: #fff;
   font-weight: 400;
-  margin-bottom: 12px;
+  /* margin-bottom: 12px; */
+}
+
+.prt-description-paragraph {
+   display: inline-block;
+}
+
+.prt-description-paragraph.prt-ellipsis-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+
+.prt-read-more-description {
+  font-size: 12px;
+  display: block;
+  margin-top: 4px;
+}
+
+.prt-read-more-description:hover {
+  color: var(--prt-light-blue) !important;
+}
+
+.prt-read-more-description.prt-hide {
+  display: none;
 }
 
 .prt-panel-divider {
@@ -1291,8 +1314,10 @@ input[type="checkbox"].prt-circle-checkbox {
   padding: 9px 18px 9px 20px;
   border-top: 1px solid var(--Gry3);
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-shadow: inset 0 -1px 0 0px #2a2a2a;
+          box-shadow: inset 0 -1px 0 0px #2a2a2a;
 }
 
 .prt-panel-section-header.prt-disable-closing {
@@ -1324,10 +1349,6 @@ input[type="checkbox"].prt-circle-checkbox {
 
 .prt-panel-section-header:hover>span {
   color: var(--Gry6);
-}
-
-.prt-panel-section-header.close {
-  border-bottom: 1px solid #272727;
 }
 
 .prt-panel-section-header.close svg {
@@ -1741,16 +1762,16 @@ input[type="radio"].prt-toggle-option:checked:disabled~.prt-toggle-bckgrnd {
 
 /* ------- Long Text Tooltip ------- */
 .prt-toggle-tooltip-option {
-  border-radius: 4px;
+  border-radius: 6px;
   -webkit-box-shadow: -1px -1px 6px 0px rgb(34 35 35 / 70%);
-  box-shadow: -1px -1px 6px 0px rgb(34 35 35 / 70%);
-  border: solid 0.5px var(--Gry3);
-  background-color: #0a0911;
+          box-shadow: -1px -1px 6px 0px rgb(34 35 35 / 70%);
+  border: solid 0.5px var(--Gry4);
+  background-color: #02020b;
   position: absolute;
   left: -3px;
   bottom: 33px;
   opacity: 0;
-  padding: 8px;
+  padding: 5px 8px;
   color: var(--Gry6);
   font-size: 12px;
   -webkit-box-sizing: border-box;
@@ -1764,7 +1785,7 @@ input[type="radio"].prt-toggle-option:checked:disabled~.prt-toggle-bckgrnd {
 }
 
 .prt-toggle-labels:hover+.prt-toggle-tooltip-option {
-  /* display: block; */
+  display: block;
   -webkit-animation: show-tooltip 0.1s cubic-bezier(0.25, 1, 0.5, 1);
   animation: show-tooltip 0.1s cubic-bezier(0.25, 1, 0.5, 1);
   -webkit-animation-fill-mode: forwards;
@@ -1933,8 +1954,8 @@ input[type=radio].prt-circle-checkbox:disabled~label {
 }
 
 [type="radio"].prt-thumbnails-input {
-  width: 50px;
-  height: 50px;
+  width: 57px;
+  height: 57px;
   margin: 0;
   opacity: 0;
   position: absolute;
@@ -1987,15 +2008,15 @@ input[type=radio].prt-circle-checkbox:disabled~label {
 /* ------- Long Text Tooltip ------- */
 .prt-thumbnails-tooltip-item {
   --tooltip-side-offset: -5px;
-  border-radius: 4px;
+  border-radius: 6px;
   -webkit-box-shadow: -1px -1px 6px 0px rgb(34 35 35 / 70%);
-  box-shadow: -1px -1px 6px 0px rgb(34 35 35 / 70%);
-  border: solid 0.5px var(--Gry3);
-  background-color: #0a0911;
+          box-shadow: -1px -1px 6px 0px rgb(34 35 35 / 70%);
+  border: solid 0.5px var(--Gry4);
+  background-color: #02020b;
   position: absolute;
-  bottom: 87px;
+  bottom: 90px;
   opacity: 0;
-  padding: 8px;
+  padding: 5px 8px;
   color: var(--Gry6);
   font-size: 12px;
   -webkit-box-sizing: border-box;
