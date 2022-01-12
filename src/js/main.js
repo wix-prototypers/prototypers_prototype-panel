@@ -573,7 +573,7 @@ function readMoreDescription() {
   descriptionParagraph.offsetHeight >= 109 ? showReadMore = true : showReadMore = false;
   if(showReadMore) {
     descriptionParagraph.classList.add('prt-ellipsis-text');
-    document.querySelector('.prt-read-more-description').classList.remove('prt-hide');
+    document.querySelector('.prt-read-more-description').classList.remove('prt-hide'); // show the read more label
   }
 }
 

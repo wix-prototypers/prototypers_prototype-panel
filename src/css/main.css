@@ -839,7 +839,7 @@
 }
 
 .prt-read-more-description.prt-hide {
-  display: none;
+  display: none !important;
 }
 
 .prt-panel-divider {
