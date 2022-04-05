@@ -538,6 +538,11 @@
   min-height: 556px;
 }
 
+.prototype-panel:not(.prt-panel-open) .prt-panel-content[contet="Prototype Settings"],
+.prototype-panel.prototype-panel-hidden .prt-panel-content[contet="Prototype Settings"] {
+    min-height: 0 !important;
+}
+
 .prt-panel-open .prt-panel-content {
   max-width: 260px;
   max-height: 700px;
@@ -824,7 +829,7 @@
 .prt-description-paragraph.prt-ellipsis-text {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: 8;
   -webkit-box-orient: vertical;
 }
 

@@ -566,11 +566,11 @@ function setSettingsPanelHeight() {
   // document.querySelector('').style.minHeight = settingsPanelHeight + 'px';
 }
 
-// Add read more button if the height of the prototype description is greater than 109
+// Add read more button if the height of the prototype description is greater than 12 lines (217 px)
 function readMoreDescription() {
   let descriptionParagraph = document.querySelector('.prt-description-paragraph');
   let showReadMore = false;
-  descriptionParagraph.offsetHeight >= 109 ? showReadMore = true : showReadMore = false;
+  descriptionParagraph.offsetHeight >= 218 ? showReadMore = true : showReadMore = false;
   if(showReadMore) {
     descriptionParagraph.classList.add('prt-ellipsis-text');
     document.querySelector('.prt-read-more-description').classList.remove('prt-hide'); // show the read more label
