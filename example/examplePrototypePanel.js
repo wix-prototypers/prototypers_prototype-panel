@@ -22,6 +22,19 @@ const panelSections = [
     "sectionTitle": "hover effect",
     "fields": [
       {
+        "fieldName" : "number-w-context-menu",
+        "fieldLabel": "Test title animation:",
+        "callback": "exampleFunction",
+        "callbackUnitChangeName":"changeUnitInputBox",
+        "disabled": false,
+        "fieldType": "number-w-context-menu",
+        "value" : "35",
+        "defaultUnitIndex": 0,
+        "unitOptions": [{"unit":"px", "displayName":"Pixels (px)"},
+                         {"unit":"%", "displayName":"Precentage (%)"},
+                         {"unit":"vw", "displayName":"Viewport Width (vw)"}]
+      },
+      {
         "fieldName" : "change-main-title",
         "fieldLabel": "Change the title:",
         "toolTip": "",
@@ -167,3 +180,12 @@ function changeItemBackground(name, value, e) {
     $(".stage-element").css('opacity', value + '%')
   }
 }
+
+function exampleFunction(name,value,e){
+  console.log("in number func",name,value,e,e.target)
+}
+
+function changeUnitInputBox(name,value,e){
+  console.log("in unit func",name,value,e,e.target)
+}
+

@@ -1,5 +1,5 @@
 /* NOTE: This file includes the functions and the icons for creating the structure - No need to change / add. */
-import '../css/main.css';
+// import '../css/main.css';
 
 let hasSections = false;
 let sectionsAmount = 0;
@@ -200,6 +200,25 @@ function prtPanelInputContent(fieldData) {
       <input type='range' class='prt-slider prt-unchecked-input' name='${fieldName}' value=${value} min=${min} max=${max} step=${step} style='display:${showSlider ? 'block' : 'none'}'/>
       <div class='prt-container-input-number'><input type='number' class='prt-spinner prt-unchecked-input' name='${fieldName}' min='${min}' max='${max}' step='${step}' suffix='${suffix}' value='${value}'>
       <span class='prt-sfx-label'>${suffix}</span></div>
+      </div>`;
+      break;
+    }
+    case 'number-w-context-menu': {
+      const { fieldName, min, max, unitOptions, value, defaultUnitIndex,callbackUnitChangeName} = fieldData;
+      content = `<div class='prt-input-number-area' style='display:flex; position: relative'>
+      <div class='prt-container-input-number-w-context-menu'><input type='number' class='prt-unchecked-input' name='${fieldName}' min=${min} max=${max} unit='${unitOptions[defaultUnitIndex].unit}' value='${value}'>
+          <div class="prt-units-context-menu" call='${callbackUnitChangeName}'>
+            <input class="prt-context-menu-input" type="text" value="${unitOptions[defaultUnitIndex].unit}" readonly="">
+        <div class="prt-context-menu-content">`;
+        for (let i = 0; i < unitOptions.length; i++) {
+          i == defaultUnitIndex ? selected = 'selected' : selected = '';
+          content += `<div class='prt-context-menu-item'>
+          <input class='prt-unit-input' type='radio' value='${unitOptions[i].unit}'id='${fieldName}-${i}' ${checked}>
+          <div class='prt-unit-input-name ${selected}'>${unitOptions[i].displayName ? unitOptions[i].displayName : unitOptions[i].unit}</div></div>`;
+        }
+        content +=`</div>
+      </div>
+      </div>
       </div>`;
       break;
     }
@@ -547,6 +566,26 @@ function initPrtPanelEvents() {
       colorDropdown.nextElementSibling.classList.toggle('prt-visible');
     });
   });
+
+  document.querySelectorAll('.prt-context-menu-input').forEach((input) => {
+    input.addEventListener('click', function() {
+      input.classList.toggle('prt-selected');
+      input.nextElementSibling.classList.toggle('prt-visible');
+    });
+  });
+
+  document.querySelectorAll('.prt-context-menu-item').forEach((item) => {
+    item.addEventListener('click', function(e) {
+      if(!e.target.nextElementSibling.classList.contains('selected')){
+        document.querySelector('.prt-context-menu-input').value=e.target.getAttribute('value');
+        document.querySelector('.prt-context-menu-input').setAttribute('value',e.target.getAttribute('value'))
+        document.querySelector('.prt-unit-input-name.selected').classList.remove('selected');
+        e.target.nextElementSibling.classList.add('selected')
+        document.querySelector('.prt-context-menu-input').classList.remove('prt-selected');
+        document.querySelector('.prt-context-menu-content').classList.remove('prt-visible');
+      }
+    });
+  });
 }
 
 // Set min-height of the settings panel according to the sections and their inputs
@@ -631,8 +670,8 @@ function disablePrtPanelField(fieldName, flag) {
 For numeric input - this function also update the spinner / slider with the current value and change the background width of the slider */
 function initPrototypePanelControls() {
   document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
-    const inputChangedParent = inputChanged.closest('.prt-panel-field');
-    const theFunction = inputChangedParent.getAttribute('call');
+    let inputChangedParent = inputChanged.closest('.prt-panel-field');
+    let theFunction = inputChangedParent.getAttribute('call');
     switch (inputChanged.type) {
       case "radio":
       inputChanged.addEventListener('change', function(e) {
@@ -654,27 +693,35 @@ function initPrototypePanelControls() {
         thereChanges = true;
       });
       case "text":
-      inputChanged.addEventListener('input', function(e) {
-        const inputElm = e.target;
-        let selectedValue = inputElm.value;
-        // text input - verify the new value
-        if (inputElm.classList.contains('prt-text-input')) {
-          if(!selectedValue) { // invalid text value - set the default value
-            inputElm.value = inputElm.getAttribute('value');
-            selectedValue = inputElm.value; // set the new value
-          }
-        }
-        // color input - update the relevant fields (color code and opacity)
-        if (inputElm.classList.contains('prt-color-input')) {
-          changeColorPicker(inputElm.name, selectedValue, inputChanged)
-        }
-        // Call the relevant function
-        window[theFunction] && window[theFunction](`${inputElm.name}`, `${selectedValue}`, e);
-        thereChanges = true;
-      });
+          inputChanged.addEventListener('input', function(e) {
+            const inputElm = e.target;
+            let selectedValue = inputElm.value;
+            // text input - verify the new value
+            if (inputElm.classList.contains('prt-text-input')) {
+              if(!selectedValue) { // invalid text value - set the default value
+                inputElm.value = inputElm.getAttribute('value');
+                selectedValue = inputElm.value; // set the new value
+              }
+            }
+            // color input - update the relevant fields (color code and opacity)
+            if (inputElm.classList.contains('prt-color-input')) {
+              changeColorPicker(inputElm.name, selectedValue, inputChanged)
+            }
+
+            if (inputElm.classList.contains('prt-unit-input')) {
+              inputChangedParent=inputChanged.closest('.prt-units-context-menu');
+              theFunction = inputChangedParent.getAttribute('call');
+            }
+
+            // Call the relevant function
+            window[theFunction] && window[theFunction](`${inputElm.name}`, `${selectedValue}`, e);
+            thereChanges = true;
+          });
+
       break;
       case "range":
       case "number":
+      case "number-w-context-menu":
       inputChanged.addEventListener('input', function(e) {
         const inputElm = e.target;
         let selectedValue = inputElm.value;
