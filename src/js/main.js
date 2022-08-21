@@ -372,11 +372,8 @@ function initPrtPanelEvents() {
       if(!hasSections || !thereChanges) {
         document.querySelector('.prt-share-link-input').value = url;
       } else {
-        document.querySelectorAll('.prt-panel-field input').forEach((input) => {
-          
+        document.querySelectorAll('.prt-panel-field input').forEach((input) => {   
           if (input.checked || input.classList.contains('prt-unchecked-input')) {
-            console.log(input);
-
             values = values + '&' + input.name + `${input.classList.contains('prt-opacity-input') ? '[opacity]' : ''}` + '=' + input.value.replace('#', '@_>');
           }
         });
@@ -693,7 +690,6 @@ function initPrototypePanelControls() {
           changeColorPicker(inputElm.name, selectedValue, inputChanged)
         }
         if (inputElm.classList.contains('prt-unit-input')) {
-          console.log("Here")
           inputChangedParent=inputChanged.closest('.prt-units-context-menu');
           theFunction = inputChangedParent.getAttribute('call');
         }

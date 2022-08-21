@@ -1473,7 +1473,6 @@ border: solid 1px var(--prt-blue);
   align-items: center;
   justify-content: center;
   border-radius: 0 4px 4px 0;
-
 }
 .prt-context-menu-input{
   -webkit-appearance: none;
@@ -1491,14 +1490,14 @@ border: solid 1px var(--prt-blue);
   outline: none;
 }
 .prt-context-menu-content{
+    color: var(--Gry6);
     width: max-content;
     font-size: 12px;
     position: absolute;
     background: var(--Gry2);
     border: 1px solid var(--Gry3);
     z-index: 1;
-    transform: translateY(-50%);
-    left: 150%;
+    left: 28px;
     border-radius: 4px;
     padding: 10px;
     -webkit-box-sizing: border-box;
