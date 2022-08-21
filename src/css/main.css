@@ -1544,6 +1544,11 @@ fieldset[name='number-w-context-menu']:disabled .prt-container-input-number-w-co
 .prt-context-menu-item .prt-unit-input-name{
   cursor: pointer;
   z-index: 0;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 135px;
 }
 /* ------------------------------------- ENDOF:number-w-context-menu style ------------------------------------- */
 /* ------------------------------------- Number style ------------------------------------- */
