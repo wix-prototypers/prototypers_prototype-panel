@@ -572,6 +572,7 @@ function initPrtPanelEvents() {
     input.addEventListener('click', function() {
       input.classList.toggle('prt-selected');
       input.nextElementSibling.classList.toggle('prt-visible');
+      window.addEventListener('click',clickOutside)
     });
   });
 
@@ -584,10 +585,20 @@ function initPrtPanelEvents() {
         e.target.nextElementSibling.classList.add('selected')
         document.querySelector('.prt-context-menu-input').classList.remove('prt-selected');
         document.querySelector('.prt-context-menu-content').classList.remove('prt-visible');
+        window.removeEventListener('click',clickOutside)
       }
     });
   });
 }
+
+function clickOutside(e){
+  if(!e.target.closest('.prt-units-context-menu')){
+    document.querySelector('.prt-context-menu-input').classList.remove('prt-selected');
+    document.querySelector('.prt-context-menu-content').classList.remove('prt-visible');
+    window.removeEventListener('click',clickOutside)
+  }
+}
+
 
 // Set min-height of the settings panel according to the sections and their inputs
 // This function add this style to the head element in your index.html file.

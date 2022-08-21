@@ -158,6 +158,7 @@ function changeLayout(name, value, e) {
 }
 
 function changeGagBetweenElmentes(name, value, e) {
+  console.log("changeGagBetweenElmentes", value)
   var sfx = $(`input[type="number"][name='${name}']`).attr("suffix");
   $(".stage").css("grid-gap", `${value}${sfx}`)
 }

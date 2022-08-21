@@ -1446,7 +1446,7 @@ input[type="checkbox"].prt-circle-checkbox {
   width: 66px;
   height: 28px;
 }
-.prt-container-input-number-w-context-menu input[name="number-w-context-menu"]:focus{
+.prt-container-input-number-w-context-menu input[name="number-w-context-menu"]:focus, .prt-unchecked-input:focus ~ .prt-units-context-menu{
 outline: none;
 border: solid 1px var(--prt-blue);
 }
@@ -1462,17 +1462,20 @@ border: solid 1px var(--prt-blue);
 .prt-units-context-menu{
   position: absolute;
   top: 50%;
-  width: 22px;
+  width: max-content;
+  min-width: 24px;
   transform: translateY(-50%);
   left: 64%;
-  height: 26px;
+  height: 100%;
+  padding: 4px;
   display: flex;
   z-index: 1;
-  border-left: 1px solid var(--Gry4);
+  border: 1px solid var(--Gry4);
   background: var(--Gry2);
   align-items: center;
   justify-content: center;
   border-radius: 0 4px 4px 0;
+  max-width: 46px;
 }
 .prt-context-menu-input{
   -webkit-appearance: none;
@@ -1497,7 +1500,7 @@ border: solid 1px var(--prt-blue);
     background: var(--Gry2);
     border: 1px solid var(--Gry3);
     z-index: 1;
-    left: 28px;
+    left: 116%;
     border-radius: 4px;
     padding: 10px;
     -webkit-box-sizing: border-box;
