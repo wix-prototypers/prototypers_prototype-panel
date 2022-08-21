@@ -186,6 +186,7 @@ function exampleFunction(name,value,e){
 }
 
 function changeUnitInputBox(name,value,e){
+  $('body').css('background', 'red')
   console.log("in unit func",name,value,e,e.target)
 }
 

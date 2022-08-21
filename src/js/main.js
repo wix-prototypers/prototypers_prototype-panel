@@ -208,13 +208,14 @@ function prtPanelInputContent(fieldData) {
       content = `<div class='prt-input-number-area' style='display:flex; position: relative'>
       <div class='prt-container-input-number-w-context-menu'><input type='number' class='prt-unchecked-input' name='${fieldName}' min=${min} max=${max} unit='${unitOptions[defaultUnitIndex].unit}' value='${value}'>
           <div class="prt-units-context-menu" call='${callbackUnitChangeName}'>
-            <input class="prt-context-menu-input" type="text" value="${unitOptions[defaultUnitIndex].unit}" readonly="">
+            <div class="prt-context-menu-input" value="${unitOptions[defaultUnitIndex].unit}">${unitOptions[defaultUnitIndex].unit}</div>
         <div class="prt-context-menu-content">`;
         for (let i = 0; i < unitOptions.length; i++) {
           i == defaultUnitIndex ? selected = 'selected' : selected = '';
+          i == defaultUnitIndex ? checked = 'checked' : checked = '';
           content += `<div class='prt-context-menu-item'>
-          <input class='prt-unit-input' type='radio' value='${unitOptions[i].unit}'id='${fieldName}-${i}' ${checked}>
-          <div class='prt-unit-input-name ${selected}'>${unitOptions[i].displayName ? unitOptions[i].displayName : unitOptions[i].unit}</div></div>`;
+          <input class='prt-unit-input' type='radio' name="${fieldName}-unit" value='${unitOptions[i].unit}'id='${fieldName}-${i}' ${checked}>
+          <div class='prt-unit-input-name ${selected}' for='${fieldName}-${i}'>${unitOptions[i].displayName ? unitOptions[i].displayName : unitOptions[i].unit}</div></div>`;
         }
         content +=`</div>
       </div>
@@ -372,7 +373,10 @@ function initPrtPanelEvents() {
         document.querySelector('.prt-share-link-input').value = url;
       } else {
         document.querySelectorAll('.prt-panel-field input').forEach((input) => {
+          
           if (input.checked || input.classList.contains('prt-unchecked-input')) {
+            console.log(input);
+
             values = values + '&' + input.name + `${input.classList.contains('prt-opacity-input') ? '[opacity]' : ''}` + '=' + input.value.replace('#', '@_>');
           }
         });
@@ -574,10 +578,10 @@ function initPrtPanelEvents() {
     });
   });
 
-  document.querySelectorAll('.prt-context-menu-item').forEach((item) => {
-    item.addEventListener('click', function(e) {
+  document.querySelectorAll('.prt-context-menu-item .prt-unit-input').forEach((item) => {
+    item.addEventListener('change', function(e) {
       if(!e.target.nextElementSibling.classList.contains('selected')){
-        document.querySelector('.prt-context-menu-input').value=e.target.getAttribute('value');
+        document.querySelector('.prt-context-menu-input').innerHTML=e.target.getAttribute('value');
         document.querySelector('.prt-context-menu-input').setAttribute('value',e.target.getAttribute('value'))
         document.querySelector('.prt-unit-input-name.selected').classList.remove('selected');
         e.target.nextElementSibling.classList.add('selected')
@@ -688,12 +692,18 @@ function initPrototypePanelControls() {
         if (inputElm.classList.contains('prt-color-input')) {
           changeColorPicker(inputElm.name, selectedValue, inputChanged)
         }
+        if (inputElm.classList.contains('prt-unit-input')) {
+          console.log("Here")
+          inputChangedParent=inputChanged.closest('.prt-units-context-menu');
+          theFunction = inputChangedParent.getAttribute('call');
+        }
         // Call the relevant function
         window[theFunction] && window[theFunction](`${inputElm.name}`, `${selectedValue}`, e);
         thereChanges = true;
       });
       case "text":
           inputChanged.addEventListener('input', function(e) {
+            
             const inputElm = e.target;
             let selectedValue = inputElm.value;
             // text input - verify the new value
@@ -706,11 +716,6 @@ function initPrototypePanelControls() {
             // color input - update the relevant fields (color code and opacity)
             if (inputElm.classList.contains('prt-color-input')) {
               changeColorPicker(inputElm.name, selectedValue, inputChanged)
-            }
-
-            if (inputElm.classList.contains('prt-unit-input')) {
-              inputChangedParent=inputChanged.closest('.prt-units-context-menu');
-              theFunction = inputChangedParent.getAttribute('call');
             }
 
             // Call the relevant function

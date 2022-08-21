@@ -1462,21 +1462,24 @@ border: solid 1px var(--prt-blue);
 .prt-units-context-menu{
   position: absolute;
   top: 50%;
+  width: 22px;
   transform: translateY(-50%);
   left: 64%;
-  height: 24px;
+  height: 26px;
   display: flex;
   z-index: 1;
   border-left: 1px solid var(--Gry4);
-  padding-left: 2px;
   background: var(--Gry2);
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 4px 4px 0;
+
 }
 .prt-context-menu-input{
   -webkit-appearance: none;
   border:none;
   font-size: 12px;
   cursor: pointer;
-  width:20px;
   background: var(--Gry2);
   color: var(--prt-blue);
   border-radius: 4px;
@@ -1525,7 +1528,7 @@ border: solid 1px var(--prt-blue);
   color: var(--prt-blue);
 }
 .prt-unit-input:hover ~ .prt-unit-input-name:not(.selected){
-  color: var(--prt-blue);
+  color: #ffffff;
 }
 fieldset[name='number-w-context-menu']:disabled .prt-container-input-number-w-context-menu .prt-spinner{  
   border: 1px solid var(--Gry1);
