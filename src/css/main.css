@@ -1443,7 +1443,7 @@ input[type="checkbox"].prt-circle-checkbox {
     box-sizing: border-box;
     outline: none;
   font-size: 14px;
-  width: 66px;
+  width: 70px;
   height: 28px;
 }
 .prt-container-input-number-w-context-menu input[name="number-w-context-menu"]:focus, .prt-unchecked-input:focus ~ .prt-units-context-menu{
@@ -1465,7 +1465,7 @@ border: solid 1px var(--prt-blue);
   width: max-content;
   min-width: 24px;
   transform: translateY(-50%);
-  left: 64%;
+  left: 65%;
   height: 100%;
   padding: 4px;
   display: flex;
