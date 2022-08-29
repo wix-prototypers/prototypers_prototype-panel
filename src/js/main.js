@@ -1,5 +1,5 @@
 /* NOTE: This file includes the functions and the icons for creating the structure - No need to change / add. */
-import '../css/main.css';
+// import '../css/main.css';
 
 let hasSections = false;
 let sectionsAmount = 0;
@@ -203,6 +203,26 @@ function prtPanelInputContent(fieldData) {
       </div>`;
       break;
     }
+    case 'number-w-context-menu': {
+      const { fieldName, min, max, unitOptions, value, defaultUnitIndex,callbackUnitChangeName} = fieldData;
+      content = `<div class='prt-input-number-area' style='display:flex; position: relative'>
+      <div class='prt-container-input-number-w-context-menu'><input type='number' class='prt-unchecked-input' name='${fieldName}' min=${min} max=${max} unit='${unitOptions[defaultUnitIndex].unit}' value='${value}'>
+          <div class="prt-units-context-menu" call='${callbackUnitChangeName}'>
+            <div class="prt-context-menu-input" value="${unitOptions[defaultUnitIndex].unit}">${unitOptions[defaultUnitIndex].unit}</div>
+        <div class="prt-context-menu-content">`;
+        for (let i = 0; i < unitOptions.length; i++) {
+          i == defaultUnitIndex ? selected = 'selected' : selected = '';
+          i == defaultUnitIndex ? checked = 'checked' : checked = '';
+          content += `<div class='prt-context-menu-item'>
+          <input class='prt-unit-input' type='radio' name="${fieldName}-unit" value='${unitOptions[i].unit}'id='${fieldName}-${i}' ${checked}>
+          <div class='prt-unit-input-name ${selected}' for='${fieldName}-${i}'>${unitOptions[i].displayName ? unitOptions[i].displayName : unitOptions[i].unit}</div></div>`;
+        }
+        content +=`</div>
+      </div>
+      </div>
+      </div>`;
+      break;
+    }
     case 'toggle': {
       const { fieldName, option1Value, option1Display, option2Value, option2Display, defaultOption } = fieldData;
       const tooltipWordsLimit = 13;
@@ -352,7 +372,7 @@ function initPrtPanelEvents() {
       if(!hasSections || !thereChanges) {
         document.querySelector('.prt-share-link-input').value = url;
       } else {
-        document.querySelectorAll('.prt-panel-field input').forEach((input) => {
+        document.querySelectorAll('.prt-panel-field input').forEach((input) => {   
           if (input.checked || input.classList.contains('prt-unchecked-input')) {
             values = values + '&' + input.name + `${input.classList.contains('prt-opacity-input') ? '[opacity]' : ''}` + '=' + input.value.replace('#', '@_>');
           }
@@ -547,7 +567,38 @@ function initPrtPanelEvents() {
       colorDropdown.nextElementSibling.classList.toggle('prt-visible');
     });
   });
+
+  document.querySelectorAll('.prt-context-menu-input').forEach((input) => {
+    input.addEventListener('click', function() {
+      input.classList.toggle('prt-selected');
+      input.nextElementSibling.classList.toggle('prt-visible');
+      window.addEventListener('click',clickOutside)
+    });
+  });
+
+  document.querySelectorAll('.prt-context-menu-item .prt-unit-input').forEach((item) => {
+    item.addEventListener('change', function(e) {
+      if(!e.target.nextElementSibling.classList.contains('selected')){
+        document.querySelector('.prt-context-menu-input').innerHTML=e.target.getAttribute('value');
+        document.querySelector('.prt-context-menu-input').setAttribute('value',e.target.getAttribute('value'))
+        document.querySelector('.prt-unit-input-name.selected').classList.remove('selected');
+        e.target.nextElementSibling.classList.add('selected')
+        document.querySelector('.prt-context-menu-input').classList.remove('prt-selected');
+        document.querySelector('.prt-context-menu-content').classList.remove('prt-visible');
+        window.removeEventListener('click',clickOutside)
+      }
+    });
+  });
 }
+
+function clickOutside(e){
+  if(!e.target.closest('.prt-units-context-menu')){
+    document.querySelector('.prt-context-menu-input').classList.remove('prt-selected');
+    document.querySelector('.prt-context-menu-content').classList.remove('prt-visible');
+    window.removeEventListener('click',clickOutside)
+  }
+}
+
 
 // Set min-height of the settings panel according to the sections and their inputs
 // This function add this style to the head element in your index.html file.
@@ -631,8 +682,8 @@ function disablePrtPanelField(fieldName, flag) {
 For numeric input - this function also update the spinner / slider with the current value and change the background width of the slider */
 function initPrototypePanelControls() {
   document.querySelectorAll('.prt-panel-field input').forEach((inputChanged) => {
-    const inputChangedParent = inputChanged.closest('.prt-panel-field');
-    const theFunction = inputChangedParent.getAttribute('call');
+    let inputChangedParent = inputChanged.closest('.prt-panel-field');
+    let theFunction = inputChangedParent.getAttribute('call');
     switch (inputChanged.type) {
       case "radio":
       inputChanged.addEventListener('change', function(e) {
@@ -649,32 +700,40 @@ function initPrototypePanelControls() {
         if (inputElm.classList.contains('prt-color-input')) {
           changeColorPicker(inputElm.name, selectedValue, inputChanged)
         }
+        if (inputElm.classList.contains('prt-unit-input')) {
+          inputChangedParent=inputChanged.closest('.prt-units-context-menu');
+          theFunction = inputChangedParent.getAttribute('call');
+        }
         // Call the relevant function
         window[theFunction] && window[theFunction](`${inputElm.name}`, `${selectedValue}`, e);
         thereChanges = true;
       });
       case "text":
-      inputChanged.addEventListener('input', function(e) {
-        const inputElm = e.target;
-        let selectedValue = inputElm.value;
-        // text input - verify the new value
-        if (inputElm.classList.contains('prt-text-input')) {
-          if(!selectedValue) { // invalid text value - set the default value
-            inputElm.value = inputElm.getAttribute('value');
-            selectedValue = inputElm.value; // set the new value
-          }
-        }
-        // color input - update the relevant fields (color code and opacity)
-        if (inputElm.classList.contains('prt-color-input')) {
-          changeColorPicker(inputElm.name, selectedValue, inputChanged)
-        }
-        // Call the relevant function
-        window[theFunction] && window[theFunction](`${inputElm.name}`, `${selectedValue}`, e);
-        thereChanges = true;
-      });
+          inputChanged.addEventListener('input', function(e) {
+            
+            const inputElm = e.target;
+            let selectedValue = inputElm.value;
+            // text input - verify the new value
+            if (inputElm.classList.contains('prt-text-input')) {
+              if(!selectedValue) { // invalid text value - set the default value
+                inputElm.value = inputElm.getAttribute('value');
+                selectedValue = inputElm.value; // set the new value
+              }
+            }
+            // color input - update the relevant fields (color code and opacity)
+            if (inputElm.classList.contains('prt-color-input')) {
+              changeColorPicker(inputElm.name, selectedValue, inputChanged)
+            }
+
+            // Call the relevant function
+            window[theFunction] && window[theFunction](`${inputElm.name}`, `${selectedValue}`, e);
+            thereChanges = true;
+          });
+
       break;
       case "range":
       case "number":
+      case "number-w-context-menu":
       inputChanged.addEventListener('input', function(e) {
         const inputElm = e.target;
         let selectedValue = inputElm.value;
