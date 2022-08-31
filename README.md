@@ -1098,7 +1098,7 @@ Below is a list of properties for each input type. You must define all the prope
 ];
 ```
 
-##### 7. Number with Context Menu 🔟
+##### 7. Number with Context Menu 🔽
 <table>
   <tr>
    <td>
