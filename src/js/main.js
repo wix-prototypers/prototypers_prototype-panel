@@ -585,6 +585,7 @@ function initPrtPanelEvents() {
         e.target.nextElementSibling.classList.add('selected')
         document.querySelector('.prt-context-menu-input').classList.remove('prt-selected');
         document.querySelector('.prt-context-menu-content').classList.remove('prt-visible');
+        document.querySelector('.prt-unchecked-input[name="number-w-context-menu"]').setAttribute('unit',e.target.getAttribute('value'))
         window.removeEventListener('click',clickOutside)
       }
     });
