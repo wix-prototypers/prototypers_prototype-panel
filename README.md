@@ -1098,6 +1098,163 @@ Below is a list of properties for each input type. You must define all the prope
 ];
 ```
 
+##### 7. Number with Context Menu 🔟
+<table>
+  <tr>
+   <td>
+    NAME
+   </td>
+   <td>
+    TYPE
+   </td>
+   <td>
+    DESCRIPTION
+   </td>
+  </tr>
+  <tr>
+   <td>
+    fieldName
+   </td>
+   <td>
+     String
+   </td>
+   <td>
+    The unique name of the input, will be used by us to access the input in the code.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    fieldLabel
+   </td>
+   <td>
+    String
+   </td>
+   <td>
+    The label that will appear in the panel above the input.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    callback
+   </td>
+   <td>
+    String
+   </td>
+   <td>
+    The name of the function that will be called after changing this input. You are responsible for the implementation of this function.
+      <b>NOTE: </b> This function receives 3 parameters (in the following order): the name ('name' attribute) of the changed input, the selected value and the event object. Example: <i>function changeBackgroundStyle(inputName, selectedValue, e) { }</i>
+   </td>
+  </tr>
+   <tr>
+   <td>
+    callbackContextMenu
+   </td>
+   <td>
+    String
+   </td>
+   <td>
+    The name of the function that will be called after changing the input unit from the context menu. You are responsible for the implementation of this function. <b>NOTE: </b> This function receives 3 parameters (in the following order): the name ('name' attribute) of the changed input, the selected value and the event object. Example: <i>function convertWidthElement(inputName, selectedValue, e) { }</i>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    disabled
+   </td>
+   <td>
+    Boolean
+   </td>
+   <td>
+    Disable or enable this input field by default.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    fieldType
+   </td>
+   <td>
+    oneOf[“number-w-context-menu”]
+   </td>
+   <td>
+    The input type. For this input it must be ״number-w-context-menu”.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    min
+   </td>
+   <td>
+    Number
+   </td>
+   <td>
+     Minimum value this input can have. [Optional]
+   </td>
+  </tr>
+  <tr>
+   <td>
+    max
+   </td>
+   <td>
+    Number
+   </td>
+   <td>
+    Maximum value this input can have. [Optional]
+   </td>
+  </tr>
+  <tr>
+   <td>
+    value
+   </td>
+   <td>
+    Number
+   </td>
+   <td>
+    The initial input value.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    defaultUnitIndex
+   </td>
+   <td>
+    Number
+   </td>
+   <td>
+    The index of the unit input that you want to show as default from the unitOptions.
+   </td>
+  </tr>
+    <tr>
+   <td>
+    unitOptions
+   </td>
+   <td>
+    Array
+   </td>
+   <td>
+An array that contains the object of each unit option. Each object containts the properties "unit" - the unit value that displays next to the input, and "displayName" - the text that displays in the context menu. Example: 'unitOptions': [{"unit":"px", "displayName":"Pixels (px)"}]
+   </td>
+  </tr>
+</table>
+
+##### **Code Example for Number Input with Context Menu**
+```javascript
+... fields: [
+ {
+  fieldName : "number-w-context-menu",
+  fieldLabel : "Test title animation:",
+  callback : "exampleFunction",
+  callbackContextMenu : "changeUnitInputBox",
+  disabled : false,
+  fieldType : "number-w-context-menu",
+  value : "35",
+  defaultUnitIndex : 0,
+  unitOptions : [{"unit":"px", "displayName":"Pixels (px)"},
+                 {"unit":"%", "displayName":"Precentage (%)"},
+                 {"unit":"vw", "displayName":"Viewport Width (vw)"}]
+ }
+];
+```
+
+
 ## **Helper Functions**
 
 
