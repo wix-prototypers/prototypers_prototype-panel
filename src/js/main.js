@@ -204,10 +204,10 @@ function prtPanelInputContent(fieldData) {
       break;
     }
     case 'number-w-context-menu': {
-      const { fieldName, min, max, unitOptions, value, defaultUnitIndex,callbackUnitChangeName} = fieldData;
+      const { fieldName, min, max, unitOptions, value, defaultUnitIndex,callbackContextMenu} = fieldData;
       content = `<div class='prt-input-number-area' style='display:flex; position: relative'>
       <div class='prt-container-input-number-w-context-menu'><input type='number' class='prt-unchecked-input' name='${fieldName}' min=${min} max=${max} unit='${unitOptions[defaultUnitIndex].unit}' value='${value}'>
-          <div class="prt-units-context-menu" call='${callbackUnitChangeName}'>
+          <div class="prt-units-context-menu" call='${callbackContextMenu}'>
             <div class="prt-context-menu-input" value="${unitOptions[defaultUnitIndex].unit}">${unitOptions[defaultUnitIndex].unit}</div>
         <div class="prt-context-menu-content">`;
         for (let i = 0; i < unitOptions.length; i++) {

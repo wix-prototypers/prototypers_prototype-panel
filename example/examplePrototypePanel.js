@@ -25,7 +25,7 @@ const panelSections = [
         "fieldName" : "number-w-context-menu",
         "fieldLabel": "Test title animation:",
         "callback": "exampleFunction",
-        "callbackUnitChangeName":"changeUnitInputBox",
+        "callbackContextMenu":"changeUnitInputBox",
         "disabled": false,
         "fieldType": "number-w-context-menu",
         "value" : "35",
