@@ -22,6 +22,19 @@ const panelSections = [
     "sectionTitle": "hover effect",
     "fields": [
       {
+        "fieldName" : "number-w-context-menu",
+        "fieldLabel": "Test title animation:",
+        "callback": "exampleFunction",
+        "callbackContextMenu":"changeUnitInputBox",
+        "disabled": false,
+        "fieldType": "number-w-context-menu",
+        "value" : "35",
+        "defaultUnitIndex": 0,
+        "unitOptions": [{"unit":"px", "displayName":"Pixels (px)"},
+                         {"unit":"%", "displayName":"Precentage (%)"},
+                         {"unit":"vw", "displayName":"Viewport Width (vw)"}]
+      },
+      {
         "fieldName" : "change-main-title",
         "fieldLabel": "Change the title:",
         "toolTip": "",
@@ -145,6 +158,7 @@ function changeLayout(name, value, e) {
 }
 
 function changeGagBetweenElmentes(name, value, e) {
+  console.log("changeGagBetweenElmentes", value)
   var sfx = $(`input[type="number"][name='${name}']`).attr("suffix");
   $(".stage").css("grid-gap", `${value}${sfx}`)
 }
@@ -167,3 +181,12 @@ function changeItemBackground(name, value, e) {
     $(".stage-element").css('opacity', value + '%')
   }
 }
+
+function exampleFunction(name,value,e){
+  console.log("in number func",name,value,e,e.target)
+}
+
+function changeUnitInputBox(name,value,e){
+  console.log("in unit func",name,value,e,e.target)
+}
+
