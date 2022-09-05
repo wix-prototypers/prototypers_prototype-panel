@@ -189,4 +189,3 @@ function exampleFunction(name,value,e){
 function changeUnitInputBox(name,value,e){
   console.log("in unit func",name,value,e,e.target)
 }
-
