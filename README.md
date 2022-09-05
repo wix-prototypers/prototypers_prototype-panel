@@ -3,7 +3,7 @@
 ![info](https://wix-prototypers.github.io/prototypers_prototype-panel/screenshot.png)
 
 ## **External links**
-[Demo Link](https://wix-prototypers.github.io/prototypers_prototype-panel/example/index.html)
+[Demo Link](https://wix-prototypers.github.io/prototypers_prototype-panel/example/index.html){:target="_blank"}
 
 [Correct Git Workflow - How to modify and manage panel code](https://docs.google.com/document/d/1hK_F3GwTPpVcZN0sJRZSY-C1Zhdnxj0Tr-7MperWoxc/edit?usp=sharing)
 
@@ -29,6 +29,8 @@
 - [Button](https://wix-prototypers.github.io/prototypers_prototype-panel/#5-button-)
 
 - [Thumbnails Input](https://wix-prototypers.github.io/prototypers_prototype-panel/#6-thumbnails-)
+
+- [Number Input with Context Menu](https://wix-prototypers.github.io/prototypers_prototype-panel/#7-number-input-with-context-menu-)
 
 [Helper Functions](https://wix-prototypers.github.io/prototypers_prototype-panel/#helper-functions)
 
@@ -71,6 +73,7 @@ The inputs are the interactive part of the panel and allow our users to play, ch
    4. [Text Field](https://wix-prototypers.github.io/prototypers_prototype-panel/#4-text-field-): text field that allows to change the text of an element.
    5. [Button](https://wix-prototypers.github.io/prototypers_prototype-panel/#5-button-): button that allows to do someting (e.g. refresh, start animation and more).
    6. [Thumbnails](https://wix-prototypers.github.io/prototypers_prototype-panel/#6-thumbnails-): square buttons with icons inside and text labels. Only 1 option can be selected.
+   7. [Number Input with Context Menu](https://wix-prototypers.github.io/prototypers_prototype-panel/#7-number-input-with-context-menu-): number input feild with context menu for changing the unit input.
 
 
 ## **How To Use?**
@@ -1098,7 +1101,7 @@ Below is a list of properties for each input type. You must define all the prope
 ];
 ```
 
-##### 7. Number with Context Menu 🔽
+##### 7. Number Input with Context Menu 🔽
 <table>
   <tr>
    <td>
