@@ -1451,23 +1451,22 @@ outline: none;
 border: solid 1px var(--prt-blue);
 }
 
-.prt-container-input-number-w-context-menu{
+/* .prt-container-input-number-w-context-menu{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
     position: relative;
     width: max-content;
-}
+} */
 .prt-units-context-menu{
   position: absolute;
-  top: 50%;
+  top: 0;
   width: max-content;
-  min-width: 24px;
-  transform: translateY(-50%);
-  left: 65%;
-  height: 100%;
-  padding: 4px;
+  min-width: 25px;
+  left: 48px;
+  height: 28px;
+  padding: 0px 4px;
   display: flex;
   z-index: 1;
   border: 1px solid var(--Gry4);
@@ -1484,7 +1483,6 @@ border: solid 1px var(--prt-blue);
   cursor: pointer;
   background: var(--Gry2);
   color: var(--prt-blue);
-  border-radius: 4px;
 }
 .prt-context-menu-input:hover{
   color: var(--prt-light-blue);
